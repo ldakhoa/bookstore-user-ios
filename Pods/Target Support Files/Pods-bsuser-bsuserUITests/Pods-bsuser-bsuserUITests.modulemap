@@ -1,0 +1,6 @@
+framework module Pods_bsuser_bsuserUITests {
+  umbrella header "Pods-bsuser-bsuserUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

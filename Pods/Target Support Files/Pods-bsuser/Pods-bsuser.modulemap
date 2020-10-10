@@ -1,0 +1,6 @@
+framework module Pods_bsuser {
+  umbrella header "Pods-bsuser-umbrella.h"
+
+  export *
+  module * { export * }
+}

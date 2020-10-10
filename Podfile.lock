@@ -1,0 +1,16 @@
+PODS:
+  - StyledTextKit (0.2.0)
+
+DEPENDENCIES:
+  - StyledTextKit
+
+SPEC REPOS:
+  trunk:
+    - StyledTextKit
+
+SPEC CHECKSUMS:
+  StyledTextKit: dbfb29a59922c6f18897a0266acd139b7c9e712b
+
+PODFILE CHECKSUM: a8ab463d24151050701341a68455d118c70c91db
+
+COCOAPODS: 1.8.3
