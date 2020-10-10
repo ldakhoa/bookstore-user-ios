@@ -1,0 +1,31 @@
+# indent
+--indent 4
+
+# numberFormatting
+--decimalgrouping 3
+--hexgrouping "ignore"
+
+# redundantSelf
+# Reference `self` explicitly
+#--self insert
+
+# spaceAroundOperators
+--nospaceoperators ...,..<
+
+# wrap
+--maxwidth 110
+
+# trailingCommas
+--commas inline
+
+# unusedArguments
+#--stripunusedargs always
+
+# wrapArguments
+--wraparguments before-first
+--wrapcollections before-first
+
+# Disabled rules
+--disable redundantInit
+--disable void
+
