@@ -13,10 +13,15 @@ struct AppSetting {
     static let appDelegate = UIApplication.shared.delegate as! AppDelegate
     enum Storyboards {
         static let registration = UIStoryboard(name: "Registration", bundle: nil)
+        static let home = UIStoryboard(name: "Home", bundle: nil)
 
         enum Registration {
             static let signup = registration.instantiateViewController(withIdentifier: "SignUpViewController")
             static let login = registration.instantiateViewController(withIdentifier: "LoginViewController")
+        }
+
+        enum Home {
+            static let homeVC = home.instantiateViewController(withIdentifier: "HomeViewController")
         }
     }
     

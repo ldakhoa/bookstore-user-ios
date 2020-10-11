@@ -14,7 +14,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet var emailTextfield: UITextField!
     @IBOutlet var passwordLabel: UILabel!
     @IBOutlet var passwordTextfield: UITextField!
-    @IBOutlet var loginButton: BookstoreButton!
+    @IBOutlet var loginButton: iBooksButton!
     @IBOutlet weak var overallStackView: UIStackView!
     
     override func viewDidLoad() {

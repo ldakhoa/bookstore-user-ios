@@ -1,9 +1,10 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/SkyFloatingLabelTextField" "${PODS_CONFIGURATION_BUILD_DIR}/StyledTextKit"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BATabBarController" "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit" "${PODS_CONFIGURATION_BUILD_DIR}/StyledTextKit"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/StyledTextKit/StyledTextKit.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BATabBarController/BATabBarController.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/StyledTextKit/StyledTextKit.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -framework "SkyFloatingLabelTextField" -framework "StyledTextKit"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/BATabBarController/BATabBarController.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/StyledTextKit/StyledTextKit.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/BATabBarController" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/StyledTextKit"
+OTHER_LDFLAGS = $(inherited) -framework "BATabBarController" -framework "SnapKit" -framework "StyledTextKit" -framework "UIKit"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

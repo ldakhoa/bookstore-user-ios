@@ -1,20 +1,24 @@
 PODS:
-  - SkyFloatingLabelTextField (3.8.0)
+  - BATabBarController (2.0.2):
+    - SnapKit
+  - SnapKit (5.0.1)
   - StyledTextKit (0.2.0)
 
 DEPENDENCIES:
-  - SkyFloatingLabelTextField (~> 3.0)
+  - BATabBarController (~> 2.0.0)
   - StyledTextKit
 
 SPEC REPOS:
   trunk:
-    - SkyFloatingLabelTextField
+    - BATabBarController
+    - SnapKit
     - StyledTextKit
 
 SPEC CHECKSUMS:
-  SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  BATabBarController: 7f50519b3743b4e779c71a8e147ac9e8c50e0c7d
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   StyledTextKit: dbfb29a59922c6f18897a0266acd139b7c9e712b
 
-PODFILE CHECKSUM: e6ab44bd5c194dbff228013990a0f62b76d15482
+PODFILE CHECKSUM: 515cc3df7186258cb4544dc288aa64780da517e2
 
 COCOAPODS: 1.8.3

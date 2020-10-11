@@ -29,3 +29,6 @@
 --disable redundantInit
 --disable void
 
+#exclude
+--exclude Pods,./Classes/Styles.swift
+

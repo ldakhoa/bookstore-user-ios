@@ -9,9 +9,16 @@
 /* Begin PBXBuildFile section */
 		053F9435B6EC70E6ECE1BBF9 /* Pods_bsuser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85277D30116E9EA61B1F1C0B /* Pods_bsuser.framework */; };
 		647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C777D2532325B0034159E /* TextfieldShadow.swift */; };
-		647C77832532330F0034159E /* BookstoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77822532330F0034159E /* BookstoreButton.swift */; };
+		647C77832532330F0034159E /* iBooksButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77822532330F0034159E /* iBooksButton.swift */; };
 		647C77902532B3980034159E /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C778F2532B3980034159E /* AppSetting.swift */; };
 		647C77982532B5E10034159E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77972532B5E10034159E /* LoginViewController.swift */; };
+		647C77A12532BF970034159E /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647C77A02532BF970034159E /* Home.storyboard */; };
+		647C77A62532BFA10034159E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77A52532BFA10034159E /* HomeViewController.swift */; };
+		647C77AB2532BFC60034159E /* SearchGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77AA2532BFC60034159E /* SearchGradientView.swift */; };
+		647C77C82532C4070034159E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77C72532C4070034159E /* MainTabBarController.swift */; };
+		647C77D32532C7650034159E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647C77D22532C7650034159E /* Main.storyboard */; };
+		647C77F32532F50A0034159E /* LocationTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77F22532F50A0034159E /* LocationTopView.swift */; };
+		647C77FB2532FB270034159E /* iBooksSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77FA2532FB270034159E /* iBooksSearchTextField.swift */; };
 		64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B172531ACF900A194E3 /* AppDelegate.swift */; };
 		64CE1B1A2531ACF900A194E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B192531ACF900A194E3 /* SceneDelegate.swift */; };
 		64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B1B2531ACF900A194E3 /* SignUpViewController.swift */; };
@@ -50,9 +57,16 @@
 		449F25DE130B649638FE2A62 /* Pods_bsuserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bsuserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD6E2F2BA67D01B29219162 /* Pods-bsuser-bsuserUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bsuser-bsuserUITests.release.xcconfig"; path = "Target Support Files/Pods-bsuser-bsuserUITests/Pods-bsuser-bsuserUITests.release.xcconfig"; sourceTree = "<group>"; };
 		647C777D2532325B0034159E /* TextfieldShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldShadow.swift; sourceTree = "<group>"; };
-		647C77822532330F0034159E /* BookstoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookstoreButton.swift; sourceTree = "<group>"; };
+		647C77822532330F0034159E /* iBooksButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBooksButton.swift; sourceTree = "<group>"; };
 		647C778F2532B3980034159E /* AppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetting.swift; sourceTree = "<group>"; };
 		647C77972532B5E10034159E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		647C77A02532BF970034159E /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		647C77A52532BFA10034159E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		647C77AA2532BFC60034159E /* SearchGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGradientView.swift; sourceTree = "<group>"; };
+		647C77C72532C4070034159E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		647C77D22532C7650034159E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		647C77F22532F50A0034159E /* LocationTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTopView.swift; sourceTree = "<group>"; };
+		647C77FA2532FB270034159E /* iBooksSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBooksSearchTextField.swift; sourceTree = "<group>"; };
 		64CE1B142531ACF900A194E3 /* bsuser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bsuser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CE1B172531ACF900A194E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64CE1B192531ACF900A194E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +154,44 @@
 			path = Systems;
 			sourceTree = "<group>";
 		};
+		647C779F2532BF480034159E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				647C77A02532BF970034159E /* Home.storyboard */,
+				647C77A52532BFA10034159E /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		647C77C62532C3EC0034159E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				647C77C72532C4070034159E /* MainTabBarController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		647C77D72532C7870034159E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		647C77D82532C78C0034159E /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		647C77D92532C7940034159E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		64CE1B0B2531ACF900A194E3 = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +218,11 @@
 		64CE1B162531ACF900A194E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				647C77D92532C7940034159E /* Profile */,
+				647C77D82532C78C0034159E /* Cart */,
+				647C77D72532C7870034159E /* Category */,
+				647C77C62532C3EC0034159E /* View Controllers */,
+				647C779F2532BF480034159E /* Home */,
 				647C778825323C5B0034159E /* Systems */,
 				647C778725323C4A0034159E /* Registration */,
 				64CE1B4B2531AF8400A194E3 /* Utils */,
@@ -197,7 +254,10 @@
 			children = (
 				64CE1B682531B19800A194E3 /* Styles.swift */,
 				647C777D2532325B0034159E /* TextfieldShadow.swift */,
-				647C77822532330F0034159E /* BookstoreButton.swift */,
+				647C77822532330F0034159E /* iBooksButton.swift */,
+				647C77AA2532BFC60034159E /* SearchGradientView.swift */,
+				647C77FA2532FB270034159E /* iBooksSearchTextField.swift */,
+				647C77F22532F50A0034159E /* LocationTopView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -218,6 +278,7 @@
 				64CE1B202531ACFB00A194E3 /* Assets.xcassets */,
 				64CE1B252531ACFB00A194E3 /* Info.plist */,
 				64CE1B222531ACFB00A194E3 /* LaunchScreen.storyboard */,
+				647C77D22532C7650034159E /* Main.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -341,8 +402,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				64CE1B242531ACFB00A194E3 /* LaunchScreen.storyboard in Resources */,
+				647C77D32532C7650034159E /* Main.storyboard in Resources */,
 				64CE1B212531ACFB00A194E3 /* Assets.xcassets in Resources */,
 				64CE1B1F2531ACF900A194E3 /* Registration.storyboard in Resources */,
+				647C77A12532BF970034159E /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +535,7 @@
 			files = (
 				647C77902532B3980034159E /* AppSetting.swift in Sources */,
 				64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */,
+				647C77F32532F50A0034159E /* LocationTopView.swift in Sources */,
 				64CE1B692531B19800A194E3 /* Styles.swift in Sources */,
 				64CE1B562531B08200A194E3 /* Extensions+UILabel.swift in Sources */,
 				64CE1B572531B08200A194E3 /* Extensions+UIView.swift in Sources */,
@@ -479,8 +543,12 @@
 				64CE1B1A2531ACF900A194E3 /* SceneDelegate.swift in Sources */,
 				64CE1B4D2531AFD400A194E3 /* Extensions+UIColor.swift in Sources */,
 				647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */,
-				647C77832532330F0034159E /* BookstoreButton.swift in Sources */,
+				647C77832532330F0034159E /* iBooksButton.swift in Sources */,
+				647C77C82532C4070034159E /* MainTabBarController.swift in Sources */,
+				647C77FB2532FB270034159E /* iBooksSearchTextField.swift in Sources */,
+				647C77AB2532BFC60034159E /* SearchGradientView.swift in Sources */,
 				647C77982532B5E10034159E /* LoginViewController.swift in Sources */,
+				647C77A62532BFA10034159E /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

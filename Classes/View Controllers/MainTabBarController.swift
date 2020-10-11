@@ -1,0 +1,60 @@
+//
+//  MainTabBarController.swift
+//  bsuser
+//
+//  Created by Khoa Le on 11/10/2020.
+//
+
+import BATabBarController
+import UIKit
+
+final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let baTabBarController = BATabBarController()
+
+        let homeTabbarItem = BATabBarItem(
+            image: UIImage(named: "home-inactive")!,
+            selectedImage: UIImage(named: "home-activated")!
+        )
+        let categoryTabbarItem = BATabBarItem(
+            image: UIImage(named: "category-inactive")!,
+            selectedImage: UIImage(named: "category-activated")!
+        )
+        let bagTabbarItem = BATabBarItem(
+            image: UIImage(named: "bag-inactive")!,
+            selectedImage: UIImage(named: "bag-activated")!
+        )
+        let profileTabbarItem = BATabBarItem(
+            image: UIImage(named: "profile-inactive")!,
+            selectedImage: UIImage(named: "profile-activated")!
+        )
+        
+        baTabBarController.tabBarItems = [
+            homeTabbarItem,
+            categoryTabbarItem,
+            bagTabbarItem,
+            profileTabbarItem,
+        ]
+
+        let homeVC = AppSetting.Storyboards.Home.homeVC
+
+
+        let vc2 = UIViewController()
+        vc2.view.backgroundColor = .red
+        let vc3 = UIViewController()
+        vc3.view.backgroundColor = .blue
+        let vc4 = UIViewController()
+        vc4.view.backgroundColor = .yellow
+
+
+        baTabBarController.delegate = self
+        baTabBarController.viewControllers = [homeVC, vc2, vc3, vc4]
+        baTabBarController.tabBarBackgroundColor = Styles.Colors.white
+        baTabBarController.tabBarItemStrokeColor = Styles.Colors.primary.color
+
+        view.addSubview(baTabBarController.view)
+    }
+
+    func tabBarController(_: BATabBarController, didSelect _: UIViewController) {}
+}

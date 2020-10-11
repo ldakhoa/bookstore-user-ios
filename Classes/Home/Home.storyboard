@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tyJ-O8-AfF">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="ZHQ-6M-vU4">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="tyJ-O8-AfF" customClass="HomeViewController" customModule="bsuser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8JN-ff-uIZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abt-iI-Eaz" customClass="SearchGradientView" customModule="bsuser" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="109"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="109" id="kMx-Xr-BWP"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMY-Bx-9nw" customClass="LocationTopView" customModule="bsuser" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="105" width="414" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Uae-8o-Q43"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="P8G-Zg-6lI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="P8G-Zg-6lI" firstAttribute="trailing" secondItem="abt-iI-Eaz" secondAttribute="trailing" id="Omo-Dn-oll"/>
+                            <constraint firstItem="GMY-Bx-9nw" firstAttribute="leading" secondItem="P8G-Zg-6lI" secondAttribute="leading" id="eYq-UN-D5K"/>
+                            <constraint firstItem="GMY-Bx-9nw" firstAttribute="top" secondItem="abt-iI-Eaz" secondAttribute="bottom" constant="-4" id="gHE-0H-1yE"/>
+                            <constraint firstItem="abt-iI-Eaz" firstAttribute="leading" secondItem="P8G-Zg-6lI" secondAttribute="leading" id="ogS-ub-35V"/>
+                            <constraint firstItem="P8G-Zg-6lI" firstAttribute="trailing" secondItem="GMY-Bx-9nw" secondAttribute="trailing" id="v7F-UP-BUM"/>
+                            <constraint firstItem="abt-iI-Eaz" firstAttribute="top" secondItem="8JN-ff-uIZ" secondAttribute="top" id="veF-BG-KTI"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cDr-a5-Rj6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-181" y="49"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
