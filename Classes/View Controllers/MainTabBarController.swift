@@ -38,18 +38,16 @@ final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
         ]
 
         let homeVC = AppSetting.Storyboards.Home.homeVC
-
-
-        let vc2 = UIViewController()
-        vc2.view.backgroundColor = .red
+        let profileVC = ProfileTableViewController()
+        let profileNavbarVC = UINavigationController(rootViewController: profileVC)
+        profileNavbarVC.navigationBar.prefersLargeTitles = true
         let vc3 = UIViewController()
         vc3.view.backgroundColor = .blue
         let vc4 = UIViewController()
         vc4.view.backgroundColor = .yellow
 
-
         baTabBarController.delegate = self
-        baTabBarController.viewControllers = [homeVC, vc2, vc3, vc4]
+        baTabBarController.viewControllers = [homeVC, vc4, vc3, profileNavbarVC]
         baTabBarController.tabBarBackgroundColor = Styles.Colors.white
         baTabBarController.tabBarItemStrokeColor = Styles.Colors.primary.color
 

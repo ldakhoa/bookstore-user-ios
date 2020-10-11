@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCell" rowHeight="174" id="3tN-sJ-CHL" customClass="ProfileCell" customModule="bsuser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="484" height="146"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3tN-sJ-CHL" id="fGV-WV-jYY">
+                <rect key="frame" x="0.0" y="0.0" width="484" height="146"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron-right" translatesAutoresizingMaskIntoConstraints="NO" id="IbC-sa-3IO">
+                        <rect key="frame" x="452" y="61" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="Be5-5q-b57"/>
+                            <constraint firstAttribute="width" constant="24" id="qYS-gD-lIS"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="X4K-bc-ENN">
+                        <rect key="frame" x="16" y="53.5" width="120" height="39"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHk-ZZ-JFJ">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have 12 orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWv-Ca-P96">
+                                <rect key="frame" x="0.0" y="25.5" width="120" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" name="gray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="X4K-bc-ENN" firstAttribute="centerY" secondItem="fGV-WV-jYY" secondAttribute="centerY" id="Aed-3y-7PY"/>
+                    <constraint firstAttribute="trailing" secondItem="IbC-sa-3IO" secondAttribute="trailing" constant="8" id="Pmq-nV-JcG"/>
+                    <constraint firstItem="IbC-sa-3IO" firstAttribute="centerY" secondItem="fGV-WV-jYY" secondAttribute="centerY" id="Xf1-rU-Fgz"/>
+                    <constraint firstItem="X4K-bc-ENN" firstAttribute="leading" secondItem="fGV-WV-jYY" secondAttribute="leading" constant="16" id="YeD-gK-3kM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="subtitleLabel" destination="tWv-Ca-P96" id="v5Z-yX-orS"/>
+                <outlet property="titleLabel" destination="WHk-ZZ-JFJ" id="4ft-Uk-yMy"/>
+            </connections>
+            <point key="canvasLocation" x="-749.27536231884062" y="59.598214285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron-right" width="24" height="24"/>
+        <namedColor name="gray">
+            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -31,6 +31,11 @@
 		64CE1B562531B08200A194E3 /* Extensions+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B542531B08200A194E3 /* Extensions+UILabel.swift */; };
 		64CE1B572531B08200A194E3 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B552531B08200A194E3 /* Extensions+UIView.swift */; };
 		64CE1B692531B19800A194E3 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B682531B19800A194E3 /* Styles.swift */; };
+		64D5EA4925335362005788A3 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5EA4825335362005788A3 /* ProfileTableViewController.swift */; };
+		64D5EA5425335768005788A3 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D5EA5325335768005788A3 /* ProfileCell.xib */; };
+		64D5EA592533577C005788A3 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5EA582533577C005788A3 /* ProfileCell.swift */; };
+		64D5EA5E25336385005788A3 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5EA5D25336385005788A3 /* ProfileHeaderView.swift */; };
+		64D5EA63253363B2005788A3 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5EA62253363B2005788A3 /* LogoutCell.swift */; };
 		68DACAA8287F62A95FF2D493 /* Pods_bsuser_bsuserUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE464A312CA041D0F89F13D /* Pods_bsuser_bsuserUITests.framework */; };
 		9F7451B77ED2DC48309A9CC6 /* Pods_bsuserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449F25DE130B649638FE2A62 /* Pods_bsuserTests.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +90,11 @@
 		64CE1B542531B08200A194E3 /* Extensions+UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UILabel.swift"; sourceTree = "<group>"; };
 		64CE1B552531B08200A194E3 /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		64CE1B682531B19800A194E3 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		64D5EA4825335362005788A3 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		64D5EA5325335768005788A3 /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		64D5EA582533577C005788A3 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		64D5EA5D25336385005788A3 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		64D5EA62253363B2005788A3 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		6F44A38AA91719D7D1E4DCDB /* Pods-bsuserTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bsuserTests.debug.xcconfig"; path = "Target Support Files/Pods-bsuserTests/Pods-bsuserTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7A3F56B4A98BB45000130560 /* Pods-bsuser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bsuser.debug.xcconfig"; path = "Target Support Files/Pods-bsuser/Pods-bsuser.debug.xcconfig"; sourceTree = "<group>"; };
 		85277D30116E9EA61B1F1C0B /* Pods_bsuser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bsuser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +198,11 @@
 		647C77D92532C7940034159E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				64D5EA4825335362005788A3 /* ProfileTableViewController.swift */,
+				64D5EA5D25336385005788A3 /* ProfileHeaderView.swift */,
+				64D5EA62253363B2005788A3 /* LogoutCell.swift */,
+				64D5EA5325335768005788A3 /* ProfileCell.xib */,
+				64D5EA582533577C005788A3 /* ProfileCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -404,6 +419,7 @@
 				64CE1B242531ACFB00A194E3 /* LaunchScreen.storyboard in Resources */,
 				647C77D32532C7650034159E /* Main.storyboard in Resources */,
 				64CE1B212531ACFB00A194E3 /* Assets.xcassets in Resources */,
+				64D5EA5425335768005788A3 /* ProfileCell.xib in Resources */,
 				64CE1B1F2531ACF900A194E3 /* Registration.storyboard in Resources */,
 				647C77A12532BF970034159E /* Home.storyboard in Resources */,
 			);
@@ -540,13 +556,17 @@
 				64CE1B562531B08200A194E3 /* Extensions+UILabel.swift in Sources */,
 				64CE1B572531B08200A194E3 /* Extensions+UIView.swift in Sources */,
 				64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */,
+				64D5EA4925335362005788A3 /* ProfileTableViewController.swift in Sources */,
 				64CE1B1A2531ACF900A194E3 /* SceneDelegate.swift in Sources */,
 				64CE1B4D2531AFD400A194E3 /* Extensions+UIColor.swift in Sources */,
+				64D5EA5E25336385005788A3 /* ProfileHeaderView.swift in Sources */,
 				647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */,
 				647C77832532330F0034159E /* iBooksButton.swift in Sources */,
+				64D5EA63253363B2005788A3 /* LogoutCell.swift in Sources */,
 				647C77C82532C4070034159E /* MainTabBarController.swift in Sources */,
 				647C77FB2532FB270034159E /* iBooksSearchTextField.swift in Sources */,
 				647C77AB2532BFC60034159E /* SearchGradientView.swift in Sources */,
+				64D5EA592533577C005788A3 /* ProfileCell.swift in Sources */,
 				647C77982532B5E10034159E /* LoginViewController.swift in Sources */,
 				647C77A62532BFA10034159E /* HomeViewController.swift in Sources */,
 			);
