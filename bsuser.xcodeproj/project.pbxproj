@@ -10,10 +10,12 @@
 		053F9435B6EC70E6ECE1BBF9 /* Pods_bsuser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85277D30116E9EA61B1F1C0B /* Pods_bsuser.framework */; };
 		647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C777D2532325B0034159E /* TextfieldShadow.swift */; };
 		647C77832532330F0034159E /* BookstoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77822532330F0034159E /* BookstoreButton.swift */; };
+		647C77902532B3980034159E /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C778F2532B3980034159E /* AppSetting.swift */; };
+		647C77982532B5E10034159E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77972532B5E10034159E /* LoginViewController.swift */; };
 		64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B172531ACF900A194E3 /* AppDelegate.swift */; };
 		64CE1B1A2531ACF900A194E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B192531ACF900A194E3 /* SceneDelegate.swift */; };
 		64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B1B2531ACF900A194E3 /* SignUpViewController.swift */; };
-		64CE1B1F2531ACF900A194E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CE1B1D2531ACF900A194E3 /* Main.storyboard */; };
+		64CE1B1F2531ACF900A194E3 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CE1B1D2531ACF900A194E3 /* Registration.storyboard */; };
 		64CE1B212531ACFB00A194E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64CE1B202531ACFB00A194E3 /* Assets.xcassets */; };
 		64CE1B242531ACFB00A194E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CE1B222531ACFB00A194E3 /* LaunchScreen.storyboard */; };
 		64CE1B2F2531ACFB00A194E3 /* bsuserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B2E2531ACFB00A194E3 /* bsuserTests.swift */; };
@@ -49,11 +51,13 @@
 		5FD6E2F2BA67D01B29219162 /* Pods-bsuser-bsuserUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bsuser-bsuserUITests.release.xcconfig"; path = "Target Support Files/Pods-bsuser-bsuserUITests/Pods-bsuser-bsuserUITests.release.xcconfig"; sourceTree = "<group>"; };
 		647C777D2532325B0034159E /* TextfieldShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldShadow.swift; sourceTree = "<group>"; };
 		647C77822532330F0034159E /* BookstoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookstoreButton.swift; sourceTree = "<group>"; };
+		647C778F2532B3980034159E /* AppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetting.swift; sourceTree = "<group>"; };
+		647C77972532B5E10034159E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		64CE1B142531ACF900A194E3 /* bsuser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bsuser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CE1B172531ACF900A194E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64CE1B192531ACF900A194E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		64CE1B1B2531ACF900A194E3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		64CE1B1E2531ACF900A194E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		64CE1B1E2531ACF900A194E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Registration.storyboard; sourceTree = "<group>"; };
 		64CE1B202531ACFB00A194E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64CE1B232531ACFB00A194E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64CE1B252531ACFB00A194E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,18 +123,21 @@
 		647C778725323C4A0034159E /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				64CE1B1D2531ACF900A194E3 /* Registration.storyboard */,
+				647C77972532B5E10034159E /* LoginViewController.swift */,
 				64CE1B1B2531ACF900A194E3 /* SignUpViewController.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
 		};
-		647C778825323C5B0034159E /* System */ = {
+		647C778825323C5B0034159E /* Systems */ = {
 			isa = PBXGroup;
 			children = (
 				64CE1B172531ACF900A194E3 /* AppDelegate.swift */,
 				64CE1B192531ACF900A194E3 /* SceneDelegate.swift */,
+				647C778F2532B3980034159E /* AppSetting.swift */,
 			);
-			path = System;
+			path = Systems;
 			sourceTree = "<group>";
 		};
 		64CE1B0B2531ACF900A194E3 = {
@@ -159,7 +166,7 @@
 		64CE1B162531ACF900A194E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				647C778825323C5B0034159E /* System */,
+				647C778825323C5B0034159E /* Systems */,
 				647C778725323C4A0034159E /* Registration */,
 				64CE1B4B2531AF8400A194E3 /* Utils */,
 				64CE1B4A2531AD8D00A194E3 /* Views */,
@@ -211,7 +218,6 @@
 				64CE1B202531ACFB00A194E3 /* Assets.xcassets */,
 				64CE1B252531ACFB00A194E3 /* Info.plist */,
 				64CE1B222531ACFB00A194E3 /* LaunchScreen.storyboard */,
-				64CE1B1D2531ACF900A194E3 /* Main.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -336,7 +342,7 @@
 			files = (
 				64CE1B242531ACFB00A194E3 /* LaunchScreen.storyboard in Resources */,
 				64CE1B212531ACFB00A194E3 /* Assets.xcassets in Resources */,
-				64CE1B1F2531ACF900A194E3 /* Main.storyboard in Resources */,
+				64CE1B1F2531ACF900A194E3 /* Registration.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647C77902532B3980034159E /* AppSetting.swift in Sources */,
 				64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */,
 				64CE1B692531B19800A194E3 /* Styles.swift in Sources */,
 				64CE1B562531B08200A194E3 /* Extensions+UILabel.swift in Sources */,
@@ -473,6 +480,7 @@
 				64CE1B4D2531AFD400A194E3 /* Extensions+UIColor.swift in Sources */,
 				647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */,
 				647C77832532330F0034159E /* BookstoreButton.swift in Sources */,
+				647C77982532B5E10034159E /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,12 +516,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		64CE1B1D2531ACF900A194E3 /* Main.storyboard */ = {
+		64CE1B1D2531ACF900A194E3 /* Registration.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				64CE1B1E2531ACF900A194E3 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Registration.storyboard;
 			sourceTree = "<group>";
 		};
 		64CE1B222531ACFB00A194E3 /* LaunchScreen.storyboard */ = {

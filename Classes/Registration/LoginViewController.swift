@@ -1,26 +1,22 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  bsuser
 //
-//  Created by Khoa Le on 10/10/2020.
+//  Created by Khoa Le on 11/10/2020.
 //
 
-import SkyFloatingLabelTextField
 import UIKit
 
-class SignUpViewController: UIViewController {
-    @IBOutlet var nameView: UIView!
+final class LoginViewController: UIViewController {
     @IBOutlet var emailView: UIView!
     @IBOutlet var passwordView: UIView!
-    @IBOutlet var signUpButton: UIButton!
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var nameTextfield: UITextField!
     @IBOutlet var emailLabel: UILabel!
     @IBOutlet var emailTextfield: UITextField!
     @IBOutlet var passwordLabel: UILabel!
     @IBOutlet var passwordTextfield: UITextField!
-    @IBOutlet var overallStackView: UIStackView!
-
+    @IBOutlet var loginButton: BookstoreButton!
+    @IBOutlet weak var overallStackView: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -89,33 +85,31 @@ class SignUpViewController: UIViewController {
     }
 
     fileprivate func setupLayout() {
-        nameLabel.isHidden = true
         emailLabel.isHidden = true
         passwordLabel.isHidden = true
 
-        nameView.setTextfieldStyle()
         emailView.setTextfieldStyle()
         passwordView.setTextfieldStyle()
 
-        nameTextfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         emailTextfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         passwordTextfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
     }
 
     @objc private func handleTextChange(_ textField: UITextField) {
-        if textField == nameTextfield {
-            nameLabel.isHidden = nameTextfield.text?.count == 0 ? true : false
-        } else if textField == emailTextfield {
+        if textField == emailTextfield {
             emailLabel.isHidden = emailTextfield.text?.count == 0 ? true : false
         } else if textField == passwordTextfield {
             passwordLabel.isHidden = passwordTextfield.text?.count == 0 ? true : false
         }
     }
 
-    @IBAction func handleSignup(_ sender: Any) {
+    @IBAction func handleLogin(_: Any) {
+
     }
 
-    @IBAction func handleGoToLogin(_ sender: Any) {
-        dismiss(animated: true)
+    @IBAction func handleGoToSignup(_: Any) {
+        let signupVC = AppSetting.Storyboards.Registration.signup
+        signupVC.modalPresentationStyle = .fullScreen
+        present(signupVC, animated: true)
     }
 }
