@@ -38,6 +38,7 @@ final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
         ]
 
         let homeVC = AppSetting.Storyboards.Home.homeVC
+        let searchVC = AppSetting.Storyboards.Search.searchVC
         let profileVC = ProfileTableViewController()
         let profileNavbarVC = UINavigationController(rootViewController: profileVC)
 
@@ -47,7 +48,8 @@ final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
         vc4.view.backgroundColor = .yellow
 
         baTabBarController.delegate = self
-        baTabBarController.viewControllers = [homeVC, categoryVC, vc4, profileNavbarVC]
+        // TODO: - Change order of tabbar
+        baTabBarController.viewControllers = [searchVC, categoryVC, homeVC, profileNavbarVC]
         baTabBarController.tabBarBackgroundColor = Styles.Colors.white
         baTabBarController.tabBarItemStrokeColor = Styles.Colors.primary.color
         baTabBarController.tabBarAnimationDuration = 0.5

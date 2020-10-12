@@ -1,24 +1,28 @@
 PODS:
   - BATabBarController (2.0.2):
     - SnapKit
+  - Cosmos (23.0.0)
   - SnapKit (5.0.1)
   - StyledTextKit (0.2.0)
 
 DEPENDENCIES:
   - BATabBarController (~> 2.0.0)
+  - Cosmos (~> 23.0)
   - StyledTextKit
 
 SPEC REPOS:
   trunk:
     - BATabBarController
+    - Cosmos
     - SnapKit
     - StyledTextKit
 
 SPEC CHECKSUMS:
   BATabBarController: 7f50519b3743b4e779c71a8e147ac9e8c50e0c7d
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   StyledTextKit: dbfb29a59922c6f18897a0266acd139b7c9e712b
 
-PODFILE CHECKSUM: 515cc3df7186258cb4544dc288aa64780da517e2
+PODFILE CHECKSUM: 1cef839fddfbdf68af0defba433cfc8b397c0ff3
 
 COCOAPODS: 1.8.3

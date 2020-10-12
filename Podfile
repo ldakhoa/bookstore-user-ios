@@ -8,6 +8,7 @@ target 'bsuser' do
   use_frameworks!
   pod 'StyledTextKit'
   pod 'BATabBarController', '~> 2.0.0'
+  pod 'Cosmos', '~> 23.0'
 
   # Pods for bsuser
 

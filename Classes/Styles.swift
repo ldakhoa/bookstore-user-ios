@@ -14,6 +14,7 @@ enum Styles {
         static let textFieldCornerRadius: CGFloat = 4
         static let buttonCornerRadius: CGFloat = 25
         static let searchCornerRadius: CGFloat = 8
+        static let cellCornerRadius: CGFloat = 8
     }
 
     enum Colors {
