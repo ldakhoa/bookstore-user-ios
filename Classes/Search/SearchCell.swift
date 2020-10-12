@@ -22,7 +22,6 @@ final class SearchCell: UITableViewCell {
         backgroundColor = Styles.Colors.background.color
         containerView.layer.cornerRadius = Styles.Sizes.cellCornerRadius
         containerView.setupShadow(opacity: 0.1, radius: 8, offset: .init(width: 0, height: 1), color: Styles.Colors.black.color)
-        containerView.layer.shouldRasterize = true
 
     }
 
