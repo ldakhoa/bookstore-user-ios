@@ -43,6 +43,9 @@
                             <constraint firstItem="abt-iI-Eaz" firstAttribute="top" secondItem="8JN-ff-uIZ" secondAttribute="top" id="veF-BG-KTI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchGradientView" destination="abt-iI-Eaz" id="Hde-04-5lY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDr-a5-Rj6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

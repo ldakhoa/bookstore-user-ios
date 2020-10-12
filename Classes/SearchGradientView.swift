@@ -48,10 +48,10 @@ class SearchGradientView: UIView, UITextFieldDelegate {
         )
         backButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
 
-        searchTextField.addTarget(self, action: #selector(handleTest), for: .editingChanged)
+        searchTextField.addTarget(self, action: #selector(handleEditingChanged), for: .editingChanged)
     }
 
-    @objc func handleTest(textField: UITextField) {
+    @objc func handleEditingChanged(textField: UITextField) {
         if textField.text?.count == 0 {
             setTextFieldWithoutBack()
         } else {
@@ -59,6 +59,16 @@ class SearchGradientView: UIView, UITextFieldDelegate {
         }
     }
 
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        setTextFieldWithBack()
+        return true
+    }
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        setTextFieldWithoutBack()
+        return true
+    }
+    
     func insertGradientBackground() {
         let layer = CAGradientLayer()
         layer.colors = [

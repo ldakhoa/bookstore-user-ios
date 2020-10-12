@@ -19,6 +19,9 @@
 		647C77D32532C7650034159E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647C77D22532C7650034159E /* Main.storyboard */; };
 		647C77F32532F50A0034159E /* LocationTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77F22532F50A0034159E /* LocationTopView.swift */; };
 		647C77FB2532FB270034159E /* iBooksSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77FA2532FB270034159E /* iBooksSearchTextField.swift */; };
+		64AD6EB025343D2A008D4EF6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD6EAF25343D2A008D4EF6 /* CategoryViewController.swift */; };
+		64AD6EB525343FB0008D4EF6 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64AD6EB425343FB0008D4EF6 /* Category.storyboard */; };
+		64AD6EBD253447D8008D4EF6 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD6EBC253447D8008D4EF6 /* CategoryCell.swift */; };
 		64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B172531ACF900A194E3 /* AppDelegate.swift */; };
 		64CE1B1A2531ACF900A194E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B192531ACF900A194E3 /* SceneDelegate.swift */; };
 		64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B1B2531ACF900A194E3 /* SignUpViewController.swift */; };
@@ -72,6 +75,9 @@
 		647C77D22532C7650034159E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		647C77F22532F50A0034159E /* LocationTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTopView.swift; sourceTree = "<group>"; };
 		647C77FA2532FB270034159E /* iBooksSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBooksSearchTextField.swift; sourceTree = "<group>"; };
+		64AD6EAF25343D2A008D4EF6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		64AD6EB425343FB0008D4EF6 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
+		64AD6EBC253447D8008D4EF6 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		64CE1B142531ACF900A194E3 /* bsuser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bsuser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CE1B172531ACF900A194E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64CE1B192531ACF900A194E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +190,9 @@
 		647C77D72532C7870034159E /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				64AD6EAF25343D2A008D4EF6 /* CategoryViewController.swift */,
+				64AD6EBC253447D8008D4EF6 /* CategoryCell.swift */,
+				64AD6EB425343FB0008D4EF6 /* Category.storyboard */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -419,6 +428,7 @@
 				64CE1B242531ACFB00A194E3 /* LaunchScreen.storyboard in Resources */,
 				647C77D32532C7650034159E /* Main.storyboard in Resources */,
 				64CE1B212531ACFB00A194E3 /* Assets.xcassets in Resources */,
+				64AD6EB525343FB0008D4EF6 /* Category.storyboard in Resources */,
 				64D5EA5425335768005788A3 /* ProfileCell.xib in Resources */,
 				64CE1B1F2531ACF900A194E3 /* Registration.storyboard in Resources */,
 				647C77A12532BF970034159E /* Home.storyboard in Resources */,
@@ -563,12 +573,14 @@
 				647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */,
 				647C77832532330F0034159E /* iBooksButton.swift in Sources */,
 				64D5EA63253363B2005788A3 /* LogoutCell.swift in Sources */,
+				64AD6EB025343D2A008D4EF6 /* CategoryViewController.swift in Sources */,
 				647C77C82532C4070034159E /* MainTabBarController.swift in Sources */,
 				647C77FB2532FB270034159E /* iBooksSearchTextField.swift in Sources */,
 				647C77AB2532BFC60034159E /* SearchGradientView.swift in Sources */,
 				64D5EA592533577C005788A3 /* ProfileCell.swift in Sources */,
 				647C77982532B5E10034159E /* LoginViewController.swift in Sources */,
 				647C77A62532BFA10034159E /* HomeViewController.swift in Sources */,
+				64AD6EBD253447D8008D4EF6 /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,14 +40,14 @@ final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
         let homeVC = AppSetting.Storyboards.Home.homeVC
         let profileVC = ProfileTableViewController()
         let profileNavbarVC = UINavigationController(rootViewController: profileVC)
-        profileNavbarVC.navigationBar.prefersLargeTitles = true
-        let vc3 = UIViewController()
-        vc3.view.backgroundColor = .blue
+
+        let categoryVC = AppSetting.Storyboards.Category.categoryVC
+
         let vc4 = UIViewController()
         vc4.view.backgroundColor = .yellow
 
         baTabBarController.delegate = self
-        baTabBarController.viewControllers = [homeVC, vc4, vc3, profileNavbarVC]
+        baTabBarController.viewControllers = [homeVC, categoryVC, vc4, profileNavbarVC]
         baTabBarController.tabBarBackgroundColor = Styles.Colors.white
         baTabBarController.tabBarItemStrokeColor = Styles.Colors.primary.color
         baTabBarController.tabBarAnimationDuration = 0.5
