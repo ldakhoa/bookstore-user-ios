@@ -50,7 +50,7 @@ final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
         baTabBarController.viewControllers = [homeVC, vc4, vc3, profileNavbarVC]
         baTabBarController.tabBarBackgroundColor = Styles.Colors.white
         baTabBarController.tabBarItemStrokeColor = Styles.Colors.primary.color
-
+        baTabBarController.tabBarAnimationDuration = 0.5
         view.addSubview(baTabBarController.view)
     }
 

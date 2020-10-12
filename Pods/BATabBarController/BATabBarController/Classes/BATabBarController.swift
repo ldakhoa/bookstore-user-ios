@@ -74,7 +74,7 @@ public class BATabBarController:  UIViewController {
     }
     
     //Tab Bar Animation duration
-    var tabBarAnimationDuration: CGFloat = 0.0 {
+    public var tabBarAnimationDuration: CGFloat = 0.0 {
         didSet {
             tabBar?.animationDuration = tabBarAnimationDuration
         }
