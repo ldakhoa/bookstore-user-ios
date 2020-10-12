@@ -23,14 +23,24 @@ final class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "My profile"
         tableView.backgroundColor = Styles.Colors.background.color
-
+        tableView.tableFooterView = UIView()
+        tableView.isScrollEnabled = false
+        
         let nib = UINib(nibName: "ProfileCell", bundle: nil)
 
         tableView.register(nib, forCellReuseIdentifier: cellID)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datasource.count + 1
