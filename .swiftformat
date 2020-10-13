@@ -1,33 +1,33 @@
 # indent
 --indent 4
+--ifdef no-indent
+
+--self remove # redundantSelf
+--importgrouping testable-bottom # sortedImports
 
 # numberFormatting
 --decimalgrouping 3
 --hexgrouping "ignore"
-
-# redundantSelf
-# Reference `self` explicitly
-#--self insert
-
-# spaceAroundOperators
---nospaceoperators ...,..<
 
 # wrap
 --maxwidth 110
 
 # trailingCommas
 --commas inline
-
-# unusedArguments
-#--stripunusedargs always
+--commas always # trailingCommas
 
 # wrapArguments
 --wraparguments before-first
 --wrapcollections before-first
+--closingparen same-line # wrapArguments
+--typeattributes prev-line # wrapAttributes
+--funcattributes prev-line # wrapAttributes
 
-# Disabled rules
---disable redundantInit
---disable void
+--structthreshold 20 # organizeDeclarations
+--enumthreshold 20 # organizeDeclarations
+
+# rules
+--rules anyObjectProtocol,redundantParens,redundantReturn,redundantSelf,sortedImports,strongifiedSelf,trailingCommas,trailingSpace,wrapArguments,wrapMultilineStatementBraces,indent,wrapAttributes,organizeDeclarations
 
 #exclude
 --exclude Pods,./Classes/Styles.swift
