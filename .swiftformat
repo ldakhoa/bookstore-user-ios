@@ -10,7 +10,7 @@
 --hexgrouping "ignore"
 
 # wrap
---maxwidth 110
+--maxwidth 100
 
 # trailingCommas
 --commas inline
@@ -19,7 +19,7 @@
 # wrapArguments
 --wraparguments before-first
 --wrapcollections before-first
---closingparen same-line # wrapArguments
+#--closingparen same-line # wrapArguments
 --typeattributes prev-line # wrapAttributes
 --funcattributes prev-line # wrapAttributes
 
@@ -30,5 +30,5 @@
 --rules anyObjectProtocol,redundantParens,redundantReturn,redundantSelf,sortedImports,strongifiedSelf,trailingCommas,trailingSpace,wrapArguments,wrapMultilineStatementBraces,indent,wrapAttributes,organizeDeclarations
 
 #exclude
---exclude Pods,./Classes/Styles.swift
+--exclude Pods,./Classes/Styles.swift,*.storyboard,*.xib
 

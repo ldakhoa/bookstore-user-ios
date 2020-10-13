@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		053F9435B6EC70E6ECE1BBF9 /* Pods_bsuser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85277D30116E9EA61B1F1C0B /* Pods_bsuser.framework */; };
+		6476F65D25355B2E00879CC1 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6476F65C25355B2E00879CC1 /* FilterCell.swift */; };
 		647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C777D2532325B0034159E /* TextfieldShadow.swift */; };
 		647C77832532330F0034159E /* iBooksButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77822532330F0034159E /* iBooksButton.swift */; };
 		647C77902532B3980034159E /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C778F2532B3980034159E /* AppSetting.swift */; };
@@ -67,6 +68,7 @@
 		3FB205EB3D496EB744764715 /* Pods-bsuser-bsuserUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bsuser-bsuserUITests.debug.xcconfig"; path = "Target Support Files/Pods-bsuser-bsuserUITests/Pods-bsuser-bsuserUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		449F25DE130B649638FE2A62 /* Pods_bsuserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bsuserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD6E2F2BA67D01B29219162 /* Pods-bsuser-bsuserUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bsuser-bsuserUITests.release.xcconfig"; path = "Target Support Files/Pods-bsuser-bsuserUITests/Pods-bsuser-bsuserUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6476F65C25355B2E00879CC1 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		647C777D2532325B0034159E /* TextfieldShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldShadow.swift; sourceTree = "<group>"; };
 		647C77822532330F0034159E /* iBooksButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBooksButton.swift; sourceTree = "<group>"; };
 		647C778F2532B3980034159E /* AppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetting.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				64AD6EC22534559F008D4EF6 /* SearchViewController.swift */,
 				64AD6ED4253476E6008D4EF6 /* Search.storyboard */,
+				6476F65C25355B2E00879CC1 /* FilterCell.swift */,
 				64AD6ECA25345614008D4EF6 /* SearchCell.swift */,
 			);
 			path = Search;
@@ -582,6 +585,7 @@
 				64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */,
 				647C77F32532F50A0034159E /* LocationTopView.swift in Sources */,
 				64CE1B692531B19800A194E3 /* Styles.swift in Sources */,
+				6476F65D25355B2E00879CC1 /* FilterCell.swift in Sources */,
 				64CE1B562531B08200A194E3 /* Extensions+UILabel.swift in Sources */,
 				64CE1B572531B08200A194E3 /* Extensions+UIView.swift in Sources */,
 				64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */,
