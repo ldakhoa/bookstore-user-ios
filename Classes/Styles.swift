@@ -30,6 +30,7 @@ enum Styles {
         static let white = UIColor.white
         static let locationBackground = "F89580"
         static let border = "D9D9D9"
+        static let backgroundEditPersonalInfo = "FEFFFE"
 
         enum Gradient {
             static let color1 = UIColor(red: 0.859, green: 0.188, blue: 0.133, alpha: 1).cgColor

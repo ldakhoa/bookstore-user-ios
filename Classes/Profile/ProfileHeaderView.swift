@@ -14,7 +14,8 @@ class ProfileHeaderView: UIView {
         textColor: Styles.Colors.black.color
     )
     let profileImageView = UIImageView(image: #imageLiteral(resourceName: "avatar"))
-
+    let showProfileButton = UIButton(type: .system)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -22,7 +23,7 @@ class ProfileHeaderView: UIView {
         profileImageView.layer.cornerRadius = 64 / 2
         profileImageView.clipsToBounds = true
 
-        let showProfileButton = UIButton(type: .system)
+
         showProfileButton.setTitle("Show profile", for: .normal)
         showProfileButton.setTitleColor(Styles.Colors.darkGreen.color, for: .normal)
         let infoStackview = UIStackView(arrangedSubviews: [nameLabel, showProfileButton])

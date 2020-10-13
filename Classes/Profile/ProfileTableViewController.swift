@@ -41,6 +41,12 @@ final class ProfileTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+
+    @objc
+    private func didTapShowProfile() {
+        let editPersonalInfoController = EditPersonalInfoController()
+        navigationController?.pushViewController(editPersonalInfoController, animated: true)
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datasource.count + 1
@@ -63,7 +69,9 @@ final class ProfileTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return ProfileHeaderView()
+        let headerView = ProfileHeaderView()
+        headerView.showProfileButton.addTarget(self, action: #selector(didTapShowProfile), for: .touchUpInside)
+        return headerView
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

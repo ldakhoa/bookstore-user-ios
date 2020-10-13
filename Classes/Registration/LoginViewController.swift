@@ -30,13 +30,13 @@ final class LoginViewController: UIViewController {
 
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(handleKeyboardShow),
+            selector: #selector(keyboardWillShow),
             name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(handleKeyboardHide),
+            selector: #selector(keyboardWillHide),
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
@@ -61,7 +61,7 @@ final class LoginViewController: UIViewController {
         view.endEditing(true)
     }
 
-    @objc fileprivate func handleKeyboardShow(notification: Notification) {
+    @objc fileprivate func keyboardWillShow(notification: Notification) {
         guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         else { return }
         // figure out how tall the gap is from the register button to the bottom of the screen
@@ -71,7 +71,7 @@ final class LoginViewController: UIViewController {
         view.transform = CGAffineTransform(translationX: 0, y: -difference - 16)
     }
 
-    @objc fileprivate func handleKeyboardHide() {
+    @objc fileprivate func keyboardWillHide() {
         UIView.animate(
             withDuration: 0.5,
             delay: 0,
