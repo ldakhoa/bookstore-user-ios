@@ -16,15 +16,21 @@
 --commas inline
 --commas always # trailingCommas
 
+# trailinc closure
+--trailingclosures
+
 # wrapArguments
 --wraparguments before-first
 --wrapcollections before-first
-#--closingparen same-line # wrapArguments
+--wrapparameters before-first
 --typeattributes prev-line # wrapAttributes
 --funcattributes prev-line # wrapAttributes
 
 --structthreshold 20 # organizeDeclarations
 --enumthreshold 20 # organizeDeclarations
+
+# elseOnSameLine
+--guardelse same-line
 
 # rules
 --rules anyObjectProtocol,redundantParens,redundantReturn,redundantSelf,sortedImports,strongifiedSelf,trailingCommas,trailingSpace,wrapArguments,wrapMultilineStatementBraces,indent,wrapAttributes,organizeDeclarations
