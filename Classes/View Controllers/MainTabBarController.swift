@@ -29,7 +29,7 @@ final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
             image: UIImage(named: "profile-inactive")!,
             selectedImage: UIImage(named: "profile-activated")!
         )
-        
+
         baTabBarController.tabBarItems = [
             homeTabbarItem,
             categoryTabbarItem,

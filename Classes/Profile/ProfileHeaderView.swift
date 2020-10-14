@@ -8,14 +8,9 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-    let nameLabel = UILabel(
-        text: "Khoa Le",
-        font: Styles.Text.h3.preferredFont,
-        textColor: Styles.Colors.black.color
-    )
-    let profileImageView = UIImageView(image: #imageLiteral(resourceName: "avatar"))
-    let showProfileButton = UIButton(type: .system)
-    
+
+    // MARK: Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -57,4 +52,14 @@ class ProfileHeaderView: UIView {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: Internal
+
+    let nameLabel = UILabel(
+        text: "Khoa Le",
+        font: Styles.Text.h3.preferredFont,
+        textColor: Styles.Colors.black.color
+    )
+    let profileImageView = UIImageView(image: #imageLiteral(resourceName: "avatar"))
+    let showProfileButton = UIButton(type: .system)
 }

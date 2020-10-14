@@ -9,16 +9,7 @@ import UIKit
 
 final class ProfileTableViewController: UITableViewController {
 
-    private let datasource: [String] = [
-        "My orders",
-        "My favorite",
-        "Shipping addresses",
-        "Payment methods",
-        "My reviews",
-        "Settings",
-    ]
-
-    private let cellID = "ProfileCell"
+    // MARK: Internal
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +17,7 @@ final class ProfileTableViewController: UITableViewController {
         tableView.backgroundColor = Styles.Colors.background.color
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
-        
+
         let nib = UINib(nibName: "ProfileCell", bundle: nil)
 
         tableView.register(nib, forCellReuseIdentifier: cellID)
@@ -42,12 +33,7 @@ final class ProfileTableViewController: UITableViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    @objc
-    private func didTapShowProfile() {
-        let editPersonalInfoController = EditPersonalInfoController()
-        navigationController?.pushViewController(editPersonalInfoController, animated: true)
-    }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datasource.count + 1
     }
@@ -70,7 +56,11 @@ final class ProfileTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = ProfileHeaderView()
-        headerView.showProfileButton.addTarget(self, action: #selector(didTapShowProfile), for: .touchUpInside)
+        headerView.showProfileButton.addTarget(
+            self,
+            action: #selector(didTapShowProfile),
+            for: .touchUpInside
+        )
         return headerView
     }
 
@@ -78,4 +68,22 @@ final class ProfileTableViewController: UITableViewController {
         return 100
     }
 
+    // MARK: Private
+
+    private let datasource: [String] = [
+        "My orders",
+        "My favorite",
+        "Shipping addresses",
+        "Payment methods",
+        "My reviews",
+        "Settings",
+    ]
+
+    private let cellID = "ProfileCell"
+
+    @objc
+    private func didTapShowProfile() {
+        let editPersonalInfoController = EditPersonalInfoController()
+        navigationController?.pushViewController(editPersonalInfoController, animated: true)
+    }
 }

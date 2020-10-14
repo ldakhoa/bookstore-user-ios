@@ -5,10 +5,13 @@
 //  Created by Khoa Le on 13/10/2020.
 //
 
-import UIKit
 import BATabBarController
+import UIKit
 
 final class EditPersonalInfoController: UITableViewController {
+
+    // MARK: Internal
+
     let sectionData: [String] = [
         "Name",
         "Gender",
@@ -44,11 +47,6 @@ final class EditPersonalInfoController: UITableViewController {
             action: #selector(didTappedBackButton)
         )
         navigationController?.navigationBar.tintColor = Styles.Colors.black.color
-    }
-
-    @objc
-    private func didTappedBackButton() {
-        navigationController?.popViewController(animated: true)
     }
 
     override func numberOfSections(in _: UITableView) -> Int {
@@ -93,4 +91,12 @@ final class EditPersonalInfoController: UITableViewController {
     override func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
         return 40
     }
+
+    // MARK: Private
+
+    @objc
+    private func didTappedBackButton() {
+        navigationController?.popViewController(animated: true)
+    }
+
 }

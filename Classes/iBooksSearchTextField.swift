@@ -8,6 +8,9 @@
 import UIKit
 
 class iBooksSearchTextField: UITextField {
+
+    // MARK: Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -29,6 +32,13 @@ class iBooksSearchTextField: UITextField {
         leftViewMode = .always
     }
 
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: Internal
+
     override var intrinsicContentSize: CGSize {
         return .init(width: 0, height: 40)
     }
@@ -45,8 +55,4 @@ class iBooksSearchTextField: UITextField {
         return .init(x: 8, y: 8, width: 24, height: 24)
     }
 
-    @available(*, unavailable)
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }

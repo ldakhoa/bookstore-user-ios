@@ -8,6 +8,22 @@
 import UIKit
 
 class iBooksButton: UIButton {
+
+    // MARK: Lifecycle
+
+    convenience init(color: UIColor = Styles.Colors.primary.color) {
+        self.init()
+        backgroundColor = color
+        setupShadow(
+            opacity: 0.3,
+            radius: 8,
+            offset: .init(width: 0, height: 1),
+            color: color
+        )
+    }
+
+    // MARK: Internal
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -24,14 +40,4 @@ class iBooksButton: UIButton {
         )
     }
 
-    convenience init(color: UIColor = Styles.Colors.primary.color) {
-        self.init()
-        backgroundColor = color
-        setupShadow(
-            opacity: 0.3,
-            radius: 8,
-            offset: .init(width: 0, height: 1),
-            color: color
-        )
-    }
 }

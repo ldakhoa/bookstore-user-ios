@@ -8,9 +8,19 @@
 import UIKit
 
 final class BookListViewController: UIViewController {
+
+    // MARK: Internal
+
     @IBOutlet var bookListTableView: UITableView!
     @IBOutlet var searchTableView: UITableView!
     @IBOutlet var collectionView: UICollectionView!
+    let filterDatasource: [String] = [
+        "Sorted by: Ascending",
+        "Category",
+        "Price",
+        "Rating",
+    ]
+
     @IBOutlet var searchGradientView: SearchGradientView! {
         didSet {
             searchGradientView.searchTextField.addTarget(
@@ -25,13 +35,6 @@ final class BookListViewController: UIViewController {
             )
         }
     }
-
-    let filterDatasource: [String] = [
-        "Sorted by: Ascending",
-        "Category",
-        "Price",
-        "Rating",
-    ]
 
     // MARK: - View Life Cycle
 
@@ -52,8 +55,8 @@ final class BookListViewController: UIViewController {
         collectionView.delegate = self
     }
 
-    // MARK: - Action
-    
+    // MARK: Private
+
     @objc
     private func didTappedToSearchTextField() {
         bookListTableView.isHidden = true
@@ -86,7 +89,10 @@ extension BookListViewController: UITableViewDataSource {
             ) as! BookListCell
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BookSearchCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "BookSearchCell",
+                for: indexPath
+            )
             return cell
         }
     }

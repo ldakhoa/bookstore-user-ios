@@ -18,6 +18,15 @@ enum Styles {
     }
 
     enum Colors {
+        enum Gradient {
+            static let color1 = UIColor(red: 0.859, green: 0.188, blue: 0.133, alpha: 1).cgColor
+            static let color2 = UIColor(red: 0.894, green: 0.31, blue: 0.224, alpha: 1).cgColor
+            static let color3 = UIColor(red: 0.925, green: 0.408, blue: 0.314, alpha: 1).cgColor
+            static let color4 = UIColor(red: 0.949, green: 0.498, blue: 0.408, alpha: 1).cgColor
+            static let color5 = UIColor(red: 0.973, green: 0.584, blue: 0.502, alpha: 1).cgColor
+            static let color6 = UIColor(red: 0.988, green: 0.671, blue: 0.6, alpha: 1).cgColor
+        }
+
         static let primary = "DB3022"
         static let background = "F9F9F9"
         static let gray = "9B9B9B"
@@ -32,14 +41,6 @@ enum Styles {
         static let border = "D9D9D9"
         static let background2 = "FEFFFE"
 
-        enum Gradient {
-            static let color1 = UIColor(red: 0.859, green: 0.188, blue: 0.133, alpha: 1).cgColor
-            static let color2 = UIColor(red: 0.894, green: 0.31, blue: 0.224, alpha: 1).cgColor
-            static let color3 = UIColor(red: 0.925, green: 0.408, blue: 0.314, alpha: 1).cgColor
-            static let color4 = UIColor(red: 0.949, green: 0.498, blue: 0.408, alpha: 1).cgColor
-            static let color5 = UIColor(red: 0.973, green: 0.584, blue: 0.502, alpha: 1).cgColor
-            static let color6 = UIColor(red: 0.988, green: 0.671, blue: 0.6, alpha: 1).cgColor
-        }
     }
 
     enum Text {
@@ -83,7 +84,13 @@ extension TextStyle {
         var attributes = self.attributes
         attributes[.foregroundColor] = foreground ?? attributes[.foregroundColor]
         attributes[.backgroundColor] = background ?? attributes[.backgroundColor]
-        return TextStyle(font: font, size: size, attributes: attributes, minSize: minSize, maxSize: maxSize)
+        return TextStyle(
+            font: font,
+            size: size,
+            attributes: attributes,
+            minSize: minSize,
+            maxSize: maxSize
+        )
     }
 }
 

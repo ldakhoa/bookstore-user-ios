@@ -8,30 +8,16 @@
 import UIKit
 
 final class CategoryViewController: UIViewController {
-    private let datasource: [String] = [
-        "Comics",
-        "Romans",
-        "Technology",
-        "Fiction",
-        "Poetry",
-        "Novel",
-        "History",
-        "Law",
-        "Education",
-        "Science",
-        "Letters",
-        "Megazines",
-    ]
 
-    private let cellID = "CategoryCell"
+    // MARK: Internal
+
+    @IBOutlet var tableView: UITableView!
 
     @IBOutlet var searchGradientView: SearchGradientView! {
         didSet {
             searchGradientView.searchTextField.placeholder = "Category"
         }
     }
-
-    @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +38,26 @@ final class CategoryViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+
+    // MARK: Private
+
+    private let datasource: [String] = [
+        "Comics",
+        "Romans",
+        "Technology",
+        "Fiction",
+        "Poetry",
+        "Novel",
+        "History",
+        "Law",
+        "Education",
+        "Science",
+        "Letters",
+        "Megazines",
+    ]
+
+    private let cellID = "CategoryCell"
+
 }
 
 extension CategoryViewController: UITableViewDataSource {

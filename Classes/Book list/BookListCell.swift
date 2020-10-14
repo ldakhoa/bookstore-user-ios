@@ -21,13 +21,23 @@ final class BookListCell: UITableViewCell {
         super.awakeFromNib()
         backgroundColor = Styles.Colors.background.color
         containerView.layer.cornerRadius = Styles.Sizes.cellCornerRadius
-        containerView.setupShadow(opacity: 0.1, radius: 8, offset: .init(width: 0, height: 1), color: Styles.Colors.black.color)
+        containerView.setupShadow(
+            opacity: 0.1,
+            radius: 8,
+            offset: .init(width: 0, height: 1),
+            color: Styles.Colors.black.color
+        )
 
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: -10, right: 0))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(
+            top: 0,
+            left: 0,
+            bottom: -10,
+            right: 0
+        ))
     }
 }

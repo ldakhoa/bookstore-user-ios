@@ -8,6 +8,9 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
+
+    // MARK: Internal
+
     @IBOutlet var emailView: UIView!
     @IBOutlet var passwordView: UIView!
     @IBOutlet var emailLabel: UILabel!
@@ -16,7 +19,8 @@ final class LoginViewController: UIViewController {
     @IBOutlet var passwordTextfield: UITextField!
     @IBOutlet var loginButton: iBooksButton!
     @IBOutlet weak var overallStackView: UIStackView!
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,7 +65,22 @@ final class LoginViewController: UIViewController {
         view.endEditing(true)
     }
 
-    @objc fileprivate func keyboardWillShow(notification: Notification) {
+    @IBAction
+    func handleLogin(_: Any) {
+
+    }
+
+    @IBAction
+    func handleGoToSignup(_: Any) {
+        let signupVC = AppSetting.Storyboards.Registration.signup
+        signupVC.modalPresentationStyle = .fullScreen
+        present(signupVC, animated: true)
+    }
+
+    // MARK: Fileprivate
+
+    @objc
+    fileprivate func keyboardWillShow(notification: Notification) {
         guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         else { return }
         // figure out how tall the gap is from the register button to the bottom of the screen
@@ -71,7 +90,8 @@ final class LoginViewController: UIViewController {
         view.transform = CGAffineTransform(translationX: 0, y: -difference - 16)
     }
 
-    @objc fileprivate func keyboardWillHide() {
+    @objc
+    fileprivate func keyboardWillHide() {
         UIView.animate(
             withDuration: 0.5,
             delay: 0,
@@ -95,7 +115,10 @@ final class LoginViewController: UIViewController {
         passwordTextfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
     }
 
-    @objc private func handleTextChange(_ textField: UITextField) {
+    // MARK: Private
+
+    @objc
+    private func handleTextChange(_ textField: UITextField) {
         if textField == emailTextfield {
             emailLabel.isHidden = emailTextfield.text?.count == 0 ? true : false
         } else if textField == passwordTextfield {
@@ -103,13 +126,4 @@ final class LoginViewController: UIViewController {
         }
     }
 
-    @IBAction func handleLogin(_: Any) {
-
-    }
-
-    @IBAction func handleGoToSignup(_: Any) {
-        let signupVC = AppSetting.Storyboards.Registration.signup
-        signupVC.modalPresentationStyle = .fullScreen
-        present(signupVC, animated: true)
-    }
 }

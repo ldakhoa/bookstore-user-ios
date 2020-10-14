@@ -9,9 +9,15 @@ import UIKit
 
 final class HomeViewController: UIViewController {
 
+    // MARK: Internal
+
     @IBOutlet weak var searchGradientView: SearchGradientView! {
         didSet {
-            searchGradientView.backButton.addTarget(self, action: #selector(handleReturnUIState), for: .touchUpInside)
+            searchGradientView.backButton.addTarget(
+                self,
+                action: #selector(handleReturnUIState),
+                for: .touchUpInside
+            )
         }
     }
 
@@ -21,7 +27,10 @@ final class HomeViewController: UIViewController {
         view.backgroundColor = Styles.Colors.background.color
     }
 
-    @objc private func handleReturnUIState() {
+    // MARK: Private
+
+    @objc
+    private func handleReturnUIState() {
         searchGradientView.setTextFieldWithoutBack()
         searchGradientView.searchTextField.resignFirstResponder()
         searchGradientView.searchTextField.text = ""

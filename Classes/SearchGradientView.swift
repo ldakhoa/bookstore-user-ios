@@ -51,7 +51,8 @@ class SearchGradientView: UIView, UITextFieldDelegate {
 //        searchTextField.addTarget(self, action: #selector(handleEditingChanged), for: .editingChanged)
     }
 
-    @objc func handleEditingChanged(textField: UITextField) {
+    @objc
+    func handleEditingChanged(textField: UITextField) {
         if textField.text?.count == 0 {
             setTextFieldWithoutBack()
         } else {
@@ -68,7 +69,7 @@ class SearchGradientView: UIView, UITextFieldDelegate {
         setTextFieldWithoutBack()
         return true
     }
-    
+
     func insertGradientBackground() {
         let layer = CAGradientLayer()
         layer.colors = [

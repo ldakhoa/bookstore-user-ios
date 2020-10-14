@@ -8,15 +8,7 @@
 import UIKit
 
 struct AppSetting {
-    static let shared = AppSetting()
-
-    static let appDelegate = UIApplication.shared.delegate as! AppDelegate
     enum Storyboards {
-        static let registration = UIStoryboard(name: "Registration", bundle: nil)
-        static let home = UIStoryboard(name: "Home", bundle: nil)
-        static let category = UIStoryboard(name: "Category", bundle: nil)
-        static let bookList = UIStoryboard(name: "BookList", bundle: nil)
-
         enum Registration {
             static let signup = registration.instantiateViewController(withIdentifier: "SignUpViewController")
             static let login = registration.instantiateViewController(withIdentifier: "LoginViewController")
@@ -33,5 +25,15 @@ struct AppSetting {
         enum Search {
             static let bookListVC = bookList.instantiateViewController(withIdentifier: "BookListViewController")
         }
+
+        static let registration = UIStoryboard(name: "Registration", bundle: nil)
+        static let home = UIStoryboard(name: "Home", bundle: nil)
+        static let category = UIStoryboard(name: "Category", bundle: nil)
+        static let bookList = UIStoryboard(name: "BookList", bundle: nil)
+
     }
+
+    static let shared = AppSetting()
+
+    static let appDelegate = UIApplication.shared.delegate as! AppDelegate
 }

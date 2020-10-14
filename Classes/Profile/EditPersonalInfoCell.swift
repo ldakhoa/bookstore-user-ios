@@ -8,11 +8,8 @@
 import UIKit
 
 final class EditPersonalInfoCell: UITableViewCell {
-    let textField: UITextField = {
-        let tf = UITextField()
-        tf.font = Styles.Text.body.preferredFont
-        return tf
-    }()
+
+    // MARK: Lifecycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,4 +22,13 @@ final class EditPersonalInfoCell: UITableViewCell {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: Internal
+
+    let textField: UITextField = {
+        let tf = UITextField()
+        tf.font = Styles.Text.body.preferredFont
+        return tf
+    }()
+
 }

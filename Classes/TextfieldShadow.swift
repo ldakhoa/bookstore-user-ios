@@ -9,7 +9,12 @@ import UIKit
 
 extension UIView {
     func setTextfieldStyle() {
-        self.layer.cornerRadius = Styles.Sizes.textFieldCornerRadius
-        setupShadow(opacity: 0.05, radius: 8, offset: .init(width: 0, height: 1), color: UIColor.black)
+        layer.cornerRadius = Styles.Sizes.textFieldCornerRadius
+        setupShadow(
+            opacity: 0.05,
+            radius: 8,
+            offset: .init(width: 0, height: 1),
+            color: UIColor.black
+        )
     }
 }

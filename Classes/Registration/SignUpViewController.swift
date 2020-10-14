@@ -8,6 +8,9 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
+
+    // MARK: Internal
+
     @IBOutlet var nameView: UIView!
     @IBOutlet var emailView: UIView!
     @IBOutlet var passwordView: UIView!
@@ -64,7 +67,19 @@ class SignUpViewController: UIViewController {
         view.endEditing(true)
     }
 
-    @objc fileprivate func handleKeyboardShow(notification: Notification) {
+    @IBAction
+    func handleSignup(_ sender: Any) {
+    }
+
+    @IBAction
+    func handleGoToLogin(_ sender: Any) {
+        dismiss(animated: true)
+    }
+
+    // MARK: Fileprivate
+
+    @objc
+    fileprivate func handleKeyboardShow(notification: Notification) {
         guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         else { return }
         // figure out how tall the gap is from the register button to the bottom of the screen
@@ -74,7 +89,8 @@ class SignUpViewController: UIViewController {
         view.transform = CGAffineTransform(translationX: 0, y: -difference - 16)
     }
 
-    @objc fileprivate func handleKeyboardHide() {
+    @objc
+    fileprivate func handleKeyboardHide() {
         UIView.animate(
             withDuration: 0.5,
             delay: 0,
@@ -101,7 +117,10 @@ class SignUpViewController: UIViewController {
         passwordTextfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
     }
 
-    @objc private func handleTextChange(_ textField: UITextField) {
+    // MARK: Private
+
+    @objc
+    private func handleTextChange(_ textField: UITextField) {
         if textField == nameTextfield {
             nameLabel.isHidden = nameTextfield.text?.count == 0 ? true : false
         } else if textField == emailTextfield {
@@ -111,10 +130,4 @@ class SignUpViewController: UIViewController {
         }
     }
 
-    @IBAction func handleSignup(_ sender: Any) {
-    }
-
-    @IBAction func handleGoToLogin(_ sender: Any) {
-        dismiss(animated: true)
-    }
 }

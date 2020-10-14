@@ -8,11 +8,8 @@
 import UIKit
 
 final class EditPersonalInfoHeaderView: UIView {
-    let label = UILabel(
-        text: "",
-        font: Styles.Text.titleBold.preferredFont,
-        textColor: Styles.Colors.black.color
-    )
+
+    // MARK: Lifecycle
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,4 +28,13 @@ final class EditPersonalInfoHeaderView: UIView {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: Internal
+
+    let label = UILabel(
+        text: "",
+        font: Styles.Text.titleBold.preferredFont,
+        textColor: Styles.Colors.black.color
+    )
+
 }
