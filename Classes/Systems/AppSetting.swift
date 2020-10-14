@@ -15,7 +15,7 @@ struct AppSetting {
         static let registration = UIStoryboard(name: "Registration", bundle: nil)
         static let home = UIStoryboard(name: "Home", bundle: nil)
         static let category = UIStoryboard(name: "Category", bundle: nil)
-        static let search = UIStoryboard(name: "Search", bundle: nil)
+        static let bookList = UIStoryboard(name: "BookList", bundle: nil)
 
         enum Registration {
             static let signup = registration.instantiateViewController(withIdentifier: "SignUpViewController")
@@ -31,7 +31,7 @@ struct AppSetting {
         }
 
         enum Search {
-            static let searchVC = search.instantiateViewController(withIdentifier: "SearchViewController")
+            static let bookListVC = bookList.instantiateViewController(withIdentifier: "BookListViewController")
         }
     }
 }

@@ -25,7 +25,7 @@ final class EditPersonalInfoController: UITableViewController {
         title = "Edit personal info"
 
         tableView.keyboardDismissMode = .interactive
-        tableView.backgroundColor = Styles.Colors.backgroundEditPersonalInfo.color
+        tableView.backgroundColor = Styles.Colors.background2.color
         tableView.separatorStyle = .none
 
         tableView.allowsSelection = false

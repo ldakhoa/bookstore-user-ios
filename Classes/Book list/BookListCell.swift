@@ -8,7 +8,7 @@
 import Cosmos
 import UIKit
 
-final class SearchCell: UITableViewCell {
+final class BookListCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var bookTitleLabel: UILabel!

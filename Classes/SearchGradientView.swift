@@ -48,7 +48,7 @@ class SearchGradientView: UIView, UITextFieldDelegate {
         )
         backButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
 
-        searchTextField.addTarget(self, action: #selector(handleEditingChanged), for: .editingChanged)
+//        searchTextField.addTarget(self, action: #selector(handleEditingChanged), for: .editingChanged)
     }
 
     @objc func handleEditingChanged(textField: UITextField) {
