@@ -107,7 +107,11 @@ final class LoginViewController: UIViewController {
                 self.hud.dismiss()
                 Log.debug("Login response \(data)")
             } else {
-                Log.error("Error: \(data["message"].stringValue)")
+//                Log.error("Error: \(data["message"].stringValue)")
+                let message = data["message"].stringValue
+                let alert = UIAlertController.configured(title: "", message: message, preferredStyle: .alert)
+                alert.addAction(AlertAction.ok())
+                self.present(alert, animated: true)
             }
         }
     }

@@ -29,6 +29,9 @@
 		647C77FB2532FB270034159E /* iBooksSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77FA2532FB270034159E /* iBooksSearchTextField.swift */; };
 		648768512539FA91002B2AD6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648768502539FA91002B2AD6 /* Log.swift */; };
 		649B0063253AE56100BE315A /* AppSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B0062253AE56100BE315A /* AppSecurity.swift */; };
+		649B009D253B5BFA00BE315A /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B009C253B5BFA00BE315A /* UIViewController+Alerts.swift */; };
+		649B00A2253B5C4300BE315A /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B00A1253B5C4300BE315A /* AlertAction.swift */; };
+		649B00A7253B5C5500BE315A /* AlertActionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B00A6253B5C5500BE315A /* AlertActionBuilder.swift */; };
 		649BFFFA253A9CDB00BE315A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BFFF9253A9CDB00BE315A /* Category.swift */; };
 		64AD6EB025343D2A008D4EF6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD6EAF25343D2A008D4EF6 /* CategoryViewController.swift */; };
 		64AD6EB525343FB0008D4EF6 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64AD6EB425343FB0008D4EF6 /* Category.storyboard */; };
@@ -99,6 +102,9 @@
 		647C77FA2532FB270034159E /* iBooksSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBooksSearchTextField.swift; sourceTree = "<group>"; };
 		648768502539FA91002B2AD6 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		649B0062253AE56100BE315A /* AppSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecurity.swift; sourceTree = "<group>"; };
+		649B009C253B5BFA00BE315A /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		649B00A1253B5C4300BE315A /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
+		649B00A6253B5C5500BE315A /* AlertActionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActionBuilder.swift; sourceTree = "<group>"; };
 		649BFFF9253A9CDB00BE315A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		64AD6EAF25343D2A008D4EF6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		64AD6EB425343FB0008D4EF6 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				647C77C72532C4070034159E /* MainTabBarController.swift */,
+				649B009C253B5BFA00BE315A /* UIViewController+Alerts.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -358,6 +365,8 @@
 				648768502539FA91002B2AD6 /* Log.swift */,
 				64CE1B542531B08200A194E3 /* Extensions+UILabel.swift */,
 				64CE1B552531B08200A194E3 /* Extensions+UIView.swift */,
+				649B00A1253B5C4300BE315A /* AlertAction.swift */,
+				649B00A6253B5C5500BE315A /* AlertActionBuilder.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -638,9 +647,11 @@
 				649B0063253AE56100BE315A /* AppSecurity.swift in Sources */,
 				647C77902532B3980034159E /* AppSetting.swift in Sources */,
 				64AD6ECB25345614008D4EF6 /* BookListCell.swift in Sources */,
+				649B00A7253B5C5500BE315A /* AlertActionBuilder.swift in Sources */,
 				64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */,
 				643DA93E2539E55D0052CE35 /* NetworkManagement.swift in Sources */,
 				647C77F32532F50A0034159E /* LocationTopView.swift in Sources */,
+				649B009D253B5BFA00BE315A /* UIViewController+Alerts.swift in Sources */,
 				64CE1B692531B19800A194E3 /* Styles.swift in Sources */,
 				644B6C5C2535FF3400F7FE32 /* EditPersonalInfoController.swift in Sources */,
 				648768512539FA91002B2AD6 /* Log.swift in Sources */,
@@ -656,6 +667,7 @@
 				64D5EA4925335362005788A3 /* ProfileTableViewController.swift in Sources */,
 				64CE1B4D2531AFD400A194E3 /* Extensions+UIColor.swift in Sources */,
 				64D5EA5E25336385005788A3 /* ProfileHeaderView.swift in Sources */,
+				649B00A2253B5C4300BE315A /* AlertAction.swift in Sources */,
 				649BFFFA253A9CDB00BE315A /* Category.swift in Sources */,
 				647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */,
 				647C77832532330F0034159E /* iBooksButton.swift in Sources */,
