@@ -5,6 +5,7 @@
 //  Created by Khoa Le on 11/10/2020.
 //
 
+import JGProgressHUD
 import UIKit
 
 final class LoginViewController: UIViewController {
@@ -19,6 +20,8 @@ final class LoginViewController: UIViewController {
     @IBOutlet var passwordTextfield: UITextField!
     @IBOutlet var loginButton: iBooksButton!
     @IBOutlet weak var overallStackView: UIStackView!
+
+    let hud = JGProgressHUD(style: .dark)
 
     // MARK: - View Life Cycle
 
@@ -75,17 +78,33 @@ final class LoginViewController: UIViewController {
         emailView.setTextfieldStyle()
         passwordView.setTextfieldStyle()
 
-        emailTextfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
-        passwordTextfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+        emailTextfield.addTarget(
+            self,
+            action: #selector(textFieldEditingChanged),
+            for: .editingChanged
+        )
+        passwordTextfield.addTarget(
+            self,
+            action: #selector(textFieldEditingChanged),
+            for: .editingChanged
+        )
     }
 
     // MARK: Private
 
     @IBAction
     private func handleLogin(_: Any) {
+        hud.textLabel.text = "Logging in"
+        hud.show(in: view)
         guard let emailText = emailTextfield.text, let passwordText = passwordTextfield.text else { return }
-        NetworkManagement.login(email: emailText, password: passwordText) { (code, data) in
+        NetworkManagement.login(email: emailText, password: passwordText) { code, data in
             if code == ResponseCode.ok.rawValue {
+                AppSecurity.shared.userID = data["user"]["id"].int
+                AppSecurity.shared.email = emailText
+                User.parseData(json: data["user"])
+                AppSecurity.shared.isAuthorized = true
+                AppSetting.shared.getMainController()
+                self.hud.dismiss()
                 Log.debug("Login response \(data)")
             } else {
                 Log.error("Error: \(data["message"].stringValue)")
@@ -126,12 +145,21 @@ final class LoginViewController: UIViewController {
     }
 
     @objc
-    private func handleTextChange(_ textField: UITextField) {
+    private func textFieldEditingChanged(_ textField: UITextField) {
+        guard let emailField = emailTextfield.text,
+            let passwordField = passwordTextfield.text else { return }
         if textField == emailTextfield {
             emailLabel.isHidden = emailTextfield.text?.count == 0 ? true : false
         } else if textField == passwordTextfield {
             passwordLabel.isHidden = passwordTextfield.text?.count == 0 ? true : false
         }
+        checkFormValidity(emailField: emailField, passwordField: passwordField)
+    }
+
+    private func checkFormValidity(emailField: String, passwordField: String) {
+        // TODO: - Valid email by regex
+        let isValid = !emailField.isEmpty && passwordField.count >= 6
+        isValid ? loginButton.setActiveStyles() : loginButton.setInactiveStyles()
     }
 
 }

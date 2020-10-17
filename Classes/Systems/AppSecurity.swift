@@ -8,8 +8,8 @@
 import Foundation
 
 final class AppSecurity {
-    private let defaults = UserDefaults.standard
-    static let shared = AppSecurity()
+
+    // MARK: Internal
 
     enum Keys: String {
         case email
@@ -18,9 +18,11 @@ final class AppSecurity {
         case userInforExist
     }
 
-    var userID: String! {
+    static let shared = AppSecurity()
+
+    var userID: Int! {
         get {
-            return defaults.object(forKey: Keys.userID.rawValue) == nil ? "" : (defaults.object(forKey: Keys.userID.rawValue) as? String)!
+            return defaults.object(forKey: Keys.userID.rawValue) == nil ? -1 : (defaults.object(forKey: Keys.userID.rawValue) as? Int)!
         } set {
             defaults.set(newValue, forKey: Keys.userID.rawValue)
         }
@@ -50,4 +52,7 @@ final class AppSecurity {
         }
     }
 
+    // MARK: Private
+
+    private let defaults = UserDefaults.standard
 }

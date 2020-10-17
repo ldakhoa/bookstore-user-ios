@@ -71,7 +71,7 @@ struct NetworkManagement {
             switch responseData.result {
             case .success:
                 guard let data = responseData.data,
-                      let parseJSON = try? JSON(data: data) else { return }
+                    let parseJSON = try? JSON(data: data) else { return }
                 var responseCode = ResponseCode.ok.rawValue
                 if let code = parseJSON["code"].int {
                     print("code: ", code)

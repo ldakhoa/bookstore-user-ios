@@ -27,6 +27,11 @@ enum Styles {
             static let color6 = UIColor(red: 0.988, green: 0.671, blue: 0.6, alpha: 1).cgColor
         }
 
+        enum White {
+            static let normal = UIColor.white
+            static let whiter = UIColor(white: 0.9, alpha: 1)
+        }
+
         static let primary = "DB3022"
         static let background = "F9F9F9"
         static let gray = "9B9B9B"
@@ -36,11 +41,10 @@ enum Styles {
         static let success = "2AA952"
         static let error = "F01F0E"
         static let black = "222222"
-        static let white = UIColor.white
         static let locationBackground = "F89580"
         static let border = "D9D9D9"
         static let background2 = "FEFFFE"
-
+        static let lightGray = UIColor.lightGray
     }
 
     enum Text {

@@ -50,7 +50,7 @@ final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
         baTabBarController.delegate = self
         // TODO: - Change order of tabbar
         baTabBarController.viewControllers = [searchVC, categoryVC, homeVC, profileNavbarVC]
-        baTabBarController.tabBarBackgroundColor = Styles.Colors.white
+        baTabBarController.tabBarBackgroundColor = Styles.Colors.White.normal
         baTabBarController.tabBarItemStrokeColor = Styles.Colors.primary.color
         baTabBarController.tabBarAnimationDuration = 0.5
         view.addSubview(baTabBarController.view)
