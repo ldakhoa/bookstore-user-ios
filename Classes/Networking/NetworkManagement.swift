@@ -70,12 +70,14 @@ struct NetworkManagement {
         ).responseJSON { responseData in
             switch responseData.result {
             case .success:
-                guard let data = responseData.data, let parseJSON = try? JSON(data: data) else { return }
+                guard let data = responseData.data,
+                      let parseJSON = try? JSON(data: data) else { return }
                 var responseCode = ResponseCode.ok.rawValue
                 if let code = parseJSON["code"].int {
+                    print("code: ", code)
                     responseCode = code
                 }
-                Log.debug(responseCode)
+                response(responseCode, parseJSON)
             case .failure:
                 response(ResponseCode.internalServerError.rawValue, JSON.null)
             }

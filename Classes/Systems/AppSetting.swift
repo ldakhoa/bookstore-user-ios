@@ -36,4 +36,14 @@ struct AppSetting {
     static let shared = AppSetting()
 
     static let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+    func getLoginController() {
+        AppSetting.appDelegate.window?.rootViewController = AppSetting.Storyboards.Registration.login
+    }
+
+    func getMainController() {
+        let mainTabBarController = MainTabBarController()
+        AppSetting.appDelegate.window?.rootViewController = mainTabBarController
+        AppSetting.appDelegate.window?.makeKeyAndVisible()
+    }
 }

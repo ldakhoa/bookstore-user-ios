@@ -24,6 +24,7 @@ enum HTTPRequester {
     case signup(username: String, email: String, password: String)
     case getInformationOfUserWith(id: Int)
     case updateInformationOfUserWith(id: Int)
+    case getBookBySearch(searchString: String)
 }
 
 extension HTTPRequester: Requestable {
@@ -39,7 +40,8 @@ extension HTTPRequester: Requestable {
             return (
                 path: URL(string: coreURL + "api/users/login")!,
                 method: .post,
-                parameter: params, encoding: JSONEncoding.default
+                parameter: params,
+                encoding: JSONEncoding.default
             )
         case let .signup(username, email, password):
             let params: [String: String] = [
@@ -50,22 +52,34 @@ extension HTTPRequester: Requestable {
             return (
                 path: URL(string: coreURL + "api/users/login")!,
                 method: .post,
-                parameter: params, encoding: JSONEncoding.default
+                parameter: params,
+                encoding: JSONEncoding.default
             )
         case let .getInformationOfUserWith(id):
             let params: [String: Int] = ["id": id]
             return (
                 path: URL(string: coreURL + "api/users/\(id)")!,
                 method: .post,
-                parameter: params, encoding: JSONEncoding.default
+                parameter: params,
+                encoding: JSONEncoding.default
             )
         case let .updateInformationOfUserWith(id):
             let params: [String: Int] = ["id": id]
             return (
                 path: URL(string: coreURL + "api/users/\(id)")!,
                 method: .put,
-                parameter: params, encoding: JSONEncoding.default
+                parameter: params,
+                encoding: JSONEncoding.default
             )
+        case let .getBookBySearch(searchString):
+            let params: [String: String] = [:]
+            return (
+                path: URL(string: coreURL + "api/books/?search=\(searchString)")!,
+                method: .post,
+                parameter: params,
+                encoding: JSONEncoding.default
+            )
+
         }
     }
 }

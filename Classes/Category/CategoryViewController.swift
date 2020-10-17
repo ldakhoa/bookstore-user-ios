@@ -41,19 +41,14 @@ final class CategoryViewController: UIViewController {
 
     // MARK: Private
 
-    private let datasource: [String] = [
-        "Comics",
-        "Romans",
-        "Technology",
-        "Fiction",
-        "Poetry",
-        "Novel",
-        "History",
-        "Law",
-        "Education",
-        "Science",
-        "Letters",
-        "Megazines",
+    private let categories: [Category] = [
+        Category(categoryName: "Computer and Technology"),
+        Category(categoryName: "Children's Books"),
+        Category(categoryName: "Food and Wine"),
+        Category(categoryName: "History"),
+        Category(categoryName: "Art and Photography"),
+        Category(categoryName: "Romance"),
+        Category(categoryName: "All"),
     ]
 
     private let cellID = "CategoryCell"
@@ -62,12 +57,12 @@ final class CategoryViewController: UIViewController {
 
 extension CategoryViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return datasource.count
+        return categories.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! CategoryCell
-        cell.label.text = datasource[indexPath.row]
+        cell.label.text = categories[indexPath.row].categoryName
         return cell
     }
 }

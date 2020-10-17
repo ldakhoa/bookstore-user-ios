@@ -28,6 +28,8 @@
 		647C77F32532F50A0034159E /* LocationTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77F22532F50A0034159E /* LocationTopView.swift */; };
 		647C77FB2532FB270034159E /* iBooksSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77FA2532FB270034159E /* iBooksSearchTextField.swift */; };
 		648768512539FA91002B2AD6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648768502539FA91002B2AD6 /* Log.swift */; };
+		649B0063253AE56100BE315A /* AppSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B0062253AE56100BE315A /* AppSecurity.swift */; };
+		649BFFFA253A9CDB00BE315A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649BFFF9253A9CDB00BE315A /* Category.swift */; };
 		64AD6EB025343D2A008D4EF6 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD6EAF25343D2A008D4EF6 /* CategoryViewController.swift */; };
 		64AD6EB525343FB0008D4EF6 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64AD6EB425343FB0008D4EF6 /* Category.storyboard */; };
 		64AD6EBD253447D8008D4EF6 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD6EBC253447D8008D4EF6 /* CategoryCell.swift */; };
@@ -35,7 +37,6 @@
 		64AD6ECB25345614008D4EF6 /* BookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD6ECA25345614008D4EF6 /* BookListCell.swift */; };
 		64AD6ED5253476E6008D4EF6 /* BookList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64AD6ED4253476E6008D4EF6 /* BookList.storyboard */; };
 		64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B172531ACF900A194E3 /* AppDelegate.swift */; };
-		64CE1B1A2531ACF900A194E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B192531ACF900A194E3 /* SceneDelegate.swift */; };
 		64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B1B2531ACF900A194E3 /* SignUpViewController.swift */; };
 		64CE1B1F2531ACF900A194E3 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CE1B1D2531ACF900A194E3 /* Registration.storyboard */; };
 		64CE1B212531ACFB00A194E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64CE1B202531ACFB00A194E3 /* Assets.xcassets */; };
@@ -97,6 +98,8 @@
 		647C77F22532F50A0034159E /* LocationTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTopView.swift; sourceTree = "<group>"; };
 		647C77FA2532FB270034159E /* iBooksSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBooksSearchTextField.swift; sourceTree = "<group>"; };
 		648768502539FA91002B2AD6 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		649B0062253AE56100BE315A /* AppSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecurity.swift; sourceTree = "<group>"; };
+		649BFFF9253A9CDB00BE315A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		64AD6EAF25343D2A008D4EF6 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		64AD6EB425343FB0008D4EF6 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
 		64AD6EBC253447D8008D4EF6 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -105,7 +108,6 @@
 		64AD6ED4253476E6008D4EF6 /* BookList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookList.storyboard; sourceTree = "<group>"; };
 		64CE1B142531ACF900A194E3 /* bsuser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bsuser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CE1B172531ACF900A194E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		64CE1B192531ACF900A194E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		64CE1B1B2531ACF900A194E3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		64CE1B1E2531ACF900A194E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Registration.storyboard; sourceTree = "<group>"; };
 		64CE1B202531ACFB00A194E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			children = (
 				6476F6672535700F00879CC1 /* User.swift */,
 				6476F66F2535701300879CC1 /* Book.swift */,
+				649BFFF9253A9CDB00BE315A /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,8 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				64CE1B172531ACF900A194E3 /* AppDelegate.swift */,
-				64CE1B192531ACF900A194E3 /* SceneDelegate.swift */,
 				647C778F2532B3980034159E /* AppSetting.swift */,
+				649B0062253AE56100BE315A /* AppSecurity.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6476F6682535700F00879CC1 /* User.swift in Sources */,
+				649B0063253AE56100BE315A /* AppSecurity.swift in Sources */,
 				647C77902532B3980034159E /* AppSetting.swift in Sources */,
 				64AD6ECB25345614008D4EF6 /* BookListCell.swift in Sources */,
 				64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */,
@@ -650,9 +654,9 @@
 				64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */,
 				644B6C7E253612B200F7FE32 /* EditPersonalInfoHeaderView.swift in Sources */,
 				64D5EA4925335362005788A3 /* ProfileTableViewController.swift in Sources */,
-				64CE1B1A2531ACF900A194E3 /* SceneDelegate.swift in Sources */,
 				64CE1B4D2531AFD400A194E3 /* Extensions+UIColor.swift in Sources */,
 				64D5EA5E25336385005788A3 /* ProfileHeaderView.swift in Sources */,
+				649BFFFA253A9CDB00BE315A /* Category.swift in Sources */,
 				647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */,
 				647C77832532330F0034159E /* iBooksButton.swift in Sources */,
 				64AD6EC32534559F008D4EF6 /* BookListViewController.swift in Sources */,
