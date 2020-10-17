@@ -1,28 +1,40 @@
 PODS:
+  - Alamofire (5.2.1)
   - BATabBarController (2.0.2):
     - SnapKit
   - Cosmos (23.0.0)
+  - Log (2.0)
   - SnapKit (5.0.1)
   - StyledTextKit (0.2.0)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.2)
   - BATabBarController (~> 2.0.0)
   - Cosmos (~> 23.0)
+  - Log
   - StyledTextKit
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - BATabBarController
     - Cosmos
+    - Log
     - SnapKit
     - StyledTextKit
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   BATabBarController: 7f50519b3743b4e779c71a8e147ac9e8c50e0c7d
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  Log: 73fab10e8b88f15cef5f322b12c9be87cf19ee6e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   StyledTextKit: dbfb29a59922c6f18897a0266acd139b7c9e712b
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 1cef839fddfbdf68af0defba433cfc8b397c0ff3
+PODFILE CHECKSUM: e61e0b19f537f8b3ea58b81b6b292d3606dc500a
 
 COCOAPODS: 1.8.3

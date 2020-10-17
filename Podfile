@@ -9,6 +9,9 @@ target 'bsuser' do
   pod 'StyledTextKit'
   pod 'BATabBarController', '~> 2.0.0'
   pod 'Cosmos', '~> 23.0'
+  pod 'Alamofire', '~> 5.2'
+  pod 'SwiftyJSON', '~> 4.0'
+  pod 'Log'
 
   # Pods for bsuser
 

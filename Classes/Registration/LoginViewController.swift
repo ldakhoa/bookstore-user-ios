@@ -20,6 +20,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet var loginButton: iBooksButton!
     @IBOutlet weak var overallStackView: UIStackView!
 
+    // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,44 +66,7 @@ final class LoginViewController: UIViewController {
         view.endEditing(true)
     }
 
-    @IBAction
-    func handleLogin(_: Any) {
-
-    }
-
-    @IBAction
-    func handleGoToSignup(_: Any) {
-        let signupVC = AppSetting.Storyboards.Registration.signup
-        signupVC.modalPresentationStyle = .fullScreen
-        present(signupVC, animated: true)
-    }
-
     // MARK: Fileprivate
-
-    @objc
-    fileprivate func keyboardWillShow(notification: Notification) {
-        guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-        else { return }
-        // figure out how tall the gap is from the register button to the bottom of the screen
-        let keyboardFrame = value.cgRectValue
-        let bottomSpace = view.frame.height - overallStackView.frame.origin.y - overallStackView.frame.height
-        let difference = keyboardFrame.height - bottomSpace
-        view.transform = CGAffineTransform(translationX: 0, y: -difference - 16)
-    }
-
-    @objc
-    fileprivate func keyboardWillHide() {
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 1,
-            options: .curveEaseOut,
-            animations: {
-                self.view.transform = .identity
-            }
-        )
-    }
 
     fileprivate func setupLayout() {
         emailLabel.isHidden = true
@@ -116,6 +80,50 @@ final class LoginViewController: UIViewController {
     }
 
     // MARK: Private
+
+    @IBAction
+    private func handleLogin(_: Any) {
+        guard let emailText = emailTextfield.text, let passwordText = passwordTextfield.text else { return }
+        NetworkManagement.login(email: emailText, password: passwordText) { (code, data) in
+            if code == ResponseCode.ok.rawValue {
+                Log.debug("Login response \(data)")
+            } else {
+                Log.error("Error: \(data["message"].stringValue)")
+            }
+        }
+    }
+
+    @IBAction
+    private func handleGoToSignup(_: Any) {
+        let signupVC = AppSetting.Storyboards.Registration.signup
+        signupVC.modalPresentationStyle = .fullScreen
+        present(signupVC, animated: true)
+    }
+
+    @objc
+    private func keyboardWillShow(notification: Notification) {
+        guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        else { return }
+        // figure out how tall the gap is from the register button to the bottom of the screen
+        let keyboardFrame = value.cgRectValue
+        let bottomSpace = view.frame.height - overallStackView.frame.origin.y - overallStackView.frame.height
+        let difference = keyboardFrame.height - bottomSpace
+        view.transform = CGAffineTransform(translationX: 0, y: -difference - 16)
+    }
+
+    @objc
+    private func keyboardWillHide() {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.view.transform = .identity
+            }
+        )
+    }
 
     @objc
     private func handleTextChange(_ textField: UITextField) {

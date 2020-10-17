@@ -23,6 +23,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet var passwordTextfield: UITextField!
     @IBOutlet var overallStackView: UIStackView!
 
+
+    // MARK: - View Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,13 +39,13 @@ class SignUpViewController: UIViewController {
 
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(handleKeyboardShow),
+            selector: #selector(keyboardWillShow),
             name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(handleKeyboardHide),
+            selector: #selector(keyboardWillHide),
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
@@ -67,19 +70,19 @@ class SignUpViewController: UIViewController {
         view.endEditing(true)
     }
 
+    // MARK: Private
+
     @IBAction
-    func handleSignup(_ sender: Any) {
+    private func didTappedSignupButton(_ sender: Any) {
     }
 
     @IBAction
-    func handleGoToLogin(_ sender: Any) {
+    private func didTappedGoToLoginButton(_ sender: Any) {
         dismiss(animated: true)
     }
 
-    // MARK: Fileprivate
-
     @objc
-    fileprivate func handleKeyboardShow(notification: Notification) {
+    private func keyboardWillShow(notification: Notification) {
         guard let value = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         else { return }
         // figure out how tall the gap is from the register button to the bottom of the screen
@@ -90,7 +93,7 @@ class SignUpViewController: UIViewController {
     }
 
     @objc
-    fileprivate func handleKeyboardHide() {
+    private func keyboardWillHide() {
         UIView.animate(
             withDuration: 0.5,
             delay: 0,
@@ -103,7 +106,7 @@ class SignUpViewController: UIViewController {
         )
     }
 
-    fileprivate func setupLayout() {
+    private func setupLayout() {
         nameLabel.isHidden = true
         emailLabel.isHidden = true
         passwordLabel.isHidden = true
@@ -112,15 +115,25 @@ class SignUpViewController: UIViewController {
         emailView.setTextfieldStyle()
         passwordView.setTextfieldStyle()
 
-        nameTextfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
-        emailTextfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
-        passwordTextfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+        nameTextfield.addTarget(
+            self,
+            action: #selector(textFieldEditingChanged),
+            for: .editingChanged
+        )
+        emailTextfield.addTarget(
+            self,
+            action: #selector(textFieldEditingChanged),
+            for: .editingChanged
+        )
+        passwordTextfield.addTarget(
+            self,
+            action: #selector(textFieldEditingChanged),
+            for: .editingChanged
+        )
     }
 
-    // MARK: Private
-
     @objc
-    private func handleTextChange(_ textField: UITextField) {
+    private func textFieldEditingChanged(_ textField: UITextField) {
         if textField == nameTextfield {
             nameLabel.isHidden = nameTextfield.text?.count == 0 ? true : false
         } else if textField == emailTextfield {
