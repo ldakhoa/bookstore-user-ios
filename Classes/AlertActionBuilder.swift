@@ -10,6 +10,17 @@ import UIKit
 // MARK: AlertActionBuilder
 
 class AlertActionBuilder {
+
+    // MARK: Lifecycle
+
+    // MARK: Init
+
+    init(_ buildClosure: BuilderClosure) {
+        buildClosure(self)
+    }
+
+    // MARK: Internal
+
     typealias BuilderClosure = (AlertActionBuilder) -> Void
 
     // MARK: Properties
@@ -18,10 +29,5 @@ class AlertActionBuilder {
     var title: String?
     var style: UIAlertAction.Style?
 
-    // MARK: Init
-
-    init(_ buildClosure: BuilderClosure) {
-        buildClosure(self)
-    }
 }
 

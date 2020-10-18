@@ -109,7 +109,11 @@ final class LoginViewController: UIViewController {
             } else {
 //                Log.error("Error: \(data["message"].stringValue)")
                 let message = data["message"].stringValue
-                let alert = UIAlertController.configured(title: "", message: message, preferredStyle: .alert)
+                let alert = UIAlertController.configured(
+                    title: "",
+                    message: message,
+                    preferredStyle: .alert
+                )
                 alert.addAction(AlertAction.ok())
                 self.present(alert, animated: true)
             }

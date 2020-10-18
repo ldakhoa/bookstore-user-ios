@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        // Override point for customization after application launch.
+
+        // TODO: - Turn off this when implement cart/checkout feature
+        AppSetting.shared.checkMainScreen()
         return true
     }
 

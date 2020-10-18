@@ -46,4 +46,14 @@ struct AppSetting {
         AppSetting.appDelegate.window?.rootViewController = mainTabBarController
         AppSetting.appDelegate.window?.makeKeyAndVisible()
     }
+
+    func checkMainScreen() {
+        AppSecurity.shared.isAuthorized == true ? AppSetting.shared.getMainController(): AppSetting.shared.getLoginController()
+    }
+
+    func logout() {
+        AppSecurity.shared.userID = -1
+        AppSecurity.shared.isAuthorized = false
+        AppSecurity.shared.isUserInfoExist = false
+    }
 }

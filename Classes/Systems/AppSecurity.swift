@@ -15,7 +15,7 @@ final class AppSecurity {
         case email
         case userID
         case isAuthorized
-        case userInforExist
+        case isUserInfoExist
     }
 
     static let shared = AppSecurity()
@@ -44,11 +44,11 @@ final class AppSecurity {
         }
     }
 
-    var userInforExist: Bool {
+    var isUserInfoExist: Bool {
         get {
-            return defaults.object(forKey: Keys.userInforExist.rawValue) == nil ? false : (defaults.object(forKey: Keys.userInforExist.rawValue) as? Bool)!
+            return defaults.object(forKey: Keys.isUserInfoExist.rawValue) == nil ? false : (defaults.object(forKey: Keys.isUserInfoExist.rawValue) as? Bool)!
         } set {
-            defaults.set(newValue, forKey: Keys.userInforExist.rawValue)
+            defaults.set(newValue, forKey: Keys.isUserInfoExist.rawValue)
         }
     }
 

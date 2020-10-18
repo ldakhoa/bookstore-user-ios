@@ -68,6 +68,27 @@ final class ProfileTableViewController: UITableViewController {
         return 100
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 6 {
+            tableView.deselectRow(at: indexPath, animated: false)
+            let alert = UIAlertController.configured(
+                title: "Are you sure",
+                message: "Are you sure you want to log out?",
+                preferredStyle: .actionSheet
+            )
+            alert.addActions([
+                AlertAction.cancel(),
+                AlertAction(AlertActionBuilder {
+                    $0.title = "Log out"
+                    $0.style = .destructive
+                }).get { [weak self] _ in
+                    self?.logout()
+                },
+            ])
+            present(alert, animated: true)
+        }
+    }
+
     // MARK: Private
 
     private let datasource: [String] = [
@@ -80,6 +101,11 @@ final class ProfileTableViewController: UITableViewController {
     ]
 
     private let cellID = "ProfileCell"
+
+    private func logout() {
+        AppSetting.shared.logout()
+        AppSetting.shared.checkMainScreen()
+    }
 
     @objc
     private func didTapShowProfile() {

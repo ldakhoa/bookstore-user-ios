@@ -10,9 +10,8 @@ import UIKit
 typealias AlertActionBlock = (UIAlertAction) -> Void
 
 struct AlertAction {
-    let rootViewController: UIViewController?
-    let title: String?
-    let style: UIAlertAction.Style
+
+    // MARK: Lifecycle
 
     // MARK: Init
 
@@ -22,11 +21,11 @@ struct AlertAction {
         style = builder.style ?? .default
     }
 
-    // MARK: Public
+    // MARK: Internal
 
-    func get(_ handler: AlertActionBlock? = nil) -> UIAlertAction {
-        return UIAlertAction(title: title, style: style, handler: handler)
-    }
+    let rootViewController: UIViewController?
+    let title: String?
+    let style: UIAlertAction.Style
 
     // MARK: Static
 
@@ -49,5 +48,10 @@ struct AlertAction {
     static func tryAgain(_ handler: AlertActionBlock? = nil) -> UIAlertAction {
         return UIAlertAction(title: "Try again", style: .default, handler: handler)
     }
+
+    func get(_ handler: AlertActionBlock? = nil) -> UIAlertAction {
+        return UIAlertAction(title: title, style: style, handler: handler)
+    }
+
 }
 
