@@ -24,7 +24,7 @@ enum HTTPRequester {
     case signup(username: String, email: String, password: String)
     case getInformationOfUserWith(id: Int)
     case updateInformationOfUserWith(id: Int)
-    case getBookBySearch(searchString: String)
+    case getBookSearchBy(searchString: String)
 }
 
 extension HTTPRequester: Requestable {
@@ -70,12 +70,11 @@ extension HTTPRequester: Requestable {
                 parameter: params,
                 encoding: JSONEncoding.default
             )
-        case let .getBookBySearch(searchString):
-            let params: [String: String] = [:]
+        case let .getBookSearchBy(searchString):
             return (
                 path: URL(string: coreURL + "api/books/?search=\(searchString)")!,
-                method: .post,
-                parameter: params,
+                method: .get,
+                parameter: nil,
                 encoding: JSONEncoding.default
             )
 

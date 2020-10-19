@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="GS5-ID-vU2">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="5se-U9-sVl" customClass="SearchViewController" customModule="bsuser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xVV-nk-X8q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ObE-oP-7ix" customClass="SearchGradientView" customModule="bsuser" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="109"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="109" id="EL6-7u-HFq"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BcJ-Hr-fEH">
+                                <rect key="frame" x="0.0" y="109" width="414" height="753"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="93" id="fK7-jD-OVA" customClass="SearchCell" customModule="bsuser" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="93"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fK7-jD-OVA" id="VYy-Gf-rsX">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compiler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaX-6J-Crj">
+                                                    <rect key="frame" x="12" y="37.5" width="390" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                    <color key="textColor" name="black"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kaX-6J-Crj" firstAttribute="leading" secondItem="VYy-Gf-rsX" secondAttribute="leading" constant="12" id="6Sq-pX-9lA"/>
+                                                <constraint firstAttribute="trailing" secondItem="kaX-6J-Crj" secondAttribute="trailing" constant="12" id="7Lj-HF-peN"/>
+                                                <constraint firstItem="kaX-6J-Crj" firstAttribute="centerY" secondItem="VYy-Gf-rsX" secondAttribute="centerY" id="wlr-b5-44S"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bookNameLabel" destination="kaX-6J-Crj" id="SJe-9l-m0J"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rFm-DL-BR7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rFm-DL-BR7" firstAttribute="trailing" secondItem="ObE-oP-7ix" secondAttribute="trailing" id="7qz-cg-bvA"/>
+                            <constraint firstItem="BcJ-Hr-fEH" firstAttribute="top" secondItem="ObE-oP-7ix" secondAttribute="bottom" id="O2r-Bt-jQK"/>
+                            <constraint firstItem="ObE-oP-7ix" firstAttribute="leading" secondItem="rFm-DL-BR7" secondAttribute="leading" id="brc-eL-YIE"/>
+                            <constraint firstItem="rFm-DL-BR7" firstAttribute="bottom" secondItem="BcJ-Hr-fEH" secondAttribute="bottom" id="eYw-Ra-Aux"/>
+                            <constraint firstItem="BcJ-Hr-fEH" firstAttribute="leading" secondItem="rFm-DL-BR7" secondAttribute="leading" id="iXE-uC-FCo"/>
+                            <constraint firstItem="rFm-DL-BR7" firstAttribute="trailing" secondItem="BcJ-Hr-fEH" secondAttribute="trailing" id="kQz-ge-McY"/>
+                            <constraint firstItem="ObE-oP-7ix" firstAttribute="top" secondItem="xVV-nk-X8q" secondAttribute="top" id="pW7-AN-lu9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchGradientView" destination="ObE-oP-7ix" id="Uoc-xU-uvn"/>
+                        <outlet property="tableView" destination="BcJ-Hr-fEH" id="Gxe-WI-rFg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hX-og-jxa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-11.594202898550726" y="10.714285714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="black">
+            <color red="0.17647058823529413" green="0.17647058823529413" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

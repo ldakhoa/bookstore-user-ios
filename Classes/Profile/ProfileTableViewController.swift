@@ -125,7 +125,6 @@ final class ProfileTableViewController: UITableViewController {
         NetworkManagement.getInformationOfUserWith(id: userId) { code, data in
             if code == ResponseCode.ok.rawValue {
                 self.user = User.parseData(json: data["user"])
-                print("name \(self.user.username)")
                 self.tableView.reloadData()
             } else {
                 let errMessage = data["message"].stringValue

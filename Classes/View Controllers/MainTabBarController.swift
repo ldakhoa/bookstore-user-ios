@@ -39,7 +39,7 @@ final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
         ]
 
         let homeVC = AppSetting.Storyboards.Home.homeVC
-        let searchVC = AppSetting.Storyboards.Search.bookListVC
+        let searchVC = AppSetting.Storyboards.BookList.bookListVC
         let profileVC = ProfileTableViewController()
         let profileNavbarVC = UINavigationController(rootViewController: profileVC)
 

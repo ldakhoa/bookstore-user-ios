@@ -11,8 +11,7 @@ final class BookListViewController: UIViewController {
 
     // MARK: Internal
 
-    @IBOutlet var bookListTableView: UITableView!
-    @IBOutlet var searchTableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var collectionView: UICollectionView!
     let filterDatasource: [String] = [
         "Sorted by: Ascending",
@@ -23,16 +22,8 @@ final class BookListViewController: UIViewController {
 
     @IBOutlet var searchGradientView: SearchGradientView! {
         didSet {
-            searchGradientView.searchTextField.addTarget(
-                self,
-                action: #selector(didTappedToSearchTextField),
-                for: .editingDidBegin
-            )
-            searchGradientView.backButton.addTarget(
-                self,
-                action: #selector(didTapBackButton),
-                for: .touchUpInside
-            )
+            searchGradientView.searchTextField.isUserInteractionEnabled = false
+            searchGradientView.layoutForOtherViewController()
         }
     }
 
@@ -41,70 +32,43 @@ final class BookListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bookListTableView.backgroundColor = Styles.Colors.background.color
-        bookListTableView.separatorStyle = .none
-        bookListTableView.delegate = self
-        bookListTableView.dataSource = self
-
-        searchTableView.backgroundColor = Styles.Colors.background2.color
-        searchTableView.separatorStyle = .none
-        searchTableView.delegate = self
-        searchTableView.dataSource = self
+        tableView.backgroundColor = Styles.Colors.background.color
+        tableView.separatorStyle = .none
+        tableView.delegate = self
+        tableView.dataSource = self
 
         collectionView.dataSource = self
         collectionView.delegate = self
+
+        searchGradientView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTappedSearchGradientView)))
     }
 
     // MARK: Private
 
-    @objc
-    private func didTappedToSearchTextField() {
-        bookListTableView.isHidden = true
-        searchTableView.isHidden = false
-    }
-
-    @objc
-    private func didTapBackButton() {
-        bookListTableView.isHidden = false
-        searchTableView.isHidden = true
-        searchGradientView.setTextFieldWithoutBack()
-        searchGradientView.searchTextField.resignFirstResponder()
+    @objc private func didTappedSearchGradientView() {
+        let searchVC = AppSetting.Storyboards.Search.searchVC
+        searchVC.modalPresentationStyle = .fullScreen
+        present(searchVC, animated: true)
     }
 }
 
 extension BookListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
-        if tableView == bookListTableView {
-            return 10
-        } else {
-            return 8
-        }
+        return 10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == bookListTableView {
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: "BookListCell",
-                for: indexPath
-            ) as! BookListCell
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: "BookSearchCell",
-                for: indexPath
-            )
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "BookListCell",
+            for: indexPath
+        ) as! BookListCell
+        return cell
     }
 }
 
 extension BookListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        if tableView == bookListTableView {
-            return 135 + 16 + 16
-        } else {
-            return 40
-        }
+        return 135 + 16 + 16
     }
 }
 

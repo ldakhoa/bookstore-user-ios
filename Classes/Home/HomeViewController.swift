@@ -11,15 +11,7 @@ final class HomeViewController: UIViewController {
 
     // MARK: Internal
 
-    @IBOutlet weak var searchGradientView: SearchGradientView! {
-        didSet {
-            searchGradientView.backButton.addTarget(
-                self,
-                action: #selector(handleReturnUIState),
-                for: .touchUpInside
-            )
-        }
-    }
+    @IBOutlet weak var searchGradientView: SearchGradientView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +23,6 @@ final class HomeViewController: UIViewController {
 
     @objc
     private func handleReturnUIState() {
-        searchGradientView.setTextFieldWithoutBack()
         searchGradientView.searchTextField.resignFirstResponder()
         searchGradientView.searchTextField.text = ""
     }

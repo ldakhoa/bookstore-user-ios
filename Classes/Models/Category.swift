@@ -6,7 +6,20 @@
 //
 
 import Foundation
+import SwiftyJSON
 
-struct Category {
-    let categoryName: String
+final class Category {
+    var categoryName: String = ""
+    var id: Int = -1
+
+    static func parseData(item: JSON) -> Category {
+        let category = Category()
+        category.categoryName = item["name"].string ?? ""
+        category.id = item["name"].int ?? -1
+        return category
+    }
+
+    init(categoryName: String = "") {
+        self.categoryName = categoryName
+    }
 }

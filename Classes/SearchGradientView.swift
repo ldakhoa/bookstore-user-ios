@@ -9,27 +9,51 @@ import UIKit
 
 class SearchGradientView: UIView, UITextFieldDelegate {
     let searchTextField = iBooksSearchTextField()
-    let backButton: UIButton = {
+    let cancelButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "back"), for: .normal)
-        button.constrainHeight(24)
-        button.constrainWidth(24)
-        button.isHidden = true
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = Styles.Text.title.preferredFont
         return button
     }()
 
-    var anchorConstraint: AnchoredConstraints!
+//    var anchorConstraint: AnchoredConstraints!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         searchTextField.delegate = self
         insertGradientBackground()
+//        layoutForOtherViewController()
 
+//        addSubview(searchTextField)
+//        addSubview(cancelButton)
+
+//        anchorConstraint =
+//        searchTextField.anchor(
+//            top: topAnchor,
+//            leading: leadingAnchor,
+//            bottom: nil,
+//            trailing: cancelButton.leadingAnchor,
+//            padding: .init(top: 54, left: 15, bottom: 0, right: 15),
+//            size: .init(width: 0, height: 40)
+//        )
+//
+//        cancelButton.anchor(
+//            top: nil,
+//            leading: nil,
+//            bottom: nil,
+//            trailing: trailingAnchor,
+//            padding: .init(top: 0, left: 0, bottom: 0, right: 12)
+//        )
+//        cancelButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
+
+
+    }
+
+    func layoutForOtherViewController() {
         addSubview(searchTextField)
-        addSubview(backButton)
-
-        anchorConstraint = searchTextField.anchor(
+        searchTextField.anchor(
             top: topAnchor,
             leading: leadingAnchor,
             bottom: nil,
@@ -37,40 +61,51 @@ class SearchGradientView: UIView, UITextFieldDelegate {
             padding: .init(top: 54, left: 15, bottom: 0, right: 15),
             size: .init(width: 0, height: 40)
         )
+    }
 
-        backButton.anchor(
-            top: nil,
+    func layoutForSearchController() {
+        addSubview(searchTextField)
+        addSubview(cancelButton)
+
+        searchTextField.anchor(
+            top: topAnchor,
             leading: leadingAnchor,
             bottom: nil,
-            trailing: nil,
-            padding: .init(top: 0, left: 12, bottom: 0, right: 0),
-            size: .init(width: 24, height: 24)
+            trailing: cancelButton.leadingAnchor,
+            padding: .init(top: 54, left: 15, bottom: 0, right: 15),
+            size: .init(width: 0, height: 40)
         )
-        backButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
 
-//        searchTextField.addTarget(self, action: #selector(handleEditingChanged), for: .editingChanged)
+        cancelButton.anchor(
+            top: nil,
+            leading: nil,
+            bottom: nil,
+            trailing: trailingAnchor,
+            padding: .init(top: 0, left: 0, bottom: 0, right: 12)
+        )
+        cancelButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
     }
 
     @objc
     func handleEditingChanged(textField: UITextField) {
         if textField.text?.count == 0 {
-            setTextFieldWithoutBack()
+//            setTextFieldWithoutBack()
         } else {
-            setTextFieldWithBack()
+//            setTextFieldWithBack()
         }
     }
 
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        setTextFieldWithBack()
-        return true
-    }
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        setTextFieldWithBack()
+//        return true
+//    }
+//
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        setTextFieldWithoutBack()
+//        return true
+//    }
 
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        setTextFieldWithoutBack()
-        return true
-    }
-
-    func insertGradientBackground() {
+    private func insertGradientBackground() {
         let layer = CAGradientLayer()
         layer.colors = [
             Styles.Colors.Gradient.color1,
@@ -93,13 +128,13 @@ class SearchGradientView: UIView, UITextFieldDelegate {
         self.layer.insertSublayer(layer, at: 0)
     }
 
-    func setTextFieldWithoutBack() {
-        backButton.isHidden = true
-        anchorConstraint.leading?.constant = 15
-    }
-
-    func setTextFieldWithBack() {
-        backButton.isHidden = false
-        anchorConstraint.leading?.constant = 12 + 12 + 24
-    }
+//    func setTextFieldWithoutBack() {
+//        backButton.isHidden = true
+//        anchorConstraint.leading?.constant = 15
+//    }
+//
+//    func setTextFieldWithBack() {
+//        backButton.isHidden = false
+//        anchorConstraint.leading?.constant = 12 + 12 + 24
+//    }
 }

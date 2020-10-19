@@ -18,12 +18,13 @@ enum ResponseCode: Int {
 
 struct NetworkManagement {
 
+    typealias responseHandler = (_ code: Int, _ result: JSON) -> Void
     // MARK: Public
 
     static public func login(
         email: String,
         password: String,
-        response: @escaping ((_ code: Int, _ result: JSON) -> Void)
+        response: @escaping responseHandler
     ) {
         let requester = HTTPRequester.login(email: email, password: password)
         callAPI(requester) { code, json in
@@ -35,7 +36,7 @@ struct NetworkManagement {
         username: String,
         email: String,
         password: String,
-        response: @escaping ((_ code: Int, _ result: JSON) -> Void)
+        response: @escaping responseHandler
     ) {
         let requester = HTTPRequester.signup(username: username, email: email, password: password)
         callAPI(requester) { code, json in
@@ -45,7 +46,7 @@ struct NetworkManagement {
 
     static public func getInformationOfUserWith(
         id: Int,
-        response: @escaping ((_ code: Int, _ result: JSON) -> Void)
+        response: @escaping responseHandler
     ) {
         let requester = HTTPRequester.getInformationOfUserWith(id: id)
         callAPI(requester) { code, json in
@@ -53,6 +54,15 @@ struct NetworkManagement {
         }
     }
 
+    static public func getBookSearchBy(
+        searchString: String,
+        response: @escaping responseHandler
+    ) {
+        let requester = HTTPRequester.getBookSearchBy(searchString: searchString)
+        callAPI(requester) { (code, json) in
+            response(code, json)
+        }
+    }
 
     // MARK: Private
 
@@ -73,8 +83,8 @@ struct NetworkManagement {
                 guard let data = responseData.data,
                     let parseJSON = try? JSON(data: data) else { return }
                 var responseCode = ResponseCode.ok.rawValue
-                if let code = parseJSON["code"].int {
-                    print("code: ", code)
+                if let code = parseJSON["code"].int {                    
+                    Log.debug("Response code: ", code)
                     responseCode = code
                 }
                 response(responseCode, parseJSON)
