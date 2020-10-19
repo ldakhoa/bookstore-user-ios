@@ -5,8 +5,8 @@
 //  Created by Khoa Le on 13/10/2020.
 //
 
-import UIKit
 import SwiftyJSON
+import UIKit
 
 final class Book {
     let id: Int = -1
@@ -25,6 +25,6 @@ final class Book {
     let categories = [Category]()
 
     static func parseData(json: JSON) {
-        
+
     }
 }

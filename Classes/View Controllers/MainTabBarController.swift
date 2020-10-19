@@ -10,8 +10,6 @@ import UIKit
 
 final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
 
-    private var user = User()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let baTabBarController = BATabBarController()
@@ -60,13 +58,4 @@ final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
     }
 
     func tabBarController(_: BATabBarController, didSelect _: UIViewController) {}
-
-    private func fetchUserInfo() {
-        guard let userId = AppSecurity.shared.userID else { return }
-        NetworkManagement.getInformationOfUserWith(id: userId) { (code, data) in
-            if code == ResponseCode.ok.rawValue {
-                
-            }
-        }
-    }
 }

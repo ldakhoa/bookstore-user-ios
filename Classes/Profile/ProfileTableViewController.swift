@@ -5,15 +5,15 @@
 //  Created by Khoa Le on 11/10/2020.
 //
 
-import UIKit
 import JGProgressHUD
+import UIKit
 
 final class ProfileTableViewController: UITableViewController {
 
+    // MARK: Internal
+
     var user = User()
     let hud = JGProgressHUD(style: .dark)
-
-    // MARK: Internal
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,14 +122,18 @@ final class ProfileTableViewController: UITableViewController {
 
     private func fetchUserInfo() {
         guard let userId = AppSecurity.shared.userID else { return }
-        NetworkManagement.getInformationOfUserWith(id: userId) { (code, data) in
+        NetworkManagement.getInformationOfUserWith(id: userId) { code, data in
             if code == ResponseCode.ok.rawValue {
                 self.user = User.parseData(json: data["user"])
                 print("name \(self.user.username)")
                 self.tableView.reloadData()
             } else {
                 let errMessage = data["message"].stringValue
-                let alert = UIAlertController.configured(title: "Something wrong", message: errMessage, preferredStyle: .alert)
+                let alert = UIAlertController.configured(
+                    title: "Something wrong",
+                    message: errMessage,
+                    preferredStyle: .alert
+                )
                 alert.addAction(AlertAction.ok())
                 self.present(alert, animated: true)
             }
