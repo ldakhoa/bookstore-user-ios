@@ -31,10 +31,14 @@ final class LoginViewController: UIViewController {
         view.backgroundColor = Styles.Colors.background.color
 
         setupLayout()
+
+        emailTextfield.text = AppSecurity.shared.email
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        AppSetting.shared.logout()
 
         NotificationCenter.default.addObserver(
             self,
@@ -63,6 +67,8 @@ final class LoginViewController: UIViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+
+        passwordTextfield.text = ""
     }
 
     override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
@@ -101,13 +107,12 @@ final class LoginViewController: UIViewController {
             if code == ResponseCode.ok.rawValue {
                 AppSecurity.shared.userID = data["user"]["id"].int
                 AppSecurity.shared.email = emailText
-                User.parseData(json: data["user"])
+                AppSecurity.shared.isUserInfoExist = true
                 AppSecurity.shared.isAuthorized = true
                 AppSetting.shared.getMainController()
                 self.hud.dismiss()
                 Log.debug("Login response \(data)")
             } else {
-//                Log.error("Error: \(data["message"].stringValue)")
                 let message = data["message"].stringValue
                 let alert = UIAlertController.configured(
                     title: "",
@@ -116,6 +121,7 @@ final class LoginViewController: UIViewController {
                 )
                 alert.addAction(AlertAction.ok())
                 self.present(alert, animated: true)
+                self.hud.dismiss()
             }
         }
     }

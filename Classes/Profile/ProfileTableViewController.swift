@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 final class ProfileTableViewController: UITableViewController {
+
+    var user = User()
+    let hud = JGProgressHUD(style: .dark)
 
     // MARK: Internal
 
@@ -21,6 +25,8 @@ final class ProfileTableViewController: UITableViewController {
         let nib = UINib(nibName: "ProfileCell", bundle: nil)
 
         tableView.register(nib, forCellReuseIdentifier: cellID)
+
+        fetchUserInfo()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +62,7 @@ final class ProfileTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = ProfileHeaderView()
+        headerView.nameLabel.text = user.username.capitalizingFirstLetter()
         headerView.showProfileButton.addTarget(
             self,
             action: #selector(didTapShowProfile),
@@ -111,5 +118,21 @@ final class ProfileTableViewController: UITableViewController {
     private func didTapShowProfile() {
         let editPersonalInfoController = EditPersonalInfoController()
         navigationController?.pushViewController(editPersonalInfoController, animated: true)
+    }
+
+    private func fetchUserInfo() {
+        guard let userId = AppSecurity.shared.userID else { return }
+        NetworkManagement.getInformationOfUserWith(id: userId) { (code, data) in
+            if code == ResponseCode.ok.rawValue {
+                self.user = User.parseData(json: data["user"])
+                print("name \(self.user.username)")
+                self.tableView.reloadData()
+            } else {
+                let errMessage = data["message"].stringValue
+                let alert = UIAlertController.configured(title: "Something wrong", message: errMessage, preferredStyle: .alert)
+                alert.addAction(AlertAction.ok())
+                self.present(alert, animated: true)
+            }
+        }
     }
 }

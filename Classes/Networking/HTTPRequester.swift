@@ -56,11 +56,10 @@ extension HTTPRequester: Requestable {
                 encoding: JSONEncoding.default
             )
         case let .getInformationOfUserWith(id):
-            let params: [String: Int] = ["id": id]
             return (
                 path: URL(string: coreURL + "api/users/\(id)")!,
-                method: .post,
-                parameter: params,
+                method: .get,
+                parameter: nil,
                 encoding: JSONEncoding.default
             )
         case let .updateInformationOfUserWith(id):

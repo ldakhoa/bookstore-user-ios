@@ -17,14 +17,15 @@ final class User {
     var gender: String = ""
     var phone: Int = -1
 
-    static func parseData(json: JSON) {
+    static func parseData(json: JSON) -> User {
         let user = User()
         user.id = json["id"].int ?? -1
         user.email = json["email"].string ?? ""
-        user.username = json["username"].string ?? ""
+        user.username = json["userName"].string ?? ""
         user.password = json["password"].string ?? ""
         user.address = json["address"].string ?? ""
         user.gender = json["gender"].string ?? ""
         user.phone = json["phone"].int ?? -1
+        return user
     }
 }
