@@ -9,6 +9,8 @@ import UIKit
 
 final class SearchViewController: UIViewController {
 
+    // MARK: Internal
+
     @IBOutlet weak var searchGradientView: SearchGradientView!
     @IBOutlet weak var tableView: UITableView!
     var timer: Timer?
@@ -18,8 +20,16 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         searchGradientView.layoutForSearchController()
-        searchGradientView.cancelButton.addTarget(self, action: #selector(didTappedCancelButton), for: .touchUpInside)
-        searchGradientView.searchTextField.addTarget(self, action: #selector(textEditingChanged), for: .editingChanged)
+        searchGradientView.cancelButton.addTarget(
+            self,
+            action: #selector(didTappedCancelButton),
+            for: .touchUpInside
+        )
+        searchGradientView.searchTextField.addTarget(
+            self,
+            action: #selector(textEditingChanged),
+            for: .editingChanged
+        )
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -32,21 +42,25 @@ final class SearchViewController: UIViewController {
         searchGradientView.searchTextField.becomeFirstResponder()
     }
 
-    @objc private func didTappedCancelButton() {
+    // MARK: Private
+
+    @objc
+    private func didTappedCancelButton() {
         dismiss(animated: true)
     }
 
-    @objc private func textEditingChanged(textField: UITextField) {
+    @objc
+    private func textEditingChanged(textField: UITextField) {
         guard let textString = textField.text, !textString.isEmpty else { return }
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { (_) in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { _ in
             self.getBookBySearch(text: textString)
         })
 
     }
 
     private func getBookBySearch(text: String) {
-        NetworkManagement.getBookSearchBy(searchString: text) { [weak self] (code, data) in
+        NetworkManagement.getBookSearchBy(searchString: text) { [weak self] code, data in
             guard let self = self else { return }
             if code == ResponseCode.ok.rawValue {
                 self.books = Book.parseData(json: data)

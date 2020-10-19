@@ -40,12 +40,16 @@ final class BookListViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        searchGradientView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTappedSearchGradientView)))
+        searchGradientView.addGestureRecognizer(UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTappedSearchGradientView)
+        ))
     }
 
     // MARK: Private
 
-    @objc private func didTappedSearchGradientView() {
+    @objc
+    private func didTappedSearchGradientView() {
         let searchVC = AppSetting.Storyboards.Search.searchVC
         searchVC.modalPresentationStyle = .fullScreen
         present(searchVC, animated: true)

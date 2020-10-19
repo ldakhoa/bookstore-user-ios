@@ -9,6 +9,15 @@ import Foundation
 import SwiftyJSON
 
 final class Category {
+
+    // MARK: Lifecycle
+
+    init(categoryName: String = "") {
+        self.categoryName = categoryName
+    }
+
+    // MARK: Internal
+
     var categoryName: String = ""
     var id: Int = -1
 
@@ -19,7 +28,4 @@ final class Category {
         return category
     }
 
-    init(categoryName: String = "") {
-        self.categoryName = categoryName
-    }
 }

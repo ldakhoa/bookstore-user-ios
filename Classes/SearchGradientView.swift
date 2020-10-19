@@ -8,6 +8,9 @@
 import UIKit
 
 class SearchGradientView: UIView, UITextFieldDelegate {
+
+    // MARK: Internal
+
     let searchTextField = iBooksSearchTextField()
     let cancelButton: UIButton = {
         let button = UIButton(type: .system)
@@ -94,6 +97,8 @@ class SearchGradientView: UIView, UITextFieldDelegate {
 //            setTextFieldWithBack()
         }
     }
+
+    // MARK: Private
 
 //    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 //        setTextFieldWithBack()

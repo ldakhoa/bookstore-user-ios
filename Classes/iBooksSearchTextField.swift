@@ -33,7 +33,10 @@ class iBooksSearchTextField: UITextField {
         let rightImageView = UIImageView(image: #imageLiteral(resourceName: "cancel-edit"))
         rightView = rightImageView
         rightViewMode = .whileEditing
-        rightImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTappedRightImageView)))
+        rightImageView.addGestureRecognizer(UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTappedRightImageView)
+        ))
         rightImageView.isUserInteractionEnabled = true
     }
 
@@ -61,11 +64,14 @@ class iBooksSearchTextField: UITextField {
     }
 
     override func rightViewRect(forBounds _: CGRect) -> CGRect {
-        return .init(x: self.frame.width - 24, y: 12, width: 16, height: 16)
+        return .init(x: frame.width - 24, y: 12, width: 16, height: 16)
     }
 
-    @objc private func didTappedRightImageView() {
-        self.text = ""
+    // MARK: Private
+
+    @objc
+    private func didTappedRightImageView() {
+        text = ""
     }
 
 }

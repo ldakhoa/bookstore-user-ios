@@ -9,6 +9,22 @@ import SwiftyJSON
 import UIKit
 
 final class Book {
+
+    // MARK: Public
+
+    public static func parseData(json: JSON) -> [Book] {
+        var books = [Book]()
+        if let bookArray = json["books"].array {
+            bookArray.forEach { book in
+                let book = Book.parseItem(item: book)
+                books.append(book)
+            }
+        }
+        return books
+    }
+
+    // MARK: Internal
+
     var id: Int = -1
     var author: String = ""
     var title: String = ""
@@ -23,6 +39,8 @@ final class Book {
     var edition: String = ""
     var imageUrl: String = ""
     var categories = [Category]()
+
+    // MARK: Private
 
     private static func parseItem(item: JSON) -> Book {
         let book = Book()
@@ -39,7 +57,7 @@ final class Book {
         book.imageUrl = item["imageUrl"].string ?? ""
 
         if let categories = item["categories"].array {
-            categories.forEach { (categoryItem) in
+            categories.forEach { categoryItem in
                 let category = Category.parseData(item: categoryItem)
                 book.categories.append(category)
             }
@@ -47,14 +65,4 @@ final class Book {
         return book
     }
 
-    public static func parseData(json: JSON) -> [Book] {
-        var books = [Book]()
-        if let bookArray = json["books"].array {
-            bookArray.forEach { (book) in
-                let book = Book.parseItem(item: book)
-                books.append(book)
-            }
-        }
-        return books
-    }
 }

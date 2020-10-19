@@ -18,7 +18,6 @@ enum ResponseCode: Int {
 
 struct NetworkManagement {
 
-    typealias responseHandler = (_ code: Int, _ result: JSON) -> Void
     // MARK: Public
 
     static public func login(
@@ -59,10 +58,14 @@ struct NetworkManagement {
         response: @escaping responseHandler
     ) {
         let requester = HTTPRequester.getBookSearchBy(searchString: searchString)
-        callAPI(requester) { (code, json) in
+        callAPI(requester) { code, json in
             response(code, json)
         }
     }
+
+    // MARK: Internal
+
+    typealias responseHandler = (_ code: Int, _ result: JSON) -> Void
 
     // MARK: Private
 
@@ -83,7 +86,7 @@ struct NetworkManagement {
                 guard let data = responseData.data,
                     let parseJSON = try? JSON(data: data) else { return }
                 var responseCode = ResponseCode.ok.rawValue
-                if let code = parseJSON["code"].int {                    
+                if let code = parseJSON["code"].int {
                     Log.debug("Response code: ", code)
                     responseCode = code
                 }
