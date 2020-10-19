@@ -31,6 +31,12 @@ final class SearchViewController: UIViewController {
             for: .editingChanged
         )
 
+        searchGradientView.searchTextField.rightImageView.addGestureRecognizer(UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTappedRightImageView)
+        ))
+        searchGradientView.searchTextField.rightImageView.isUserInteractionEnabled = true
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.keyboardDismissMode = .onDrag
@@ -43,6 +49,13 @@ final class SearchViewController: UIViewController {
     }
 
     // MARK: Private
+
+    @objc
+    private func didTappedRightImageView() {
+        searchGradientView.searchTextField.text = ""
+        books.removeAll()
+        tableView.reloadData()
+    }
 
     @objc
     private func didTappedCancelButton() {
