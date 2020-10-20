@@ -25,6 +25,7 @@ final class ProfileTableViewController: UITableViewController {
         let nib = UINib(nibName: "ProfileCell", bundle: nil)
 
         tableView.register(nib, forCellReuseIdentifier: cellID)
+        self.tabBarController?.tabBar.isHidden = true
 
         fetchUserInfo()
     }
@@ -117,6 +118,8 @@ final class ProfileTableViewController: UITableViewController {
     @objc
     private func didTapShowProfile() {
         let editPersonalInfoController = EditPersonalInfoController()
+        editPersonalInfoController.user = user
+        editPersonalInfoController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(editPersonalInfoController, animated: true)
     }
 

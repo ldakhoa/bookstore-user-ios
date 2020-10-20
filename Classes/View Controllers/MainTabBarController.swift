@@ -8,54 +8,43 @@
 import BATabBarController
 import UIKit
 
-final class MainTabBarController: UIViewController, BATabBarControllerDelegate {
+final class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let baTabBarController = BATabBarController()
 
-        let homeTabbarItem = BATabBarItem(
-            image: UIImage(named: "home-inactive")!,
-            selectedImage: UIImage(named: "home-activated")!
-        )
-        let categoryTabbarItem = BATabBarItem(
-            image: UIImage(named: "category-inactive")!,
-            selectedImage: UIImage(named: "category-activated")!
-        )
-        let bagTabbarItem = BATabBarItem(
-            image: UIImage(named: "bag-inactive")!,
-            selectedImage: UIImage(named: "bag-activated")!
-        )
-        let profileTabbarItem = BATabBarItem(
-            image: UIImage(named: "profile-inactive")!,
-            selectedImage: UIImage(named: "profile-activated")!
-        )
-
-        baTabBarController.tabBarItems = [
-            homeTabbarItem,
-            categoryTabbarItem,
-            bagTabbarItem,
-            profileTabbarItem,
-        ]
+        tabBar.tintColor = Styles.Colors.black.color
 
         let homeVC = AppSetting.Storyboards.Home.homeVC
         let searchVC = AppSetting.Storyboards.BookList.bookListVC
         let profileVC = ProfileTableViewController()
-        let profileNavbarVC = UINavigationController(rootViewController: profileVC)
-
         let categoryVC = AppSetting.Storyboards.Category.categoryVC
 
-        let vc4 = UIViewController()
-        vc4.view.backgroundColor = .yellow
-
-        baTabBarController.delegate = self
-        // TODO: - Change order of tabbar
-        baTabBarController.viewControllers = [searchVC, categoryVC, homeVC, profileNavbarVC]
-        baTabBarController.tabBarBackgroundColor = Styles.Colors.White.normal
-        baTabBarController.tabBarItemStrokeColor = Styles.Colors.primary.color
-        baTabBarController.tabBarAnimationDuration = 0.5
-        view.addSubview(baTabBarController.view)
+        viewControllers = [
+            createNavController(viewController: searchVC, title: "Shop", imageName: "home-inactive", selectedImageName: "home-activated"),
+            createNavController(viewController: categoryVC, title: "Category", imageName: "category-inactive", selectedImageName: "category-activated"),
+            createNavController(viewController: homeVC, title: "Bag", imageName: "bag-inactive", selectedImageName: "bag-activated"),
+            createNavController(viewController: profileVC, title: "Profile", imageName: "profile-inactive", selectedImageName: "profile-activated"),
+        ]
     }
 
-    func tabBarController(_: BATabBarController, didSelect _: UIViewController) {}
+    private func createNavController(
+        viewController: UIViewController,
+        title: String,
+        imageName: String,
+        selectedImageName: String
+    ) -> UIViewController {
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.navigationBar.prefersLargeTitles = true
+
+        navController.tabBarItem.title = title
+        navController.tabBarItem.selectedImage = UIImage(named: selectedImageName)
+        navController.tabBarItem.image = UIImage(named: imageName)
+
+        viewController.view.backgroundColor = .white
+
+        navController.setNavigationBarHidden(true, animated: true)
+
+        return navController
+    }
 }

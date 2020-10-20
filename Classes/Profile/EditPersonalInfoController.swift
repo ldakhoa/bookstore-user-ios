@@ -12,6 +12,8 @@ final class EditPersonalInfoController: UITableViewController {
 
     // MARK: Internal
 
+    var user: User!
+
     let sectionData: [String] = [
         "Name",
         "Gender",
@@ -27,9 +29,13 @@ final class EditPersonalInfoController: UITableViewController {
 
         title = "Edit personal info"
 
+//        tableView.keyboardDismissMode = .interactive
+//        tableView.backgroundColor = Styles.Colors.background2.color
+//        tableView.separatorStyle = .none
+
+        tableView.backgroundColor = UIColor(white: 0.95, alpha: 1) // lightGray
+        tableView.tableFooterView = UIView()
         tableView.keyboardDismissMode = .interactive
-        tableView.backgroundColor = Styles.Colors.background2.color
-        tableView.separatorStyle = .none
 
         tableView.allowsSelection = false
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -50,7 +56,7 @@ final class EditPersonalInfoController: UITableViewController {
     }
 
     override func numberOfSections(in _: UITableView) -> Int {
-        return sectionData.count
+        return 5
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -63,14 +69,18 @@ final class EditPersonalInfoController: UITableViewController {
         switch indexPath.section {
         case 0:
             cell.textField.placeholder = "Enter name"
+//            cell.textLabel?.text = "Khoa Le"
         case 1:
             cell.textField.placeholder = "Select Gender"
+            cell.textLabel?.text = user.gender
         case 2:
             cell.textField.placeholder = "Select birthdate"
         case 3:
             cell.textField.placeholder = "Edit email"
+            cell.textField.text = user.email
         case 4:
             cell.textField.placeholder = "Enter phone number"
+            cell.textField.text = "\(user.phone)"
         default:
             ()
         }
@@ -78,7 +88,7 @@ final class EditPersonalInfoController: UITableViewController {
     }
 
     override func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return 40
+        return 44
     }
 
     override func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {

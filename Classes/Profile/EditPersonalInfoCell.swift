@@ -15,7 +15,7 @@ final class EditPersonalInfoCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         addSubview(textField)
-        textField.fillSuperview(padding: .init(top: 0, left: 25, bottom: 0, right: 12))
+        textField.fillSuperview(padding: .init(top: 0, left: 0, bottom: 0, right: 12))
     }
 
     @available(*, unavailable)
@@ -26,9 +26,23 @@ final class EditPersonalInfoCell: UITableViewCell {
     // MARK: Internal
 
     let textField: UITextField = {
-        let tf = UITextField()
+        let tf = InfoTextField()
         tf.font = Styles.Text.body.preferredFont
+        tf.textColor = Styles.Colors.black.color
         return tf
     }()
 
+}
+class InfoTextField: UITextField {
+    override var intrinsicContentSize: CGSize {
+        return .init(width: 0, height: 44)
+    }
+
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: 24, dy: 0)
+    }
+
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: 24, dy: 0)
+    }
 }

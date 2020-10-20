@@ -34,7 +34,7 @@ final class EditPersonalInfoHeaderView: UIView {
     let label = UILabel(
         text: "",
         font: Styles.Text.titleBold.preferredFont,
-        textColor: Styles.Colors.black.color
+        textColor: Styles.Colors.darkGreen.color
     )
 
 }

@@ -269,10 +269,8 @@
 		647C77D92532C7940034159E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				64A3C8EB253E0BB60019F28A /* Edit profile */,
 				64D5EA4825335362005788A3 /* ProfileTableViewController.swift */,
-				644B6C5B2535FF3400F7FE32 /* EditPersonalInfoController.swift */,
-				644B6C7D253612B200F7FE32 /* EditPersonalInfoHeaderView.swift */,
-				644B6C782536129F00F7FE32 /* EditPersonalInfoCell.swift */,
 				64D5EA5D25336385005788A3 /* ProfileHeaderView.swift */,
 				64D5EA62253363B2005788A3 /* LogoutCell.swift */,
 				64D5EA5325335768005788A3 /* ProfileCell.xib */,
@@ -289,6 +287,16 @@
 				64A3C8DC253DEF6D0019F28A /* Search.storyboard */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		64A3C8EB253E0BB60019F28A /* Edit profile */ = {
+			isa = PBXGroup;
+			children = (
+				644B6C7D253612B200F7FE32 /* EditPersonalInfoHeaderView.swift */,
+				644B6C782536129F00F7FE32 /* EditPersonalInfoCell.swift */,
+				644B6C5B2535FF3400F7FE32 /* EditPersonalInfoController.swift */,
+			);
+			name = "Edit profile";
 			sourceTree = "<group>";
 		};
 		64AD6EC125345577008D4EF6 /* Book list */ = {
