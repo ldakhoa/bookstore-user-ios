@@ -25,7 +25,7 @@ final class ProfileTableViewController: UITableViewController {
         let nib = UINib(nibName: "ProfileCell", bundle: nil)
 
         tableView.register(nib, forCellReuseIdentifier: cellID)
-        self.tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
 
         fetchUserInfo()
     }

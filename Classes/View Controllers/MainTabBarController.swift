@@ -10,6 +10,8 @@ import UIKit
 
 final class MainTabBarController: UITabBarController {
 
+    // MARK: Internal
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,12 +23,34 @@ final class MainTabBarController: UITabBarController {
         let categoryVC = AppSetting.Storyboards.Category.categoryVC
 
         viewControllers = [
-            createNavController(viewController: searchVC, title: "Shop", imageName: "home-inactive", selectedImageName: "home-activated"),
-            createNavController(viewController: categoryVC, title: "Category", imageName: "category-inactive", selectedImageName: "category-activated"),
-            createNavController(viewController: homeVC, title: "Bag", imageName: "bag-inactive", selectedImageName: "bag-activated"),
-            createNavController(viewController: profileVC, title: "Profile", imageName: "profile-inactive", selectedImageName: "profile-activated"),
+            createNavController(
+                viewController: searchVC,
+                title: "Shop",
+                imageName: "home-inactive",
+                selectedImageName: "home-activated"
+            ),
+            createNavController(
+                viewController: categoryVC,
+                title: "Category",
+                imageName: "category-inactive",
+                selectedImageName: "category-activated"
+            ),
+            createNavController(
+                viewController: homeVC,
+                title: "Bag",
+                imageName: "bag-inactive",
+                selectedImageName: "bag-activated"
+            ),
+            createNavController(
+                viewController: profileVC,
+                title: "Profile",
+                imageName: "profile-inactive",
+                selectedImageName: "profile-activated"
+            ),
         ]
     }
+
+    // MARK: Private
 
     private func createNavController(
         viewController: UIViewController,
