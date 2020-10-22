@@ -126,7 +126,7 @@ class SearchGradientView: UIView, UITextFieldDelegate {
                 a: 1, b: 0, c: 0, d: 3.66, tx: 0, ty: -1.83
             )
         )
-        layer.frame = .init(x: 0, y: 0, width: frame.width, height: frame.height)
+        layer.frame = .init(x: 0, y: 0, width: 600, height: frame.height)
         layer.position = center
         self.layer.insertSublayer(layer, at: 0)
     }

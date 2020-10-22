@@ -56,6 +56,8 @@ final class BookListViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension BookListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
         return 10
@@ -66,15 +68,20 @@ extension BookListViewController: UITableViewDataSource {
             withIdentifier: "BookListCell",
             for: indexPath
         ) as? BookListCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
         return cell
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension BookListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 135 + 16 + 16
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension BookListViewController: UICollectionViewDataSource {
     func numberOfSections(in _: UICollectionView) -> Int {
@@ -102,6 +109,8 @@ extension BookListViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension BookListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
