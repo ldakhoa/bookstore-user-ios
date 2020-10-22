@@ -5,7 +5,6 @@
 //  Created by Khoa Le on 11/10/2020.
 //
 
-import BATabBarController
 import UIKit
 
 final class MainTabBarController: UITabBarController {

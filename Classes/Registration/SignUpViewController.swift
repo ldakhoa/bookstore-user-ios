@@ -23,7 +23,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet var passwordTextfield: UITextField!
     @IBOutlet var overallStackView: UIStackView!
 
-
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {

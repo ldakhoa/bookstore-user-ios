@@ -7,7 +7,6 @@ target 'bsuser' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'StyledTextKit'
-  pod 'BATabBarController', '~> 2.0.0'
   pod 'Cosmos', '~> 23.0'
   pod 'Alamofire', '~> 5.2'
   pod 'SwiftyJSON', '~> 4.0'

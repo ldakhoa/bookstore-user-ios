@@ -18,7 +18,6 @@ class ProfileHeaderView: UIView {
         profileImageView.layer.cornerRadius = 64 / 2
         profileImageView.clipsToBounds = true
 
-
         showProfileButton.setTitle("Show profile", for: .normal)
         showProfileButton.setTitleColor(Styles.Colors.darkGreen.color, for: .normal)
         let infoStackview = UIStackView(arrangedSubviews: [nameLabel, showProfileButton])

@@ -18,7 +18,7 @@
 		6476F6702535701300879CC1 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6476F66F2535701300879CC1 /* Book.swift */; };
 		6476F69D2535706400879CC1 /* HTTPRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6476F69C2535706400879CC1 /* HTTPRequester.swift */; };
 		647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C777D2532325B0034159E /* TextfieldShadow.swift */; };
-		647C77832532330F0034159E /* iBooksButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77822532330F0034159E /* iBooksButton.swift */; };
+		647C77832532330F0034159E /* IBooksButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77822532330F0034159E /* IBooksButton.swift */; };
 		647C77902532B3980034159E /* AppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C778F2532B3980034159E /* AppSetting.swift */; };
 		647C77982532B5E10034159E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77972532B5E10034159E /* LoginViewController.swift */; };
 		647C77A12532BF970034159E /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647C77A02532BF970034159E /* Home.storyboard */; };
@@ -27,7 +27,7 @@
 		647C77C82532C4070034159E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77C72532C4070034159E /* MainTabBarController.swift */; };
 		647C77D32532C7650034159E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 647C77D22532C7650034159E /* Main.storyboard */; };
 		647C77F32532F50A0034159E /* LocationTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77F22532F50A0034159E /* LocationTopView.swift */; };
-		647C77FB2532FB270034159E /* iBooksSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77FA2532FB270034159E /* iBooksSearchTextField.swift */; };
+		647C77FB2532FB270034159E /* IBooksSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77FA2532FB270034159E /* IBooksSearchTextField.swift */; };
 		648768512539FA91002B2AD6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648768502539FA91002B2AD6 /* Log.swift */; };
 		649B0063253AE56100BE315A /* AppSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B0062253AE56100BE315A /* AppSecurity.swift */; };
 		649B009D253B5BFA00BE315A /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B009C253B5BFA00BE315A /* UIViewController+Alerts.swift */; };
@@ -95,7 +95,7 @@
 		6476F66F2535701300879CC1 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		6476F69C2535706400879CC1 /* HTTPRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequester.swift; sourceTree = "<group>"; };
 		647C777D2532325B0034159E /* TextfieldShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldShadow.swift; sourceTree = "<group>"; };
-		647C77822532330F0034159E /* iBooksButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBooksButton.swift; sourceTree = "<group>"; };
+		647C77822532330F0034159E /* IBooksButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBooksButton.swift; sourceTree = "<group>"; };
 		647C778F2532B3980034159E /* AppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetting.swift; sourceTree = "<group>"; };
 		647C77972532B5E10034159E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		647C77A02532BF970034159E /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		647C77C72532C4070034159E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		647C77D22532C7650034159E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		647C77F22532F50A0034159E /* LocationTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTopView.swift; sourceTree = "<group>"; };
-		647C77FA2532FB270034159E /* iBooksSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBooksSearchTextField.swift; sourceTree = "<group>"; };
+		647C77FA2532FB270034159E /* IBooksSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBooksSearchTextField.swift; sourceTree = "<group>"; };
 		648768502539FA91002B2AD6 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		649B0062253AE56100BE315A /* AppSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecurity.swift; sourceTree = "<group>"; };
 		649B009C253B5BFA00BE315A /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
@@ -376,9 +376,9 @@
 			children = (
 				64CE1B682531B19800A194E3 /* Styles.swift */,
 				647C777D2532325B0034159E /* TextfieldShadow.swift */,
-				647C77822532330F0034159E /* iBooksButton.swift */,
+				647C77822532330F0034159E /* IBooksButton.swift */,
 				647C77AA2532BFC60034159E /* SearchGradientView.swift */,
-				647C77FA2532FB270034159E /* iBooksSearchTextField.swift */,
+				647C77FA2532FB270034159E /* IBooksSearchTextField.swift */,
 				647C77F22532F50A0034159E /* LocationTopView.swift */,
 			);
 			name = Views;
@@ -432,6 +432,7 @@
 				64CE1B112531ACF900A194E3 /* Frameworks */,
 				64CE1B122531ACF900A194E3 /* Resources */,
 				05856D2C6A8D8559FF0CBC88 /* [CP] Embed Pods Frameworks */,
+				64FB7A2B25411C5A00158989 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -635,6 +636,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bsuser-bsuserUITests/Pods-bsuser-bsuserUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		64FB7A2B25411C5A00158989 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		A93021E3FC19F7D845F3EF43 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -692,13 +710,13 @@
 				649B00A2253B5C4300BE315A /* AlertAction.swift in Sources */,
 				649BFFFA253A9CDB00BE315A /* Category.swift in Sources */,
 				647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */,
-				647C77832532330F0034159E /* iBooksButton.swift in Sources */,
+				647C77832532330F0034159E /* IBooksButton.swift in Sources */,
 				64AD6EC32534559F008D4EF6 /* BookListViewController.swift in Sources */,
 				643E3703253C8EEE003D70E9 /* UIAlertController+AddAction.swift in Sources */,
 				64D5EA63253363B2005788A3 /* LogoutCell.swift in Sources */,
 				64AD6EB025343D2A008D4EF6 /* CategoryViewController.swift in Sources */,
 				647C77C82532C4070034159E /* MainTabBarController.swift in Sources */,
-				647C77FB2532FB270034159E /* iBooksSearchTextField.swift in Sources */,
+				647C77FB2532FB270034159E /* IBooksSearchTextField.swift in Sources */,
 				647C77AB2532BFC60034159E /* SearchGradientView.swift in Sources */,
 				64A3C8CE253DE8A60019F28A /* String+CapitalizingFirstLetter.swift in Sources */,
 				64D5EA592533577C005788A3 /* ProfileCell.swift in Sources */,

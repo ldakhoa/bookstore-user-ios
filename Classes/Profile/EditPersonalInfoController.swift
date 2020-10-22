@@ -5,14 +5,13 @@
 //  Created by Khoa Le on 13/10/2020.
 //
 
-import BATabBarController
 import UIKit
 
 final class EditPersonalInfoController: UITableViewController {
 
     // MARK: Internal
 
-    var user: User!
+    var user: User?
 
     let sectionData: [String] = [
         "Name",
@@ -22,16 +21,10 @@ final class EditPersonalInfoController: UITableViewController {
         "Phone number",
     ]
 
-    let baTabBarController = BATabBarController()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Edit personal info"
-
-//        tableView.keyboardDismissMode = .interactive
-//        tableView.backgroundColor = Styles.Colors.background2.color
-//        tableView.separatorStyle = .none
 
         tableView.backgroundColor = UIColor(white: 0.95, alpha: 1) // lightGray
         tableView.tableFooterView = UIView()
@@ -65,7 +58,7 @@ final class EditPersonalInfoController: UITableViewController {
 
     override func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = EditPersonalInfoCell(style: .default, reuseIdentifier: nil)
-
+        guard let user = user else { return UITableViewCell() }
         switch indexPath.section {
         case 0:
             cell.textField.placeholder = "Enter name"

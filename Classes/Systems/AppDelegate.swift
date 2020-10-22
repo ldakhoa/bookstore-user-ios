@@ -21,7 +21,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppSetting.shared.checkMainScreen()
         return true
     }
-
-
 }
-

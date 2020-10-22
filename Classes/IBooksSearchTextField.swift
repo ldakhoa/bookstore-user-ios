@@ -7,7 +7,7 @@
 
 import UIKit
 
-class iBooksSearchTextField: UITextField {
+class IBooksSearchTextField: UITextField {
 
     // MARK: Lifecycle
 

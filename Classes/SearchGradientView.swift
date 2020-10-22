@@ -11,7 +11,7 @@ class SearchGradientView: UIView, UITextFieldDelegate {
 
     // MARK: Internal
 
-    let searchTextField = iBooksSearchTextField()
+    let searchTextField = IBooksSearchTextField()
     let cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Cancel", for: .normal)
@@ -27,7 +27,6 @@ class SearchGradientView: UIView, UITextFieldDelegate {
 
         searchTextField.delegate = self
         insertGradientBackground()
-//        layoutForOtherViewController()
 
 //        addSubview(searchTextField)
 //        addSubview(cancelButton)
@@ -50,7 +49,6 @@ class SearchGradientView: UIView, UITextFieldDelegate {
 //            padding: .init(top: 0, left: 0, bottom: 0, right: 12)
 //        )
 //        cancelButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
-
 
     }
 

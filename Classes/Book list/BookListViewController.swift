@@ -62,10 +62,10 @@ extension BookListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
+        guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "BookListCell",
             for: indexPath
-        ) as! BookListCell
+        ) as? BookListCell else { return UITableViewCell() }
         return cell
     }
 }
@@ -89,10 +89,10 @@ extension BookListViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
+        guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "FilterCell",
             for: indexPath
-        ) as! FilterCell
+        ) as? FilterCell else { return UICollectionViewCell() }
         cell.textLabel.text = filterDatasource[indexPath.item]
         if indexPath.item == 0 {
             cell.iconImageView.image = #imageLiteral(resourceName: "swap")

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class iBooksButton: UIButton {
+class IBooksButton: UIButton {
 
     // MARK: Lifecycle
 

@@ -26,6 +26,10 @@ whitelist_rules:
 excluded:
   - Carthage
   - Pods
+  - Classes/Networking/
+  - Classes/Systems/AppSecurity.swift
+  - bsuserTests
+  - bsuserUITests
 
 colon:
   apply_to_dictionaries: false

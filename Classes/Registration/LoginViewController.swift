@@ -18,7 +18,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet var emailTextfield: UITextField!
     @IBOutlet var passwordLabel: UILabel!
     @IBOutlet var passwordTextfield: UITextField!
-    @IBOutlet var loginButton: iBooksButton!
+    @IBOutlet var loginButton: IBooksButton!
     @IBOutlet weak var overallStackView: UIStackView!
 
     let hud = JGProgressHUD(style: .dark)

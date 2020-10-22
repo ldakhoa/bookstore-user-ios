@@ -23,7 +23,7 @@ struct NetworkManagement {
     static public func login(
         email: String,
         password: String,
-        response: @escaping responseHandler
+        response: @escaping ResponseHandler
     ) {
         let requester = HTTPRequester.login(email: email, password: password)
         callAPI(requester) { code, json in
@@ -35,7 +35,7 @@ struct NetworkManagement {
         username: String,
         email: String,
         password: String,
-        response: @escaping responseHandler
+        response: @escaping ResponseHandler
     ) {
         let requester = HTTPRequester.signup(username: username, email: email, password: password)
         callAPI(requester) { code, json in
@@ -45,7 +45,7 @@ struct NetworkManagement {
 
     static public func getInformationOfUserWith(
         id: Int,
-        response: @escaping responseHandler
+        response: @escaping ResponseHandler
     ) {
         let requester = HTTPRequester.getInformationOfUserWith(id: id)
         callAPI(requester) { code, json in
@@ -55,7 +55,7 @@ struct NetworkManagement {
 
     static public func getBookSearchBy(
         searchString: String,
-        response: @escaping responseHandler
+        response: @escaping ResponseHandler
     ) {
         let requester = HTTPRequester.getBookSearchBy(searchString: searchString)
         callAPI(requester) { code, json in
@@ -65,7 +65,7 @@ struct NetworkManagement {
 
     // MARK: Internal
 
-    typealias responseHandler = (_ code: Int, _ result: JSON) -> Void
+    typealias ResponseHandler = (_ code: Int, _ result: JSON) -> Void
 
     // MARK: Private
 
