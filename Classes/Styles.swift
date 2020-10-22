@@ -16,6 +16,7 @@ enum Styles {
         static let searchCornerRadius: CGFloat = 8
         static let cellCornerRadius: CGFloat = 8
         static let heightTopView: CGFloat = 50
+        static let bookDetailtopViewSize: CGFloat = 32
     }
 
     enum Colors {

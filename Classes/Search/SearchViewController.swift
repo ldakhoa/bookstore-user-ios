@@ -73,7 +73,8 @@ final class SearchViewController: UIViewController {
         guard let textString = textField.text, !textString.isEmpty else { return }
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { _ in
-            self.getBookBySearch(text: textString)
+//            self.getBookBySearch(text: textString)
+            self.getBookBySearch(text: "National")
         })
 
     }

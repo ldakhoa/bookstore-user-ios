@@ -5,15 +5,21 @@
 //  Created by Khoa Le on 22/10/2020.
 //
 
-import UIKit
 import Cosmos
+import UIKit
 
 final class BookDetailMainCell: UITableViewCell {
+
+    @IBOutlet weak var bookImageView: UIImageView!
+    @IBOutlet weak var bookTitleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var ratingsView: CosmosView!
+    @IBOutlet weak var priceLabel: UILabel!
 
     var book: Book? {
         didSet {
             guard let book = book,
-                  let imageUrl = URL(string: book.imageUrl) else { return }
+                let imageUrl = URL(string: book.imageUrl) else { return }
             bookTitleLabel.text = book.title
             authorLabel.text = book.author
             ratingsView.rating = book.ratings
@@ -23,11 +29,6 @@ final class BookDetailMainCell: UITableViewCell {
         }
     }
 
-    @IBOutlet weak var bookImageView: UIImageView!
-    @IBOutlet weak var bookTitleLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var ratingsView: CosmosView!
-    @IBOutlet weak var priceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

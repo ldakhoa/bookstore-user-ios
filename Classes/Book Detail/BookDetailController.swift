@@ -31,11 +31,12 @@ final class BookDetailController: UIViewController {
 
         setupLayout()
 
-        topContainerView.dismissImageView.addGestureRecognizer(UITapGestureRecognizer(
+        topContainerView.dismissView.addGestureRecognizer(UITapGestureRecognizer(
             target: self,
             action: #selector(didTappedDismissImageView)
         ))
-        topContainerView.dismissImageView.isUserInteractionEnabled = true
+        topContainerView.dismissView.isUserInteractionEnabled = true
+        isEnabledShadowForTopView(opacity: 0.25)
 
     }
 
@@ -45,8 +46,8 @@ final class BookDetailController: UIViewController {
         view.backgroundColor = UIColor.white
 
         view.addSubview(bottomContainerView)
-        view.addSubview(topContainerView)
         view.addSubview(tableView)
+        view.addSubview(topContainerView)
 
         bottomContainerView.anchor(
             top: nil,
@@ -65,7 +66,12 @@ final class BookDetailController: UIViewController {
             size: .init(width: 0, height: Styles.Sizes.heightTopView)
         )
 
-        tableView.anchor(top: topContainerView.bottomAnchor, leading: view.leadingAnchor, bottom: bottomContainerView.topAnchor, trailing: view.trailingAnchor)
+        tableView.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            leading: view.leadingAnchor,
+            bottom: bottomContainerView.topAnchor,
+            trailing: view.trailingAnchor
+        )
     }
 
     @objc
@@ -77,18 +83,21 @@ final class BookDetailController: UIViewController {
 
 extension BookDetailController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return section == 0 ? 1 : 20
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookDetailMainCell", for: indexPath) as? BookDetailMainCell else { return UITableViewCell() }
-            cell.book = self.book
-
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "BookDetailMainCell",
+                for: indexPath
+            ) as? BookDetailMainCell else { return UITableViewCell() }
+            cell.book = book
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()
@@ -108,5 +117,22 @@ extension BookDetailController: UITableViewDelegate {
             return 460
         }
         return 0
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y <= 300 {
+            let alpha = scrollView.contentOffset.y / 300
+            let opacityRemainder = 0.25 - scrollView.contentOffset.y / 1000
+
+            isEnabledShadowForTopView(opacity: Float(opacityRemainder))
+            topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(alpha).cgColor
+            topContainerView.backgroundColor = Styles.Colors.White.normal.withAlphaComponent(alpha)
+        }
+    }
+
+    private func isEnabledShadowForTopView(opacity: Float) {
+        topContainerView.dismissView.toTopViewShadow(opacity: opacity)
+        topContainerView.favoriteView.toTopViewShadow(opacity: opacity)
+        topContainerView.cartView.toTopViewShadow(opacity: opacity)
     }
 }
