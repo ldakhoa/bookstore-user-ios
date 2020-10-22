@@ -3,6 +3,9 @@ PODS:
   - Cosmos (23.0.0)
   - JGProgressHUD (2.1)
   - Log (2.0)
+  - SDWebImage (5.8.0):
+    - SDWebImage/Core (= 5.8.0)
+  - SDWebImage/Core (5.8.0)
   - StyledTextKit (0.2.0)
   - SwiftyJSON (4.3.0)
 
@@ -11,6 +14,7 @@ DEPENDENCIES:
   - Cosmos (~> 23.0)
   - JGProgressHUD
   - Log
+  - SDWebImage (~> 5.0)
   - StyledTextKit
   - SwiftyJSON (~> 4.0)
 
@@ -20,6 +24,7 @@ SPEC REPOS:
     - Cosmos
     - JGProgressHUD
     - Log
+    - SDWebImage
     - StyledTextKit
     - SwiftyJSON
 
@@ -28,9 +33,10 @@ SPEC CHECKSUMS:
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   Log: 73fab10e8b88f15cef5f322b12c9be87cf19ee6e
+  SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
   StyledTextKit: dbfb29a59922c6f18897a0266acd139b7c9e712b
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 65b6ed4a537ca53be90b645df0c96a48d50288e9
+PODFILE CHECKSUM: 142fdb46f686ae999b64b4b4abfe611c163dec87
 
 COCOAPODS: 1.8.3

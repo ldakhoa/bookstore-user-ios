@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SearchViewControllerDelegate: AnyObject {
+    func didTappedSearchCell(_ books: [Book], searchText: String)
+}
+
 final class SearchViewController: UIViewController {
 
     // MARK: Internal
@@ -15,6 +19,8 @@ final class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var timer: Timer?
     var books = [Book]()
+
+    weak var delegate: SearchViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,5 +113,17 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.didTappedSearchCell(
+                self.books,
+                searchText: self.searchGradientView.searchTextField.text ?? ""
+            )
+            self.didTappedRightImageView()
+        }
     }
 }

@@ -11,6 +11,8 @@ final class BookListViewController: UIViewController {
 
     // MARK: Internal
 
+    var books = [Book]()
+
     @IBOutlet var tableView: UITableView!
     @IBOutlet var collectionView: UICollectionView!
     let filterDatasource: [String] = [
@@ -50,8 +52,9 @@ final class BookListViewController: UIViewController {
 
     @objc
     private func didTappedSearchGradientView() {
-        let searchVC = AppSetting.Storyboards.Search.searchVC
+        guard let searchVC = AppSetting.Storyboards.Search.searchVC as? SearchViewController else { return }
         searchVC.modalPresentationStyle = .fullScreen
+        searchVC.delegate = self
         present(searchVC, animated: true)
     }
 }
@@ -60,7 +63,7 @@ final class BookListViewController: UIViewController {
 
 extension BookListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 10
+        return books.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,6 +72,7 @@ extension BookListViewController: UITableViewDataSource {
             for: indexPath
         ) as? BookListCell else { return UITableViewCell() }
         cell.selectionStyle = .none
+        cell.book = books[indexPath.row]
         return cell
     }
 }
@@ -78,6 +82,12 @@ extension BookListViewController: UITableViewDataSource {
 extension BookListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 135 + 16 + 16
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let bookDetailController = BookDetailController()
+        bookDetailController.modalPresentationStyle = .fullScreen
+        present(bookDetailController, animated: true)
     }
 }
 
@@ -135,4 +145,13 @@ extension BookListViewController: UICollectionViewDelegateFlowLayout {
     ) -> UIEdgeInsets {
         return .init(top: 0, left: 8, bottom: 0, right: 8)
     }
+}
+
+extension BookListViewController: SearchViewControllerDelegate {
+    func didTappedSearchCell(_ books: [Book], searchText: String) {
+        searchGradientView.searchTextField.text = searchText
+        self.books = books
+        tableView.reloadData()
+    }
+
 }

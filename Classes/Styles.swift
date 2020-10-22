@@ -15,6 +15,7 @@ enum Styles {
         static let buttonCornerRadius: CGFloat = 25
         static let searchCornerRadius: CGFloat = 8
         static let cellCornerRadius: CGFloat = 8
+        static let heightTopView: CGFloat = 50
     }
 
     enum Colors {
@@ -45,6 +46,8 @@ enum Styles {
         static let border = "D9D9D9"
         static let background2 = "FEFFFE"
         static let lightGray = UIColor.lightGray
+        static let separate = "DCDCDC"
+
     }
 
     enum Text {
@@ -58,6 +61,7 @@ enum Styles {
         static let bodyBold = TextStyle(font: .system(.bold), size: 16)
         static let titleBold = TextStyle(font: .system(.bold), size: 14)
         static let title = TextStyle(size: 14)
+        static let cart = TextStyle(font: .system(.bold), size: 12)
         static let helper = TextStyle(size: 11)
         static let button = TextStyle(font: .system(.bold), size: 15)
         static let location = TextStyle(font: .system(.bold), size: 15)

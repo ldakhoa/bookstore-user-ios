@@ -6,9 +6,11 @@
 //
 
 import Cosmos
+import SDWebImage
 import UIKit
 
 final class BookListCell: UITableViewCell {
+
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var bookTitleLabel: UILabel!
@@ -16,6 +18,24 @@ final class BookListCell: UITableViewCell {
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var containerImageBookView: UIView!
+
+    var book: Book? {
+        didSet {
+            guard let book = book,
+                let bookImageUrl = URL(string: book.imageUrl) else
+            {
+                return
+            }
+
+            bookTitleLabel.text = book.title
+            authorLabel.text = "by \(book.author)"
+            priceLabel.text = "$\(book.price)"
+            bookImageView.sd_setImage(with: bookImageUrl)
+            ratingView.rating = Double(book.ratings)
+            ratingView.text = "\(book.numberOfRatings)"
+
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

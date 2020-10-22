@@ -12,6 +12,7 @@ target 'bsuser' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Log'
   pod 'JGProgressHUD'
+  pod 'SDWebImage', '~> 5.0'
 
   # Pods for bsuser
 
