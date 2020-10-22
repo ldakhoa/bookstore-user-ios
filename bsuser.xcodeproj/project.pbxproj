@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		053F9435B6EC70E6ECE1BBF9 /* Pods_bsuser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85277D30116E9EA61B1F1C0B /* Pods_bsuser.framework */; };
+		641B93D32541D8C300233FB2 /* BookDetailMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 641B93D22541D8C300233FB2 /* BookDetailMainCell.xib */; };
+		641B93D82541DB8000233FB2 /* BookDetailMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641B93D72541DB8000233FB2 /* BookDetailMainCell.swift */; };
 		643DA93E2539E55D0052CE35 /* NetworkManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643DA93D2539E55D0052CE35 /* NetworkManagement.swift */; };
 		643E3703253C8EEE003D70E9 /* UIAlertController+AddAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643E3702253C8EED003D70E9 /* UIAlertController+AddAction.swift */; };
 		64416A8E254153C3005966AB /* BookDetailTopContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64416A8D254153C3005966AB /* BookDetailTopContainerView.swift */; };
@@ -88,6 +90,8 @@
 		3FB205EB3D496EB744764715 /* Pods-bsuser-bsuserUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bsuser-bsuserUITests.debug.xcconfig"; path = "Target Support Files/Pods-bsuser-bsuserUITests/Pods-bsuser-bsuserUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		449F25DE130B649638FE2A62 /* Pods_bsuserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bsuserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD6E2F2BA67D01B29219162 /* Pods-bsuser-bsuserUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bsuser-bsuserUITests.release.xcconfig"; path = "Target Support Files/Pods-bsuser-bsuserUITests/Pods-bsuser-bsuserUITests.release.xcconfig"; sourceTree = "<group>"; };
+		641B93D22541D8C300233FB2 /* BookDetailMainCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailMainCell.xib; sourceTree = "<group>"; };
+		641B93D72541DB8000233FB2 /* BookDetailMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailMainCell.swift; sourceTree = "<group>"; };
 		643DA93D2539E55D0052CE35 /* NetworkManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagement.swift; sourceTree = "<group>"; };
 		643E3702253C8EED003D70E9 /* UIAlertController+AddAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+AddAction.swift"; sourceTree = "<group>"; };
 		64416A8D254153C3005966AB /* BookDetailTopContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailTopContainerView.swift; sourceTree = "<group>"; };
@@ -196,6 +200,17 @@
 				E103A51535D3F8803D7B6095 /* Pods-bsuserTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		641B93DC2541DBA200233FB2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				64416A8D254153C3005966AB /* BookDetailTopContainerView.swift */,
+				64FB7A53254126C900158989 /* BottomContainerView.swift */,
+				641B93D22541D8C300233FB2 /* BookDetailMainCell.xib */,
+				641B93D72541DB8000233FB2 /* BookDetailMainCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		6476F66625356F7700879CC1 /* Models */ = {
@@ -420,9 +435,8 @@
 		64FB7A4A254122E600158989 /* Book Detail */ = {
 			isa = PBXGroup;
 			children = (
+				641B93DC2541DBA200233FB2 /* Views */,
 				64FB7A4B2541230700158989 /* BookDetailController.swift */,
-				64416A8D254153C3005966AB /* BookDetailTopContainerView.swift */,
-				64FB7A53254126C900158989 /* BottomContainerView.swift */,
 			);
 			path = "Book Detail";
 			sourceTree = "<group>";
@@ -548,6 +562,7 @@
 			files = (
 				64CE1B242531ACFB00A194E3 /* LaunchScreen.storyboard in Resources */,
 				647C77D32532C7650034159E /* Main.storyboard in Resources */,
+				641B93D32541D8C300233FB2 /* BookDetailMainCell.xib in Resources */,
 				64CE1B212531ACFB00A194E3 /* Assets.xcassets in Resources */,
 				64AD6EB525343FB0008D4EF6 /* Category.storyboard in Resources */,
 				64A3C8DD253DEF6D0019F28A /* Search.storyboard in Resources */,
@@ -735,6 +750,7 @@
 				64D5EA63253363B2005788A3 /* LogoutCell.swift in Sources */,
 				64AD6EB025343D2A008D4EF6 /* CategoryViewController.swift in Sources */,
 				647C77C82532C4070034159E /* MainTabBarController.swift in Sources */,
+				641B93D82541DB8000233FB2 /* BookDetailMainCell.swift in Sources */,
 				64416A8E254153C3005966AB /* BookDetailTopContainerView.swift in Sources */,
 				647C77FB2532FB270034159E /* IBooksSearchTextField.swift in Sources */,
 				647C77AB2532BFC60034159E /* SearchGradientView.swift in Sources */,

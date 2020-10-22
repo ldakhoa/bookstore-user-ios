@@ -64,6 +64,7 @@ final class BookListViewController: UIViewController {
 extension BookListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
         return books.count
+//        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,6 +88,7 @@ extension BookListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let bookDetailController = BookDetailController()
         bookDetailController.modalPresentationStyle = .fullScreen
+        bookDetailController.book = books[indexPath.row]
         present(bookDetailController, animated: true)
     }
 }

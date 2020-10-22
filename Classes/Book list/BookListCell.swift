@@ -31,7 +31,7 @@ final class BookListCell: UITableViewCell {
             authorLabel.text = "by \(book.author)"
             priceLabel.text = "$\(book.price)"
             bookImageView.sd_setImage(with: bookImageUrl)
-            ratingView.rating = Double(book.ratings)
+            ratingView.rating = book.ratings
             ratingView.text = "\(book.numberOfRatings)"
 
         }

@@ -28,7 +28,7 @@ final class Book {
     var id: Int = -1
     var author: String = ""
     var title: String = ""
-    var ratings: Int = 0
+    var ratings: Double = 0
     var numberOfRatings: Int = 0
     var description: String = ""
     var price: Double = 0
@@ -47,7 +47,7 @@ final class Book {
         book.id = item["id"].int ?? -1
         book.author = item["author"].string ?? ""
         book.title = item["title"].string ?? ""
-        book.ratings = item["ratings"].int ?? 0
+        book.ratings = item["ratings"].double ?? 0
         book.numberOfRatings = item["numberOfRatings"].int ?? 0
         book.price = item["price"].double ?? 0
         book.discount = item["discount"].double ?? 0
