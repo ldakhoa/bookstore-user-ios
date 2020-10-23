@@ -32,8 +32,9 @@ public class RecommendationOverallCell: UITableViewCell {
 
     let titleLabel = UILabel(
         text: "Customers who bought this item also bought",
-        font: Styles.Text.h3.preferredFont,
-        textColor: Styles.Colors.black.color
+        font: Styles.Text.h2.preferredFont,
+        textColor: Styles.Colors.black.color,
+        numberOfLines: 2
     )
 
 }

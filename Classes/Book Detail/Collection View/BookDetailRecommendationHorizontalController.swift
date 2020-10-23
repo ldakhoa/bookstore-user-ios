@@ -49,6 +49,6 @@ extension BookDetailRecommendHorizontalController: UICollectionViewDelegateFlowL
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return .init(width: 140, height: view.frame.height)
+        return .init(width: 170, height: view.frame.height)
     }
 }

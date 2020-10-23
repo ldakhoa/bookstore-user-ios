@@ -35,11 +35,11 @@
                             <constraint firstItem="SgD-H7-wGG" firstAttribute="leading" secondItem="vhk-oH-PKu" secondAttribute="leading" constant="16" id="ry0-sl-y6v"/>
                         </constraints>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bQZ-fd-EKX">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="bQZ-fd-EKX">
                         <rect key="frame" x="0.0" y="188" width="458" height="119"/>
                         <subviews>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8R-Fw-V18" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="0.0" y="0.0" width="96" height="52.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="96" height="46.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -70,13 +70,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Engineering: A Compiler" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RT1-ZF-FyF">
-                                <rect key="frame" x="0.0" y="56.5" width="208" height="21.5"/>
+                                <rect key="frame" x="0.0" y="52.5" width="208" height="21.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Keith Cooper, Linda Torczon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0V8-OZ-dk4">
-                                <rect key="frame" x="0.0" y="82" width="163.5" height="13.5"/>
+                                <rect key="frame" x="0.0" y="80" width="163.5" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" name="gray"/>
                                 <nil key="highlightedColor"/>
@@ -105,6 +105,11 @@
             <point key="canvasLocation" x="857.97101449275374" y="220.64732142857142"/>
         </collectionViewCell>
     </objects>
+    <designables>
+        <designable name="b8R-Fw-V18">
+            <size key="intrinsicContentSize" width="95.96484375" height="16"/>
+        </designable>
+    </designables>
     <resources>
         <image name="book2" width="386" height="499"/>
         <namedColor name="black">

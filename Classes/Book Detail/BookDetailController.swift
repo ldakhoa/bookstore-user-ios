@@ -140,7 +140,7 @@ extension BookDetailController: UITableViewDataSource {
 extension BookDetailController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
-            return 360
+            return 370
         } else if indexPath.section == 3 {
             return 360
         }
@@ -152,13 +152,11 @@ extension BookDetailController: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y <= 300 {
-            let alpha = scrollView.contentOffset.y / 300
-            let opacityRemainder = 0.25 - scrollView.contentOffset.y / 1000
-            isEnabledShadowForTopView(opacity: Float(opacityRemainder))
-            topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(alpha).cgColor
-            topContainerView.backgroundColor = Styles.Colors.White.normal.withAlphaComponent(alpha)
-        }
+        let alpha = scrollView.contentOffset.y / 300
+        let opacityRemainder = 0.25 - scrollView.contentOffset.y / 1000
+        isEnabledShadowForTopView(opacity: Float(opacityRemainder))
+        topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(alpha).cgColor
+        topContainerView.backgroundColor = Styles.Colors.White.normal.withAlphaComponent(alpha)
     }
 
     private func isEnabledShadowForTopView(opacity: Float) {
