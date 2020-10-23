@@ -32,6 +32,8 @@
 		647C77F32532F50A0034159E /* LocationTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77F22532F50A0034159E /* LocationTopView.swift */; };
 		647C77FB2532FB270034159E /* IBooksSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77FA2532FB270034159E /* IBooksSearchTextField.swift */; };
 		648768512539FA91002B2AD6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648768502539FA91002B2AD6 /* Log.swift */; };
+		6490119625427C4400E5D9DE /* BookDetailDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6490119525427C4400E5D9DE /* BookDetailDescriptionCell.xib */; };
+		6490119B25427D0200E5D9DE /* BookDetailDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6490119A25427D0200E5D9DE /* BookDetailDescriptionCell.swift */; };
 		649B0063253AE56100BE315A /* AppSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B0062253AE56100BE315A /* AppSecurity.swift */; };
 		649B009D253B5BFA00BE315A /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B009C253B5BFA00BE315A /* UIViewController+Alerts.swift */; };
 		649B00A2253B5C4300BE315A /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B00A1253B5C4300BE315A /* AlertAction.swift */; };
@@ -47,6 +49,12 @@
 		64AD6EC32534559F008D4EF6 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD6EC22534559F008D4EF6 /* BookListViewController.swift */; };
 		64AD6ECB25345614008D4EF6 /* BookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD6ECA25345614008D4EF6 /* BookListCell.swift */; };
 		64AD6ED5253476E6008D4EF6 /* BookList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64AD6ED4253476E6008D4EF6 /* BookList.storyboard */; };
+		64B0275725428E2F00C1CDB2 /* BookDetailRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B0275625428E2F00C1CDB2 /* BookDetailRecommendationCell.swift */; };
+		64B0276A254295F900C1CDB2 /* RecommendationOverallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B02769254295F900C1CDB2 /* RecommendationOverallCell.swift */; };
+		64B0276F2542980300C1CDB2 /* BookDetailRecommendationHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B0276E2542980300C1CDB2 /* BookDetailRecommendationHorizontalController.swift */; };
+		64B027742542999500C1CDB2 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B027732542999500C1CDB2 /* HorizontalSnappingController.swift */; };
+		64B0277925429A1500C1CDB2 /* BookDetailRecommendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B0277825429A1500C1CDB2 /* BookDetailRecommendCollectionCell.swift */; };
+		64B0278F25429C0600C1CDB2 /* BookDetailRecommendCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B0278E25429C0600C1CDB2 /* BookDetailRecommendCollectionCell.xib */; };
 		64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B172531ACF900A194E3 /* AppDelegate.swift */; };
 		64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B1B2531ACF900A194E3 /* SignUpViewController.swift */; };
 		64CE1B1F2531ACF900A194E3 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CE1B1D2531ACF900A194E3 /* Registration.storyboard */; };
@@ -114,6 +122,8 @@
 		647C77F22532F50A0034159E /* LocationTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTopView.swift; sourceTree = "<group>"; };
 		647C77FA2532FB270034159E /* IBooksSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBooksSearchTextField.swift; sourceTree = "<group>"; };
 		648768502539FA91002B2AD6 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		6490119525427C4400E5D9DE /* BookDetailDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailDescriptionCell.xib; sourceTree = "<group>"; };
+		6490119A25427D0200E5D9DE /* BookDetailDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailDescriptionCell.swift; sourceTree = "<group>"; };
 		649B0062253AE56100BE315A /* AppSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecurity.swift; sourceTree = "<group>"; };
 		649B009C253B5BFA00BE315A /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		649B00A1253B5C4300BE315A /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
@@ -129,6 +139,12 @@
 		64AD6EC22534559F008D4EF6 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		64AD6ECA25345614008D4EF6 /* BookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCell.swift; sourceTree = "<group>"; };
 		64AD6ED4253476E6008D4EF6 /* BookList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookList.storyboard; sourceTree = "<group>"; };
+		64B0275625428E2F00C1CDB2 /* BookDetailRecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailRecommendationCell.swift; sourceTree = "<group>"; };
+		64B02769254295F900C1CDB2 /* RecommendationOverallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationOverallCell.swift; sourceTree = "<group>"; };
+		64B0276E2542980300C1CDB2 /* BookDetailRecommendationHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailRecommendationHorizontalController.swift; sourceTree = "<group>"; };
+		64B027732542999500C1CDB2 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
+		64B0277825429A1500C1CDB2 /* BookDetailRecommendCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailRecommendCollectionCell.swift; sourceTree = "<group>"; };
+		64B0278E25429C0600C1CDB2 /* BookDetailRecommendCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailRecommendCollectionCell.xib; sourceTree = "<group>"; };
 		64CE1B142531ACF900A194E3 /* bsuser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bsuser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CE1B172531ACF900A194E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64CE1B1B2531ACF900A194E3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -207,8 +223,6 @@
 			children = (
 				64416A8D254153C3005966AB /* BookDetailTopContainerView.swift */,
 				64FB7A53254126C900158989 /* BottomContainerView.swift */,
-				641B93D22541D8C300233FB2 /* BookDetailMainCell.xib */,
-				641B93D72541DB8000233FB2 /* BookDetailMainCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -266,6 +280,7 @@
 			children = (
 				647C77C72532C4070034159E /* MainTabBarController.swift */,
 				649B009C253B5BFA00BE315A /* UIViewController+Alerts.swift */,
+				64B027732542999500C1CDB2 /* HorizontalSnappingController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -329,6 +344,53 @@
 				64AD6ECA25345614008D4EF6 /* BookListCell.swift */,
 			);
 			path = "Book list";
+			sourceTree = "<group>";
+		};
+		64B0277D25429A8900C1CDB2 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				641B93D22541D8C300233FB2 /* BookDetailMainCell.xib */,
+				641B93D72541DB8000233FB2 /* BookDetailMainCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		64B0277E25429A9D00C1CDB2 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				64B0278925429B6F00C1CDB2 /* Table View */,
+				64B0278A25429B7700C1CDB2 /* Collection View */,
+			);
+			name = Recommend;
+			sourceTree = "<group>";
+		};
+		64B0278425429B0200C1CDB2 /* Description */ = {
+			isa = PBXGroup;
+			children = (
+				6490119A25427D0200E5D9DE /* BookDetailDescriptionCell.swift */,
+				6490119525427C4400E5D9DE /* BookDetailDescriptionCell.xib */,
+			);
+			path = Description;
+			sourceTree = "<group>";
+		};
+		64B0278925429B6F00C1CDB2 /* Table View */ = {
+			isa = PBXGroup;
+			children = (
+				64B02769254295F900C1CDB2 /* RecommendationOverallCell.swift */,
+				64B0275625428E2F00C1CDB2 /* BookDetailRecommendationCell.swift */,
+			);
+			name = "Table View";
+			path = Views;
+			sourceTree = "<group>";
+		};
+		64B0278A25429B7700C1CDB2 /* Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				64B0277825429A1500C1CDB2 /* BookDetailRecommendCollectionCell.swift */,
+				64B0278E25429C0600C1CDB2 /* BookDetailRecommendCollectionCell.xib */,
+				64B0276E2542980300C1CDB2 /* BookDetailRecommendationHorizontalController.swift */,
+			);
+			path = "Collection View";
 			sourceTree = "<group>";
 		};
 		64CE1B0B2531ACF900A194E3 = {
@@ -435,6 +497,9 @@
 		64FB7A4A254122E600158989 /* Book Detail */ = {
 			isa = PBXGroup;
 			children = (
+				64B0278425429B0200C1CDB2 /* Description */,
+				64B0277E25429A9D00C1CDB2 /* Recommend */,
+				64B0277D25429A8900C1CDB2 /* Main */,
 				641B93DC2541DBA200233FB2 /* Views */,
 				64FB7A4B2541230700158989 /* BookDetailController.swift */,
 			);
@@ -565,10 +630,12 @@
 				641B93D32541D8C300233FB2 /* BookDetailMainCell.xib in Resources */,
 				64CE1B212531ACFB00A194E3 /* Assets.xcassets in Resources */,
 				64AD6EB525343FB0008D4EF6 /* Category.storyboard in Resources */,
+				6490119625427C4400E5D9DE /* BookDetailDescriptionCell.xib in Resources */,
 				64A3C8DD253DEF6D0019F28A /* Search.storyboard in Resources */,
 				64AD6ED5253476E6008D4EF6 /* BookList.storyboard in Resources */,
 				64D5EA5425335768005788A3 /* ProfileCell.xib in Resources */,
 				64CE1B1F2531ACF900A194E3 /* Registration.storyboard in Resources */,
+				64B0278F25429C0600C1CDB2 /* BookDetailRecommendCollectionCell.xib in Resources */,
 				647C77A12532BF970034159E /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -718,6 +785,7 @@
 				64FB7A4C2541230800158989 /* BookDetailController.swift in Sources */,
 				649B0063253AE56100BE315A /* AppSecurity.swift in Sources */,
 				647C77902532B3980034159E /* AppSetting.swift in Sources */,
+				64B0276A254295F900C1CDB2 /* RecommendationOverallCell.swift in Sources */,
 				64AD6ECB25345614008D4EF6 /* BookListCell.swift in Sources */,
 				649B00A7253B5C5500BE315A /* AlertActionBuilder.swift in Sources */,
 				64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */,
@@ -732,6 +800,7 @@
 				6476F6702535701300879CC1 /* Book.swift in Sources */,
 				6476F65D25355B2E00879CC1 /* FilterCell.swift in Sources */,
 				64CE1B562531B08200A194E3 /* Extensions+UILabel.swift in Sources */,
+				64B0275725428E2F00C1CDB2 /* BookDetailRecommendationCell.swift in Sources */,
 				64CE1B572531B08200A194E3 /* Extensions+UIView.swift in Sources */,
 				64A3C8E7253E04BF0019F28A /* SearchCell.swift in Sources */,
 				6476F69D2535706400879CC1 /* HTTPRequester.swift in Sources */,
@@ -741,6 +810,7 @@
 				64FB7A54254126C900158989 /* BottomContainerView.swift in Sources */,
 				64CE1B4D2531AFD400A194E3 /* Extensions+UIColor.swift in Sources */,
 				64D5EA5E25336385005788A3 /* ProfileHeaderView.swift in Sources */,
+				64B027742542999500C1CDB2 /* HorizontalSnappingController.swift in Sources */,
 				649B00A2253B5C4300BE315A /* AlertAction.swift in Sources */,
 				649BFFFA253A9CDB00BE315A /* Category.swift in Sources */,
 				647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */,
@@ -748,10 +818,13 @@
 				64AD6EC32534559F008D4EF6 /* BookListViewController.swift in Sources */,
 				643E3703253C8EEE003D70E9 /* UIAlertController+AddAction.swift in Sources */,
 				64D5EA63253363B2005788A3 /* LogoutCell.swift in Sources */,
+				64B0277925429A1500C1CDB2 /* BookDetailRecommendCollectionCell.swift in Sources */,
 				64AD6EB025343D2A008D4EF6 /* CategoryViewController.swift in Sources */,
 				647C77C82532C4070034159E /* MainTabBarController.swift in Sources */,
 				641B93D82541DB8000233FB2 /* BookDetailMainCell.swift in Sources */,
 				64416A8E254153C3005966AB /* BookDetailTopContainerView.swift in Sources */,
+				64B0276F2542980300C1CDB2 /* BookDetailRecommendationHorizontalController.swift in Sources */,
+				6490119B25427D0200E5D9DE /* BookDetailDescriptionCell.swift in Sources */,
 				647C77FB2532FB270034159E /* IBooksSearchTextField.swift in Sources */,
 				647C77AB2532BFC60034159E /* SearchGradientView.swift in Sources */,
 				64A3C8CE253DE8A60019F28A /* String+CapitalizingFirstLetter.swift in Sources */,
