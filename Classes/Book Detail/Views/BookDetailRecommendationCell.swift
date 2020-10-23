@@ -22,7 +22,7 @@ final class BookDetailRecommendationCell: RecommendationOverallCell {
             leading: leadingAnchor,
             bottom: bottomAnchor,
             trailing: trailingAnchor,
-            padding: .init(top: 12, left: 16, bottom: 12, right: 16)
+            padding: .init(top: 12, left: 16, bottom: 12, right: 0)
         )
     }
 
