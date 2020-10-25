@@ -12,6 +12,7 @@ final class BookListViewController: UIViewController {
     // MARK: Internal
 
     var books = [Book]()
+    var isAscending = true
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var collectionView: UICollectionView!
@@ -146,6 +147,26 @@ extension BookListViewController: UICollectionViewDelegateFlowLayout {
         insetForSectionAt _: Int
     ) -> UIEdgeInsets {
         return .init(top: 0, left: 8, bottom: 0, right: 8)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            isAscending.toggle()
+            books = sortByPrice(isAscending: isAscending)
+            tableView.reloadData()
+        }
+    }
+
+    private func sortByPrice(isAscending: Bool) -> [Book] {
+        let descendingBooks = books.sorted { (book1, book2) -> Bool in
+            book1.price > book2.price
+        }
+
+        let ascendingBooks = books.sorted { (book1, book2) -> Bool in
+            book1.price < book2.price
+        }
+
+        return isAscending ? ascendingBooks : descendingBooks
     }
 }
 

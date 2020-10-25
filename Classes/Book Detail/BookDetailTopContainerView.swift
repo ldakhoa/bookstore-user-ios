@@ -14,8 +14,6 @@ final class BookDetailTopContainerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-//        backgroundColor = Styles.Colors.White.normal
-//        backgroundColor = Styles.Colors.black.color
         backgroundColor = .clear
         setupLayer()
 
