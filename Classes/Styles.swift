@@ -12,7 +12,7 @@ enum Styles {
     enum Sizes {
         static let avatar = CGSize(width: 30, height: 30)
         static let textFieldCornerRadius: CGFloat = 4
-        static let buttonCornerRadius: CGFloat = 25
+        static let buttonCornerRadius: CGFloat = 4
         static let searchCornerRadius: CGFloat = 8
         static let cellCornerRadius: CGFloat = 8
         static let heightTopView: CGFloat = 50
