@@ -63,6 +63,17 @@ struct NetworkManagement {
         }
     }
 
+    static public func getBookSearchWithFilterBy(
+        searchString: String,
+        filterType: FilterType,
+        response: @escaping ResponseHandler
+    ) {
+        let requester = HTTPRequester.getBookSearchWithFilterBy(searchString: searchString, filterType: filterType)
+        callAPI(requester) { (code, json) in
+            response(code, json)
+        }
+    }
+
     // MARK: Internal
 
     typealias ResponseHandler = (_ code: Int, _ result: JSON) -> Void

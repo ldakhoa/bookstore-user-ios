@@ -9,6 +9,7 @@ import Alamofire
 import Foundation
 
 let coreURL = "http://localhost:8000/"
+//let coreURL = "http://10.182.217.213:8000/"
 
 protocol Requestable {
     func params() -> (
@@ -25,6 +26,7 @@ enum HTTPRequester {
     case getInformationOfUserWith(id: Int)
     case updateInformationOfUserWith(id: Int)
     case getBookSearchBy(searchString: String)
+    case getBookSearchWithFilterBy(searchString: String, filterType: FilterType)
 }
 
 extension HTTPRequester: Requestable {
@@ -73,6 +75,13 @@ extension HTTPRequester: Requestable {
         case let .getBookSearchBy(searchString):
             return (
                 path: URL(string: coreURL + "api/books/?search=\(searchString)")!,
+                method: .get,
+                parameter: nil,
+                encoding: JSONEncoding.default
+            )
+        case let .getBookSearchWithFilterBy(searchString, filter):
+            return (
+                path: URL(string: coreURL + "api/books/?search=\(searchString)&filter=\(filter)&limit=20")!,
                 method: .get,
                 parameter: nil,
                 encoding: JSONEncoding.default

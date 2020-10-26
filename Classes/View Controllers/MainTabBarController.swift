@@ -20,6 +20,7 @@ final class MainTabBarController: UITabBarController {
         let searchVC = AppSetting.Storyboards.BookList.bookListVC
         let profileVC = ProfileTableViewController()
         let categoryVC = AppSetting.Storyboards.Category.categoryVC
+        let bagVC = AppSetting.Storyboards.Bag.bagVC
 
         viewControllers = [
             createNavController(
@@ -35,7 +36,7 @@ final class MainTabBarController: UITabBarController {
                 selectedImageName: "category-activated"
             ),
             createNavController(
-                viewController: homeVC,
+                viewController: bagVC,
                 title: "Bag",
                 imageName: "bag-inactive",
                 selectedImageName: "bag-activated"

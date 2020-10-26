@@ -13,6 +13,8 @@ final class BookListViewController: UIViewController {
 
     var books = [Book]()
     var isAscending = true
+    var isChoosingPrice = false
+    var isChoosingRatings = false
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var collectionView: UICollectionView!
@@ -115,11 +117,63 @@ extension BookListViewController: UICollectionViewDataSource {
         ) as? FilterCell else { return UICollectionViewCell() }
         cell.textLabel.text = filterDatasource[indexPath.item]
         if indexPath.item == 0 {
-            cell.iconImageView.image = #imageLiteral(resourceName: "swap")
+            cell.textLabel.text = "Sorted by: \(isAscending ? "Ascending" : "Descending")"
+            cell.iconImageView.image = UIImage(named: "swap")
         } else if indexPath.item == 1 {
-            cell.iconImageView.image = #imageLiteral(resourceName: "down-arrow")
+            cell.iconImageView.image = UIImage(named: "down-arrow")
+        } else if indexPath.item == 2 {
+            cell.iconImageView.image = UIImage(named: "filter")
+//            if isChoosingPrice {
+//                cell.containerView.layer.borderColor = Styles.Colors.filterBorder.color.cgColor
+//                cell.containerView.backgroundColor = Styles.Colors.filterBackground.color
+//
+//            } else {
+//                cell.containerView.layer.borderColor = Styles.Colors.border.color.cgColor
+//                cell.containerView.backgroundColor = Styles.Colors.White.normal
+//            }
+        } else if indexPath.item == 3 {
+            cell.iconImageView.image = UIImage(named: "filter")
+//            if isChoosingRatings {
+////                changeStylesOfCollectionViewItem(cell)
+//                cell.containerView.layer.borderColor = Styles.Colors.filterBorder.color.cgColor
+//                cell.containerView.backgroundColor = Styles.Colors.filterBackground.color
+//            } else {
+//                cell.containerView.layer.borderColor = Styles.Colors.border.color.cgColor
+//                cell.containerView.backgroundColor = Styles.Colors.White.normal
+//            }
         }
         return cell
+    }
+
+    func fetchBookWith(filterType: FilterType) {
+        guard let searchString = searchGradientView.searchTextField.text else { return }
+        NetworkManagement.getBookSearchWithFilterBy(searchString: searchString, filterType: filterType) { [weak self] (code, data) in
+            guard let self = self else { return }
+            if code == ResponseCode.ok.rawValue {
+                self.books = Book.parseData(json: data)
+                self.tableView.reloadData()
+//                self.collectionView.reloadData()
+            } else {
+                let errMessage = data["message"].stringValue
+                let alert = UIAlertController.configured(
+                    title: "Something wrong",
+                    message: errMessage,
+                    preferredStyle: .alert
+                )
+                alert.addAction(AlertAction.ok())
+                self.present(alert, animated: true)
+            }
+        }
+    }
+
+    func changeStylesOfCollectionViewItem(_ cell: FilterCell) {
+        if isChoosingRatings || isChoosingPrice {
+            cell.containerView.layer.borderColor = Styles.Colors.filterBorder.color.cgColor
+            cell.containerView.backgroundColor = Styles.Colors.filterBackground.color
+        } else if !isChoosingRatings || !isChoosingPrice {
+            cell.containerView.layer.borderColor = Styles.Colors.border.color.cgColor
+            cell.containerView.backgroundColor = Styles.Colors.White.normal
+        }
     }
 }
 
@@ -150,11 +204,44 @@ extension BookListViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = collectionView.dequeueReusableCell(
+//            withReuseIdentifier: "FilterCell",
+//            for: indexPath
+//        ) as? FilterCell else { return }
+        guard let cell = self.collectionView.cellForItem(at: indexPath) as? FilterCell else { return }
         if indexPath.item == 0 {
             isAscending.toggle()
             books = sortByPrice(isAscending: isAscending)
             tableView.reloadData()
+            collectionView.reloadData()
+        } else if indexPath.item == 2 {
+            fetchBookWith(filterType: .price)
+            isChoosingPrice = true
+            isChoosingRatings = false
+            if isChoosingPrice {
+                cell.containerView.layer.borderColor = Styles.Colors.filterBorder.color.cgColor
+                cell.containerView.backgroundColor = Styles.Colors.filterBackground.color
+            } else if !isChoosingPrice {
+                cell.containerView.layer.borderColor = Styles.Colors.border.color.cgColor
+                cell.containerView.backgroundColor = Styles.Colors.White.normal
+            }
+        } else if indexPath.item == 3 {
+            fetchBookWith(filterType: .ratings)
+            isChoosingPrice = false
+            isChoosingRatings = true
+            if !isChoosingPrice && isChoosingRatings {
+                cell.containerView.layer.borderColor = Styles.Colors.filterBorder.color.cgColor
+                cell.containerView.backgroundColor = Styles.Colors.filterBackground.color
+            } else {
+                cell.containerView.layer.borderColor = Styles.Colors.border.color.cgColor
+                cell.containerView.backgroundColor = Styles.Colors.White.normal
+            }
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = self.collectionView.cellForItem(at: indexPath) as? FilterCell else { return }
+
     }
 
     private func sortByPrice(isAscending: Bool) -> [Book] {

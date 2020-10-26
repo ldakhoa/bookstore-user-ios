@@ -17,6 +17,7 @@ final class FilterCell: UICollectionViewCell {
 
         containerView.layer.cornerRadius = Styles.Sizes.cellCornerRadius
         containerView.layer.borderColor = Styles.Colors.border.color.cgColor
+        containerView.backgroundColor = Styles.Colors.White.normal
         containerView.layer.borderWidth = 1
 
         contentView.setupShadow(

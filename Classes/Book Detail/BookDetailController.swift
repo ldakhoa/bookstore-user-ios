@@ -66,7 +66,7 @@ final class BookDetailController: UIViewController {
             bottom: view.bottomAnchor,
             trailing: view.trailingAnchor,
             padding: .init(top: 0, left: 0, bottom: 20, right: 0),
-            size: .init(width: 0, height: 100)
+            size: .init(width: 0, height: 90)
         )
 
         topContainerView.anchor(
@@ -152,11 +152,13 @@ extension BookDetailController: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let alpha = scrollView.contentOffset.y / 300
-        let opacityRemainder = 0.25 - scrollView.contentOffset.y / 1000
-        isEnabledShadowForTopView(opacity: Float(opacityRemainder))
-        topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(alpha).cgColor
-        topContainerView.backgroundColor = Styles.Colors.White.normal.withAlphaComponent(alpha)
+        if scrollView.contentOffset.y > 0 { 
+            let alpha = scrollView.contentOffset.y / 300
+            let opacityRemainder = 0.25 - scrollView.contentOffset.y / 1000
+            isEnabledShadowForTopView(opacity: Float(opacityRemainder))
+            topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(alpha).cgColor
+            topContainerView.backgroundColor = Styles.Colors.White.normal.withAlphaComponent(alpha)
+        }
     }
 
     private func isEnabledShadowForTopView(opacity: Float) {

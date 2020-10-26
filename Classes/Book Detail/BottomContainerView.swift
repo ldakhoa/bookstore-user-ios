@@ -20,47 +20,15 @@ final class BookDetailBottomContainerView: UIView {
         backgroundColor = Styles.Colors.White.normal
         setupLayer()
 
-        addSubview(addToCartView)
         addSubview(buyNowButton)
-
-        addToCartView.addSubview(imageView)
-        addToCartView.addSubview(cartLabel)
-
-        imageView.anchor(
-            top: addToCartView.topAnchor,
-            leading: nil,
-            bottom: nil,
-            trailing: nil,
-            padding: .init(top: 8, left: 0, bottom: 0, right: 0),
-            size: .init(width: 20, height: 20)
-        )
-        imageView.centerXAnchor.constraint(equalTo: addToCartView.centerXAnchor).isActive = true
-
-        cartLabel.anchor(
-            top: imageView.bottomAnchor,
-            leading: nil,
-            bottom: nil,
-            trailing: nil,
-            padding: .init(top: 4, left: 0, bottom: 0, right: 0)
-        )
-        cartLabel.centerXAnchor.constraint(equalTo: addToCartView.centerXAnchor).isActive = true
-
-        addToCartView.anchor(
-            top: topAnchor,
-            leading: leadingAnchor,
-            bottom: nil,
-            trailing: nil,
-            padding: .init(top: 12, left: 12, bottom: 0, right: 0),
-            size: .init(width: 50, height: 50)
-        )
 
         buyNowButton.anchor(
             top: topAnchor,
-            leading: addToCartView.trailingAnchor,
+            leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
-            padding: .init(top: 12, left: 12, bottom: 0, right: 12),
-            size: .init(width: 0, height: 50)
+            padding: .init(top: 12, left: 16, bottom: 0, right: 16),
+            size: .init(width: 0, height: 42)
         )
     }
 
@@ -70,21 +38,12 @@ final class BookDetailBottomContainerView: UIView {
 
     // MARK: Internal
 
-    let addToCartView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 8
-        view.layer.borderColor = Styles.Colors.darkGreen.color.cgColor
-        view.layer.borderWidth = 1
-        view.backgroundColor = Styles.Colors.White.normal
-        return view
-    }()
-
     let buyNowButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Buy Now", for: .normal)
+        button.setTitle("Add to Cart", for: .normal)
         button.setTitleColor(Styles.Colors.White.normal, for: .normal)
         button.titleLabel?.font = Styles.Text.subhealine.preferredFont
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = 4
         button.backgroundColor = Styles.Colors.primary.color
         button.setupShadow(
             opacity: 0.05,
@@ -96,13 +55,6 @@ final class BookDetailBottomContainerView: UIView {
     }()
 
     // MARK: Private
-
-    private let cartLabel = UILabel(
-        text: "Cart",
-        font: Styles.Text.cart.preferredFont,
-        textColor: Styles.Colors.darkGreen.color,
-        textAlignment: .center
-    )
 
     private func setupLayer() {
         let bottomLayer = CALayer()

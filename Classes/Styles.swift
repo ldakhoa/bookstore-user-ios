@@ -48,6 +48,8 @@ enum Styles {
         static let background2 = "FEFFFE"
         static let lightGray = UIColor.lightGray
         static let separate = "DCDCDC"
+        static let filterBorder = "CC7F3E"
+        static let filterBackground = "FDF7F2"
 
     }
 
