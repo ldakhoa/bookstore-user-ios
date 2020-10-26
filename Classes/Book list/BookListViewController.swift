@@ -134,7 +134,7 @@ extension BookListViewController: UICollectionViewDataSource {
         } else if indexPath.item == 3 {
             cell.iconImageView.image = UIImage(named: "filter")
 //            if isChoosingRatings {
-////                changeStylesOfCollectionViewItem(cell)
+            ////                changeStylesOfCollectionViewItem(cell)
 //                cell.containerView.layer.borderColor = Styles.Colors.filterBorder.color.cgColor
 //                cell.containerView.backgroundColor = Styles.Colors.filterBackground.color
 //            } else {
@@ -147,7 +147,10 @@ extension BookListViewController: UICollectionViewDataSource {
 
     func fetchBookWith(filterType: FilterType) {
         guard let searchString = searchGradientView.searchTextField.text else { return }
-        NetworkManagement.getBookSearchWithFilterBy(searchString: searchString, filterType: filterType) { [weak self] (code, data) in
+        NetworkManagement.getBookSearchWithFilterBy(
+            searchString: searchString,
+            filterType: filterType
+        ) { [weak self] code, data in
             guard let self = self else { return }
             if code == ResponseCode.ok.rawValue {
                 self.books = Book.parseData(json: data)

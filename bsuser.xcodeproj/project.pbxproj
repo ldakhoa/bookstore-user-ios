@@ -56,8 +56,10 @@
 		64B027742542999500C1CDB2 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B027732542999500C1CDB2 /* HorizontalSnappingController.swift */; };
 		64B0277925429A1500C1CDB2 /* BookDetailRecommendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B0277825429A1500C1CDB2 /* BookDetailRecommendCollectionCell.swift */; };
 		64B0278F25429C0600C1CDB2 /* BookDetailRecommendCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B0278E25429C0600C1CDB2 /* BookDetailRecommendCollectionCell.xib */; };
-		64CB9A562546998800DC3E92 /* BagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9A552546998800DC3E92 /* BagViewController.swift */; };
-		64CB9A5E254699C600DC3E92 /* Bag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CB9A5D254699C600DC3E92 /* Bag.storyboard */; };
+		64CB9A562546998800DC3E92 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9A552546998800DC3E92 /* CartViewController.swift */; };
+		64CB9A692546FD3700DC3E92 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CB9A682546FD3700DC3E92 /* Cart.storyboard */; };
+		64CB9AA425471BD400DC3E92 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9AA325471BD400DC3E92 /* CartCell.swift */; };
+		64CB9AA92547200E00DC3E92 /* PromoCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9AA82547200E00DC3E92 /* PromoCodeCell.swift */; };
 		64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B172531ACF900A194E3 /* AppDelegate.swift */; };
 		64CE1B1C2531ACF900A194E3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CE1B1B2531ACF900A194E3 /* SignUpViewController.swift */; };
 		64CE1B1F2531ACF900A194E3 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CE1B1D2531ACF900A194E3 /* Registration.storyboard */; };
@@ -149,8 +151,10 @@
 		64B027732542999500C1CDB2 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		64B0277825429A1500C1CDB2 /* BookDetailRecommendCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailRecommendCollectionCell.swift; sourceTree = "<group>"; };
 		64B0278E25429C0600C1CDB2 /* BookDetailRecommendCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailRecommendCollectionCell.xib; sourceTree = "<group>"; };
-		64CB9A552546998800DC3E92 /* BagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagViewController.swift; sourceTree = "<group>"; };
-		64CB9A5D254699C600DC3E92 /* Bag.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Bag.storyboard; sourceTree = "<group>"; };
+		64CB9A552546998800DC3E92 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		64CB9A682546FD3700DC3E92 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
+		64CB9AA325471BD400DC3E92 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		64CB9AA82547200E00DC3E92 /* PromoCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCodeCell.swift; sourceTree = "<group>"; };
 		64CE1B142531ACF900A194E3 /* bsuser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bsuser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64CE1B172531ACF900A194E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64CE1B1B2531ACF900A194E3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -310,13 +314,15 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		647C77D82532C78C0034159E /* Bag */ = {
+		647C77D82532C78C0034159E /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				64CB9A552546998800DC3E92 /* BagViewController.swift */,
-				64CB9A5D254699C600DC3E92 /* Bag.storyboard */,
+				64CB9A552546998800DC3E92 /* CartViewController.swift */,
+				64CB9AA325471BD400DC3E92 /* CartCell.swift */,
+				64CB9A682546FD3700DC3E92 /* Cart.storyboard */,
+				64CB9AA82547200E00DC3E92 /* PromoCodeCell.swift */,
 			);
-			path = Bag;
+			path = Cart;
 			sourceTree = "<group>";
 		};
 		647C77D92532C7940034159E /* Profile */ = {
@@ -442,7 +448,7 @@
 				6476F66625356F7700879CC1 /* Models */,
 				64AD6EC125345577008D4EF6 /* Book list */,
 				647C77D92532C7940034159E /* Profile */,
-				647C77D82532C78C0034159E /* Bag */,
+				647C77D82532C78C0034159E /* Cart */,
 				647C77D72532C7870034159E /* Category */,
 				647C77C62532C3EC0034159E /* View Controllers */,
 				647C779F2532BF480034159E /* Home */,
@@ -643,8 +649,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				64CE1B242531ACFB00A194E3 /* LaunchScreen.storyboard in Resources */,
-				64CB9A5E254699C600DC3E92 /* Bag.storyboard in Resources */,
 				647C77D32532C7650034159E /* Main.storyboard in Resources */,
+				64CB9A692546FD3700DC3E92 /* Cart.storyboard in Resources */,
 				641B93D32541D8C300233FB2 /* BookDetailMainCell.xib in Resources */,
 				64CE1B212531ACFB00A194E3 /* Assets.xcassets in Resources */,
 				64AD6EB525343FB0008D4EF6 /* Category.storyboard in Resources */,
@@ -817,7 +823,7 @@
 				64364E722545E62B0073B8DC /* FilterType.swift in Sources */,
 				644B6C792536129F00F7FE32 /* EditPersonalInfoCell.swift in Sources */,
 				6476F6702535701300879CC1 /* Book.swift in Sources */,
-				64CB9A562546998800DC3E92 /* BagViewController.swift in Sources */,
+				64CB9A562546998800DC3E92 /* CartViewController.swift in Sources */,
 				6476F65D25355B2E00879CC1 /* FilterCell.swift in Sources */,
 				64CE1B562531B08200A194E3 /* Extensions+UILabel.swift in Sources */,
 				64B0275725428E2F00C1CDB2 /* BookDetailRecommendationCell.swift in Sources */,
@@ -833,6 +839,7 @@
 				64B027742542999500C1CDB2 /* HorizontalSnappingController.swift in Sources */,
 				649B00A2253B5C4300BE315A /* AlertAction.swift in Sources */,
 				649BFFFA253A9CDB00BE315A /* Category.swift in Sources */,
+				64CB9AA92547200E00DC3E92 /* PromoCodeCell.swift in Sources */,
 				647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */,
 				647C77832532330F0034159E /* IBooksButton.swift in Sources */,
 				64AD6EC32534559F008D4EF6 /* BookListViewController.swift in Sources */,
@@ -842,6 +849,7 @@
 				64AD6EB025343D2A008D4EF6 /* CategoryViewController.swift in Sources */,
 				647C77C82532C4070034159E /* MainTabBarController.swift in Sources */,
 				641B93D82541DB8000233FB2 /* BookDetailMainCell.swift in Sources */,
+				64CB9AA425471BD400DC3E92 /* CartCell.swift in Sources */,
 				64416A8E254153C3005966AB /* BookDetailTopContainerView.swift in Sources */,
 				64B0276F2542980300C1CDB2 /* BookDetailRecommendationHorizontalController.swift in Sources */,
 				6490119B25427D0200E5D9DE /* BookDetailDescriptionCell.swift in Sources */,

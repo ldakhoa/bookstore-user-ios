@@ -27,8 +27,8 @@ final class BookDetailBottomContainerView: UIView {
             leading: leadingAnchor,
             bottom: nil,
             trailing: trailingAnchor,
-            padding: .init(top: 12, left: 16, bottom: 0, right: 16),
-            size: .init(width: 0, height: 42)
+            padding: .init(top: 12, left: 24, bottom: 0, right: 24),
+            size: .init(width: 0, height: 50)
         )
     }
 
@@ -43,7 +43,7 @@ final class BookDetailBottomContainerView: UIView {
         button.setTitle("Add to Cart", for: .normal)
         button.setTitleColor(Styles.Colors.White.normal, for: .normal)
         button.titleLabel?.font = Styles.Text.subhealine.preferredFont
-        button.layer.cornerRadius = 4
+        button.layer.cornerRadius = 8
         button.backgroundColor = Styles.Colors.primary.color
         button.setupShadow(
             opacity: 0.05,

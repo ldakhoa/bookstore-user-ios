@@ -68,8 +68,11 @@ struct NetworkManagement {
         filterType: FilterType,
         response: @escaping ResponseHandler
     ) {
-        let requester = HTTPRequester.getBookSearchWithFilterBy(searchString: searchString, filterType: filterType)
-        callAPI(requester) { (code, json) in
+        let requester = HTTPRequester.getBookSearchWithFilterBy(
+            searchString: searchString,
+            filterType: filterType
+        )
+        callAPI(requester) { code, json in
             response(code, json)
         }
     }

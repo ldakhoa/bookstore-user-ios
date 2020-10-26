@@ -152,7 +152,7 @@ extension BookDetailController: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 0 { 
+        if scrollView.contentOffset.y > 0 {
             let alpha = scrollView.contentOffset.y / 300
             let opacityRemainder = 0.25 - scrollView.contentOffset.y / 1000
             isEnabledShadowForTopView(opacity: Float(opacityRemainder))
