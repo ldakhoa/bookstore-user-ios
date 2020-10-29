@@ -242,11 +242,6 @@ extension BookListViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = self.collectionView.cellForItem(at: indexPath) as? FilterCell else { return }
-
-    }
-
     private func sortByPrice(isAscending: Bool) -> [Book] {
         let descendingBooks = books.sorted { (book1, book2) -> Bool in
             book1.price > book2.price

@@ -42,7 +42,7 @@ final class BookDetailBottomContainerView: UIView {
         let button = UIButton(type: .system)
         button.setTitle("Add to Cart", for: .normal)
         button.setTitleColor(Styles.Colors.White.normal, for: .normal)
-        button.titleLabel?.font = Styles.Text.subhealine.preferredFont
+        button.titleLabel?.font = Styles.Text.cartButton.preferredFont
         button.layer.cornerRadius = 8
         button.backgroundColor = Styles.Colors.primary.color
         button.setupShadow(

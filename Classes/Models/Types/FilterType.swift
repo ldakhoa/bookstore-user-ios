@@ -8,7 +8,7 @@
 import Foundation
 
 enum FilterType: String {
-    case category = "category"
-    case price = "price"
-    case ratings = "ratings"
+    case category
+    case price
+    case ratings
 }

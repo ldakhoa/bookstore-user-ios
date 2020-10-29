@@ -19,11 +19,11 @@ class IBooksSearchTextField: UITextField {
         backgroundColor = .white
         placeholder = "Search iBooks"
         setupShadow(opacity: 0.25, radius: 8, offset: .init(width: 0, height: 1), color: .black)
-        font = Styles.Text.body.preferredFont
+        font = Styles.Text.textfield.preferredFont
 
         attributedPlaceholder = NSAttributedString(string: "Search iBooks", attributes: [
             NSAttributedString.Key.foregroundColor: Styles.Colors.gray.color,
-            NSAttributedString.Key.font: Styles.Text.body.preferredFont,
+            NSAttributedString.Key.font: Styles.Text.textfield.preferredFont,
         ])
 
         let leftImageView = UIImageView(image: #imageLiteral(resourceName: "Search"))

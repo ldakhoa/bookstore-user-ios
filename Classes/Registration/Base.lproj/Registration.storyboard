@@ -9,6 +9,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AirbnbCereal-Book.ttf">
+            <string>AirbnbCerealApp-Book</string>
+        </array>
+        <array key="AirbnbCereal-Medium.ttf">
+            <string>AirbnbCerealApp-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Sign Up View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -27,34 +35,34 @@
                                 <state key="normal" image="back"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fDd-b4-DmR">
-                                <rect key="frame" x="16" y="73" width="343" height="401"/>
+                                <rect key="frame" x="16" y="73.5" width="343" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06W-k9-5VQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="41"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="34"/>
                                         <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKq-ir-FdP">
-                                        <rect key="frame" x="0.0" y="49" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="48" width="343" height="50"/>
                                         <color key="backgroundColor" name="background"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="JME-9I-3oz"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHp-ce-qgz">
-                                        <rect key="frame" x="0.0" y="107" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="106" width="343" height="64"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYg-sr-iRM">
-                                                <rect key="frame" x="20" y="13" width="30.5" height="13.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <rect key="frame" x="20" y="13" width="29.5" height="13"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="11"/>
                                                 <color key="textColor" name="gray"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nCD-Gw-hCt">
-                                                <rect key="frame" x="20" y="29" width="303" height="18.5"/>
+                                                <rect key="frame" x="20" y="29" width="303" height="18"/>
                                                 <color key="textColor" name="black"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
@@ -69,18 +77,18 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpu-V8-Nl1">
-                                        <rect key="frame" x="0.0" y="179" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="178" width="343" height="64"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfE-Zy-g9W">
-                                                <rect key="frame" x="20" y="13" width="28.5" height="13.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <rect key="frame" x="20" y="13" width="27" height="13"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="11"/>
                                                 <color key="textColor" name="gray"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NGP-He-xQe">
-                                                <rect key="frame" x="20" y="29" width="303" height="18.5"/>
+                                                <rect key="frame" x="20" y="29" width="303" height="18"/>
                                                 <color key="textColor" name="black"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                         </subviews>
@@ -95,18 +103,18 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lka-Bw-MSs">
-                                        <rect key="frame" x="0.0" y="251" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="250" width="343" height="64"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh6-KQ-isv">
-                                                <rect key="frame" x="20" y="13" width="50.5" height="13.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <rect key="frame" x="20" y="13" width="49" height="13"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="11"/>
                                                 <color key="textColor" name="gray"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="T4D-N6-q7F">
                                                 <rect key="frame" x="20" y="29" width="303" height="17"/>
                                                 <color key="textColor" name="black"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
@@ -121,14 +129,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spm-Ds-VVA">
-                                        <rect key="frame" x="0.0" y="323" width="343" height="20"/>
+                                        <rect key="frame" x="0.0" y="322" width="343" height="20"/>
                                         <color key="backgroundColor" name="background"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="pB0-JP-tJc"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgT-5T-s7E" customClass="IBooksButton" customModule="bsuser" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="351" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="350" width="343" height="50"/>
                                         <color key="backgroundColor" name="primary"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="AFl-jV-Vjq"/>
@@ -144,16 +152,16 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="5mg-8b-Oml">
-                                <rect key="frame" x="87.5" y="549" width="200" height="93"/>
+                                <rect key="frame" x="87.5" y="549.5" width="200" height="92.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or sign up with social account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mkt-sl-0kz">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
                                         <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="0zk-cX-30x">
-                                        <rect key="frame" x="0.0" y="29" width="200" height="64"/>
+                                        <rect key="frame" x="0.0" y="28.5" width="200" height="64"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzA-Bw-jv1">
                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="64"/>
@@ -179,17 +187,17 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="b2N-hW-mPj">
-                                <rect key="frame" x="78.5" y="500" width="218.5" height="29"/>
+                                <rect key="frame" x="83" y="500.5" width="209.5" height="29"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcR-zr-sOQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="169.5" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="162.5" height="29"/>
+                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
                                         <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RuX-M8-svZ">
-                                        <rect key="frame" x="177.5" y="0.0" width="41" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <rect key="frame" x="170.5" y="0.0" width="39" height="29"/>
+                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
                                         <state key="normal" title="Login.">
                                             <color key="titleColor" name="primary"/>
                                         </state>
@@ -250,34 +258,34 @@
                                 <state key="normal" image="back"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Kn7-Oz-ew9">
-                                <rect key="frame" x="16" y="169" width="343" height="329"/>
+                                <rect key="frame" x="16" y="169.5" width="343" height="328"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jt-x3-S6m">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="41"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="34"/>
                                         <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddA-OD-dZY">
-                                        <rect key="frame" x="0.0" y="49" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="48" width="343" height="50"/>
                                         <color key="backgroundColor" name="background"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="y0V-m3-JRT"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lnu-Rx-gJP">
-                                        <rect key="frame" x="0.0" y="107" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="106" width="343" height="64"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCC-t0-tbg">
-                                                <rect key="frame" x="20" y="13" width="28.5" height="13.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <rect key="frame" x="20" y="13" width="27" height="13"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="11"/>
                                                 <color key="textColor" name="gray"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UTz-xg-rCd">
-                                                <rect key="frame" x="20" y="29" width="303" height="18.5"/>
+                                                <rect key="frame" x="20" y="29" width="303" height="18"/>
                                                 <color key="textColor" name="black"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                         </subviews>
@@ -292,18 +300,18 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6P-ZZ-er9">
-                                        <rect key="frame" x="0.0" y="179" width="343" height="64"/>
+                                        <rect key="frame" x="0.0" y="178" width="343" height="64"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnJ-lP-N2m">
-                                                <rect key="frame" x="20" y="13" width="50.5" height="13.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <rect key="frame" x="20" y="13" width="49" height="13"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="11"/>
                                                 <color key="textColor" name="gray"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jy6-dy-nBe">
                                                 <rect key="frame" x="20" y="29" width="303" height="17"/>
                                                 <color key="textColor" name="black"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
@@ -318,14 +326,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pws-VT-c6k">
-                                        <rect key="frame" x="0.0" y="251" width="343" height="20"/>
+                                        <rect key="frame" x="0.0" y="250" width="343" height="20"/>
                                         <color key="backgroundColor" name="background"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="fR8-Ee-uv4"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kf-PE-7EF" customClass="IBooksButton" customModule="bsuser" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="279" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="278" width="343" height="50"/>
                                         <color key="backgroundColor" name="primary"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="1UP-5R-12G"/>
@@ -341,16 +349,16 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="erL-vJ-ibM">
-                                <rect key="frame" x="87.5" y="549" width="200" height="93"/>
+                                <rect key="frame" x="87.5" y="549.5" width="200" height="92.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or sign up with social account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VJ-5M-nBH">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
                                         <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bAF-Ip-DUM">
-                                        <rect key="frame" x="0.0" y="29" width="200" height="64"/>
+                                        <rect key="frame" x="0.0" y="28.5" width="200" height="64"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3f-MQ-QyQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="92" height="64"/>
@@ -376,17 +384,17 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Efz-eC-enb">
-                                <rect key="frame" x="106" y="500" width="163.5" height="29"/>
+                                <rect key="frame" x="108" y="500.5" width="159.5" height="29"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New to iBooks?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d44-AQ-dCM">
-                                        <rect key="frame" x="0.0" y="0.0" width="101.5" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="99.5" height="29"/>
+                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
                                         <color key="textColor" name="black"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfH-lU-XEy">
-                                        <rect key="frame" x="109.5" y="0.0" width="54" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <rect key="frame" x="107.5" y="0.0" width="52" height="29"/>
+                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
                                         <state key="normal" title="Sign up.">
                                             <color key="titleColor" name="primary"/>
                                         </state>

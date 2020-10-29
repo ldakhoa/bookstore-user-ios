@@ -9,6 +9,7 @@ import StyledTextKit
 import UIKit
 
 enum Styles {
+
     enum Sizes {
         static let avatar = CGSize(width: 30, height: 30)
         static let textFieldCornerRadius: CGFloat = 4
@@ -54,20 +55,32 @@ enum Styles {
     }
 
     enum Text {
-        static let h1 = TextStyle(font: .system(.bold), size: 34)
-        static let h2 = TextStyle(font: .system(.bold), size: 24)
-        static let h3 = TextStyle(font: .system(.bold), size: 18)
-        static let subhealine = TextStyle(font: .system(.bold), size: 16)
-        static let headline = TextStyle(font: .system(.bold), size: 34)
 
-        static let body = TextStyle(size: 16)
-        static let bodyBold = TextStyle(font: .system(.bold), size: 16)
-        static let titleBold = TextStyle(font: .system(.bold), size: 14)
-        static let title = TextStyle(size: 14)
-        static let cart = TextStyle(font: .system(.bold), size: 12)
-        static let helper = TextStyle(size: 11)
-        static let button = TextStyle(font: .system(.bold), size: 15)
-        static let location = TextStyle(font: .system(.bold), size: 15)
+        // MARK: Internal
+
+        static let h1 = TextStyle(font: .name(cerealMedium), size: 34)
+        static let h2 = TextStyle(font: .name(cerealMedium), size: 24)
+        static let h3 = TextStyle(font: .name(cerealMedium), size: 22)
+        static let subhealine = TextStyle(font: .name(cerealMedium), size: 16)
+        static let headline = TextStyle(font: .name(cerealMedium), size: 34)
+
+        static let cartButton = TextStyle(font: .name(cerealBold), size: 16)
+        static let textfield = TextStyle(font: .name(cerealBook), size: 16)
+        static let body = TextStyle(font: .name(cerealBook), size: 16)
+        static let bodyBold = TextStyle(font: .name(cerealMedium), size: 16)
+        static let titleBold = TextStyle(font: .name(cerealMedium), size: 14)
+        static let title = TextStyle(font: .name(cerealBook), size: 14)
+        static let cart = TextStyle(font: .name(cerealMedium), size: 12)
+        static let helper = TextStyle(font: .name(cerealBook), size: 12)
+        static let button = TextStyle(font: .name(cerealMedium), size: 15)
+        static let location = TextStyle(font: .name(cerealMedium), size: 15)
+
+        // MARK: Private
+
+        private static let cerealLight = "AirbnbCerealApp-Light"
+        private static let cerealBook = "AirbnbCerealApp-Book"
+        private static let cerealMedium = "AirbnbCerealApp-Medium"
+        private static let cerealBold = "AirbnbCerealApp-Bold"
 
     }
 }
