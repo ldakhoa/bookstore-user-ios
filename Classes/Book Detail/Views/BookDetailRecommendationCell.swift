@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BookDetailRecommendationCell: RecommendationOverallCell {
+final class BookDetailRecommendationCell: UITableViewCell {
 
     // MARK: Lifecycle
 
@@ -16,7 +16,16 @@ final class BookDetailRecommendationCell: RecommendationOverallCell {
         contentView.isUserInteractionEnabled = false
         titleLabel.text = "Books you may like"
 
+        addSubview(titleLabel)
         addSubview(bookDetailRecommendHorizontalController.view)
+
+        titleLabel.anchor(
+            top: topAnchor,
+            leading: leadingAnchor,
+            bottom: nil,
+            trailing: trailingAnchor,
+            padding: .init(top: 16, left: 16, bottom: 0, right: 16)
+        )
         bookDetailRecommendHorizontalController.view.anchor(
             top: titleLabel.bottomAnchor,
             leading: leadingAnchor,
@@ -34,4 +43,10 @@ final class BookDetailRecommendationCell: RecommendationOverallCell {
 
     let bookDetailRecommendHorizontalController = BookDetailRecommendHorizontalController()
 
+    let titleLabel = UILabel(
+        text: "Customers who bought this item also bought",
+        font: Styles.Text.h3.preferredFont,
+        textColor: Styles.Colors.black.color,
+        numberOfLines: 2
+    )
 }

@@ -143,9 +143,9 @@ extension BookDetailController: UITableViewDataSource {
 extension BookDetailController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
-            return 370
+            return 376
         } else if indexPath.section == 3 {
-            return 360
+            return 396
         }
         return UITableView.automaticDimension
     }
