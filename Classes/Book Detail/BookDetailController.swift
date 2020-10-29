@@ -19,6 +19,9 @@ final class BookDetailController: UIViewController {
     ]
     let topContainerView = BookDetailTopContainerView()
     let bottomContainerView = BookDetailBottomContainerView()
+
+    var contentOffsetYAfter: CGFloat = 0
+
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(
@@ -152,12 +155,20 @@ extension BookDetailController: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 0 {
-            let alpha = scrollView.contentOffset.y / 300
+        if scrollView.contentOffset.y > 50 {
+            let alpha = scrollView.contentOffset.y / 230
             let opacityRemainder = 0.25 - scrollView.contentOffset.y / 1000
             isEnabledShadowForTopView(opacity: Float(opacityRemainder))
-            topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(alpha).cgColor
             topContainerView.backgroundColor = Styles.Colors.White.normal.withAlphaComponent(alpha)
+            if contentOffsetYAfter > 0 && scrollView.contentOffset.y > 200 {
+                topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(alpha).cgColor
+                contentOffsetYAfter = scrollView.contentOffset.y
+            } else if scrollView.contentOffset.y - contentOffsetYAfter < 0 && scrollView.contentOffset.y < 200 {
+                topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(0).cgColor
+            }
+            contentOffsetYAfter = scrollView.contentOffset.y
+        } else {
+            topContainerView.backgroundColor = Styles.Colors.White.normal.withAlphaComponent(0)
         }
     }
 
