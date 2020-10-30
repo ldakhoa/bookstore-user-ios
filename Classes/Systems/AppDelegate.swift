@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // TODO: - Turn off this when implement cart/checkout feature
         AppSetting.shared.checkMainScreen()
+
         return true
     }
 }

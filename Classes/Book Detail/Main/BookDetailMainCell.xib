@@ -119,6 +119,11 @@
             <point key="canvasLocation" x="907.24637681159425" y="293.30357142857139"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="26b-Tp-DuL">
+            <size key="intrinsicContentSize" width="95.96484375" height="16"/>
+        </designable>
+    </designables>
     <resources>
         <image name="book2" width="386" height="499"/>
         <namedColor name="black">

@@ -155,7 +155,7 @@ extension BookDetailController: UITableViewDelegate {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > 50 {
+        if scrollView.contentOffset.y > 150 {
             let alpha = scrollView.contentOffset.y / 230
             let opacityRemainder = 0.25 - scrollView.contentOffset.y / 1000
             isEnabledShadowForTopView(opacity: Float(opacityRemainder))
@@ -169,6 +169,7 @@ extension BookDetailController: UITableViewDelegate {
             contentOffsetYAfter = scrollView.contentOffset.y
         } else {
             topContainerView.backgroundColor = Styles.Colors.White.normal.withAlphaComponent(0)
+            topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(0).cgColor
         }
     }
 

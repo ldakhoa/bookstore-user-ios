@@ -63,7 +63,12 @@
 		64BA8BAA254C0CB000AC56C6 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8BA9254C0CB000AC56C6 /* OrderViewController.swift */; };
 		64BA8BB2254C0D5D00AC56C6 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64BA8BB1254C0D5D00AC56C6 /* Order.storyboard */; };
 		64BA8BB7254C1CEB00AC56C6 /* OrderSuccessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8BB6254C1CEB00AC56C6 /* OrderSuccessController.swift */; };
-		64BA8BBC254C1D4900AC56C6 /* PlaceOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8BBB254C1D4900AC56C6 /* PlaceOrderController.swift */; };
+		64BA8BF0254C452200AC56C6 /* OrderInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8BEF254C452200AC56C6 /* OrderInformationCell.swift */; };
+		64BA8BF5254C45A500AC56C6 /* OrderSubtotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8BF4254C45A500AC56C6 /* OrderSubtotalCell.swift */; };
+		64BA8BFA254C45CA00AC56C6 /* OrderPaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8BF9254C45CA00AC56C6 /* OrderPaymentCell.swift */; };
+		64BA8BFF254C45EA00AC56C6 /* OrderShippingAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8BFE254C45EA00AC56C6 /* OrderShippingAddressCell.swift */; };
+		64BA8C0B254C544B00AC56C6 /* OrderAddCardDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8C0A254C544B00AC56C6 /* OrderAddCardDetailsController.swift */; };
+		64BA8C13254C5DA300AC56C6 /* CardTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8C12254C5DA300AC56C6 /* CardTextField.swift */; };
 		64CB9A562546998800DC3E92 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9A552546998800DC3E92 /* CartViewController.swift */; };
 		64CB9A692546FD3700DC3E92 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CB9A682546FD3700DC3E92 /* Cart.storyboard */; };
 		64CB9AA425471BD400DC3E92 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9AA325471BD400DC3E92 /* CartCell.swift */; };
@@ -166,7 +171,12 @@
 		64BA8BA9254C0CB000AC56C6 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		64BA8BB1254C0D5D00AC56C6 /* Order.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		64BA8BB6254C1CEB00AC56C6 /* OrderSuccessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSuccessController.swift; sourceTree = "<group>"; };
-		64BA8BBB254C1D4900AC56C6 /* PlaceOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceOrderController.swift; sourceTree = "<group>"; };
+		64BA8BEF254C452200AC56C6 /* OrderInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInformationCell.swift; sourceTree = "<group>"; };
+		64BA8BF4254C45A500AC56C6 /* OrderSubtotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSubtotalCell.swift; sourceTree = "<group>"; };
+		64BA8BF9254C45CA00AC56C6 /* OrderPaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPaymentCell.swift; sourceTree = "<group>"; };
+		64BA8BFE254C45EA00AC56C6 /* OrderShippingAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingAddressCell.swift; sourceTree = "<group>"; };
+		64BA8C0A254C544B00AC56C6 /* OrderAddCardDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAddCardDetailsController.swift; sourceTree = "<group>"; };
+		64BA8C12254C5DA300AC56C6 /* CardTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTextField.swift; sourceTree = "<group>"; };
 		64CB9A552546998800DC3E92 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		64CB9A682546FD3700DC3E92 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		64CB9AA325471BD400DC3E92 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
@@ -446,12 +456,32 @@
 		64BA8BA5254C015500AC56C6 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				64BA8BA9254C0CB000AC56C6 /* OrderViewController.swift */,
 				64BA8BB1254C0D5D00AC56C6 /* Order.storyboard */,
-				64BA8BBB254C1D4900AC56C6 /* PlaceOrderController.swift */,
+				64BA8C40254C673000AC56C6 /* Payment */,
+				64BA8C06254C4D3A00AC56C6 /* Main Order */,
 				64BA8BB6254C1CEB00AC56C6 /* OrderSuccessController.swift */,
 			);
 			path = Order;
+			sourceTree = "<group>";
+		};
+		64BA8C06254C4D3A00AC56C6 /* Main Order */ = {
+			isa = PBXGroup;
+			children = (
+				64BA8BEF254C452200AC56C6 /* OrderInformationCell.swift */,
+				64BA8BFE254C45EA00AC56C6 /* OrderShippingAddressCell.swift */,
+				64BA8BF9254C45CA00AC56C6 /* OrderPaymentCell.swift */,
+				64BA8BF4254C45A500AC56C6 /* OrderSubtotalCell.swift */,
+				64BA8BA9254C0CB000AC56C6 /* OrderViewController.swift */,
+			);
+			name = "Main Order";
+			sourceTree = "<group>";
+		};
+		64BA8C40254C673000AC56C6 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				64BA8C0A254C544B00AC56C6 /* OrderAddCardDetailsController.swift */,
+			);
+			path = Payment;
 			sourceTree = "<group>";
 		};
 		64CE1B0B2531ACF900A194E3 = {
@@ -526,6 +556,7 @@
 				647C77AA2532BFC60034159E /* SearchGradientView.swift */,
 				647C77FA2532FB270034159E /* IBooksSearchTextField.swift */,
 				647C77F22532F50A0034159E /* LocationTopView.swift */,
+				64BA8C12254C5DA300AC56C6 /* CardTextField.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -853,8 +884,8 @@
 				6476F6682535700F00879CC1 /* User.swift in Sources */,
 				64FB7A4C2541230800158989 /* BookDetailController.swift in Sources */,
 				649B0063253AE56100BE315A /* AppSecurity.swift in Sources */,
+				64BA8BF0254C452200AC56C6 /* OrderInformationCell.swift in Sources */,
 				647C77902532B3980034159E /* AppSetting.swift in Sources */,
-				64BA8BBC254C1D4900AC56C6 /* PlaceOrderController.swift in Sources */,
 				64B0276A254295F900C1CDB2 /* RecommendationOverallCell.swift in Sources */,
 				64AD6ECB25345614008D4EF6 /* BookListCell.swift in Sources */,
 				649B00A7253B5C5500BE315A /* AlertActionBuilder.swift in Sources */,
@@ -864,6 +895,7 @@
 				649B009D253B5BFA00BE315A /* UIViewController+Alerts.swift in Sources */,
 				64CE1B692531B19800A194E3 /* Styles.swift in Sources */,
 				64A3C8D3253DEEB10019F28A /* SearchViewController.swift in Sources */,
+				64BA8BFA254C45CA00AC56C6 /* OrderPaymentCell.swift in Sources */,
 				644B6C5C2535FF3400F7FE32 /* EditPersonalInfoController.swift in Sources */,
 				648768512539FA91002B2AD6 /* Log.swift in Sources */,
 				64364E722545E62B0073B8DC /* FilterType.swift in Sources */,
@@ -877,10 +909,12 @@
 				64CE1B572531B08200A194E3 /* Extensions+UIView.swift in Sources */,
 				64A3C8E7253E04BF0019F28A /* SearchCell.swift in Sources */,
 				6476F69D2535706400879CC1 /* HTTPRequester.swift in Sources */,
+				64BA8BF5254C45A500AC56C6 /* OrderSubtotalCell.swift in Sources */,
 				64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */,
 				644B6C7E253612B200F7FE32 /* EditPersonalInfoHeaderView.swift in Sources */,
 				64D5EA4925335362005788A3 /* ProfileTableViewController.swift in Sources */,
 				64FB7A54254126C900158989 /* BottomContainerView.swift in Sources */,
+				64BA8C13254C5DA300AC56C6 /* CardTextField.swift in Sources */,
 				64CE1B4D2531AFD400A194E3 /* Extensions+UIColor.swift in Sources */,
 				64D5EA5E25336385005788A3 /* ProfileHeaderView.swift in Sources */,
 				64BA8BAA254C0CB000AC56C6 /* OrderViewController.swift in Sources */,
@@ -889,6 +923,7 @@
 				649BFFFA253A9CDB00BE315A /* Category.swift in Sources */,
 				64CB9AA92547200E00DC3E92 /* PromoCodeCell.swift in Sources */,
 				647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */,
+				64BA8BFF254C45EA00AC56C6 /* OrderShippingAddressCell.swift in Sources */,
 				647C77832532330F0034159E /* IBooksButton.swift in Sources */,
 				64AD6EC32534559F008D4EF6 /* BookListViewController.swift in Sources */,
 				643E3703253C8EEE003D70E9 /* UIAlertController+AddAction.swift in Sources */,
@@ -899,6 +934,7 @@
 				641B93D82541DB8000233FB2 /* BookDetailMainCell.swift in Sources */,
 				64CB9AA425471BD400DC3E92 /* CartCell.swift in Sources */,
 				64416A8E254153C3005966AB /* BookDetailTopContainerView.swift in Sources */,
+				64BA8C0B254C544B00AC56C6 /* OrderAddCardDetailsController.swift in Sources */,
 				64B0276F2542980300C1CDB2 /* BookDetailRecommendationHorizontalController.swift in Sources */,
 				6490119B25427D0200E5D9DE /* BookDetailDescriptionCell.swift in Sources */,
 				647C77FB2532FB270034159E /* IBooksSearchTextField.swift in Sources */,

@@ -86,13 +86,218 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tAM-Kk-xMi">
                                 <rect key="frame" x="0.0" y="88" width="414" height="664"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="277" id="1c1-1V-eHN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderInformationCell" rowHeight="277" id="1c1-1V-eHN" customClass="OrderInformationCell" customModule="bsuser" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="277"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1c1-1V-eHN" id="6GE-MK-tA1">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="277"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKT-oY-WGb">
+                                                    <rect key="frame" x="24" y="24" width="126.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" name="black"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUv-Xq-jmi">
+                                                    <rect key="frame" x="341" y="19" width="49" height="29"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="14"/>
+                                                    <state key="normal" title="Change"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="JUv-Xq-jmi" secondAttribute="trailing" constant="24" id="4jW-FH-99U"/>
+                                                <constraint firstItem="JUv-Xq-jmi" firstAttribute="centerY" secondItem="sKT-oY-WGb" secondAttribute="centerY" id="V9l-2D-wrh"/>
+                                                <constraint firstItem="sKT-oY-WGb" firstAttribute="leading" secondItem="6GE-MK-tA1" secondAttribute="leading" constant="24" id="Xmf-iA-t53"/>
+                                                <constraint firstItem="sKT-oY-WGb" firstAttribute="top" secondItem="6GE-MK-tA1" secondAttribute="top" constant="24" id="fBP-s3-WpE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderShippingAddressCell" rowHeight="104" id="ZO5-Te-EVR" customClass="OrderShippingAddressCell" customModule="bsuser" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="305" width="414" height="104"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZO5-Te-EVR" id="5yD-Qa-eHS">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Shipping Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tl2-Nd-psA">
+                                                    <rect key="frame" x="24" y="24" width="127" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" name="black"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Anh Khoa - 0963405501" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0I-gk-3S5">
+                                                    <rect key="frame" x="24" y="51" width="366" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" name="black"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="133 Chau Van Liem, Phuong 14, Quan 5, Ho Chi Minh 133 Chau Van Liem, Phuong 14, Quan 5, Ho Chi Minh" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ui5-lI-fT7">
+                                                    <rect key="frame" x="24" y="74" width="366" height="6"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" name="black"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uon-bq-L8W">
+                                                    <rect key="frame" x="341" y="19" width="49" height="29"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="14"/>
+                                                    <state key="normal" title="Change"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tl2-Nd-psA" firstAttribute="leading" secondItem="5yD-Qa-eHS" secondAttribute="leading" constant="24" id="2VE-z8-QU0"/>
+                                                <constraint firstItem="tl2-Nd-psA" firstAttribute="top" secondItem="5yD-Qa-eHS" secondAttribute="top" constant="24" id="5gB-TL-DwF"/>
+                                                <constraint firstItem="Uon-bq-L8W" firstAttribute="centerY" secondItem="tl2-Nd-psA" secondAttribute="centerY" id="7F2-Qs-3Yi"/>
+                                                <constraint firstAttribute="trailing" secondItem="ui5-lI-fT7" secondAttribute="trailing" constant="24" id="82z-B6-NAT"/>
+                                                <constraint firstAttribute="bottom" secondItem="ui5-lI-fT7" secondAttribute="bottom" constant="24" id="8fy-hc-mQa"/>
+                                                <constraint firstItem="ui5-lI-fT7" firstAttribute="top" secondItem="d0I-gk-3S5" secondAttribute="bottom" constant="4" id="IDq-Xv-FzP"/>
+                                                <constraint firstAttribute="trailing" secondItem="Uon-bq-L8W" secondAttribute="trailing" constant="24" id="IWy-OQ-xVK"/>
+                                                <constraint firstItem="d0I-gk-3S5" firstAttribute="leading" secondItem="5yD-Qa-eHS" secondAttribute="leading" constant="24" id="faZ-ei-U62"/>
+                                                <constraint firstItem="d0I-gk-3S5" firstAttribute="top" secondItem="tl2-Nd-psA" secondAttribute="bottom" constant="8" id="fdL-w7-oNw"/>
+                                                <constraint firstItem="ui5-lI-fT7" firstAttribute="leading" secondItem="5yD-Qa-eHS" secondAttribute="leading" constant="24" id="jGp-WR-0Zl"/>
+                                                <constraint firstAttribute="trailing" secondItem="d0I-gk-3S5" secondAttribute="trailing" constant="24" id="wfq-bX-DwZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderPaymentCell" rowHeight="100" id="ByJ-95-iCm" customClass="OrderPaymentCell" customModule="bsuser" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="409" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ByJ-95-iCm" id="r31-TB-XLk">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnJ-6I-col">
+                                                    <rect key="frame" x="24" y="24" width="61.5" height="0.0"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" name="black"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN0-57-Ss5">
+                                                    <rect key="frame" x="340" y="47" width="50" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="2jD-ka-B6j"/>
+                                                        <constraint firstAttribute="height" constant="30" id="ogA-Wh-J5v"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="13"/>
+                                                    <state key="normal" title="Add">
+                                                        <color key="titleColor" name="black"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didTappedAddPaymentMethod:" destination="9sf-yc-l1o" eventType="touchUpInside" id="A9w-u2-hmA"/>
+                                                    </connections>
+                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UZ3-yf-MoF">
+                                                    <rect key="frame" x="24" y="48" width="174" height="28"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGP-hp-CCu">
+                                                            <rect key="frame" x="0.0" y="0.0" width="174" height="0.0"/>
+                                                            <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="17"/>
+                                                            <color key="textColor" name="black"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="6KM-r5-3mC">
+                                                            <rect key="frame" x="0.0" y="0.0" width="174" height="28"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visa" translatesAutoresizingMaskIntoConstraints="NO" id="lWz-Vk-y2Q">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="28"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="PsW-BR-dKY"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="mgo-Gg-VdJ"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="amex" translatesAutoresizingMaskIntoConstraints="NO" id="Vow-kj-dA6">
+                                                                    <rect key="frame" x="36" y="0.0" width="30" height="28"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="QGD-tE-leu"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="XIv-y5-bAu"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mastercard" translatesAutoresizingMaskIntoConstraints="NO" id="0g0-XG-3MR">
+                                                                    <rect key="frame" x="72" y="0.0" width="30" height="28"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="7wa-3w-DBs"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="DHD-jc-cbU"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discover" translatesAutoresizingMaskIntoConstraints="NO" id="tJX-nq-6iB">
+                                                                    <rect key="frame" x="108" y="0.0" width="30" height="28"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="ZhA-t0-fA0"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="zNi-bK-qXS"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paypal" translatesAutoresizingMaskIntoConstraints="NO" id="9KY-rD-bdr">
+                                                                    <rect key="frame" x="144" y="0.0" width="30" height="28"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="HTq-9v-u9r"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="crR-0D-hN2"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PnJ-6I-col" firstAttribute="leading" secondItem="r31-TB-XLk" secondAttribute="leading" constant="24" id="CjH-ZG-T6Z"/>
+                                                <constraint firstAttribute="trailing" secondItem="TN0-57-Ss5" secondAttribute="trailing" constant="24" id="JHC-St-ong"/>
+                                                <constraint firstItem="PnJ-6I-col" firstAttribute="top" secondItem="r31-TB-XLk" secondAttribute="top" constant="24" id="O6h-AB-IeM"/>
+                                                <constraint firstAttribute="bottom" secondItem="UZ3-yf-MoF" secondAttribute="bottom" constant="24" id="R0g-d2-ocI"/>
+                                                <constraint firstItem="UZ3-yf-MoF" firstAttribute="top" secondItem="PnJ-6I-col" secondAttribute="bottom" constant="24" id="bqR-ET-Xhe"/>
+                                                <constraint firstItem="TN0-57-Ss5" firstAttribute="centerY" secondItem="UZ3-yf-MoF" secondAttribute="centerY" id="dT3-DJ-Mf5"/>
+                                                <constraint firstItem="UZ3-yf-MoF" firstAttribute="leading" secondItem="r31-TB-XLk" secondAttribute="leading" constant="24" id="l5o-v9-8tN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addButton" destination="TN0-57-Ss5" id="e8Q-xH-KMd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderSubtotalCell" rowHeight="100" id="JuV-tG-1x8" customClass="OrderSubtotalCell">
+                                        <rect key="frame" x="0.0" y="509" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JuV-tG-1x8" id="BtR-cd-QdA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1U-7f-Uzc">
+                                                    <rect key="frame" x="24" y="24" width="60.5" height="25"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" name="gray"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$51.23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6C-Gl-rVQ">
+                                                    <rect key="frame" x="341" y="24" width="49" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" name="black"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping Fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uby-5n-C2Y">
+                                                    <rect key="frame" x="24" y="57" width="88.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMk-Tu-0Qm">
+                                                    <rect key="frame" x="341" y="57" width="49" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" name="black"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Uby-5n-C2Y" firstAttribute="top" secondItem="h1U-7f-Uzc" secondAttribute="bottom" constant="8" id="1yM-7d-L5B"/>
+                                                <constraint firstAttribute="trailing" secondItem="V6C-Gl-rVQ" secondAttribute="trailing" constant="24" id="288-Hx-Gcf"/>
+                                                <constraint firstItem="h1U-7f-Uzc" firstAttribute="leading" secondItem="BtR-cd-QdA" secondAttribute="leading" constant="24" id="5wc-cG-83j"/>
+                                                <constraint firstItem="V6C-Gl-rVQ" firstAttribute="top" secondItem="BtR-cd-QdA" secondAttribute="top" constant="24" id="H4Y-Fj-6IU"/>
+                                                <constraint firstItem="Uby-5n-C2Y" firstAttribute="leading" secondItem="BtR-cd-QdA" secondAttribute="leading" constant="24" id="cWV-1V-EWd"/>
+                                                <constraint firstAttribute="bottom" secondItem="XMk-Tu-0Qm" secondAttribute="bottom" constant="24" id="dFd-qq-1o5"/>
+                                                <constraint firstItem="XMk-Tu-0Qm" firstAttribute="centerY" secondItem="Uby-5n-C2Y" secondAttribute="centerY" id="eHV-N5-SQ1"/>
+                                                <constraint firstItem="h1U-7f-Uzc" firstAttribute="top" secondItem="BtR-cd-QdA" secondAttribute="top" constant="24" id="eTC-Pe-G7F"/>
+                                                <constraint firstAttribute="bottom" secondItem="Uby-5n-C2Y" secondAttribute="bottom" constant="24" id="h9Q-w0-k15"/>
+                                                <constraint firstAttribute="trailing" secondItem="XMk-Tu-0Qm" secondAttribute="trailing" constant="24" id="mWz-Ah-SCz"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -118,10 +323,171 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="tAM-Kk-xMi" id="T4M-CB-I7i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fdp-3a-gLQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3010.144927536232" y="116.51785714285714"/>
+        </scene>
+        <!--Order Add Card Details Controller-->
+        <scene sceneID="Yol-xE-NlG">
+            <objects>
+                <viewController storyboardIdentifier="OrderAddCardDetailsController" id="OcX-Pu-H7O" customClass="OrderAddCardDetailsController" customModule="bsuser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GRE-bM-vEj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4YJ-Ll-9De">
+                                <rect key="frame" x="24" y="68" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="PJh-Hg-Gvp"/>
+                                    <constraint firstAttribute="width" constant="24" id="j3J-1T-shJ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="dismiss"/>
+                                <connections>
+                                    <action selector="didTappedDismissButton:" destination="OcX-Pu-H7O" eventType="touchUpInside" id="TkM-mh-xtp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add card details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3H-Pt-eCM">
+                                <rect key="frame" x="24" y="116" width="366" height="37.5"/>
+                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fjw-6F-VOs">
+                                <rect key="frame" x="310" y="788" width="80" height="50"/>
+                                <color key="backgroundColor" name="darkGreen"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="x1N-AD-nDo"/>
+                                    <constraint firstAttribute="height" constant="50" id="ymd-Vl-pf9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="gJZ-cb-K7N">
+                                <rect key="frame" x="24" y="201.5" width="366" height="154"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AI0-qG-98f">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="71"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ab-gA-BY3">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="21"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0000 0000 0000" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6YA-JE-9Gl" customClass="CardTextField" customModule="bsuser" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="21" width="366" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="ITW-Yd-Cdb"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="D5x-t1-cMu">
+                                        <rect key="frame" x="0.0" y="83" width="366" height="71"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LQd-0d-iD2">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="71"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWh-Mu-vIa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="21"/>
+                                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MM/YY" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NbP-aF-bUe" customClass="CardTextField" customModule="bsuser" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="21" width="130" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="130" id="7Ua-sS-OMD"/>
+                                                            <constraint firstAttribute="height" constant="50" id="msk-ZY-0Ph"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CW3-XS-ccO">
+                                                <rect key="frame" x="142" y="0.0" width="100" height="71"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CVV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Os8-4I-mVx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
+                                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="123" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A9Y-8J-bUe" customClass="CardTextField" customModule="bsuser" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="21" width="100" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="Io9-As-kx3"/>
+                                                            <constraint firstAttribute="width" constant="100" id="P1v-ll-f6b"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZLN-qZ-pEs">
+                                                <rect key="frame" x="254" y="0.0" width="112" height="71"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ZIP code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9D-OR-65i">
+                                                        <rect key="frame" x="0.0" y="0.0" width="112" height="21"/>
+                                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="728" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2hw-R7-DhR" customClass="CardTextField" customModule="bsuser" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="21" width="112" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="9Jt-NJ-bI6"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1aG-fO-9Oe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1aG-fO-9Oe" firstAttribute="trailing" secondItem="r3H-Pt-eCM" secondAttribute="trailing" constant="24" id="CDY-Nu-o7x"/>
+                            <constraint firstItem="1aG-fO-9Oe" firstAttribute="bottom" secondItem="Fjw-6F-VOs" secondAttribute="bottom" constant="24" id="Dh5-fN-PPl"/>
+                            <constraint firstItem="1aG-fO-9Oe" firstAttribute="trailing" secondItem="gJZ-cb-K7N" secondAttribute="trailing" constant="24" id="GZM-zB-sQd"/>
+                            <constraint firstItem="1aG-fO-9Oe" firstAttribute="trailing" secondItem="Fjw-6F-VOs" secondAttribute="trailing" constant="24" id="HuH-lU-bZm"/>
+                            <constraint firstItem="4YJ-Ll-9De" firstAttribute="top" secondItem="1aG-fO-9Oe" secondAttribute="top" constant="24" id="IFB-tM-5th"/>
+                            <constraint firstItem="r3H-Pt-eCM" firstAttribute="top" secondItem="4YJ-Ll-9De" secondAttribute="bottom" constant="24" id="WxZ-9S-tww"/>
+                            <constraint firstItem="r3H-Pt-eCM" firstAttribute="leading" secondItem="1aG-fO-9Oe" secondAttribute="leading" constant="24" id="X1O-UV-wXS"/>
+                            <constraint firstItem="gJZ-cb-K7N" firstAttribute="top" secondItem="r3H-Pt-eCM" secondAttribute="bottom" constant="48" id="aiJ-jd-F7q"/>
+                            <constraint firstItem="gJZ-cb-K7N" firstAttribute="leading" secondItem="1aG-fO-9Oe" secondAttribute="leading" constant="24" id="mTX-wL-PsW"/>
+                            <constraint firstItem="4YJ-Ll-9De" firstAttribute="leading" secondItem="1aG-fO-9Oe" secondAttribute="leading" constant="24" id="zCa-nE-SWd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cardNumberTextField" destination="6YA-JE-9Gl" id="umh-p0-7wC"/>
+                        <outlet property="cvvTextField" destination="A9Y-8J-bUe" id="UoA-Dk-7M0"/>
+                        <outlet property="expirationTextField" destination="NbP-aF-bUe" id="qto-Ye-o5c"/>
+                        <outlet property="nextButton" destination="Fjw-6F-VOs" id="DzH-de-c49"/>
+                        <outlet property="zipCodeTextField" destination="2hw-R7-DhR" id="KRl-eW-6ko"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dnK-18-w8r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3757" y="825"/>
         </scene>
         <!--iBooks.com Thanks You-->
         <scene sceneID="KhG-c1-dc9">
@@ -277,10 +643,21 @@
         </scene>
     </scenes>
     <resources>
+        <image name="amex" width="64" height="64"/>
+        <image name="discover" width="64" height="64"/>
         <image name="dismiss" width="14" height="14"/>
         <image name="info" width="40" height="40"/>
+        <image name="mastercard" width="32" height="32"/>
+        <image name="paypal" width="64" height="64"/>
+        <image name="visa" width="64" height="64"/>
         <namedColor name="black">
             <color red="0.17647058823529413" green="0.17647058823529413" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="darkGreen">
+            <color red="0.21568627450980393" green="0.50196078431372548" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray">
+            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="0.85882352941176465" green="0.18823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

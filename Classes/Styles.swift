@@ -36,7 +36,7 @@ enum Styles {
         }
 
         static let primary = "DB3022"
-        static let background = "F9F9F9"
+        static let background = "F6F6F7"
         static let gray = "9B9B9B"
         static let darkGreen = "378095"
         static let sale = "DB3022"
@@ -51,7 +51,7 @@ enum Styles {
         static let separate = "DCDCDC"
         static let filterBorder = "CC7F3E"
         static let filterBackground = "FDF7F2"
-
+        static let textFieldBottomLine = "F1F2F2"
     }
 
     enum Text {

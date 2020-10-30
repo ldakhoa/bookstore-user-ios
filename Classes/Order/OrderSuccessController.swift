@@ -21,7 +21,8 @@ final class OrderSuccessController: UIViewController {
 
     @IBAction
     private func didTappedContinueShoppingButton(_ sender: Any) {
-        AppSetting.shared.checkMainScreen()
+        presentingViewController?.tabBarController?.selectedIndex = 0
+        presentingViewController?.dismiss(animated: true)
     }
 
 }
