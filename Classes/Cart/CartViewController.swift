@@ -9,6 +9,8 @@ import UIKit
 
 final class CartViewController: UIViewController {
 
+    // MARK: Internal
+
     @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
@@ -34,6 +36,16 @@ final class CartViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+
+    // MARK: Private
+
+    @IBAction
+    private func didTappedCheckoutButton(_ sender: Any) {
+        let orderNavController = AppSetting.Storyboards.Order.orderNavController
+        orderNavController.modalPresentationStyle = .fullScreen
+        present(orderNavController, animated: true)
+    }
+
 }
 
 // MARK: - UITableViewDataSource

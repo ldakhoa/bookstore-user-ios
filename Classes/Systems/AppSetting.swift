@@ -34,12 +34,19 @@ struct AppSetting {
             static let cartVC = cart.instantiateViewController(withIdentifier: "CartViewController")
         }
 
+        enum Order {
+            static let orderNavController = order.instantiateViewController(withIdentifier: "OrderNavController")
+            static let orderVC = order.instantiateViewController(withIdentifier: "OrderViewController")
+            static let orderSuccessVC = order.instantiateViewController(withIdentifier: "OrderSuccessController")
+        }
+
         static let registration = UIStoryboard(name: "Registration", bundle: nil)
         static let home = UIStoryboard(name: "Home", bundle: nil)
         static let category = UIStoryboard(name: "Category", bundle: nil)
         static let bookList = UIStoryboard(name: "BookList", bundle: nil)
         static let search = UIStoryboard(name: "Search", bundle: nil)
         static let cart = UIStoryboard(name: "Cart", bundle: nil)
+        static let order = UIStoryboard(name: "Order", bundle: nil)
 
     }
 

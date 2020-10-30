@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 
 //let coreURL = "http://localhost:8000/"
-let coreURL = "http://192.168.1.5:8000/"
+let coreURL = "http://10.0.22.18:8000/"
 
 protocol Requestable {
     func params() -> (
