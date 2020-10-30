@@ -39,6 +39,8 @@ struct AppSetting {
             static let orderVC = order.instantiateViewController(withIdentifier: "OrderViewController")
             static let orderSuccessVC = order.instantiateViewController(withIdentifier: "OrderSuccessController")
             static let orderAddPaymentMethodVC = order.instantiateViewController(withIdentifier: "OrderAddCardDetailsController")
+            static let orderAddPaymentVC = order.instantiateViewController(withIdentifier: "OrderAddPaymentController")
+
         }
 
         static let registration = UIStoryboard(name: "Registration", bundle: nil)

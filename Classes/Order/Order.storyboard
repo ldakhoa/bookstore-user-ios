@@ -345,7 +345,7 @@
                                     <constraint firstAttribute="height" constant="24" id="PJh-Hg-Gvp"/>
                                     <constraint firstAttribute="width" constant="24" id="j3J-1T-shJ"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="dismiss"/>
+                                <state key="normal" image="back"/>
                                 <connections>
                                     <action selector="didTappedDismissButton:" destination="OcX-Pu-H7O" eventType="touchUpInside" id="TkM-mh-xtp"/>
                                 </connections>
@@ -487,7 +487,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dnK-18-w8r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3757" y="825"/>
+            <point key="canvasLocation" x="3757" y="828"/>
         </scene>
         <!--iBooks.com Thanks You-->
         <scene sceneID="KhG-c1-dc9">
@@ -641,9 +641,123 @@
             </objects>
             <point key="canvasLocation" x="2100" y="116.51785714285714"/>
         </scene>
+        <!--Order Add Payment Controller-->
+        <scene sceneID="T4t-bg-8ou">
+            <objects>
+                <viewController storyboardIdentifier="OrderAddPaymentController" id="P7W-eh-Wdc" customClass="OrderAddPaymentController" customModule="bsuser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fd9-Ai-DRU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1F-T4-wEv">
+                                <rect key="frame" x="24" y="68" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="81U-3m-44l"/>
+                                    <constraint firstAttribute="width" constant="24" id="fvj-gn-yaZ"/>
+                                </constraints>
+                                <state key="normal" image="dismiss"/>
+                                <connections>
+                                    <action selector="didTappedDismissButtion:" destination="AF4-Wp-4ko" eventType="touchUpInside" id="kdf-mE-wkL"/>
+                                    <action selector="didTappedDismissButton:" destination="P7W-eh-Wdc" eventType="touchUpInside" id="a5E-X8-Sb3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64W-Wg-1dh">
+                                <rect key="frame" x="24" y="116" width="366" height="37.5"/>
+                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="4Oa-P3-gNh">
+                                <rect key="frame" x="24" y="201.5" width="366" height="89"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JqT-de-12F">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card-debit" translatesAutoresizingMaskIntoConstraints="NO" id="mdw-VC-VSd">
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="Ne3-1e-1eg"/>
+                                                    <constraint firstAttribute="width" constant="48" id="hUV-3A-aKS"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit or debit card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAt-vL-VFb">
+                                                <rect key="frame" x="56" y="0.0" width="278" height="32"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron-right-black" translatesAutoresizingMaskIntoConstraints="NO" id="5OO-Bm-J7b">
+                                                <rect key="frame" x="342" y="0.0" width="24" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="wS6-6Z-N8q"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kT-aX-ZDf">
+                                        <rect key="frame" x="0.0" y="44" width="366" height="1"/>
+                                        <color key="backgroundColor" name="seperated"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="mpk-Qs-NfA"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mad-Wl-rgB">
+                                        <rect key="frame" x="0.0" y="57" width="366" height="32"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card-paypal" translatesAutoresizingMaskIntoConstraints="NO" id="0ek-Na-648">
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="7BC-K5-64O"/>
+                                                    <constraint firstAttribute="width" constant="48" id="Dir-sZ-alv"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PayPal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfb-0K-UcO">
+                                                <rect key="frame" x="56" y="0.0" width="278" height="32"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron-right-black" translatesAutoresizingMaskIntoConstraints="NO" id="04o-sl-SJS">
+                                                <rect key="frame" x="342" y="0.0" width="24" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="OU5-uZ-gSh"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ijj-SV-HHo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4Oa-P3-gNh" firstAttribute="top" secondItem="64W-Wg-1dh" secondAttribute="bottom" constant="48" id="Lbs-NI-IBL"/>
+                            <constraint firstItem="ijj-SV-HHo" firstAttribute="trailing" secondItem="4Oa-P3-gNh" secondAttribute="trailing" constant="24" id="MKQ-kI-SUa"/>
+                            <constraint firstItem="C1F-T4-wEv" firstAttribute="leading" secondItem="ijj-SV-HHo" secondAttribute="leading" constant="24" id="PRM-35-LfR"/>
+                            <constraint firstItem="C1F-T4-wEv" firstAttribute="top" secondItem="ijj-SV-HHo" secondAttribute="top" constant="24" id="aTm-wx-tOZ"/>
+                            <constraint firstItem="64W-Wg-1dh" firstAttribute="top" secondItem="C1F-T4-wEv" secondAttribute="bottom" constant="24" id="ay7-DF-k4A"/>
+                            <constraint firstItem="ijj-SV-HHo" firstAttribute="trailing" secondItem="64W-Wg-1dh" secondAttribute="trailing" constant="24" id="pxt-VN-P8n"/>
+                            <constraint firstItem="4Oa-P3-gNh" firstAttribute="leading" secondItem="ijj-SV-HHo" secondAttribute="leading" constant="24" id="yg2-N8-CpT"/>
+                            <constraint firstItem="64W-Wg-1dh" firstAttribute="leading" secondItem="ijj-SV-HHo" secondAttribute="leading" constant="24" id="zII-q1-xZE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cardStackView" destination="JqT-de-12F" id="8Jt-sz-vo8"/>
+                        <outlet property="payPalStackView" destination="Mad-Wl-rgB" id="qxV-b5-UJV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cO1-4c-5tY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="AF4-Wp-4ko" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3023" y="828"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Card-debit" width="100" height="50"/>
+        <image name="Card-paypal" width="48" height="32"/>
         <image name="amex" width="64" height="64"/>
+        <image name="back" width="24" height="24"/>
+        <image name="chevron-right-black" width="24" height="24"/>
         <image name="discover" width="64" height="64"/>
         <image name="dismiss" width="14" height="14"/>
         <image name="info" width="40" height="40"/>
@@ -661,6 +775,9 @@
         </namedColor>
         <namedColor name="primary">
             <color red="0.85882352941176465" green="0.18823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="seperated">
+            <color red="0.89399999380111694" green="0.89399999380111694" blue="0.89399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

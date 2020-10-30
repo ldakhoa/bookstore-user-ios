@@ -92,6 +92,7 @@ final class OrderAddCardDetailsController: UIViewController {
 
     @IBAction
     private func didTappedDismissButton(_ sender: Any) {
-        dismiss(animated: true)
+        view.endEditing(true)
+        navigationController?.popViewController(animated: true)
     }
 }

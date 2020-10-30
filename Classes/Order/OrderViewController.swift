@@ -36,8 +36,11 @@ final class OrderViewController: UIViewController {
 
     @IBAction
     private func didTappedAddPaymentMethod(_ sender: Any) {
-        let orderAddPaymentMethodVC = AppSetting.Storyboards.Order.orderAddPaymentMethodVC
-        present(orderAddPaymentMethodVC, animated: true)
+
+        let orderPaymentController = AppSetting.Storyboards.Order.orderAddPaymentVC
+        let navController = UINavigationController(rootViewController: orderPaymentController)
+        navController.setNavigationBarHidden(true, animated: true)
+        present(navController, animated: true)
 
     }
 }

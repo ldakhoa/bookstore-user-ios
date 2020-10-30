@@ -69,6 +69,7 @@
 		64BA8BFF254C45EA00AC56C6 /* OrderShippingAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8BFE254C45EA00AC56C6 /* OrderShippingAddressCell.swift */; };
 		64BA8C0B254C544B00AC56C6 /* OrderAddCardDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8C0A254C544B00AC56C6 /* OrderAddCardDetailsController.swift */; };
 		64BA8C13254C5DA300AC56C6 /* CardTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8C12254C5DA300AC56C6 /* CardTextField.swift */; };
+		64BA8C45254C6C3200AC56C6 /* OrderAddPaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8C44254C6C3200AC56C6 /* OrderAddPaymentController.swift */; };
 		64CB9A562546998800DC3E92 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9A552546998800DC3E92 /* CartViewController.swift */; };
 		64CB9A692546FD3700DC3E92 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CB9A682546FD3700DC3E92 /* Cart.storyboard */; };
 		64CB9AA425471BD400DC3E92 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9AA325471BD400DC3E92 /* CartCell.swift */; };
@@ -177,6 +178,7 @@
 		64BA8BFE254C45EA00AC56C6 /* OrderShippingAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderShippingAddressCell.swift; sourceTree = "<group>"; };
 		64BA8C0A254C544B00AC56C6 /* OrderAddCardDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAddCardDetailsController.swift; sourceTree = "<group>"; };
 		64BA8C12254C5DA300AC56C6 /* CardTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTextField.swift; sourceTree = "<group>"; };
+		64BA8C44254C6C3200AC56C6 /* OrderAddPaymentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAddPaymentController.swift; sourceTree = "<group>"; };
 		64CB9A552546998800DC3E92 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		64CB9A682546FD3700DC3E92 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		64CB9AA325471BD400DC3E92 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				64BA8C0A254C544B00AC56C6 /* OrderAddCardDetailsController.swift */,
+				64BA8C44254C6C3200AC56C6 /* OrderAddPaymentController.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6476F6682535700F00879CC1 /* User.swift in Sources */,
+				64BA8C45254C6C3200AC56C6 /* OrderAddPaymentController.swift in Sources */,
 				64FB7A4C2541230800158989 /* BookDetailController.swift in Sources */,
 				649B0063253AE56100BE315A /* AppSecurity.swift in Sources */,
 				64BA8BF0254C452200AC56C6 /* OrderInformationCell.swift in Sources */,
