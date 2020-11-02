@@ -12,11 +12,10 @@ protocol SearchViewControllerDelegate: AnyObject {
 }
 
 final class SearchViewController: UIViewController {
-
     // MARK: Internal
 
-    @IBOutlet weak var searchGradientView: SearchGradientView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var searchGradientView: SearchGradientView!
+    @IBOutlet var tableView: UITableView!
     var timer: Timer?
     var books = [Book]()
 
@@ -76,7 +75,6 @@ final class SearchViewController: UIViewController {
 //            self.getBookBySearch(text: textString)
             self.getBookBySearch(text: "National")
         })
-
     }
 
     private func getBookBySearch(text: String) {
@@ -100,7 +98,7 @@ final class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return books.count
     }
 
@@ -112,7 +110,7 @@ extension SearchViewController: UITableViewDataSource {
 }
 
 extension SearchViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 44
     }
 

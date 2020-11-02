@@ -8,7 +8,6 @@
 import UIKit
 
 class IBooksButton: UIButton {
-
     // MARK: Lifecycle
 
     convenience init(color: UIColor = Styles.Colors.primary.color) {
@@ -57,7 +56,5 @@ class IBooksButton: UIButton {
         layer.cornerRadius = Styles.Sizes.buttonCornerRadius
         layer.masksToBounds = false
         titleLabel?.font = Styles.Text.button.preferredFont
-
     }
-
 }

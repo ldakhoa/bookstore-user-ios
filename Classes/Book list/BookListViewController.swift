@@ -8,7 +8,6 @@
 import UIKit
 
 final class BookListViewController: UIViewController {
-
     // MARK: Internal
 
     var books = [Book]()
@@ -65,7 +64,7 @@ final class BookListViewController: UIViewController {
 // MARK: - UITableViewDataSource
 
 extension BookListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return books.count
 //        return 1
     }
@@ -84,11 +83,11 @@ extension BookListViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension BookListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 135 + 16 + 16
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let bookDetailController = BookDetailController()
         bookDetailController.modalPresentationStyle = .fullScreen
         bookDetailController.book = books[indexPath.row]
@@ -232,7 +231,7 @@ extension BookListViewController: UICollectionViewDelegateFlowLayout {
             fetchBookWith(filterType: .ratings)
             isChoosingPrice = false
             isChoosingRatings = true
-            if !isChoosingPrice && isChoosingRatings {
+            if !isChoosingPrice, isChoosingRatings {
                 cell.containerView.layer.borderColor = Styles.Colors.filterBorder.color.cgColor
                 cell.containerView.backgroundColor = Styles.Colors.filterBackground.color
             } else {
@@ -261,5 +260,4 @@ extension BookListViewController: SearchViewControllerDelegate {
         self.books = books
         tableView.reloadData()
     }
-
 }

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AirbnbCereal-Bold.ttf">
+            <string>AirbnbCerealApp-Bold</string>
+        </array>
+        <array key="AirbnbCereal-Book.ttf">
+            <string>AirbnbCerealApp-Book</string>
+        </array>
+        <array key="AirbnbCereal-Medium.ttf">
+            <string>AirbnbCerealApp-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Edit Personal Info Controller-->
+        <scene sceneID="VZF-FZ-fJR">
+            <objects>
+                <viewController storyboardIdentifier="EditPersonalInfoController" id="7dW-3r-zmT" customClass="EditPersonalInfoController" customModule="bsuser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Zs-gk-r8q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jTa-69-ota">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HearderCell" rowHeight="100" id="xLs-Hk-cWS">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xLs-Hk-cWS" id="d8U-F6-Mep">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit personal info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P70-iE-HmP">
+                                                    <rect key="frame" x="24" y="0.0" width="366" height="76"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Bold" family="Airbnb Cereal App" pointSize="34"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="P70-iE-HmP" firstAttribute="leading" secondItem="d8U-F6-Mep" secondAttribute="leading" constant="24" id="6zn-77-RF3"/>
+                                                <constraint firstAttribute="bottom" secondItem="P70-iE-HmP" secondAttribute="bottom" constant="24" id="CTZ-Cv-47g"/>
+                                                <constraint firstAttribute="trailing" secondItem="P70-iE-HmP" secondAttribute="trailing" constant="24" id="oG4-44-5fh"/>
+                                                <constraint firstItem="P70-iE-HmP" firstAttribute="top" secondItem="d8U-F6-Mep" secondAttribute="top" id="rHh-7o-D0l"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditPersonalInfoCell" rowHeight="100" id="msb-X8-f5l" customClass="EditPersonalInfoCell" customModule="bsuser" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="128" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="msb-X8-f5l" id="7mp-R4-jnU">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fQ-zr-NkI">
+                                                    <rect key="frame" x="24" y="24" width="39" height="29"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zeg-li-xHO" customClass="CardTextField" customModule="bsuser" customModuleProvider="target">
+                                                    <rect key="frame" x="24" y="49" width="366" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="ptR-kz-kgy"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="zeg-li-xHO" secondAttribute="bottom" constant="1" id="8oB-LN-n5t"/>
+                                                <constraint firstItem="zeg-li-xHO" firstAttribute="leading" secondItem="7mp-R4-jnU" secondAttribute="leading" constant="24" id="F5d-H7-QWH"/>
+                                                <constraint firstAttribute="trailing" secondItem="zeg-li-xHO" secondAttribute="trailing" constant="24" id="esl-cG-7ZN"/>
+                                                <constraint firstItem="zeg-li-xHO" firstAttribute="top" secondItem="3fQ-zr-NkI" secondAttribute="bottom" constant="-4" id="hpi-vb-g4g"/>
+                                                <constraint firstItem="3fQ-zr-NkI" firstAttribute="top" secondItem="7mp-R4-jnU" secondAttribute="top" constant="24" id="rLY-do-Dyo"/>
+                                                <constraint firstItem="3fQ-zr-NkI" firstAttribute="leading" secondItem="7mp-R4-jnU" secondAttribute="leading" constant="24" id="vVm-tP-4PI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="editTextField" destination="zeg-li-xHO" id="Yl3-vv-FHj"/>
+                                            <outlet property="titleLabel" destination="3fQ-zr-NkI" id="j54-xN-WsS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LoM-nr-dR1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jTa-69-ota" firstAttribute="leading" secondItem="LoM-nr-dR1" secondAttribute="leading" id="BmT-vx-hSh"/>
+                            <constraint firstItem="LoM-nr-dR1" firstAttribute="bottom" secondItem="jTa-69-ota" secondAttribute="bottom" id="DG8-fT-2Gw"/>
+                            <constraint firstItem="jTa-69-ota" firstAttribute="top" secondItem="LoM-nr-dR1" secondAttribute="top" id="spX-wW-JJq"/>
+                            <constraint firstItem="LoM-nr-dR1" firstAttribute="trailing" secondItem="jTa-69-ota" secondAttribute="trailing" id="u1a-O2-1y5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="jTa-69-ota" id="U0x-0V-G58"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hmS-hT-ddA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="321.73913043478262" y="201.5625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

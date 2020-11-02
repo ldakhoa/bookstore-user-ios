@@ -8,11 +8,10 @@
 import UIKit
 
 final class OrderAddPaymentController: UIViewController {
-
     // MARK: Internal
 
-    @IBOutlet weak var cardStackView: UIStackView!
-    @IBOutlet weak var payPalStackView: UIStackView!
+    @IBOutlet var cardStackView: UIStackView!
+    @IBOutlet var payPalStackView: UIStackView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +29,7 @@ final class OrderAddPaymentController: UIViewController {
     // MARK: Private
 
     @IBAction
-    private func didTappedDismissButton(_ sender: Any) {
+    private func didTappedDismissButton(_: Any) {
         dismiss(animated: true)
     }
 
@@ -50,5 +49,4 @@ final class OrderAddPaymentController: UIViewController {
         alert.addAction(AlertAction.ok())
         present(alert, animated: true)
     }
-
 }

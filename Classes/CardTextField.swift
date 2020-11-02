@@ -16,6 +16,5 @@ class CardTextField: UITextField {
         bottomLayer.backgroundColor = Styles.Colors.textFieldBottomLine.color.cgColor
 
         layer.addSublayer(bottomLayer)
-
     }
 }

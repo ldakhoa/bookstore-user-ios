@@ -8,7 +8,6 @@
 import UIKit
 
 class IBooksSearchTextField: UITextField {
-
     // MARK: Lifecycle
 
     override init(frame: CGRect) {

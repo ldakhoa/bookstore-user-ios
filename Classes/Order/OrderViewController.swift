@@ -8,10 +8,9 @@
 import UIKit
 
 final class OrderViewController: UIViewController {
-
     // MARK: Internal
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,35 +23,39 @@ final class OrderViewController: UIViewController {
     // MARK: Private
 
     @IBAction
-    private func didTappedDismissButton(_ sender: Any) {
+    private func didTappedDismissButton(_: Any) {
         dismiss(animated: true)
     }
 
     @IBAction
-    private func didTappedPlaceYourOrderButton(_ sender: Any) {
+    private func didTappedPlaceYourOrderButton(_: Any) {
         let orderSuccessController = AppSetting.Storyboards.Order.orderSuccessVC
         navigationController?.pushViewController(orderSuccessController, animated: true)
     }
 
     @IBAction
-    private func didTappedAddPaymentMethod(_ sender: Any) {
-
+    private func didTappedAddPaymentMethod(_: Any) {
         let orderPaymentController = AppSetting.Storyboards.Order.orderAddPaymentVC
         let navController = UINavigationController(rootViewController: orderPaymentController)
         navController.setNavigationBarHidden(true, animated: true)
         present(navController, animated: true)
+    }
 
+    @objc
+    private func didTappedEditAddressButton() {
+        let editAddressVC = AppSetting.Storyboards.Order.editAddressVC
+        navigationController?.pushViewController(editAddressVC, animated: true)
     }
 }
 
 // MARK: - UITableViewDataSource
 
 extension OrderViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         return 4
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return 1
     }
 
@@ -71,6 +74,7 @@ extension OrderViewController: UITableViewDataSource {
                 for: indexPath
             ) as? OrderShippingAddressCell else { return UITableViewCell() }
             cell.selectionStyle = .none
+            cell.editButton.addTarget(self, action: #selector(didTappedEditAddressButton), for: .touchUpInside)
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(
@@ -95,7 +99,7 @@ extension OrderViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension OrderViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
             return 300
@@ -110,15 +114,15 @@ extension OrderViewController: UITableViewDelegate {
         }
     }
 
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
         return 200
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_: UITableView, heightForFooterInSection _: Int) -> CGFloat {
         return 8
     }
 
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_: UITableView, viewForFooterInSection _: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = Styles.Colors.background.color
         return view

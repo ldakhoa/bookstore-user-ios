@@ -17,10 +17,9 @@ enum ResponseCode: Int {
 }
 
 struct NetworkManagement {
-
     // MARK: Public
 
-    static public func login(
+    public static func login(
         email: String,
         password: String,
         response: @escaping ResponseHandler
@@ -31,7 +30,7 @@ struct NetworkManagement {
         }
     }
 
-    static public func signup(
+    public static func signup(
         username: String,
         email: String,
         password: String,
@@ -43,7 +42,7 @@ struct NetworkManagement {
         }
     }
 
-    static public func getInformationOfUserWith(
+    public static func getInformationOfUserWith(
         id: Int,
         response: @escaping ResponseHandler
     ) {
@@ -53,7 +52,7 @@ struct NetworkManagement {
         }
     }
 
-    static public func getBookSearchBy(
+    public static func getBookSearchBy(
         searchString: String,
         response: @escaping ResponseHandler
     ) {
@@ -63,7 +62,7 @@ struct NetworkManagement {
         }
     }
 
-    static public func getBookSearchWithFilterBy(
+    public static func getBookSearchWithFilterBy(
         searchString: String,
         filterType: FilterType,
         response: @escaping ResponseHandler
@@ -110,5 +109,4 @@ struct NetworkManagement {
             }
         }
     }
-
 }

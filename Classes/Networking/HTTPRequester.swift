@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 
 let coreURL = "http://localhost:8000/"
-//let coreURL = "http://10.0.22.18:8000/"
+// let coreURL = "http://10.0.22.18:8000/"
 
 protocol Requestable {
     func params() -> (
@@ -86,7 +86,6 @@ extension HTTPRequester: Requestable {
                 parameter: nil,
                 encoding: JSONEncoding.default
             )
-
         }
     }
 }

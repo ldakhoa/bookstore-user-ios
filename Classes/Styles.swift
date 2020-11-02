@@ -9,7 +9,6 @@ import StyledTextKit
 import UIKit
 
 enum Styles {
-
     enum Sizes {
         static let avatar = CGSize(width: 30, height: 30)
         static let textFieldCornerRadius: CGFloat = 4
@@ -43,7 +42,7 @@ enum Styles {
         static let hot = "DB3022"
         static let success = "2AA952"
         static let error = "F01F0E"
-        static let black = "222222"
+        static let black = "000000"
         static let locationBackground = "F89580"
         static let border = "D9D9D9"
         static let background2 = "FEFFFE"
@@ -55,7 +54,6 @@ enum Styles {
     }
 
     enum Text {
-
         // MARK: Internal
 
         static let h1 = TextStyle(font: .name(cerealMedium), size: 34)
@@ -81,7 +79,6 @@ enum Styles {
         private static let cerealBook = "AirbnbCerealApp-Book"
         private static let cerealMedium = "AirbnbCerealApp-Medium"
         private static let cerealBold = "AirbnbCerealApp-Bold"
-
     }
 }
 

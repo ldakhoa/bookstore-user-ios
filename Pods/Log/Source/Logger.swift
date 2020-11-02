@@ -68,11 +68,11 @@ open class Logger {
 
     /**
      Creates and returns a new logger.
-     
+
      - parameter formatter: The formatter.
      - parameter theme:     The theme.
      - parameter minLevel:  The minimum level of severity.
-     
+
      - returns: A newly created logger.
      */
     public init(formatter: Formatter = .default, theme: Theme? = nil, minLevel: Level = .trace) {
@@ -85,7 +85,7 @@ open class Logger {
 
     /**
      Logs a message with a trace severity level.
-     
+
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
      - parameter terminator: The terminator of the log message.
@@ -100,7 +100,7 @@ open class Logger {
 
     /**
      Logs a message with a debug severity level.
-     
+
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
      - parameter terminator: The terminator of the log message.
@@ -115,7 +115,7 @@ open class Logger {
 
     /**
      Logs a message with an info severity level.
-     
+
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
      - parameter terminator: The terminator of the log message.
@@ -130,7 +130,7 @@ open class Logger {
 
     /**
      Logs a message with a warning severity level.
-     
+
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
      - parameter terminator: The terminator of the log message.
@@ -145,7 +145,7 @@ open class Logger {
 
     /**
      Logs a message with an error severity level.
-     
+
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
      - parameter terminator: The terminator of the log message.
@@ -160,7 +160,7 @@ open class Logger {
 
     /**
      Logs a message.
-     
+
      - parameter level:      The severity level.
      - parameter items:      The items to log.
      - parameter separator:  The separator between the items.
@@ -171,7 +171,7 @@ open class Logger {
      - parameter function:   The function in which the log happens.
      */
     private func log(_ level: Level, _ items: [Any], _ separator: String, _ terminator: String, _ file: String, _ line: Int, _ column: Int, _ function: String) {
-        guard enabled && level >= minLevel else { return }
+        guard enabled, level >= minLevel else { return }
 
         let date = Date()
 
@@ -194,7 +194,7 @@ open class Logger {
 
     /**
      Measures the performance of code.
-     
+
      - parameter description: The measure description.
      - parameter n:           The number of iterations.
      - parameter file:        The file in which the measure happens.
@@ -204,7 +204,7 @@ open class Logger {
      - parameter block:       The block to measure.
      */
     open func measure(_ description: String? = nil, iterations n: Int = 10, file: String = #file, line: Int = #line, column: Int = #column, function: String = #function, block: () -> Void) {
-        guard enabled && .debug >= minLevel else { return }
+        guard enabled, minLevel <= .debug else { return }
 
         let measure = benchmarker.measure(description, iterations: n, block: block)
 

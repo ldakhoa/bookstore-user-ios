@@ -9,9 +9,7 @@
 import UIKit
 
 extension CGSize: LRUCachable {
-
     public var cachedSize: Int {
         return 1
     }
-
 }

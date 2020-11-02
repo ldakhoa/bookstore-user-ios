@@ -27,13 +27,13 @@ extension Formatters {
         .date("yyyy-MM-dd HH:mm:ss.SSS"),
         .location,
         .level,
-        .message
+        .message,
     ])
 
     public static let minimal = Formatter("%@ %@: %@", [
         .location,
         .level,
-        .message
+        .message,
     ])
 
     public static let detailed = Formatter("[%@] %@.%@:%@ %@: %@", [
@@ -42,6 +42,6 @@ extension Formatters {
         .function,
         .line,
         .level,
-        .message
+        .message,
     ])
 }

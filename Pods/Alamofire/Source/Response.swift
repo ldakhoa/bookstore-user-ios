@@ -72,7 +72,8 @@ public struct DataResponse<Success, Failure: Error> {
                 data: Data?,
                 metrics: URLSessionTaskMetrics?,
                 serializationDuration: TimeInterval,
-                result: Result<Success, Failure>) {
+                result: Result<Success, Failure>)
+    {
         self.request = request
         self.response = response
         self.data = data
@@ -261,7 +262,8 @@ public struct DownloadResponse<Success, Failure: Error> {
                 resumeData: Data?,
                 metrics: URLSessionTaskMetrics?,
                 serializationDuration: TimeInterval,
-                result: Result<Success, Failure>) {
+                result: Result<Success, Failure>)
+    {
         self.request = request
         self.response = response
         self.fileURL = fileURL

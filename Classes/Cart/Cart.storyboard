@@ -184,10 +184,19 @@
                                                         </view>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWj-y8-UkN">
-                                                    <rect key="frame" x="318" y="110" width="72" height="26"/>
-                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="12"/>
-                                                    <state key="normal" title="Save for later"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWj-y8-UkN">
+                                                    <rect key="frame" x="307" y="109" width="83" height="28.5"/>
+                                                    <state key="normal">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment content="Save for later">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <font key="NSFont" size="14" name="AirbnbCerealApp-Book"/>
+                                                                    <integer key="NSUnderline" value="1"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </state>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -221,13 +230,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Promo Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgv-Rc-TUV">
-                                                    <rect key="frame" x="24" y="12" width="79.5" height="16.5"/>
-                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Bold" family="Airbnb Cereal App" pointSize="14"/>
+                                                    <rect key="frame" x="24" y="12" width="91" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Bold" family="Airbnb Cereal App" pointSize="16"/>
                                                     <color key="textColor" name="black"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your promo code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VKL-aS-Eon">
-                                                    <rect key="frame" x="24" y="40.5" width="254" height="40"/>
+                                                    <rect key="frame" x="24" y="43" width="254" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="9eQ-ak-rkq"/>
                                                     </constraints>
@@ -236,7 +245,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OG4-Gu-hjg">
-                                                    <rect key="frame" x="290" y="40.5" width="100" height="40"/>
+                                                    <rect key="frame" x="290" y="43" width="100" height="40"/>
                                                     <color key="backgroundColor" red="0.16078431372549018" green="0.35686274509803922" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="aNg-GP-AHI"/>

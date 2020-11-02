@@ -9,7 +9,6 @@
 import UIKit
 
 internal struct StyledTextRenderCacheKey: Hashable, Equatable {
-
     let width: CGFloat
     let attributedText: NSAttributedString
     let backgroundColor: UIColor?
@@ -24,11 +23,10 @@ internal struct StyledTextRenderCacheKey: Hashable, Equatable {
 
     // MARK: Equatable
 
-    public static func ==(lhs: StyledTextRenderCacheKey, rhs: StyledTextRenderCacheKey) -> Bool {
+    public static func == (lhs: StyledTextRenderCacheKey, rhs: StyledTextRenderCacheKey) -> Bool {
         return lhs.width == rhs.width
             && lhs.attributedText == rhs.attributedText
             && lhs.backgroundColor == rhs.backgroundColor
             && lhs.maximumNumberOfLines == rhs.maximumNumberOfLines
     }
-
 }

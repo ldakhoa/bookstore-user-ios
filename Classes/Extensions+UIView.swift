@@ -5,7 +5,6 @@ struct AnchoredConstraints {
 }
 
 extension UIView {
-
     @discardableResult
     func anchor(
         top: NSLayoutYAxisAnchor?,
@@ -15,7 +14,6 @@ extension UIView {
         padding: UIEdgeInsets = .zero,
         size: CGSize = .zero
     ) -> AnchoredConstraints {
-
         translatesAutoresizingMaskIntoConstraints = false
         var anchoredConstraints = AnchoredConstraints()
 
@@ -59,7 +57,7 @@ extension UIView {
             anchoredConstraints.trailing,
             anchoredConstraints.width,
             anchoredConstraints.height,
-        ].forEach{ $0?.isActive = true }
+        ].forEach { $0?.isActive = true }
 
         return anchoredConstraints
     }
@@ -113,6 +111,7 @@ extension UIView {
     }
 
     // MARK: - UIStackView
+
     @discardableResult
     func stack(_ axis: NSLayoutConstraint.Axis = .vertical, views: UIView..., spacing: CGFloat = 0) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: views)
@@ -124,6 +123,7 @@ extension UIView {
     }
 
     // MARK: - ShadowLayer
+
     func setupShadow(
         opacity: Float = 0,
         radius: CGFloat = 0,
@@ -140,11 +140,9 @@ extension UIView {
         self.init(frame: .zero)
         self.backgroundColor = backgroundColor
     }
-
 }
 
 extension UIStackView {
-
     @discardableResult
     func withMargins(_ margins: UIEdgeInsets) -> UIStackView {
         layoutMargins = margins

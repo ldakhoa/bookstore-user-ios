@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 public final class StyledTextBuilder: Hashable, Equatable {
-
     internal var styledTexts: [StyledText]
     internal var savedStyles = [TextStyle]()
 
@@ -74,7 +73,7 @@ public final class StyledTextBuilder: Hashable, Equatable {
         text: String,
         traits: UIFontDescriptorSymbolicTraits? = nil,
         attributes: [NSAttributedStringKey: Any]? = nil
-        ) -> StyledTextBuilder {
+    ) -> StyledTextBuilder {
         return add(storage: .text(text), traits: traits, attributes: attributes)
     }
 
@@ -83,7 +82,7 @@ public final class StyledTextBuilder: Hashable, Equatable {
         attributedText: NSAttributedString,
         traits: UIFontDescriptorSymbolicTraits? = nil,
         attributes: [NSAttributedStringKey: Any]? = nil
-        ) -> StyledTextBuilder {
+    ) -> StyledTextBuilder {
         return add(storage: .attributedText(attributedText), traits: traits, attributes: attributes)
     }
 
@@ -92,7 +91,7 @@ public final class StyledTextBuilder: Hashable, Equatable {
         storage: StyledText.Storage = .text(""),
         traits: UIFontDescriptorSymbolicTraits? = nil,
         attributes: [NSAttributedStringKey: Any]? = nil
-        ) -> StyledTextBuilder {
+    ) -> StyledTextBuilder {
         guard let tip = styledTexts.last else { return self }
 
         var nextAttributes = tip.style.attributes
@@ -104,10 +103,9 @@ public final class StyledTextBuilder: Hashable, Equatable {
 
         let nextStyle: TextStyle
         if let traits = traits {
-
             let tipFontDescriptor: UIFontDescriptor
             switch tip.style.font {
-            case .descriptor(let descriptor): tipFontDescriptor = descriptor
+            case let .descriptor(descriptor): tipFontDescriptor = descriptor
             default: tipFontDescriptor = tip.style.font(contentSizeCategory: .medium).fontDescriptor
             }
 
@@ -130,13 +128,13 @@ public final class StyledTextBuilder: Hashable, Equatable {
 
         return add(styledText: StyledText(storage: storage, style: nextStyle))
     }
-    
+
     @discardableResult
     public func add(
         image: UIImage,
         options: [StyledText.ImageFitOptions] = [.fit, .center],
         attributes: [NSAttributedStringKey: Any]? = nil
-        ) -> StyledTextBuilder {
+    ) -> StyledTextBuilder {
         return add(storage: .image(image, options), attributes: attributes)
     }
 
@@ -157,7 +155,7 @@ public final class StyledTextBuilder: Hashable, Equatable {
         guard let seed: Int = styledTexts.first?.hashValue else { return 0 }
         let count = styledTexts.count
         if count > 1 {
-            return styledTexts[1...count].reduce(seed, { $0.combineHash(with: $1) })
+            return styledTexts[1 ... count].reduce(seed) { $0.combineHash(with: $1) }
         } else {
             return seed
         }
@@ -165,9 +163,8 @@ public final class StyledTextBuilder: Hashable, Equatable {
 
     // MARK: Equatable
 
-    public static func ==(lhs: StyledTextBuilder, rhs: StyledTextBuilder) -> Bool {
+    public static func == (lhs: StyledTextBuilder, rhs: StyledTextBuilder) -> Bool {
         if lhs === rhs { return true }
         return lhs.styledTexts == rhs.styledTexts
     }
-
 }

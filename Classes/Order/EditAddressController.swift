@@ -1,21 +1,21 @@
 //
-//  EditPersonalInfoController.swift
+//  EditAddressController.swift
 //  bsuser
 //
-//  Created by Khoa Le on 13/10/2020.
+//  Created by Khoa Le on 02/11/2020.
 //
 
 import UIKit
 
-final class EditPersonalInfoController: UIViewController {
+final class EditAddressController: UIViewController {
     @IBOutlet var tableView: UITableView!
-    var user: User?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.dataSource = self
         tableView.delegate = self
+        tableView.dataSource = self
+
+        navigationController?.navigationBar.prefersLargeTitles = true
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(didTappedDismissButton))
         let rightBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(didTappedSaveButton))
@@ -37,9 +37,9 @@ final class EditPersonalInfoController: UIViewController {
     }
 }
 
-extension EditPersonalInfoController: UITableViewDataSource {
+extension EditAddressController: UITableViewDataSource {
     func numberOfSections(in _: UITableView) -> Int {
-        return 6
+        return 9
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -47,7 +47,7 @@ extension EditPersonalInfoController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EditPersonalInfoCell", for: indexPath) as? EditPersonalInfoCell, let user = user else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EditShippingAddressCell", for: indexPath) as? EditShippingAddressCell else { return UITableViewCell() }
         switch indexPath.section {
         case 0:
             let headerCell = tableView.dequeueReusableCell(withIdentifier: "HearderCell", for: indexPath)
@@ -57,20 +57,26 @@ extension EditPersonalInfoController: UITableViewDataSource {
             cell.editTextField.placeholder = "Enter name"
             cell.editTextField.text = "Khoa Le"
         case 2:
-            cell.titleLabel.text = "Gender"
-            cell.editTextField.placeholder = "Select Gender"
-            cell.editTextField.text = user.gender
-        case 3:
-            cell.titleLabel.text = "Birth date"
-            cell.editTextField.placeholder = "Select birth date"
-        case 4:
-            cell.titleLabel.text = "Email"
-            cell.editTextField.placeholder = "Edit email"
-            cell.editTextField.text = user.email
-        case 5:
             cell.titleLabel.text = "Phone number"
             cell.editTextField.placeholder = "Enter phone number"
-            cell.editTextField.text = "\(user.phone)"
+        case 3:
+            cell.titleLabel.text = "Specific address"
+            cell.editTextField.placeholder = "Enter specific address"
+        case 4:
+            cell.titleLabel.text = "City/Province"
+            cell.editTextField.placeholder = "Select birth date"
+        case 5:
+            cell.titleLabel.text = "District"
+            cell.editTextField.placeholder = "Enter district"
+        case 6:
+            cell.titleLabel.text = "Ward"
+            cell.editTextField.placeholder = "Enter ward"
+        case 7:
+            cell.titleLabel.text = "ZIP code (Postal code)"
+            cell.editTextField.placeholder = "Enter ZIP code"
+        case 8:
+            cell.titleLabel.text = "Country"
+            cell.editTextField.placeholder = "Select country"
         default:
             ()
         }
@@ -78,7 +84,7 @@ extension EditPersonalInfoController: UITableViewDataSource {
     }
 }
 
-extension EditPersonalInfoController: UITableViewDelegate {
+extension EditAddressController: UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }

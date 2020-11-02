@@ -40,7 +40,11 @@ struct AppSetting {
             static let orderSuccessVC = order.instantiateViewController(withIdentifier: "OrderSuccessController")
             static let orderAddPaymentMethodVC = order.instantiateViewController(withIdentifier: "OrderAddCardDetailsController")
             static let orderAddPaymentVC = order.instantiateViewController(withIdentifier: "OrderAddPaymentController")
+            static let editAddressVC = order.instantiateViewController(withIdentifier: "EditAddressController")
+        }
 
+        enum Profile {
+            static let editPersonalInfoVC = profile.instantiateViewController(withIdentifier: "EditPersonalInfoController")
         }
 
         static let registration = UIStoryboard(name: "Registration", bundle: nil)
@@ -50,7 +54,7 @@ struct AppSetting {
         static let search = UIStoryboard(name: "Search", bundle: nil)
         static let cart = UIStoryboard(name: "Cart", bundle: nil)
         static let order = UIStoryboard(name: "Order", bundle: nil)
-
+        static let profile = UIStoryboard(name: "Profile", bundle: nil)
     }
 
     static let shared = AppSetting()
@@ -68,7 +72,7 @@ struct AppSetting {
     }
 
     func checkMainScreen() {
-        AppSecurity.shared.isAuthorized == true ? AppSetting.shared.getMainController(): AppSetting.shared.getLoginController()
+        AppSecurity.shared.isAuthorized == true ? AppSetting.shared.getMainController() : AppSetting.shared.getLoginController()
     }
 
     func logout() {

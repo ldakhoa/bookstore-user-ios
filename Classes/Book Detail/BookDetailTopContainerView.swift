@@ -8,7 +8,6 @@
 import UIKit
 
 final class BookDetailTopContainerView: UIView {
-
     // MARK: Lifecycle
 
     override init(frame: CGRect) {
@@ -61,7 +60,8 @@ final class BookDetailTopContainerView: UIView {
         cartView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
 
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -89,12 +89,10 @@ final class BookDetailTopContainerView: UIView {
     }
 
     private func setupLayer() {
-
         bottomLayer.frame = .init(x: 0, y: Styles.Sizes.heightTopView, width: 1000, height: 1)
         bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(0.0).cgColor
         layer.addSublayer(bottomLayer)
     }
-
 }
 
 extension UIView {

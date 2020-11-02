@@ -8,7 +8,7 @@
 import UIKit
 
 final class SearchCell: UITableViewCell {
-    @IBOutlet weak var bookNameLabel: UILabel!
+    @IBOutlet var bookNameLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

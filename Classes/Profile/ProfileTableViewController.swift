@@ -9,7 +9,6 @@ import JGProgressHUD
 import UIKit
 
 final class ProfileTableViewController: UITableViewController {
-
     // MARK: Internal
 
     var user = User()
@@ -40,7 +39,7 @@ final class ProfileTableViewController: UITableViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return datasource.count + 1
     }
 
@@ -56,11 +55,11 @@ final class ProfileTableViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 72
     }
 
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
         let headerView = ProfileHeaderView()
         headerView.nameLabel.text = user.username.capitalizingFirstLetter()
         headerView.showProfileButton.addTarget(
@@ -71,7 +70,7 @@ final class ProfileTableViewController: UITableViewController {
         return headerView
     }
 
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
         return 100
     }
 
@@ -116,7 +115,7 @@ final class ProfileTableViewController: UITableViewController {
 
     @objc
     private func didTapShowProfile() {
-        let editPersonalInfoController = EditPersonalInfoController()
+        guard let editPersonalInfoController = AppSetting.Storyboards.Profile.editPersonalInfoVC as? EditPersonalInfoController else { return }
         editPersonalInfoController.user = user
         editPersonalInfoController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(editPersonalInfoController, animated: true)

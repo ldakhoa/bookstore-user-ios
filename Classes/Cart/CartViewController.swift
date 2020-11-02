@@ -8,10 +8,9 @@
 import UIKit
 
 final class CartViewController: UIViewController {
-
     // MARK: Internal
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +24,8 @@ final class CartViewController: UIViewController {
         tableView.backgroundColor = Styles.Colors.background.color
         tableView.separatorInset = .init(top: 0, left: 24, bottom: 0, right: 24)
         tableView.keyboardDismissMode = .interactive
-
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -40,22 +39,21 @@ final class CartViewController: UIViewController {
     // MARK: Private
 
     @IBAction
-    private func didTappedCheckoutButton(_ sender: Any) {
+    private func didTappedCheckoutButton(_: Any) {
         let orderNavController = AppSetting.Storyboards.Order.orderNavController
         orderNavController.modalPresentationStyle = .fullScreen
         present(orderNavController, animated: true)
     }
-
 }
 
 // MARK: - UITableViewDataSource
 
 extension CartViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         return 2
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 1 ? 1 : 3
     }
 
@@ -83,20 +81,19 @@ extension CartViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension CartViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? UITableView.automaticDimension : 100
     }
 
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
         return 200
     }
 
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_: UITableView, heightForFooterInSection _: Int) -> CGFloat {
         return 8
     }
 
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_: UITableView, viewForFooterInSection _: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = Styles.Colors.background.color
         return view

@@ -52,16 +52,16 @@ open class Formatter: Formatters {
     /// The formatter textual representation.
     var description: String {
         return String(format: format, arguments: components.map { (component: Component) -> CVarArg in
-            return String(describing: component).uppercased()
+            String(describing: component).uppercased()
         })
     }
 
     /**
      Creates and returns a new formatter with the specified format and components.
-     
+
      - parameter format:     The formatter format.
      - parameter components: The formatter components.
-     
+
      - returns: A newly created formatter.
      */
     public convenience init(_ format: String, _ components: Component...) {
@@ -70,10 +70,10 @@ open class Formatter: Formatters {
 
     /**
      Creates and returns a new formatter with the specified format and components.
-     
+
      - parameter format:     The formatter format.
      - parameter components: The formatter components.
-     
+
      - returns: A newly created formatter.
      */
     public init(_ format: String, _ components: [Component]) {
@@ -83,7 +83,7 @@ open class Formatter: Formatters {
 
     /**
      Formats a string with the formatter format and components.
-     
+
      - parameter level:      The severity level.
      - parameter items:      The items to format.
      - parameter separator:  The separator between the items.
@@ -93,7 +93,7 @@ open class Formatter: Formatters {
      - parameter column:     The log column number.
      - parameter function:   The log function.
      - parameter date:       The log date.
-     
+
      - returns: A formatted string.
      */
     func format(level: Level, items: [Any], separator: String, terminator: String, file: String, line: Int, column: Int, function: String, date: Date) -> String {
@@ -112,11 +112,11 @@ open class Formatter: Formatters {
             case .level:
                 return format(level: level)
             case .message:
-                return items.map({ String(describing: $0) }).joined(separator: separator)
+                return items.map { String(describing: $0) }.joined(separator: separator)
             case .location:
                 return format(file: file, line: line)
             case let .block(block):
-                return block().flatMap({ String(describing: $0) }) ?? ""
+                return block().flatMap { String(describing: $0) } ?? ""
             }
         }
 
@@ -125,7 +125,7 @@ open class Formatter: Formatters {
 
     /**
      Formats a string with the formatter format and components.
-     
+
      - parameter description:               The measure description.
      - parameter average:                   The average time.
      - parameter relativeStandardDeviation: The relative standard description.
@@ -134,11 +134,10 @@ open class Formatter: Formatters {
      - parameter column:                    The log column number.
      - parameter function:                  The log function.
      - parameter date:                      The log date.
-     
+
      - returns: A formatted string.
      */
     func format(description: String?, average: Double, relativeStandardDeviation: Double, file: String, line: Int, column: Int, function: String, date: Date) -> String {
-
         let arguments = components.map { (component: Component) -> CVarArg in
             switch component {
             case let .date(dateFormat):
@@ -158,7 +157,7 @@ open class Formatter: Formatters {
             case .location:
                 return format(file: file, line: line)
             case let .block(block):
-                return block().flatMap({ String(describing: $0) }) ?? ""
+                return block().flatMap { String(describing: $0) } ?? ""
             }
         }
 
@@ -169,10 +168,10 @@ open class Formatter: Formatters {
 private extension Formatter {
     /**
      Formats a date with the specified date format.
-     
+
      - parameter date:       The date.
      - parameter dateFormat: The date format.
-     
+
      - returns: A formatted date.
      */
     func format(date: Date, dateFormat: String) -> String {
@@ -182,11 +181,11 @@ private extension Formatter {
 
     /**
      Formats a file path with the specified parameters.
-     
+
      - parameter file:          The file path.
      - parameter fullPath:      Whether the full path should be included.
      - parameter fileExtension: Whether the file extension should be included.
-     
+
      - returns: A formatted file path.
      */
     func format(file: String, fullPath: Bool, fileExtension: Bool) -> String {
@@ -200,24 +199,24 @@ private extension Formatter {
 
     /**
      Formats a Location component with a specified file path and line number.
-     
+
      - parameter file: The file path.
      - parameter line: The line number.
-     
+
      - returns: A formatted Location component.
      */
     func format(file: String, line: Int) -> String {
         return [
             format(file: file, fullPath: false, fileExtension: true),
-            String(line)
+            String(line),
         ].joined(separator: ":")
     }
 
     /**
      Formats a Level component.
-     
+
      - parameter level: The Level component.
-     
+
      - returns: A formatted Level component.
      */
     func format(level: Level) -> String {
@@ -232,9 +231,9 @@ private extension Formatter {
 
     /**
      Formats a measure description.
-     
+
      - parameter description: The measure description.
-     
+
      - returns: A formatted measure description.
      */
     func format(description: String?) -> String {
@@ -253,10 +252,10 @@ private extension Formatter {
 
     /**
      Formats an average time and a relative standard deviation.
-     
+
      - parameter average:                   The average time.
      - parameter relativeStandardDeviation: The relative standard deviation.
-     
+
      - returns: A formatted average time and relative standard deviation.
      */
     func format(average: Double, relativeStandardDeviation: Double) -> String {
@@ -268,9 +267,9 @@ private extension Formatter {
 
     /**
      Formats an average time.
-     
+
      - parameter average: An average time.
-     
+
      - returns: A formatted average time.
      */
     func format(average: Double) -> String {
@@ -279,9 +278,9 @@ private extension Formatter {
 
     /**
      Formats a list of durations.
-     
+
      - parameter durations: A list of durations.
-     
+
      - returns: A formatted list of durations.
      */
     func format(durations: [Double]) -> String {
@@ -293,9 +292,9 @@ private extension Formatter {
 
     /**
      Formats a standard deviation.
-     
+
      - parameter standardDeviation: A standard deviation.
-     
+
      - returns: A formatted standard deviation.
      */
     func format(standardDeviation: Double) -> String {
@@ -304,9 +303,9 @@ private extension Formatter {
 
     /**
      Formats a relative standard deviation.
-     
+
      - parameter relativeStandardDeviation: A relative standard deviation.
-     
+
      - returns: A formatted relative standard deviation.
      */
     func format(relativeStandardDeviation: Double) -> String {

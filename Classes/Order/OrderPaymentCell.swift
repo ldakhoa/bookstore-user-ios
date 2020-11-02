@@ -8,8 +8,7 @@
 import UIKit
 
 final class OrderPaymentCell: UITableViewCell {
-
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet var addButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,7 +8,6 @@
 import UIKit
 
 final class BookDetailRecommendationCell: UITableViewCell {
-
     // MARK: Lifecycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -35,7 +34,8 @@ final class BookDetailRecommendationCell: UITableViewCell {
         )
     }
 
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

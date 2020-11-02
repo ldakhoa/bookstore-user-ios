@@ -8,8 +8,7 @@
 import UIKit
 
 final class BookDetailDescriptionCell: UITableViewCell {
-
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

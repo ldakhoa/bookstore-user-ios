@@ -9,7 +9,6 @@ import JGProgressHUD
 import UIKit
 
 final class LoginViewController: UIViewController {
-
     // MARK: Internal
 
     @IBOutlet var emailView: UIView!
@@ -19,7 +18,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet var passwordLabel: UILabel!
     @IBOutlet var passwordTextfield: UITextField!
     @IBOutlet var loginButton: IBooksButton!
-    @IBOutlet weak var overallStackView: UIStackView!
+    @IBOutlet var overallStackView: UIStackView!
 
     let hud = JGProgressHUD(style: .dark)
 
@@ -175,5 +174,4 @@ final class LoginViewController: UIViewController {
         let isValid = !emailField.isEmpty && passwordField.count >= 6
         isValid ? loginButton.setActiveStyles() : loginButton.setInactiveStyles()
     }
-
 }

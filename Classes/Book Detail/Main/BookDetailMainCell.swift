@@ -9,12 +9,11 @@ import Cosmos
 import UIKit
 
 final class BookDetailMainCell: UITableViewCell {
-
-    @IBOutlet weak var bookImageView: UIImageView!
-    @IBOutlet weak var bookTitleLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var ratingsView: CosmosView!
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet var bookImageView: UIImageView!
+    @IBOutlet var bookTitleLabel: UILabel!
+    @IBOutlet var authorLabel: UILabel!
+    @IBOutlet var ratingsView: CosmosView!
+    @IBOutlet var priceLabel: UILabel!
 
     var book: Book? {
         didSet {

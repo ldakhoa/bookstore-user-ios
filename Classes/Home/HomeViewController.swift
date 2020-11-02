@@ -8,10 +8,9 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-
     // MARK: Internal
 
-    @IBOutlet weak var searchGradientView: SearchGradientView!
+    @IBOutlet var searchGradientView: SearchGradientView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

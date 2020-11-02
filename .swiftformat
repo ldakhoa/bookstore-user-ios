@@ -29,11 +29,14 @@
 --structthreshold 20 # organizeDeclarations
 --enumthreshold 20 # organizeDeclarations
 
+--organizetypes class,struct,enum,extension # organizeDeclarations
+--extensionacl on-declarations # extensionAccessControl
+
 # elseOnSameLine
 --guardelse same-line
 
 # rules
---rules anyObjectProtocol,redundantParens,redundantReturn,redundantSelf,sortedImports,strongifiedSelf,trailingCommas,trailingSpace,wrapArguments,wrapMultilineStatementBraces,indent,wrapAttributes,organizeDeclarations
+--rules anyObjectProtocol,redundantParens,redundantReturn,redundantSelf,sortedImports,strongifiedSelf,trailingCommas,trailingSpace,wrapArguments,wrapMultilineStatementBraces,indent,wrapAttributes,organizeDeclarations,markTypes,extensionAccessControl
 
 #exclude
 --exclude Pods,./Classes/Styles.swift,*.storyboard,*.xib

@@ -1,13 +1,13 @@
 //
-//  EditPersonalInfoCell.swift
+//  EditShippingAddressCell.swift
 //  bsuser
 //
-//  Created by Khoa Le on 13/10/2020.
+//  Created by Khoa Le on 02/11/2020.
 //
 
 import UIKit
 
-final class EditPersonalInfoCell: UITableViewCell {
+final class EditShippingAddressCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var editTextField: CardTextField!
 

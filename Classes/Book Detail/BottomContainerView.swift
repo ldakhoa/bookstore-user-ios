@@ -8,7 +8,6 @@
 import UIKit
 
 final class BookDetailBottomContainerView: UIView {
-
     // MARK: Lifecycle
 
     override init(frame: CGRect) {
@@ -32,7 +31,8 @@ final class BookDetailBottomContainerView: UIView {
         )
     }
 
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -62,5 +62,4 @@ final class BookDetailBottomContainerView: UIView {
         bottomLayer.backgroundColor = Styles.Colors.separate.color.cgColor
         layer.addSublayer(bottomLayer)
     }
-
 }

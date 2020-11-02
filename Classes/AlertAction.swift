@@ -10,7 +10,6 @@ import UIKit
 typealias AlertActionBlock = (UIAlertAction) -> Void
 
 struct AlertAction {
-
     // MARK: Lifecycle
 
     // MARK: Init
@@ -52,5 +51,4 @@ struct AlertAction {
     func get(_ handler: AlertActionBlock? = nil) -> UIAlertAction {
         return UIAlertAction(title: title, style: style, handler: handler)
     }
-
 }

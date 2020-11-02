@@ -8,7 +8,6 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
     // MARK: Internal
 
     @IBOutlet var nameView: UIView!
@@ -72,11 +71,10 @@ class SignUpViewController: UIViewController {
     // MARK: Private
 
     @IBAction
-    private func didTappedSignupButton(_ sender: Any) {
-    }
+    private func didTappedSignupButton(_: Any) {}
 
     @IBAction
-    private func didTappedGoToLoginButton(_ sender: Any) {
+    private func didTappedGoToLoginButton(_: Any) {
         dismiss(animated: true)
     }
 
@@ -141,5 +139,4 @@ class SignUpViewController: UIViewController {
             passwordLabel.isHidden = passwordTextfield.text?.count == 0 ? true : false
         }
     }
-
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 internal extension NSLayoutManager {
-
     func size(textContainer: NSTextContainer, width: CGFloat, scale: CGFloat) -> CGSize {
         textContainer.size = CGSize(width: width, height: 0)
         let bounds = usedRect(for: textContainer)
@@ -21,7 +20,7 @@ internal extension NSLayoutManager {
         textContainer: NSTextContainer,
         scale: CGFloat,
         backgroundColor: UIColor? = nil
-        ) -> CGImage? {
+    ) -> CGImage? {
         textContainer.size = size
 
         UIGraphicsBeginImageContextWithOptions(size, backgroundColor != nil, scale)
@@ -37,5 +36,4 @@ internal extension NSLayoutManager {
         drawGlyphs(forGlyphRange: range, at: .zero)
         return UIGraphicsGetImageFromCurrentImageContext()?.cgImage
     }
-
 }

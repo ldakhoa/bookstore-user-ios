@@ -9,7 +9,6 @@
 import UIKit
 
 public extension CGSize {
-
     func snapped(scale: CGFloat) -> CGSize {
         var size = self
         size.width = ceil(size.width * scale) / scale
@@ -23,5 +22,4 @@ public extension CGSize {
         size.height += inset.top + inset.bottom
         return size
     }
-
 }

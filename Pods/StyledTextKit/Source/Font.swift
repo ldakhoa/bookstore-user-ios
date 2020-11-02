@@ -9,7 +9,6 @@
 import UIKit
 
 public enum Font: Hashable, Equatable {
-
     public enum SystemFont: Hashable, Equatable {
         case `default`
         case bold
@@ -24,17 +23,16 @@ public enum Font: Hashable, Equatable {
             case .default: return 0
             case .bold: return 1
             case .italic: return 2
-            case .weighted(let weight): return weight.hashValue
-            case .monospaced(let weight): return weight.hashValue
+            case let .weighted(weight): return weight.hashValue
+            case let .monospaced(weight): return weight.hashValue
             }
         }
 
         // MARK: Equatable
 
-        public static func ==(lhs: SystemFont, rhs: SystemFont) -> Bool {
+        public static func == (lhs: SystemFont, rhs: SystemFont) -> Bool {
             return lhs.hashValue == rhs.hashValue
         }
-
     }
 
     case name(String)
@@ -45,16 +43,15 @@ public enum Font: Hashable, Equatable {
 
     public var hashValue: Int {
         switch self {
-        case .name(let name): return name.hashValue
-        case .descriptor(let descriptor): return descriptor.hashValue
-        case .system(let system): return system.hashValue
+        case let .name(name): return name.hashValue
+        case let .descriptor(descriptor): return descriptor.hashValue
+        case let .system(system): return system.hashValue
         }
     }
 
     // MARK: Equatable
 
-    public static func ==(lhs: Font, rhs: Font) -> Bool {
+    public static func == (lhs: Font, rhs: Font) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
-
 }

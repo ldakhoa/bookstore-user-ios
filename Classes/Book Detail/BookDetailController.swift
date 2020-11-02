@@ -8,7 +8,6 @@
 import UIKit
 
 final class BookDetailController: UIViewController {
-
     // MARK: Internal
 
     var book: Book?
@@ -51,7 +50,6 @@ final class BookDetailController: UIViewController {
         ))
         topContainerView.dismissView.isUserInteractionEnabled = true
         isEnabledShadowForTopView(opacity: 0.25)
-
     }
 
     // MARK: Private
@@ -92,15 +90,14 @@ final class BookDetailController: UIViewController {
     private func didTappedDismissImageView() {
         dismiss(animated: true)
     }
-
 }
 
 extension BookDetailController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         return cellsID.count + 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return 1
     }
 
@@ -141,7 +138,7 @@ extension BookDetailController: UITableViewDataSource {
 }
 
 extension BookDetailController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
             return 376
         } else if indexPath.section == 3 {
@@ -150,7 +147,7 @@ extension BookDetailController: UITableViewDelegate {
         return UITableView.automaticDimension
     }
 
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
         return 460
     }
 
@@ -160,10 +157,10 @@ extension BookDetailController: UITableViewDelegate {
             let opacityRemainder = 0.25 - scrollView.contentOffset.y / 1000
             isEnabledShadowForTopView(opacity: Float(opacityRemainder))
             topContainerView.backgroundColor = Styles.Colors.White.normal.withAlphaComponent(alpha)
-            if contentOffsetYAfter > 0 && scrollView.contentOffset.y > 200 {
+            if contentOffsetYAfter > 0, scrollView.contentOffset.y > 200 {
                 topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(alpha).cgColor
                 contentOffsetYAfter = scrollView.contentOffset.y
-            } else if scrollView.contentOffset.y - contentOffsetYAfter < 0 && scrollView.contentOffset.y < 200 {
+            } else if scrollView.contentOffset.y - contentOffsetYAfter < 0, scrollView.contentOffset.y < 200 {
                 topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(0).cgColor
             }
             contentOffsetYAfter = scrollView.contentOffset.y

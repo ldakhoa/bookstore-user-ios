@@ -8,7 +8,6 @@
 import UIKit
 
 class SearchGradientView: UIView, UITextFieldDelegate {
-
     // MARK: Internal
 
     let searchTextField = IBooksSearchTextField()
@@ -49,7 +48,6 @@ class SearchGradientView: UIView, UITextFieldDelegate {
 //            padding: .init(top: 0, left: 0, bottom: 0, right: 12)
 //        )
 //        cancelButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
-
     }
 
     func layoutForOtherViewController() {

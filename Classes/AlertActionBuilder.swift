@@ -10,7 +10,6 @@ import UIKit
 // MARK: AlertActionBuilder
 
 class AlertActionBuilder {
-
     // MARK: Lifecycle
 
     // MARK: Init
@@ -28,5 +27,4 @@ class AlertActionBuilder {
     var rootViewController: UIViewController?
     var title: String?
     var style: UIAlertAction.Style?
-
 }

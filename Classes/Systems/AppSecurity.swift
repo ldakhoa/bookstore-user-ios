@@ -8,7 +8,6 @@
 import Foundation
 
 final class AppSecurity {
-
     // MARK: Internal
 
     enum Keys: String {

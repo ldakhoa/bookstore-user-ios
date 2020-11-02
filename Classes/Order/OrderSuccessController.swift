@@ -8,7 +8,6 @@
 import UIKit
 
 final class OrderSuccessController: UIViewController {
-
     // MARK: Internal
 
     override func viewDidLoad() {
@@ -20,9 +19,8 @@ final class OrderSuccessController: UIViewController {
     // MARK: Private
 
     @IBAction
-    private func didTappedContinueShoppingButton(_ sender: Any) {
+    private func didTappedContinueShoppingButton(_: Any) {
         presentingViewController?.tabBarController?.selectedIndex = 0
         presentingViewController?.dismiss(animated: true)
     }
-
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 public struct TextStyle: Hashable, Equatable {
-
     public let font: Font
     public let size: CGFloat
     public let attributes: [NSAttributedStringKey: Any]
@@ -22,14 +21,14 @@ public struct TextStyle: Hashable, Equatable {
         attributes: [NSAttributedStringKey: Any] = [:],
         minSize: CGFloat = 0,
         maxSize: CGFloat = .greatestFiniteMagnitude
-        ) {
+    ) {
         self.font = font
         self.size = size
         self.attributes = attributes
         self.minSize = minSize
         self.maxSize = maxSize
 
-        self._hashValue = font
+        _hashValue = font
             .combineHash(with: size)
             .combineHash(with: attributes.count)
             .combineHash(with: minSize)
@@ -40,20 +39,20 @@ public struct TextStyle: Hashable, Equatable {
         let preferredSize = contentSizeCategory.preferredContentSize(size)
 
         switch font {
-        case .name(let name):
+        case let .name(name):
             guard let font = UIFont(name: name, size: preferredSize) else {
                 print("WARNING: Font with name \"\(name)\" not found. Falling back to system font.")
                 return UIFont.systemFont(ofSize: preferredSize)
             }
             return font
-        case .descriptor(let descriptor): return UIFont(descriptor: descriptor, size: preferredSize)
-        case .system(let system):
+        case let .descriptor(descriptor): return UIFont(descriptor: descriptor, size: preferredSize)
+        case let .system(system):
             switch system {
             case .default: return UIFont.systemFont(ofSize: preferredSize)
             case .bold: return UIFont.boldSystemFont(ofSize: preferredSize)
             case .italic: return UIFont.italicSystemFont(ofSize: preferredSize)
-            case .weighted(let weight): return UIFont.systemFont(ofSize: preferredSize, weight: weight)
-            case .monospaced(let weight): return UIFont.monospacedDigitSystemFont(ofSize: preferredSize, weight: weight)
+            case let .weighted(weight): return UIFont.systemFont(ofSize: preferredSize, weight: weight)
+            case let .monospaced(weight): return UIFont.monospacedDigitSystemFont(ofSize: preferredSize, weight: weight)
             }
         }
     }
@@ -67,12 +66,11 @@ public struct TextStyle: Hashable, Equatable {
 
     // MARK: Equatable
 
-    public static func ==(lhs: TextStyle, rhs: TextStyle) -> Bool {
+    public static func == (lhs: TextStyle, rhs: TextStyle) -> Bool {
         return lhs.size == rhs.size
             && lhs.minSize == rhs.minSize
             && rhs.maxSize == rhs.maxSize
             && lhs.font == rhs.font
             && NSDictionary(dictionary: lhs.attributes).isEqual(to: rhs.attributes)
     }
-
 }

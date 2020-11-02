@@ -9,7 +9,6 @@ import SwiftyJSON
 import UIKit
 
 final class Book {
-
     // MARK: Public
 
     public static func parseData(json: JSON) -> [Book] {
@@ -65,5 +64,4 @@ final class Book {
         }
         return book
     }
-
 }

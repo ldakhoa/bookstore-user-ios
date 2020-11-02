@@ -8,18 +8,16 @@
 import UIKit
 
 final class OrderAddCardDetailsController: UIViewController {
-
     // MARK: Internal
 
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var cardNumberTextField: CardTextField!
-    @IBOutlet weak var expirationTextField: CardTextField!
-    @IBOutlet weak var cvvTextField: CardTextField!
-    @IBOutlet weak var zipCodeTextField: CardTextField!
+    @IBOutlet var nextButton: UIButton!
+    @IBOutlet var cardNumberTextField: CardTextField!
+    @IBOutlet var expirationTextField: CardTextField!
+    @IBOutlet var cvvTextField: CardTextField!
+    @IBOutlet var zipCodeTextField: CardTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -91,7 +89,7 @@ final class OrderAddCardDetailsController: UIViewController {
     }
 
     @IBAction
-    private func didTappedDismissButton(_ sender: Any) {
+    private func didTappedDismissButton(_: Any) {
         view.endEditing(true)
         navigationController?.popViewController(animated: true)
     }

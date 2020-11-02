@@ -8,7 +8,6 @@
 import UIKit
 
 final class CategoryViewController: UIViewController {
-
     // MARK: Internal
 
     @IBOutlet var tableView: UITableView!
@@ -52,7 +51,6 @@ final class CategoryViewController: UIViewController {
     ]
 
     private let cellID = "CategoryCell"
-
 }
 
 extension CategoryViewController: UITableViewDataSource {

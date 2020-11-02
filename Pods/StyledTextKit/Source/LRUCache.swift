@@ -13,16 +13,14 @@ public protocol LRUCachable {
 }
 
 public final class LRUCache<Key: Hashable & Equatable, Value: LRUCachable> {
-
     internal class Node {
-
         // for reverse lookup in map
         let key: Key
         // mutable b/c you can change the value for an existing key
         var value: Value
         // 2-way linked list
-        weak var previous: Node? = nil
-        var next: Node? = nil
+        weak var previous: Node?
+        var next: Node?
 
         init(key: Key, value: Value) {
             self.key = key
@@ -59,7 +57,7 @@ public final class LRUCache<Key: Hashable & Equatable, Value: LRUCachable> {
 
         switch compaction {
         case .default: self.compaction = compaction
-        case .percent(let percent):
+        case let .percent(percent):
             if percent <= 0 || percent > 1 {
                 self.compaction = .default
             } else {
@@ -147,7 +145,7 @@ public final class LRUCache<Key: Hashable & Equatable, Value: LRUCachable> {
         let compactSize: Int
         switch compaction {
         case .default: compactSize = maxSize
-        case .percent(let percent): compactSize = Int(Double(maxSize) * percent)
+        case let .percent(percent): compactSize = Int(Double(maxSize) * percent)
         }
 
         while size > compactSize, let next = tail {
@@ -156,5 +154,4 @@ public final class LRUCache<Key: Hashable & Equatable, Value: LRUCachable> {
             tail = next.previous
         }
     }
-
 }

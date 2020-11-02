@@ -14,7 +14,6 @@ public protocol StyledTextViewDelegate: class {
 }
 
 open class StyledTextView: UIView {
-
     open weak var delegate: StyledTextViewDelegate?
     open var gesturableAttributes = Set<NSAttributedStringKey>()
     open var drawsAsync = false
@@ -29,7 +28,7 @@ open class StyledTextView: UIView {
         commonInit()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -42,13 +41,13 @@ open class StyledTextView: UIView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(onTap(recognizer:)))
         tap.cancelsTouchesInView = false
         addGestureRecognizer(tap)
-        self.tapGesture = tap
+        tapGesture = tap
 
         let long = UILongPressGestureRecognizer(target: self, action: #selector(onLong(recognizer:)))
         addGestureRecognizer(long)
-        self.longPressGesture = long
+        longPressGesture = long
 
-        self.highlightColor = UIColor.black.withAlphaComponent(0.1)
+        highlightColor = UIColor.black.withAlphaComponent(0.1)
         layer.addSublayer(highlightLayer)
     }
 
@@ -62,18 +61,18 @@ open class StyledTextView: UIView {
 
     // MARK: Overrides
 
-    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         guard let touch = touches.first else { return }
         highlight(at: touch.location(in: self))
     }
 
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         clearHighlight()
     }
 
-    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
         clearHighlight()
     }
@@ -81,9 +80,10 @@ open class StyledTextView: UIView {
     // MARK: UIGestureRecognizerDelegate
 
     override open func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        guard (gestureRecognizer === tapGesture || gestureRecognizer === longPressGesture),
-            let attributes = renderer?.attributes(at: gestureRecognizer.location(in: self)) else {
-                return super.gestureRecognizerShouldBegin(gestureRecognizer)
+        guard gestureRecognizer === tapGesture || gestureRecognizer === longPressGesture,
+            let attributes = renderer?.attributes(at: gestureRecognizer.location(in: self))
+        else {
+            return super.gestureRecognizerShouldBegin(gestureRecognizer)
         }
         for attribute in attributes.attributes {
             if gesturableAttributes.contains(attribute.key) {
@@ -105,7 +105,7 @@ open class StyledTextView: UIView {
         let point = recognizer.location(in: self)
         guard recognizer.state == .began,
             let attributes = renderer?.attributes(at: point)
-            else { return }
+        else { return }
 
         delegate?.didLongPress(view: self, attributes: attributes.attributes, point: point)
     }
@@ -114,7 +114,7 @@ open class StyledTextView: UIView {
         guard let renderer = renderer,
             let attributes = renderer.attributes(at: point),
             attributes.attributes[.highlight] != nil
-            else { return }
+        else { return }
 
         let storage = renderer.storage
         let maxLen = storage.length
@@ -124,8 +124,8 @@ open class StyledTextView: UIView {
         storage.enumerateAttributes(
             in: NSRange(location: 0, length: attributes.index),
             options: .reverse
-        ) { (attrs, range, stop) in
-            if attrs[.highlight] != nil && min > 0 {
+        ) { attrs, range, stop in
+            if attrs[.highlight] != nil, min > 0 {
                 min = range.location
             } else {
                 stop.pointee = true
@@ -135,8 +135,8 @@ open class StyledTextView: UIView {
         storage.enumerateAttributes(
             in: NSRange(location: attributes.index, length: maxLen - attributes.index),
             options: []
-        ){ (attrs, range, stop) in
-            if attrs[.highlight] != nil && max < maxLen {
+        ) { attrs, range, stop in
+            if attrs[.highlight] != nil, max < maxLen {
                 max = range.location + range.length
             } else {
                 stop.pointee = true
@@ -145,9 +145,9 @@ open class StyledTextView: UIView {
 
         let range = NSRange(location: min, length: max - min)
 
-        var firstRect: CGRect = CGRect.null
-        var bodyRect: CGRect = CGRect.null
-        var lastRect: CGRect = CGRect.null
+        var firstRect = CGRect.null
+        var bodyRect = CGRect.null
+        var lastRect = CGRect.null
 
         let path = UIBezierPath()
 
@@ -155,7 +155,7 @@ open class StyledTextView: UIView {
             forGlyphRange: range,
             withinSelectedGlyphRange: NSRange(location: NSNotFound, length: 0),
             in: renderer.textContainer
-        ) { (rect, stop) in
+        ) { rect, _ in
             if firstRect.isNull {
                 firstRect = rect
             } else if lastRect.isNull {
@@ -192,10 +192,10 @@ open class StyledTextView: UIView {
     }
 
     static var renderQueue = DispatchQueue(
-      label: "com.whoisryannystrom.StyledText.renderQueue",
-      qos: .default, attributes: DispatchQueue.Attributes(rawValue: 0),
-      autoreleaseFrequency: .workItem, 
-      target: nil
+        label: "com.whoisryannystrom.StyledText.renderQueue",
+        qos: .default, attributes: DispatchQueue.Attributes(rawValue: 0),
+        autoreleaseFrequency: .workItem,
+        target: nil
     )
 
     // MARK: Public API
@@ -208,7 +208,7 @@ open class StyledTextView: UIView {
     }
 
     open func reposition(for width: CGFloat) {
-        guard let capturedRenderer = self.renderer else { return }
+        guard let capturedRenderer = renderer else { return }
         // First, we check if we can immediately apply a previously cached render result.
         let cachedResult = capturedRenderer.cachedRender(for: width)
         if let cachedImage = cachedResult.image, let cachedSize = cachedResult.size {

@@ -8,7 +8,6 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-
     // MARK: Lifecycle
 
     override init(frame: CGRect) {
