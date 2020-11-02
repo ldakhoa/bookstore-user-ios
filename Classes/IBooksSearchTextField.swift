@@ -8,6 +8,7 @@
 import UIKit
 
 class IBooksSearchTextField: UITextField {
+
     // MARK: Lifecycle
 
     override init(frame: CGRect) {
@@ -43,22 +44,22 @@ class IBooksSearchTextField: UITextField {
     let rightImageView = UIImageView(image: #imageLiteral(resourceName: "cancel-edit"))
 
     override var intrinsicContentSize: CGSize {
-        return .init(width: 0, height: 40)
+        .init(width: 0, height: 40)
     }
 
     override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: 40, dy: 0)
+        bounds.insetBy(dx: 40, dy: 0)
     }
 
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: 40, dy: 0)
+        bounds.insetBy(dx: 40, dy: 0)
     }
 
     override func leftViewRect(forBounds _: CGRect) -> CGRect {
-        return .init(x: 8, y: 8, width: 24, height: 24)
+        .init(x: 8, y: 8, width: 24, height: 24)
     }
 
     override func rightViewRect(forBounds _: CGRect) -> CGRect {
-        return .init(x: frame.width - 24, y: 12, width: 16, height: 16)
+        .init(x: frame.width - 24, y: 12, width: 16, height: 16)
     }
 }

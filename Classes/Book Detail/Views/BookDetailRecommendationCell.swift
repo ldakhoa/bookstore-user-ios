@@ -8,6 +8,7 @@
 import UIKit
 
 final class BookDetailRecommendationCell: UITableViewCell {
+
     // MARK: Lifecycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

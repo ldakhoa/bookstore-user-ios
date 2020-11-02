@@ -7,11 +7,16 @@
 
 import UIKit
 
+// MARK: - SearchViewControllerDelegate
+
 protocol SearchViewControllerDelegate: AnyObject {
     func didTappedSearchCell(_ books: [Book], searchText: String)
 }
 
+// MARK: - SearchViewController
+
 final class SearchViewController: UIViewController {
+
     // MARK: Internal
 
     @IBOutlet var searchGradientView: SearchGradientView!
@@ -97,9 +102,11 @@ final class SearchViewController: UIViewController {
     }
 }
 
+// MARK: UITableViewDataSource
+
 extension SearchViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return books.count
+        books.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,9 +116,11 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate
+
 extension SearchViewController: UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return 44
+        44
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

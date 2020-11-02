@@ -9,6 +9,9 @@ import Alamofire
 import Foundation
 
 let coreURL = "http://localhost:8000/"
+
+// MARK: - Requestable
+
 // let coreURL = "http://10.0.22.18:8000/"
 
 protocol Requestable {
@@ -20,6 +23,8 @@ protocol Requestable {
     )
 }
 
+// MARK: - HTTPRequester
+
 enum HTTPRequester {
     case login(email: String, password: String)
     case signup(username: String, email: String, password: String)
@@ -28,6 +33,8 @@ enum HTTPRequester {
     case getBookSearchBy(searchString: String)
     case getBookSearchWithFilterBy(searchString: String, filterType: FilterType)
 }
+
+// MARK: Requestable
 
 extension HTTPRequester: Requestable {
     func params() -> (

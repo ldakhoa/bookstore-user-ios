@@ -7,7 +7,10 @@
 
 import UIKit
 
+// MARK: - CategoryViewController
+
 final class CategoryViewController: UIViewController {
+
     // MARK: Internal
 
     @IBOutlet var tableView: UITableView!
@@ -53,9 +56,11 @@ final class CategoryViewController: UIViewController {
     private let cellID = "CategoryCell"
 }
 
+// MARK: UITableViewDataSource
+
 extension CategoryViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return categories.count
+        categories.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,8 +70,10 @@ extension CategoryViewController: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate
+
 extension CategoryViewController: UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return 50
+        50
     }
 }

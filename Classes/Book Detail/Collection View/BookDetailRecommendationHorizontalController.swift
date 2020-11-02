@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - BookDetailRecommendHorizontalController
+
 final class BookDetailRecommendHorizontalController: HorizontalSnappingController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,7 @@ final class BookDetailRecommendHorizontalController: HorizontalSnappingControlle
         _: UICollectionView,
         numberOfItemsInSection _: Int
     ) -> Int {
-        return 11
+        11
     }
 
     override func collectionView(
@@ -39,7 +41,7 @@ final class BookDetailRecommendHorizontalController: HorizontalSnappingControlle
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
+// MARK: UICollectionViewDelegateFlowLayout
 
 extension BookDetailRecommendHorizontalController: UICollectionViewDelegateFlowLayout {
     func collectionView(
@@ -47,6 +49,6 @@ extension BookDetailRecommendHorizontalController: UICollectionViewDelegateFlowL
         layout _: UICollectionViewLayout,
         sizeForItemAt _: IndexPath
     ) -> CGSize {
-        return .init(width: 170, height: view.frame.height)
+        .init(width: 170, height: view.frame.height)
     }
 }

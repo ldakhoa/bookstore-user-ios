@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - HorizontalSnappingController
+
 class HorizontalSnappingController: UICollectionViewController {
     init() {
         let layout = SnappingCollectionViewLayout()
@@ -22,6 +24,8 @@ class HorizontalSnappingController: UICollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+// MARK: - SnappingCollectionViewLayout
 
 class SnappingCollectionViewLayout: UICollectionViewFlowLayout {
     override func targetContentOffset(

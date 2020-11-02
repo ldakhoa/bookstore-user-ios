@@ -21,7 +21,7 @@ final class BookListCell: UITableViewCell {
     var book: Book? {
         didSet {
             guard let book = book,
-                let bookImageUrl = URL(string: book.imageUrl)
+                  let bookImageUrl = URL(string: book.imageUrl)
             else {
                 return
             }

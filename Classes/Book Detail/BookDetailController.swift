@@ -7,7 +7,10 @@
 
 import UIKit
 
+// MARK: - BookDetailController
+
 final class BookDetailController: UIViewController {
+
     // MARK: Internal
 
     var book: Book?
@@ -92,13 +95,15 @@ final class BookDetailController: UIViewController {
     }
 }
 
+// MARK: UITableViewDataSource
+
 extension BookDetailController: UITableViewDataSource {
     func numberOfSections(in _: UITableView) -> Int {
-        return cellsID.count + 1
+        cellsID.count + 1
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 1
+        1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,7 +142,12 @@ extension BookDetailController: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate
+
 extension BookDetailController: UITableViewDelegate {
+
+    // MARK: Internal
+
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
             return 376
@@ -148,7 +158,7 @@ extension BookDetailController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
-        return 460
+        460
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -169,6 +179,8 @@ extension BookDetailController: UITableViewDelegate {
             topContainerView.bottomLayer.backgroundColor = Styles.Colors.separate.color.withAlphaComponent(0).cgColor
         }
     }
+
+    // MARK: Private
 
     private func isEnabledShadowForTopView(opacity: Float) {
         topContainerView.dismissView.toTopViewShadow(opacity: opacity)

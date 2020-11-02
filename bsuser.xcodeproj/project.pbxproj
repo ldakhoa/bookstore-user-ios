@@ -462,26 +462,25 @@
 		64BA8BA5254C015500AC56C6 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				64BA8BA9254C0CB000AC56C6 /* OrderViewController.swift */,
 				64BA8BB1254C0D5D00AC56C6 /* Order.storyboard */,
+				64F686E425500401002C3C47 /* Success */,
+				64F686E3255003EA002C3C47 /* Edit address */,
 				64BA8C40254C673000AC56C6 /* Payment */,
-				64BA8C06254C4D3A00AC56C6 /* Main Order */,
-				64BA8BB6254C1CEB00AC56C6 /* OrderSuccessController.swift */,
+				64BA8C06254C4D3A00AC56C6 /* Main Order Cell */,
 			);
 			path = Order;
 			sourceTree = "<group>";
 		};
-		64BA8C06254C4D3A00AC56C6 /* Main Order */ = {
+		64BA8C06254C4D3A00AC56C6 /* Main Order Cell */ = {
 			isa = PBXGroup;
 			children = (
 				64BA8BEF254C452200AC56C6 /* OrderInformationCell.swift */,
 				64BA8BFE254C45EA00AC56C6 /* OrderShippingAddressCell.swift */,
 				64BA8BF9254C45CA00AC56C6 /* OrderPaymentCell.swift */,
 				64BA8BF4254C45A500AC56C6 /* OrderSubtotalCell.swift */,
-				64BA8BA9254C0CB000AC56C6 /* OrderViewController.swift */,
-				64F686D6254FFF48002C3C47 /* EditAddressController.swift */,
-				64F686DE25500056002C3C47 /* EditShippingAddressCell.swift */,
 			);
-			name = "Main Order";
+			name = "Main Order Cell";
 			sourceTree = "<group>";
 		};
 		64BA8C40254C673000AC56C6 /* Payment */ = {
@@ -595,6 +594,23 @@
 				647C77D22532C7650034159E /* Main.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		64F686E3255003EA002C3C47 /* Edit address */ = {
+			isa = PBXGroup;
+			children = (
+				64F686D6254FFF48002C3C47 /* EditAddressController.swift */,
+				64F686DE25500056002C3C47 /* EditShippingAddressCell.swift */,
+			);
+			name = "Edit address";
+			sourceTree = "<group>";
+		};
+		64F686E425500401002C3C47 /* Success */ = {
+			isa = PBXGroup;
+			children = (
+				64BA8BB6254C1CEB00AC56C6 /* OrderSuccessController.swift */,
+			);
+			path = Success;
 			sourceTree = "<group>";
 		};
 		64FB7A4A254122E600158989 /* Book Detail */ = {

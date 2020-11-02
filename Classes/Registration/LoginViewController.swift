@@ -9,6 +9,7 @@ import JGProgressHUD
 import UIKit
 
 final class LoginViewController: UIViewController {
+
     // MARK: Internal
 
     @IBOutlet var emailView: UIView!
@@ -160,7 +161,7 @@ final class LoginViewController: UIViewController {
     @objc
     private func textFieldEditingChanged(_ textField: UITextField) {
         guard let emailField = emailTextfield.text,
-            let passwordField = passwordTextfield.text else { return }
+              let passwordField = passwordTextfield.text else { return }
         if textField == emailTextfield {
             emailLabel.isHidden = emailTextfield.text?.count == 0 ? true : false
         } else if textField == passwordTextfield {

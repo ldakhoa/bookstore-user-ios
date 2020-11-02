@@ -8,6 +8,7 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
+
     // MARK: Internal
 
     @IBOutlet var searchGradientView: SearchGradientView!

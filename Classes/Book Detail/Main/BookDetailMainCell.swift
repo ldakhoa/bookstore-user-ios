@@ -18,7 +18,7 @@ final class BookDetailMainCell: UITableViewCell {
     var book: Book? {
         didSet {
             guard let book = book,
-                let imageUrl = URL(string: book.imageUrl) else { return }
+                  let imageUrl = URL(string: book.imageUrl) else { return }
             bookTitleLabel.text = book.title
             authorLabel.text = book.author
             ratingsView.rating = book.ratings

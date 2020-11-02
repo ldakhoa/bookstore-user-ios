@@ -8,6 +8,7 @@
 import UIKit
 
 class SearchGradientView: UIView, UITextFieldDelegate {
+
     // MARK: Internal
 
     let searchTextField = IBooksSearchTextField()

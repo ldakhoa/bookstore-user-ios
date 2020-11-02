@@ -8,6 +8,7 @@
 import UIKit
 
 final class BookDetailBottomContainerView: UIView {
+
     // MARK: Lifecycle
 
     override init(frame: CGRect) {

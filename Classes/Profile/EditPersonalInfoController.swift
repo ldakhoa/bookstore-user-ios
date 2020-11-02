@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - EditPersonalInfoController
+
 final class EditPersonalInfoController: UIViewController {
     @IBOutlet var tableView: UITableView!
     var user: User?
@@ -17,40 +19,62 @@ final class EditPersonalInfoController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(didTappedDismissButton))
-        let rightBarButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(didTappedSaveButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: #imageLiteral(resourceName: "back"),
+            style: .plain,
+            target: self,
+            action: #selector(didTappedDismissButton)
+        )
+        let rightBarButton = UIBarButtonItem(
+            title: "Save",
+            style: .plain,
+            target: self,
+            action: #selector(didTappedSaveButton)
+        )
         rightBarButton.setTitleTextAttributes(
-            [NSAttributedString.Key.font: Styles.Text.bodyBold.preferredFont,
-             NSAttributedString.Key.foregroundColor: Styles.Colors.black.color,
-             NSAttributedString.Key.underlineStyle: 1],
+            [
+                NSAttributedString.Key.font: Styles.Text.bodyBold.preferredFont,
+                NSAttributedString.Key.foregroundColor: Styles.Colors.black.color,
+                NSAttributedString.Key.underlineStyle: 1,
+            ],
             for: .normal
         )
         navigationItem.rightBarButtonItem = rightBarButton
     }
 
-    @objc func didTappedSaveButton() {
+    @objc
+    func didTappedSaveButton() {
         navigationController?.popViewController(animated: true)
     }
 
-    @objc func didTappedDismissButton() {
+    @objc
+    func didTappedDismissButton() {
         navigationController?.popViewController(animated: true)
     }
 }
 
+// MARK: UITableViewDataSource
+
 extension EditPersonalInfoController: UITableViewDataSource {
     func numberOfSections(in _: UITableView) -> Int {
-        return 6
+        6
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 1
+        1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EditPersonalInfoCell", for: indexPath) as? EditPersonalInfoCell, let user = user else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "EditPersonalInfoCell",
+            for: indexPath
+        ) as? EditPersonalInfoCell, let user = user else { return UITableViewCell() }
         switch indexPath.section {
         case 0:
-            let headerCell = tableView.dequeueReusableCell(withIdentifier: "HearderCell", for: indexPath)
+            let headerCell = tableView.dequeueReusableCell(
+                withIdentifier: "HearderCell",
+                for: indexPath
+            )
             return headerCell
         case 1:
             cell.titleLabel.text = "Name"
@@ -78,12 +102,14 @@ extension EditPersonalInfoController: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate
+
 extension EditPersonalInfoController: UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        UITableView.automaticDimension
     }
 
     func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
-        return 100
+        100
     }
 }

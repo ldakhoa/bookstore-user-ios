@@ -8,6 +8,8 @@
 import StyledTextKit
 import UIKit
 
+// MARK: - Styles
+
 enum Styles {
     enum Sizes {
         static let avatar = CGSize(width: 30, height: 30)
@@ -54,6 +56,7 @@ enum Styles {
     }
 
     enum Text {
+
         // MARK: Internal
 
         static let h1 = TextStyle(font: .name(cerealMedium), size: 34)
@@ -84,7 +87,7 @@ enum Styles {
 
 extension TextStyle {
     var preferredFont: UIFont {
-        return font(contentSizeCategory: UIContentSizeCategory.preferred)
+        font(contentSizeCategory: UIContentSizeCategory.preferred)
     }
 
     func with(attributes: [NSAttributedString.Key: Any]) -> TextStyle {
@@ -117,7 +120,7 @@ extension TextStyle {
 
 extension String {
     public var color: UIColor {
-        return UIColor.fromHex(self)
+        UIColor.fromHex(self)
     }
 }
 

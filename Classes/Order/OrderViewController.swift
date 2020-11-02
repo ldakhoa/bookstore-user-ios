@@ -7,7 +7,10 @@
 
 import UIKit
 
+// MARK: - OrderViewController
+
 final class OrderViewController: UIViewController {
+
     // MARK: Internal
 
     @IBOutlet var tableView: UITableView!
@@ -46,17 +49,22 @@ final class OrderViewController: UIViewController {
         let editAddressVC = AppSetting.Storyboards.Order.editAddressVC
         navigationController?.pushViewController(editAddressVC, animated: true)
     }
+
+    @objc
+    private func didTappedEditOrderInfoButton() {
+        dismiss(animated: true)
+    }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: UITableViewDataSource
 
 extension OrderViewController: UITableViewDataSource {
     func numberOfSections(in _: UITableView) -> Int {
-        return 4
+        4
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 1
+        1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,6 +75,11 @@ extension OrderViewController: UITableViewDataSource {
                 for: indexPath
             ) as? OrderInformationCell else { return UITableViewCell() }
             cell.selectionStyle = .none
+            cell.editButton.addTarget(
+                self,
+                action: #selector(didTappedEditOrderInfoButton),
+                for: .touchUpInside
+            )
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(
@@ -74,7 +87,11 @@ extension OrderViewController: UITableViewDataSource {
                 for: indexPath
             ) as? OrderShippingAddressCell else { return UITableViewCell() }
             cell.selectionStyle = .none
-            cell.editButton.addTarget(self, action: #selector(didTappedEditAddressButton), for: .touchUpInside)
+            cell.editButton.addTarget(
+                self,
+                action: #selector(didTappedEditAddressButton),
+                for: .touchUpInside
+            )
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(
@@ -96,7 +113,7 @@ extension OrderViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: UITableViewDelegate
 
 extension OrderViewController: UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -115,11 +132,11 @@ extension OrderViewController: UITableViewDelegate {
     }
 
     func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
-        return 200
+        200
     }
 
     func tableView(_: UITableView, heightForFooterInSection _: Int) -> CGFloat {
-        return 8
+        8
     }
 
     func tableView(_: UITableView, viewForFooterInSection _: Int) -> UIView? {

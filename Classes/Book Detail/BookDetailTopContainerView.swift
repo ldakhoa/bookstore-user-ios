@@ -7,7 +7,10 @@
 
 import UIKit
 
+// MARK: - BookDetailTopContainerView
+
 final class BookDetailTopContainerView: UIView {
+
     // MARK: Lifecycle
 
     override init(frame: CGRect) {

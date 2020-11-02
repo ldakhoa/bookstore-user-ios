@@ -8,6 +8,7 @@
 import UIKit
 
 class IBooksButton: UIButton {
+
     // MARK: Lifecycle
 
     convenience init(color: UIColor = Styles.Colors.primary.color) {

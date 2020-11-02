@@ -9,6 +9,7 @@ import JGProgressHUD
 import UIKit
 
 final class ProfileTableViewController: UITableViewController {
+
     // MARK: Internal
 
     var user = User()
@@ -40,7 +41,7 @@ final class ProfileTableViewController: UITableViewController {
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return datasource.count + 1
+        datasource.count + 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,7 +57,7 @@ final class ProfileTableViewController: UITableViewController {
     }
 
     override func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return 72
+        72
     }
 
     override func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
@@ -71,7 +72,7 @@ final class ProfileTableViewController: UITableViewController {
     }
 
     override func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
-        return 100
+        100
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -5,8 +5,8 @@
 //  Created by Khoa Le on 10/10/2020.
 //
 
-@testable import bsuser
 import XCTest
+@testable import bsuser
 
 class bsuserTests: XCTestCase {
     override func setUpWithError() throws {

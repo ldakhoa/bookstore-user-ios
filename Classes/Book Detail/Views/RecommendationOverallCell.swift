@@ -8,6 +8,7 @@
 import UIKit
 
 public class RecommendationOverallCell: UITableViewCell {
+
     // MARK: Lifecycle
 
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

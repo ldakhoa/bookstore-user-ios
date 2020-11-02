@@ -7,7 +7,10 @@
 
 import UIKit
 
+// MARK: - CartViewController
+
 final class CartViewController: UIViewController {
+
     // MARK: Internal
 
     @IBOutlet var tableView: UITableView!
@@ -46,15 +49,15 @@ final class CartViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: UITableViewDataSource
 
 extension CartViewController: UITableViewDataSource {
     func numberOfSections(in _: UITableView) -> Int {
-        return 2
+        2
     }
 
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? 1 : 3
+        section == 1 ? 1 : 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,19 +81,19 @@ extension CartViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: UITableViewDelegate
 
 extension CartViewController: UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? UITableView.automaticDimension : 100
+        indexPath.section == 0 ? UITableView.automaticDimension : 100
     }
 
     func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
-        return 200
+        200
     }
 
     func tableView(_: UITableView, heightForFooterInSection _: Int) -> CGFloat {
-        return 8
+        8
     }
 
     func tableView(_: UITableView, viewForFooterInSection _: Int) -> UIView? {

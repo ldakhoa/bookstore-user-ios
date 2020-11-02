@@ -127,6 +127,9 @@
                                                 <constraint firstItem="sKT-oY-WGb" firstAttribute="top" secondItem="6GE-MK-tA1" secondAttribute="top" constant="24" id="fBP-s3-WpE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="editButton" destination="JUv-Xq-jmi" id="WBx-ks-sXT"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderShippingAddressCell" rowHeight="104" id="ZO5-Te-EVR" customClass="OrderShippingAddressCell" customModule="bsuser" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="305" width="414" height="104"/>

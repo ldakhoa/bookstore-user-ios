@@ -9,6 +9,7 @@ import Foundation
 import SwiftyJSON
 
 final class Category {
+
     // MARK: Lifecycle
 
     init(categoryName: String = "") {

@@ -7,7 +7,10 @@
 
 import UIKit
 
+// MARK: - BookListViewController
+
 final class BookListViewController: UIViewController {
+
     // MARK: Internal
 
     var books = [Book]()
@@ -61,11 +64,11 @@ final class BookListViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: UITableViewDataSource
 
 extension BookListViewController: UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return books.count
+        books.count
 //        return 1
     }
 
@@ -80,11 +83,11 @@ extension BookListViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: UITableViewDelegate
 
 extension BookListViewController: UITableViewDelegate {
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return 135 + 16 + 16
+        135 + 16 + 16
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -95,15 +98,15 @@ extension BookListViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: UICollectionViewDataSource
 
 extension BookListViewController: UICollectionViewDataSource {
     func numberOfSections(in _: UICollectionView) -> Int {
-        return 1
+        1
     }
 
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        return filterDatasource.count
+        filterDatasource.count
     }
 
     func collectionView(
@@ -179,15 +182,18 @@ extension BookListViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
+// MARK: UICollectionViewDelegateFlowLayout
 
 extension BookListViewController: UICollectionViewDelegateFlowLayout {
+
+    // MARK: Internal
+
     func collectionView(
         _ collectionView: UICollectionView,
         layout _: UICollectionViewLayout,
         sizeForItemAt _: IndexPath
     ) -> CGSize {
-        return .init(width: 0, height: collectionView.frame.height)
+        .init(width: 0, height: collectionView.frame.height)
     }
 
     func collectionView(
@@ -195,14 +201,14 @@ extension BookListViewController: UICollectionViewDelegateFlowLayout {
         layout _: UICollectionViewLayout,
         minimumLineSpacingForSectionAt _: Int
     ) -> CGFloat {
-        return 8
+        8
     }
 
     func collectionView(
         _: UICollectionView, layout _: UICollectionViewLayout,
         insetForSectionAt _: Int
     ) -> UIEdgeInsets {
-        return .init(top: 0, left: 8, bottom: 0, right: 8)
+        .init(top: 0, left: 8, bottom: 0, right: 8)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -241,6 +247,8 @@ extension BookListViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 
+    // MARK: Private
+
     private func sortByPrice(isAscending: Bool) -> [Book] {
         let descendingBooks = books.sorted { (book1, book2) -> Bool in
             book1.price > book2.price
@@ -253,6 +261,8 @@ extension BookListViewController: UICollectionViewDelegateFlowLayout {
         return isAscending ? ascendingBooks : descendingBooks
     }
 }
+
+// MARK: SearchViewControllerDelegate
 
 extension BookListViewController: SearchViewControllerDelegate {
     func didTappedSearchCell(_ books: [Book], searchText: String) {

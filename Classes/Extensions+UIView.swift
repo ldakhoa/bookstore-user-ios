@@ -1,10 +1,22 @@
 import UIKit
 
+// MARK: - AnchoredConstraints
+
 struct AnchoredConstraints {
     var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
 }
 
 extension UIView {
+
+    // MARK: Lifecycle
+
+    convenience init(backgroundColor: UIColor = .clear) {
+        self.init(frame: .zero)
+        self.backgroundColor = backgroundColor
+    }
+
+    // MARK: Internal
+
     @discardableResult
     func anchor(
         top: NSLayoutYAxisAnchor?,
@@ -136,10 +148,6 @@ extension UIView {
         layer.shadowColor = color.cgColor
     }
 
-    convenience init(backgroundColor: UIColor = .clear) {
-        self.init(frame: .zero)
-        self.backgroundColor = backgroundColor
-    }
 }
 
 extension UIStackView {

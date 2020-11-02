@@ -9,6 +9,8 @@ import Alamofire
 import Foundation
 import SwiftyJSON
 
+// MARK: - ResponseCode
+
 enum ResponseCode: Int {
     case ok = 200
     case duplicateError = 404
@@ -16,7 +18,10 @@ enum ResponseCode: Int {
     case internalServerError = 500
 }
 
+// MARK: - NetworkManagement
+
 struct NetworkManagement {
+
     // MARK: Public
 
     public static func login(
@@ -97,7 +102,7 @@ struct NetworkManagement {
             switch responseData.result {
             case .success:
                 guard let data = responseData.data,
-                    let parseJSON = try? JSON(data: data) else { return }
+                      let parseJSON = try? JSON(data: data) else { return }
                 var responseCode = ResponseCode.ok.rawValue
                 if let code = parseJSON["code"].int {
                     Log.debug("Response code: ", code)
