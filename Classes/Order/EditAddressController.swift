@@ -5,18 +5,23 @@
 //  Created by Khoa Le on 02/11/2020.
 //
 
+import CountryPickerView
 import UIKit
 
 // MARK: - EditAddressController
 
 final class EditAddressController: UIViewController {
     @IBOutlet var tableView: UITableView!
+    let countryPickerView = CountryPickerView()
+    var country: Country?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
+
+        countryPickerView.delegate = self
 
         navigationController?.navigationBar.prefersLargeTitles = true
 
@@ -102,6 +107,8 @@ extension EditAddressController: UITableViewDataSource {
         case 8:
             cell.titleLabel.text = "Country"
             cell.editTextField.placeholder = "Select country"
+            cell.editTextField.isUserInteractionEnabled = false
+            cell.editTextField.text = country?.name
         default:
             ()
         }
@@ -118,5 +125,24 @@ extension EditAddressController: UITableViewDelegate {
 
     func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
         100
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 8 {
+            countryPickerView.showCountriesList(from: self)
+        }
+    }
+}
+
+// MARK: CountryPickerViewDelegate
+
+extension EditAddressController: CountryPickerViewDelegate {
+    func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country) {
+        self.country = country
+        tableView.reloadData()
+    }
+
+    func navigationTitle(in countryPickerView: CountryPickerView) -> String? {
+        "Select a Country"
     }
 }

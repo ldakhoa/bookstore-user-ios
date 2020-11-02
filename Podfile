@@ -13,6 +13,7 @@ target 'bsuser' do
   pod 'Log'
   pod 'JGProgressHUD'
   pod 'SDWebImage', '~> 5.0'
+  pod 'CountryPickerView'
 
   # Pods for bsuser
 
