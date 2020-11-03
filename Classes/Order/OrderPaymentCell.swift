@@ -8,13 +8,13 @@
 import UIKit
 
 final class OrderPaymentCell: UITableViewCell {
-    @IBOutlet var addButton: UIButton!
+  @IBOutlet var addButton: UIButton!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+  override func awakeFromNib() {
+    super.awakeFromNib()
 
-        addButton.layer.borderWidth = 1
-        addButton.layer.borderColor = Styles.Colors.black.color.cgColor
-        addButton.layer.cornerRadius = 8
-    }
+    addButton.layer.borderWidth = 1
+    addButton.layer.borderColor = Styles.Colors.black.color.cgColor
+    addButton.layer.cornerRadius = 8
+  }
 }

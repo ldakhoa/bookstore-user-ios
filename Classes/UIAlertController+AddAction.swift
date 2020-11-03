@@ -8,15 +8,15 @@
 import UIKit
 
 extension UIAlertController {
-    func addActions(_ actions: [UIAlertAction?]) {
-        for anAction in actions {
-            add(action: anAction)
-        }
+  func addActions(_ actions: [UIAlertAction?]) {
+    for anAction in actions {
+      add(action: anAction)
     }
+  }
 
-    func add(action: UIAlertAction?) {
-        if let action = action {
-            addAction(action)
-        }
+  func add(action: UIAlertAction?) {
+    if let action = action {
+      addAction(action)
     }
+  }
 }

@@ -8,12 +8,12 @@
 import UIKit
 
 final class ProfileCell: UITableViewCell {
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var subtitleLabel: UILabel!
+  @IBOutlet var titleLabel: UILabel!
+  @IBOutlet var subtitleLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+  override func awakeFromNib() {
+    super.awakeFromNib()
 
-        backgroundColor = Styles.Colors.background.color
-    }
+    backgroundColor = Styles.Colors.background.color
+  }
 }

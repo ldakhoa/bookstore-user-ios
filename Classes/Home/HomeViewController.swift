@@ -9,21 +9,21 @@ import UIKit
 
 final class HomeViewController: UIViewController {
 
-    // MARK: Internal
+  // MARK: Internal
 
-    @IBOutlet var searchGradientView: SearchGradientView!
+  @IBOutlet var searchGradientView: SearchGradientView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        view.backgroundColor = Styles.Colors.background.color
-    }
+    view.backgroundColor = Styles.Colors.background.color
+  }
 
-    // MARK: Private
+  // MARK: Private
 
-    @objc
-    private func handleReturnUIState() {
-        searchGradientView.searchTextField.resignFirstResponder()
-        searchGradientView.searchTextField.text = ""
-    }
+  @objc
+  private func handleReturnUIState() {
+    searchGradientView.searchTextField.resignFirstResponder()
+    searchGradientView.searchTextField.text = ""
+  }
 }

@@ -9,45 +9,45 @@ import UIKit
 
 final class OrderAddPaymentController: UIViewController {
 
-    // MARK: Internal
+  // MARK: Internal
 
-    @IBOutlet var cardStackView: UIStackView!
-    @IBOutlet var payPalStackView: UIStackView!
+  @IBOutlet var cardStackView: UIStackView!
+  @IBOutlet var payPalStackView: UIStackView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        cardStackView.addGestureRecognizer(UITapGestureRecognizer(
-            target: self,
-            action: #selector(didTappedCardStackView)
-        ))
-        payPalStackView.addGestureRecognizer(UITapGestureRecognizer(
-            target: self,
-            action: #selector(didTappedPayPalStackView)
-        ))
-    }
+    cardStackView.addGestureRecognizer(UITapGestureRecognizer(
+      target: self,
+      action: #selector(didTappedCardStackView)
+    ))
+    payPalStackView.addGestureRecognizer(UITapGestureRecognizer(
+      target: self,
+      action: #selector(didTappedPayPalStackView)
+    ))
+  }
 
-    // MARK: Private
+  // MARK: Private
 
-    @IBAction
-    private func didTappedDismissButton(_: Any) {
-        dismiss(animated: true)
-    }
+  @IBAction
+  private func didTappedDismissButton(_: Any) {
+    dismiss(animated: true)
+  }
 
-    @objc
-    private func didTappedCardStackView() {
-        let orderAddPaymentMethodVC = AppSetting.Storyboards.Order.orderAddPaymentMethodVC
-        navigationController?.pushViewController(orderAddPaymentMethodVC, animated: true)
-    }
+  @objc
+  private func didTappedCardStackView() {
+    let orderAddPaymentMethodVC = AppSetting.Storyboards.Order.orderAddPaymentMethodVC
+    navigationController?.pushViewController(orderAddPaymentMethodVC, animated: true)
+  }
 
-    @objc
-    private func didTappedPayPalStackView() {
-        let alert = UIAlertController.configured(
-            title: "Sorry!",
-            message: "Pay with PayPal is in development.",
-            preferredStyle: .alert
-        )
-        alert.addAction(AlertAction.ok())
-        present(alert, animated: true)
-    }
+  @objc
+  private func didTappedPayPalStackView() {
+    let alert = UIAlertController.configured(
+      title: "Sorry!",
+      message: "Pay with PayPal is in development.",
+      preferredStyle: .alert
+    )
+    alert.addAction(AlertAction.ok())
+    present(alert, animated: true)
+  }
 }

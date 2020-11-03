@@ -1,5 +1,5 @@
 # indent
---indent 4
+--indent 2
 --ifdef no-indent
 
 --self remove # redundantSelf

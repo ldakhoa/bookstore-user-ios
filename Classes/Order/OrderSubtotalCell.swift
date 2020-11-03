@@ -8,7 +8,7 @@
 import UIKit
 
 final class OrderSubtotalCell: UITableViewCell {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
 }

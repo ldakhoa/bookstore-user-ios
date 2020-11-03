@@ -10,21 +10,21 @@ import SwiftyJSON
 
 final class Category {
 
-    // MARK: Lifecycle
+  // MARK: Lifecycle
 
-    init(categoryName: String = "") {
-        self.categoryName = categoryName
-    }
+  init(categoryName: String = "") {
+    self.categoryName = categoryName
+  }
 
-    // MARK: Internal
+  // MARK: Internal
 
-    var categoryName: String = ""
-    var id: Int = -1
+  var categoryName: String = ""
+  var id: Int = -1
 
-    static func parseData(item: JSON) -> Category {
-        let category = Category()
-        category.categoryName = item["name"].string ?? ""
-        category.id = item["name"].int ?? -1
-        return category
-    }
+  static func parseData(item: JSON) -> Category {
+    let category = Category()
+    category.categoryName = item["name"].string ?? ""
+    category.id = item["name"].int ?? -1
+    return category
+  }
 }

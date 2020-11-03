@@ -8,9 +8,9 @@
 import UIKit
 
 final class OrderInformationCell: UITableViewCell {
-    @IBOutlet var editButton: UIButton!
+  @IBOutlet var editButton: UIButton!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
 }

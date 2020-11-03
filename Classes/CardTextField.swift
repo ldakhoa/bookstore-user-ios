@@ -8,13 +8,13 @@
 import UIKit
 
 class CardTextField: UITextField {
-    override func awakeFromNib() {
-        super.awakeFromNib()
+  override func awakeFromNib() {
+    super.awakeFromNib()
 
-        let bottomLayer = CALayer()
-        bottomLayer.frame = .init(x: 0, y: 50, width: frame.width, height: 1)
-        bottomLayer.backgroundColor = Styles.Colors.textFieldBottomLine.color.cgColor
+    let bottomLayer = CALayer()
+    bottomLayer.frame = .init(x: 0, y: 50, width: frame.width, height: 1)
+    bottomLayer.backgroundColor = Styles.Colors.textFieldBottomLine.color.cgColor
 
-        layer.addSublayer(bottomLayer)
-    }
+    layer.addSublayer(bottomLayer)
+  }
 }

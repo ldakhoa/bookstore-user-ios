@@ -8,9 +8,9 @@
 import UIKit
 
 final class SearchCell: UITableViewCell {
-    @IBOutlet var bookNameLabel: UILabel!
+  @IBOutlet var bookNameLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
 }

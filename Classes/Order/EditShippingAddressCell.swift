@@ -8,10 +8,10 @@
 import UIKit
 
 final class EditShippingAddressCell: UITableViewCell {
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var editTextField: CardTextField!
+  @IBOutlet var titleLabel: UILabel!
+  @IBOutlet var editTextField: CardTextField!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
 }

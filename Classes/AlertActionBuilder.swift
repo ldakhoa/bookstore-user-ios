@@ -11,21 +11,21 @@ import UIKit
 
 class AlertActionBuilder {
 
-    // MARK: Lifecycle
+  // MARK: Lifecycle
 
-    // MARK: Init
+  // MARK: Init
 
-    init(_ buildClosure: BuilderClosure) {
-        buildClosure(self)
-    }
+  init(_ buildClosure: BuilderClosure) {
+    buildClosure(self)
+  }
 
-    // MARK: Internal
+  // MARK: Internal
 
-    typealias BuilderClosure = (AlertActionBuilder) -> Void
+  typealias BuilderClosure = (AlertActionBuilder) -> Void
 
-    // MARK: Properties
+  // MARK: Properties
 
-    var rootViewController: UIViewController?
-    var title: String?
-    var style: UIAlertAction.Style?
+  var rootViewController: UIViewController?
+  var title: String?
+  var style: UIAlertAction.Style?
 }

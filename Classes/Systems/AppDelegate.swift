@@ -9,15 +9,15 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
+  var window: UIWindow?
 
-    func application(
-        _: UIApplication,
-        didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
-    ) -> Bool {
-        // TODO: - Turn off this when implement cart/checkout feature
-        AppSetting.shared.checkMainScreen()
+  func application(
+    _: UIApplication,
+    didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+    // TODO: - Turn off this when implement cart/checkout feature
+    AppSetting.shared.checkMainScreen()
 
-        return true
-    }
+    return true
+  }
 }

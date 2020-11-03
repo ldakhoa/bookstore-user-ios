@@ -9,53 +9,53 @@ import UIKit
 
 class IBooksButton: UIButton {
 
-    // MARK: Lifecycle
+  // MARK: Lifecycle
 
-    convenience init(color: UIColor = Styles.Colors.primary.color) {
-        self.init()
-        backgroundColor = color
-        setupShadow(
-            opacity: 0.3,
-            radius: 8,
-            offset: .init(width: 0, height: 1),
-            color: color
-        )
-    }
+  convenience init(color: UIColor = Styles.Colors.primary.color) {
+    self.init()
+    backgroundColor = color
+    setupShadow(
+      opacity: 0.3,
+      radius: 8,
+      offset: .init(width: 0, height: 1),
+      color: color
+    )
+  }
 
-    // MARK: Public
+  // MARK: Public
 
-    public func setActiveStyles() {
-        isEnabled = true
-        backgroundColor = Styles.Colors.primary.color
-        setTitleColor(Styles.Colors.White.normal, for: .normal)
-        setupShadow(
-            opacity: 0.3,
-            radius: 8,
-            offset: .init(width: 0, height: 1),
-            color: Styles.Colors.primary.color
-        )
-    }
+  public func setActiveStyles() {
+    isEnabled = true
+    backgroundColor = Styles.Colors.primary.color
+    setTitleColor(Styles.Colors.White.normal, for: .normal)
+    setupShadow(
+      opacity: 0.3,
+      radius: 8,
+      offset: .init(width: 0, height: 1),
+      color: Styles.Colors.primary.color
+    )
+  }
 
-    public func setInactiveStyles() {
-        isEnabled = false
-        backgroundColor = Styles.Colors.lightGray
-        setTitleColor(Styles.Colors.White.whiter, for: .normal)
-        setupShadow(
-            opacity: 0,
-            radius: 0,
-            offset: .zero,
-            color: Styles.Colors.lightGray
-        )
-    }
+  public func setInactiveStyles() {
+    isEnabled = false
+    backgroundColor = Styles.Colors.lightGray
+    setTitleColor(Styles.Colors.White.whiter, for: .normal)
+    setupShadow(
+      opacity: 0,
+      radius: 0,
+      offset: .zero,
+      color: Styles.Colors.lightGray
+    )
+  }
 
-    // MARK: Internal
+  // MARK: Internal
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+  override func awakeFromNib() {
+    super.awakeFromNib()
 
-        setInactiveStyles()
-        layer.cornerRadius = Styles.Sizes.buttonCornerRadius
-        layer.masksToBounds = false
-        titleLabel?.font = Styles.Text.button.preferredFont
-    }
+    setInactiveStyles()
+    layer.cornerRadius = Styles.Sizes.buttonCornerRadius
+    layer.masksToBounds = false
+    titleLabel?.font = Styles.Text.button.preferredFont
+  }
 }

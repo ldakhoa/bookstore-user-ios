@@ -8,11 +8,11 @@
 import UIKit
 
 final class CategoryCell: UITableViewCell {
-    @IBOutlet var label: UILabel!
+  @IBOutlet var label: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+  override func awakeFromNib() {
+    super.awakeFromNib()
 
-        backgroundColor = Styles.Colors.background.color
-    }
+    backgroundColor = Styles.Colors.background.color
+  }
 }

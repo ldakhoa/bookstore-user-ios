@@ -9,19 +9,19 @@ import UIKit
 
 final class OrderSuccessController: UIViewController {
 
-    // MARK: Internal
+  // MARK: Internal
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        title = "iBooks.com Thanks you"
-    }
+    title = "iBooks.com Thanks you"
+  }
 
-    // MARK: Private
+  // MARK: Private
 
-    @IBAction
-    private func didTappedContinueShoppingButton(_: Any) {
-        presentingViewController?.tabBarController?.selectedIndex = 0
-        presentingViewController?.dismiss(animated: true)
-    }
+  @IBAction
+  private func didTappedContinueShoppingButton(_: Any) {
+    presentingViewController?.tabBarController?.selectedIndex = 0
+    presentingViewController?.dismiss(animated: true)
+  }
 }

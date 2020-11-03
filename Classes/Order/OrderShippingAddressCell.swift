@@ -8,11 +8,11 @@
 import UIKit
 
 final class OrderShippingAddressCell: UITableViewCell {
-    @IBOutlet var nameAndPhoneNumberLabel: UILabel!
-    @IBOutlet var addressLabel: UILabel!
-    @IBOutlet var editButton: UIButton!
+  @IBOutlet var nameAndPhoneNumberLabel: UILabel!
+  @IBOutlet var addressLabel: UILabel!
+  @IBOutlet var editButton: UIButton!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
 }
