@@ -41,12 +41,12 @@ final class ProfileTableViewController: UITableViewController {
   }
 
   override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-    datasource.count + 1
+    Sections.count
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ProfileCell else { return UITableViewCell() }
-    if indexPath.row == 6 {
+    if indexPath.row == Sections.logout.rawValue {
       let logoutCell = LogoutCell(style: .default, reuseIdentifier: nil)
       return logoutCell
     } else {
@@ -76,7 +76,14 @@ final class ProfileTableViewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if indexPath.row == 6 {
+    if indexPath.row == Sections.shippingAddress.rawValue {
+      tableView.deselectRow(at: indexPath, animated: false)
+      let listOfAddressVC = AppSetting.Storyboards.Order.listOfAddressVC
+      let navController = UINavigationController(rootViewController: listOfAddressVC)
+      navController.setNavigationBarHidden(true, animated: true)
+      navController.modalPresentationStyle = .fullScreen
+      present(navController, animated: true)
+    } else if indexPath.row == Sections.logout.rawValue {
       tableView.deselectRow(at: indexPath, animated: false)
       let alert = UIAlertController.configured(
         title: "Are you sure",
@@ -97,6 +104,39 @@ final class ProfileTableViewController: UITableViewController {
   }
 
   // MARK: Private
+
+  private enum Sections: Int, CaseIterable {
+    case orders = 0
+    case favorite = 1
+    case shippingAddress = 2
+    case paymentMethods = 3
+    case reviews = 4
+    case settings = 5
+    case logout = 6
+
+    // MARK: Internal
+
+    static let count = Sections.allCases.count
+
+    func getText() -> String {
+      switch self {
+      case .orders:
+        return "My orders"
+      case .favorite:
+        return "My favorite"
+      case .shippingAddress:
+        return "Shipping addresses"
+      case .paymentMethods:
+        return "Payment methods"
+      case .reviews:
+        return "My reviews"
+      case .settings:
+        return "Settings"
+      case .logout:
+        return "Log out"
+      }
+    }
+  }
 
   private let datasource: [String] = [
     "My orders",

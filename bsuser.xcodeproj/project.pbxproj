@@ -92,6 +92,8 @@
 		64F686CF254FEFBC002C3C47 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64F686CE254FEFBC002C3C47 /* Profile.storyboard */; };
 		64F686D7254FFF48002C3C47 /* EditAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F686D6254FFF48002C3C47 /* EditAddressController.swift */; };
 		64F686DF25500056002C3C47 /* EditShippingAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F686DE25500056002C3C47 /* EditShippingAddressCell.swift */; };
+		64F8EEBB2554458200198A8A /* ListOfAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F8EEBA2554458200198A8A /* ListOfAddressController.swift */; };
+		64F8EEC0255449D000198A8A /* ListOfAddressesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F8EEBF255449D000198A8A /* ListOfAddressesCell.swift */; };
 		64FB7A4C2541230800158989 /* BookDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB7A4B2541230700158989 /* BookDetailController.swift */; };
 		64FB7A54254126C900158989 /* BottomContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB7A53254126C900158989 /* BottomContainerView.swift */; };
 		68DACAA8287F62A95FF2D493 /* Pods_bsuser_bsuserUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE464A312CA041D0F89F13D /* Pods_bsuser_bsuserUITests.framework */; };
@@ -209,6 +211,8 @@
 		64F686CE254FEFBC002C3C47 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		64F686D6254FFF48002C3C47 /* EditAddressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressController.swift; sourceTree = "<group>"; };
 		64F686DE25500056002C3C47 /* EditShippingAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditShippingAddressCell.swift; sourceTree = "<group>"; };
+		64F8EEBA2554458200198A8A /* ListOfAddressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfAddressController.swift; sourceTree = "<group>"; };
+		64F8EEBF255449D000198A8A /* ListOfAddressesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfAddressesCell.swift; sourceTree = "<group>"; };
 		64FB7A4B2541230700158989 /* BookDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailController.swift; sourceTree = "<group>"; };
 		64FB7A53254126C900158989 /* BottomContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomContainerView.swift; sourceTree = "<group>"; };
 		6F44A38AA91719D7D1E4DCDB /* Pods-bsuserTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bsuserTests.debug.xcconfig"; path = "Target Support Files/Pods-bsuserTests/Pods-bsuserTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -601,6 +605,8 @@
 			children = (
 				64F686D6254FFF48002C3C47 /* EditAddressController.swift */,
 				64F686DE25500056002C3C47 /* EditShippingAddressCell.swift */,
+				64F8EEBA2554458200198A8A /* ListOfAddressController.swift */,
+				64F8EEBF255449D000198A8A /* ListOfAddressesCell.swift */,
 			);
 			name = "Edit address";
 			sourceTree = "<group>";
@@ -908,9 +914,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6476F6682535700F00879CC1 /* User.swift in Sources */,
+				64F8EEBB2554458200198A8A /* ListOfAddressController.swift in Sources */,
 				64BA8C45254C6C3200AC56C6 /* OrderAddPaymentController.swift in Sources */,
 				64FB7A4C2541230800158989 /* BookDetailController.swift in Sources */,
 				649B0063253AE56100BE315A /* AppSecurity.swift in Sources */,
+				64F8EEC0255449D000198A8A /* ListOfAddressesCell.swift in Sources */,
 				64BA8BF0254C452200AC56C6 /* OrderInformationCell.swift in Sources */,
 				647C77902532B3980034159E /* AppSetting.swift in Sources */,
 				64B0276A254295F900C1CDB2 /* RecommendationOverallCell.swift in Sources */,

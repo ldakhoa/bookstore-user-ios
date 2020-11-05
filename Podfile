@@ -14,6 +14,7 @@ target 'bsuser' do
   pod 'JGProgressHUD'
   pod 'SDWebImage', '~> 5.0'
   pod 'CountryPickerView'
+  pod 'IQKeyboardManagerSwift'
 
   # Pods for bsuser
 

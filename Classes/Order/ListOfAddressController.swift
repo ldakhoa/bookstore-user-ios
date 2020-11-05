@@ -1,0 +1,97 @@
+//
+//  ListOfAddressController.swift
+//  bsuser
+//
+//  Created by Khoa Le on 05/11/2020.
+//
+
+import UIKit
+
+// MARK: - ListOfAddressController
+
+final class ListOfAddressController: UIViewController {
+
+  // MARK: Internal
+
+  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var dismissButton: UIButton!
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    tableView.dataSource = self
+    tableView.delegate = self
+    tableView.backgroundColor = Styles.Colors.background.color
+  }
+
+  @IBAction
+  func didTappedDismissButton(_ sender: Any) {
+    dismiss(animated: true)
+  }
+
+  @IBAction
+  func didTappedAddNewShippingAddressButton(_ sender: Any) {
+    editShippingAddress()
+  }
+
+  @IBAction
+  func didTappedEditButton(_ sender: Any) {
+    let alert = UIAlertController.configured(preferredStyle: .actionSheet)
+    alert.addActions([
+      AlertAction.cancel(),
+      AlertAction(AlertActionBuilder {
+        $0.title = "Edit shipping address"
+        $0.style = .default
+      }).get { [weak self] _ in
+        self?.editShippingAddress()
+      },
+      AlertAction(AlertActionBuilder {
+        $0.title = "Delete shipping address"
+        $0.style = .destructive
+      }).get { [weak self] _ in
+        self?.deleteShippingAddress()
+      },
+    ])
+    present(alert, animated: true)
+  }
+
+  // MARK: Private
+
+  private func deleteShippingAddress() {
+    print("Delete shipping address")
+  }
+
+  private func editShippingAddress() {
+    let editAddressVC = AppSetting.Storyboards.Order.editAddressVC
+    navigationController?.pushViewController(editAddressVC, animated: true)
+  }
+
+}
+
+// MARK: UITableViewDataSource
+
+extension ListOfAddressController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    4
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(
+      withIdentifier: "ListOfAddressesCell",
+      for: indexPath
+    ) as? ListOfAddressesCell else { return UITableViewCell() }
+    return cell
+  }
+}
+
+// MARK: UITableViewDelegate
+
+extension ListOfAddressController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    UITableView.automaticDimension
+  }
+
+  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    160
+  }
+}

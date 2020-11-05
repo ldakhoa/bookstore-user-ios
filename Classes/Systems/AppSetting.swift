@@ -41,6 +41,7 @@ struct AppSetting {
       static let orderAddPaymentMethodVC = order.instantiateViewController(withIdentifier: "OrderAddCardDetailsController")
       static let orderAddPaymentVC = order.instantiateViewController(withIdentifier: "OrderAddPaymentController")
       static let editAddressVC = order.instantiateViewController(withIdentifier: "EditAddressController")
+      static let listOfAddressVC = order.instantiateViewController(withIdentifier: "ListOfAddressController")
     }
 
     enum Profile {

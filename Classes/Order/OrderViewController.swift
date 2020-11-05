@@ -46,8 +46,11 @@ final class OrderViewController: UIViewController {
 
   @objc
   private func didTappedEditAddressButton() {
-    let editAddressVC = AppSetting.Storyboards.Order.editAddressVC
-    navigationController?.pushViewController(editAddressVC, animated: true)
+    let listOfAddressVC = AppSetting.Storyboards.Order.listOfAddressVC
+    let navController = UINavigationController(rootViewController: listOfAddressVC)
+    navController.setNavigationBarHidden(true, animated: true)
+    navController.modalPresentationStyle = .fullScreen
+    present(navController, animated: true)
   }
 
   @objc

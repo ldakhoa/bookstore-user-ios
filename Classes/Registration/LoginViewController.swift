@@ -39,35 +39,35 @@ final class LoginViewController: UIViewController {
     super.viewWillAppear(animated)
 
     AppSetting.shared.logout()
-
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(keyboardWillShow),
-      name: UIResponder.keyboardWillShowNotification,
-      object: nil
-    )
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(keyboardWillHide),
-      name: UIResponder.keyboardWillHideNotification,
-      object: nil
-    )
+//
+//    NotificationCenter.default.addObserver(
+//      self,
+//      selector: #selector(keyboardWillShow),
+//      name: UIResponder.keyboardWillShowNotification,
+//      object: nil
+//    )
+//    NotificationCenter.default.addObserver(
+//      self,
+//      selector: #selector(keyboardWillHide),
+//      name: UIResponder.keyboardWillHideNotification,
+//      object: nil
+//    )
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
-    NotificationCenter.default.removeObserver(
-      self,
-      name: UIResponder.keyboardWillShowNotification,
-      object: nil
-    )
-    NotificationCenter.default.removeObserver(
-      self,
-      name: UIResponder.keyboardWillHideNotification,
-      object: nil
-    )
-
+//    NotificationCenter.default.removeObserver(
+//      self,
+//      name: UIResponder.keyboardWillShowNotification,
+//      object: nil
+//    )
+//    NotificationCenter.default.removeObserver(
+//      self,
+//      name: UIResponder.keyboardWillHideNotification,
+//      object: nil
+//    )
+//
     passwordTextfield.text = ""
   }
 

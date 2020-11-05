@@ -5,6 +5,7 @@
 //  Created by Khoa Le on 10/10/2020.
 //
 
+import IQKeyboardManagerSwift
 import UIKit
 
 @main
@@ -15,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     _: UIApplication,
     didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    IQKeyboardManager.shared.enable = true
     // TODO: - Turn off this when implement cart/checkout feature
     AppSetting.shared.checkMainScreen()
 
