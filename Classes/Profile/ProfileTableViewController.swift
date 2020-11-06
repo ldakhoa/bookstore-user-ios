@@ -76,15 +76,23 @@ final class ProfileTableViewController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if indexPath.row == Sections.shippingAddress.rawValue {
-      tableView.deselectRow(at: indexPath, animated: false)
+    tableView.deselectRow(at: indexPath, animated: false)
+
+    switch indexPath.row {
+    case Sections.orders.rawValue:
+      let myOrderViewController = MyOrdersController()
+      myOrderViewController.modalPresentationStyle = .fullScreen
+      let navController = UINavigationController(rootViewController: myOrderViewController)
+      navController.modalPresentationStyle = .fullScreen
+      navController.setNavigationBarHidden(true, animated: false)
+      present(navController, animated: true)
+    case Sections.shippingAddress.rawValue:
       let listOfAddressVC = AppSetting.Storyboards.Order.listOfAddressVC
       let navController = UINavigationController(rootViewController: listOfAddressVC)
-      navController.setNavigationBarHidden(true, animated: true)
+      navController.setNavigationBarHidden(true, animated: false)
       navController.modalPresentationStyle = .fullScreen
       present(navController, animated: true)
-    } else if indexPath.row == Sections.logout.rawValue {
-      tableView.deselectRow(at: indexPath, animated: false)
+    case Sections.logout.rawValue:
       let alert = UIAlertController.configured(
         title: "Are you sure",
         message: "Are you sure you want to log out?",
@@ -100,6 +108,8 @@ final class ProfileTableViewController: UITableViewController {
         },
       ])
       present(alert, animated: true)
+    default:
+      Void()
     }
   }
 

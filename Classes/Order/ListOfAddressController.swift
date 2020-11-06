@@ -24,18 +24,20 @@ final class ListOfAddressController: UIViewController {
     tableView.backgroundColor = Styles.Colors.background.color
   }
 
+  // MARK: Private
+
   @IBAction
-  func didTappedDismissButton(_ sender: Any) {
+  private func didTappedDismissButton(_ sender: Any) {
     dismiss(animated: true)
   }
 
   @IBAction
-  func didTappedAddNewShippingAddressButton(_ sender: Any) {
+  private func didTappedAddNewShippingAddressButton(_ sender: Any) {
     editShippingAddress()
   }
 
   @IBAction
-  func didTappedEditButton(_ sender: Any) {
+  private func didTappedEditButton(_ sender: Any) {
     let alert = UIAlertController.configured(preferredStyle: .actionSheet)
     alert.addActions([
       AlertAction.cancel(),
@@ -54,8 +56,6 @@ final class ListOfAddressController: UIViewController {
     ])
     present(alert, animated: true)
   }
-
-  // MARK: Private
 
   private func deleteShippingAddress() {
     print("Delete shipping address")
@@ -93,5 +93,10 @@ extension ListOfAddressController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     160
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    dismiss(animated: true)
   }
 }

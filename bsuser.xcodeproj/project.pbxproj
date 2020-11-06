@@ -89,6 +89,10 @@
 		64D5EA592533577C005788A3 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5EA582533577C005788A3 /* ProfileCell.swift */; };
 		64D5EA5E25336385005788A3 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5EA5D25336385005788A3 /* ProfileHeaderView.swift */; };
 		64D5EA63253363B2005788A3 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5EA62253363B2005788A3 /* LogoutCell.swift */; };
+		64EC82132555943C00EE8E51 /* MyOrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC82122555943C00EE8E51 /* MyOrdersController.swift */; };
+		64EC821825559DE700EE8E51 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC821725559DE700EE8E51 /* MenuCollectionViewController.swift */; };
+		64EC821D25559E1C00EE8E51 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC821C25559E1C00EE8E51 /* MenuCell.swift */; };
+		64EC82222555A31400EE8E51 /* MyOrdersMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC82212555A31400EE8E51 /* MyOrdersMainCell.swift */; };
 		64F686CF254FEFBC002C3C47 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64F686CE254FEFBC002C3C47 /* Profile.storyboard */; };
 		64F686D7254FFF48002C3C47 /* EditAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F686D6254FFF48002C3C47 /* EditAddressController.swift */; };
 		64F686DF25500056002C3C47 /* EditShippingAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F686DE25500056002C3C47 /* EditShippingAddressCell.swift */; };
@@ -208,6 +212,10 @@
 		64D5EA582533577C005788A3 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		64D5EA5D25336385005788A3 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		64D5EA62253363B2005788A3 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
+		64EC82122555943C00EE8E51 /* MyOrdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersController.swift; sourceTree = "<group>"; };
+		64EC821725559DE700EE8E51 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
+		64EC821C25559E1C00EE8E51 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		64EC82212555A31400EE8E51 /* MyOrdersMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersMainCell.swift; sourceTree = "<group>"; };
 		64F686CE254FEFBC002C3C47 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		64F686D6254FFF48002C3C47 /* EditAddressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressController.swift; sourceTree = "<group>"; };
 		64F686DE25500056002C3C47 /* EditShippingAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditShippingAddressCell.swift; sourceTree = "<group>"; };
@@ -466,6 +474,7 @@
 		64BA8BA5254C015500AC56C6 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				64DBEDBB2555634C00ECD341 /* My Orders */,
 				64BA8BA9254C0CB000AC56C6 /* OrderViewController.swift */,
 				64BA8BB1254C0D5D00AC56C6 /* Order.storyboard */,
 				64F686E425500401002C3C47 /* Success */,
@@ -598,6 +607,17 @@
 				647C77D22532C7650034159E /* Main.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		64DBEDBB2555634C00ECD341 /* My Orders */ = {
+			isa = PBXGroup;
+			children = (
+				64EC82122555943C00EE8E51 /* MyOrdersController.swift */,
+				64EC82212555A31400EE8E51 /* MyOrdersMainCell.swift */,
+				64EC821725559DE700EE8E51 /* MenuCollectionViewController.swift */,
+				64EC821C25559E1C00EE8E51 /* MenuCell.swift */,
+			);
+			path = "My Orders";
 			sourceTree = "<group>";
 		};
 		64F686E3255003EA002C3C47 /* Edit address */ = {
@@ -937,6 +957,7 @@
 				64BA8BB7254C1CEB00AC56C6 /* OrderSuccessController.swift in Sources */,
 				644B6C792536129F00F7FE32 /* EditPersonalInfoCell.swift in Sources */,
 				6476F6702535701300879CC1 /* Book.swift in Sources */,
+				64EC821825559DE700EE8E51 /* MenuCollectionViewController.swift in Sources */,
 				64CB9A562546998800DC3E92 /* CartViewController.swift in Sources */,
 				6476F65D25355B2E00879CC1 /* FilterCell.swift in Sources */,
 				64CE1B562531B08200A194E3 /* Extensions+UILabel.swift in Sources */,
@@ -949,11 +970,13 @@
 				64D5EA4925335362005788A3 /* ProfileTableViewController.swift in Sources */,
 				64FB7A54254126C900158989 /* BottomContainerView.swift in Sources */,
 				64BA8C13254C5DA300AC56C6 /* CardTextField.swift in Sources */,
+				64EC82132555943C00EE8E51 /* MyOrdersController.swift in Sources */,
 				64CE1B4D2531AFD400A194E3 /* Extensions+UIColor.swift in Sources */,
 				64D5EA5E25336385005788A3 /* ProfileHeaderView.swift in Sources */,
 				64BA8BAA254C0CB000AC56C6 /* OrderViewController.swift in Sources */,
 				64B027742542999500C1CDB2 /* HorizontalSnappingController.swift in Sources */,
 				64F686D7254FFF48002C3C47 /* EditAddressController.swift in Sources */,
+				64EC82222555A31400EE8E51 /* MyOrdersMainCell.swift in Sources */,
 				649B00A2253B5C4300BE315A /* AlertAction.swift in Sources */,
 				649BFFFA253A9CDB00BE315A /* Category.swift in Sources */,
 				64CB9AA92547200E00DC3E92 /* PromoCodeCell.swift in Sources */,
@@ -967,6 +990,7 @@
 				64AD6EB025343D2A008D4EF6 /* CategoryViewController.swift in Sources */,
 				647C77C82532C4070034159E /* MainTabBarController.swift in Sources */,
 				641B93D82541DB8000233FB2 /* BookDetailMainCell.swift in Sources */,
+				64EC821D25559E1C00EE8E51 /* MenuCell.swift in Sources */,
 				64CB9AA425471BD400DC3E92 /* CartCell.swift in Sources */,
 				64416A8E254153C3005966AB /* BookDetailTopContainerView.swift in Sources */,
 				64BA8C0B254C544B00AC56C6 /* OrderAddCardDetailsController.swift in Sources */,

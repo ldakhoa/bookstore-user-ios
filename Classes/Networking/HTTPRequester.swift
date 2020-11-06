@@ -12,8 +12,6 @@ let coreURL = "http://localhost:8000/"
 
 // MARK: - Requestable
 
-// let coreURL = "http://10.0.22.18:8000/"
-
 protocol Requestable {
   func params() -> (
     path: URL,

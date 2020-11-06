@@ -59,7 +59,7 @@ enum Styles {
 
     // MARK: Internal
 
-    static let h1 = TextStyle(font: .name(cerealMedium), size: 34)
+    static let h1 = TextStyle(font: .name(cerealMedium), size: 32)
     static let h2 = TextStyle(font: .name(cerealMedium), size: 24)
     static let h3 = TextStyle(font: .name(cerealMedium), size: 22)
     static let subhealine = TextStyle(font: .name(cerealMedium), size: 16)
