@@ -67,10 +67,10 @@ final class MyOrdersController: UIViewController {
     navigationController?.setNavigationBarHidden(true, animated: animated)
   }
 
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		navigationController?.setNavigationBarHidden(false, animated: animated)
-	}
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    navigationController?.setNavigationBarHidden(false, animated: animated)
+  }
 
   // MARK: Private
 
@@ -129,8 +129,11 @@ extension MyOrdersController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
-						as? MyOrdersMainCell else { return UICollectionViewCell() }
+    guard let cell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: cellID,
+      for: indexPath
+    ) as? MyOrdersMainCell else { return UICollectionViewCell() }
+    cell.myOrdersItemController.delegate = self
     cell.backgroundColor = colors[indexPath.item]
     return cell
   }
@@ -176,5 +179,14 @@ extension MyOrdersController: UICollectionViewDelegateFlowLayout {
 extension MyOrdersController: MenuCollectionViewControllerDelegate {
   func didTappedMenuItem(at indexPath: IndexPath) {
     collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+  }
+}
+
+// MARK: MyOrdersItemControllerDelegate
+
+extension MyOrdersController: MyOrdersItemControllerDelegate {
+  func didSelectItemCell() {
+    let orderDetailController = AppSetting.Storyboards.Profile.orderDetailVC
+    navigationController?.pushViewController(orderDetailController, animated: true)
   }
 }
