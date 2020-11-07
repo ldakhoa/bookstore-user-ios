@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AirbnbCereal-Book.ttf">
+            <string>AirbnbCerealApp-Book</string>
+        </array>
+        <array key="AirbnbCereal-Medium.ttf">
+            <string>AirbnbCerealApp-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyOrdersItemCell" rowHeight="235" id="PKK-XY-k1N" customClass="MyOrdersItemCell" customModule="bsuser" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="618" height="235"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PKK-XY-k1N" id="AL7-af-hgM">
+                <rect key="frame" x="0.0" y="0.0" width="618" height="235"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cmg-hR-4mG">
+                        <rect key="frame" x="24" y="24" width="570" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="yqT-86-WIq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WBo-mC-crG" userLabel="Seperated View">
+                        <rect key="frame" x="24" y="53" width="570" height="1"/>
+                        <color key="backgroundColor" name="seperated"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ZRF-wo-Eg4"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2k-6E-wzQ" userLabel="Book View">
+                        <rect key="frame" x="24" y="70" width="110" height="141"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book4" translatesAutoresizingMaskIntoConstraints="NO" id="zLX-qd-gOg">
+                                <rect key="frame" x="8" y="8" width="94" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="CMQ-zB-Ote"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="bookGray"/>
+                        <constraints>
+                            <constraint firstItem="zLX-qd-gOg" firstAttribute="top" secondItem="V2k-6E-wzQ" secondAttribute="top" constant="8" id="49I-Js-MyK"/>
+                            <constraint firstAttribute="bottom" secondItem="zLX-qd-gOg" secondAttribute="bottom" constant="8" id="Fl3-3c-qc4"/>
+                            <constraint firstAttribute="trailing" secondItem="zLX-qd-gOg" secondAttribute="trailing" constant="8" id="PZ1-WL-Xv1"/>
+                            <constraint firstAttribute="width" constant="110" id="Uw1-KD-OeK"/>
+                            <constraint firstItem="zLX-qd-gOg" firstAttribute="leading" secondItem="V2k-6E-wzQ" secondAttribute="leading" constant="8" id="kpJ-X0-dBu"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PeZ-My-UAn">
+                        <rect key="frame" x="150" y="70" width="444" height="60.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compiler and 2 more books Compiler and 2 more books Compiler and 2 more books Compiler and 2 more books" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orD-wB-j2E">
+                                <rect key="frame" x="0.0" y="0.0" width="444" height="37.5"/>
+                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
+                                <color key="textColor" name="black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 books | $512.03" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhC-ya-aAN">
+                                <rect key="frame" x="0.0" y="41.5" width="444" height="19"/>
+                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                <color key="textColor" name="black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron-right-black" translatesAutoresizingMaskIntoConstraints="NO" id="Drw-W3-Dcd">
+                        <rect key="frame" x="578" y="24" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="P7E-rh-Gpc"/>
+                            <constraint firstAttribute="height" constant="16" id="isu-bX-8gh"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="El2-W7-gA9">
+                        <rect key="frame" x="494" y="163" width="100" height="48"/>
+                        <color key="backgroundColor" name="primary"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="WtD-8E-TCo"/>
+                            <constraint firstAttribute="width" constant="100" id="oe8-0N-9EV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
+                        <state key="normal" title="Buy again">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Drw-W3-Dcd" secondAttribute="trailing" constant="24" id="0A8-ck-tB5"/>
+                    <constraint firstItem="PeZ-My-UAn" firstAttribute="leading" secondItem="V2k-6E-wzQ" secondAttribute="trailing" constant="16" id="1pi-Aw-dee"/>
+                    <constraint firstAttribute="bottom" secondItem="V2k-6E-wzQ" secondAttribute="bottom" constant="24" id="5ij-2I-6fj"/>
+                    <constraint firstItem="PeZ-My-UAn" firstAttribute="top" secondItem="V2k-6E-wzQ" secondAttribute="top" id="EHv-EZ-8Ih"/>
+                    <constraint firstItem="Cmg-hR-4mG" firstAttribute="top" secondItem="AL7-af-hgM" secondAttribute="top" constant="24" id="J4s-m5-kJ1"/>
+                    <constraint firstAttribute="trailing" secondItem="WBo-mC-crG" secondAttribute="trailing" constant="24" id="JGq-xN-4K1"/>
+                    <constraint firstItem="V2k-6E-wzQ" firstAttribute="leading" secondItem="AL7-af-hgM" secondAttribute="leading" constant="24" id="RpB-Sf-0eF"/>
+                    <constraint firstItem="V2k-6E-wzQ" firstAttribute="top" secondItem="WBo-mC-crG" secondAttribute="bottom" constant="16" id="dDZ-7D-oBo"/>
+                    <constraint firstItem="El2-W7-gA9" firstAttribute="bottom" secondItem="V2k-6E-wzQ" secondAttribute="bottom" id="gKr-08-WXL"/>
+                    <constraint firstItem="Drw-W3-Dcd" firstAttribute="top" secondItem="AL7-af-hgM" secondAttribute="top" constant="24" id="jNi-Df-6ZJ"/>
+                    <constraint firstAttribute="trailing" secondItem="El2-W7-gA9" secondAttribute="trailing" constant="24" id="keZ-Tb-jYl"/>
+                    <constraint firstItem="Cmg-hR-4mG" firstAttribute="leading" secondItem="AL7-af-hgM" secondAttribute="leading" constant="24" id="n7J-OA-bHP"/>
+                    <constraint firstItem="WBo-mC-crG" firstAttribute="leading" secondItem="AL7-af-hgM" secondAttribute="leading" constant="24" id="qe6-m5-4IU"/>
+                    <constraint firstAttribute="trailing" secondItem="PeZ-My-UAn" secondAttribute="trailing" constant="24" id="qqq-aV-FHk"/>
+                    <constraint firstItem="WBo-mC-crG" firstAttribute="top" secondItem="Cmg-hR-4mG" secondAttribute="bottom" constant="8" id="w8T-9a-3tF"/>
+                    <constraint firstAttribute="trailing" secondItem="Cmg-hR-4mG" secondAttribute="trailing" constant="24" id="yIv-zh-UCP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bookImageView" destination="zLX-qd-gOg" id="7mv-Sw-GaU"/>
+                <outlet property="orderStatusLabel" destination="Cmg-hR-4mG" id="y1G-RE-xtw"/>
+                <outlet property="quantityAndPriceLabel" destination="IhC-ya-aAN" id="UVw-Mj-PdX"/>
+                <outlet property="titleBookLabel" destination="orD-wB-j2E" id="q9G-Bb-S29"/>
+            </connections>
+            <point key="canvasLocation" x="60.869565217391312" y="194.53125"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="book4" width="332" height="499"/>
+        <image name="chevron-right-black" width="24" height="24"/>
+        <namedColor name="black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="bookGray">
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.85882352941176465" green="0.18823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="seperated">
+            <color red="0.89399999380111694" green="0.89399999380111694" blue="0.89399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

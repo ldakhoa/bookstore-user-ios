@@ -7,10 +7,31 @@
 
 import UIKit
 
+// MARK: - MyOrderItems
+
+enum MyOrderItems: Int, CaseIterable {
+  case processing = 0
+  case delivered = 1
+  case cancelled = 2
+
+  static let count = MyOrderItems.allCases.count
+
+  func getTitleString() -> String {
+    switch self {
+    case .processing:
+      return "Processing"
+    case .delivered:
+      return "Delivered"
+    case .cancelled:
+      return "Cancelled"
+    }
+  }
+}
+
 // MARK: - MenuCollectionViewControllerDelegate
 
 protocol MenuCollectionViewControllerDelegate: AnyObject {
-  func didTappedMenuItem(indexPath: IndexPath)
+  func didTappedMenuItem(at indexPath: IndexPath)
 }
 
 // MARK: - MenuCollectionViewController
@@ -25,12 +46,13 @@ final class MenuCollectionViewController: UICollectionViewController {
     return v
   }()
 
-  var delegate: MenuCollectionViewControllerDelegate?
+  weak var delegate: MenuCollectionViewControllerDelegate?
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellID)
+    collectionView.delegate = self
     collectionView.backgroundColor = .white
     collectionView.showsHorizontalScrollIndicator = false
 
@@ -55,7 +77,7 @@ final class MenuCollectionViewController: UICollectionViewController {
     _ collectionView: UICollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
-    Items.count
+    MyOrderItems.count
   }
 
   override func collectionView(
@@ -64,12 +86,12 @@ final class MenuCollectionViewController: UICollectionViewController {
   ) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? MenuCell else { return UICollectionViewCell() }
     switch indexPath.item {
-    case Items.processing.rawValue:
-      cell.titleLabel.text = Items.processing.getTitleString()
-    case Items.delivered.rawValue:
-      cell.titleLabel.text = Items.delivered.getTitleString()
-    case Items.cancelled.rawValue:
-      cell.titleLabel.text = Items.cancelled.getTitleString()
+    case MyOrderItems.processing.rawValue:
+      cell.titleLabel.text = MyOrderItems.processing.getTitleString()
+    case MyOrderItems.delivered.rawValue:
+      cell.titleLabel.text = MyOrderItems.delivered.getTitleString()
+    case MyOrderItems.cancelled.rawValue:
+      cell.titleLabel.text = MyOrderItems.cancelled.getTitleString()
     default:
       Void()
     }
@@ -80,29 +102,20 @@ final class MenuCollectionViewController: UICollectionViewController {
     _ collectionView: UICollectionView,
     didSelectItemAt indexPath: IndexPath
   ) {
-    delegate?.didTappedMenuItem(indexPath: indexPath)
+    let x = view.frame.width / 3 * CGFloat(indexPath.item)
+    UIView.animate(
+      withDuration: 0.5,
+      delay: 0,
+      usingSpringWithDamping: 1,
+      initialSpringVelocity: 1,
+      options: .curveEaseOut
+    ) {
+      self.menuBarView.transform = CGAffineTransform(translationX: x, y: 0)
+    }
+    delegate?.didTappedMenuItem(at: indexPath)
   }
 
   // MARK: Private
-
-  private enum Items: Int, CaseIterable {
-    case processing = 0
-    case delivered = 1
-    case cancelled = 2
-
-    static let count = Items.allCases.count
-
-    func getTitleString() -> String {
-      switch self {
-      case .processing:
-        return "Processing"
-      case .delivered:
-        return "Delivered"
-      case .cancelled:
-        return "Cancelled"
-      }
-    }
-  }
 
   private let cellID = "cellID"
 }
