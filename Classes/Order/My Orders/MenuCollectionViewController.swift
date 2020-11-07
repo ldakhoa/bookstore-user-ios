@@ -80,16 +80,6 @@ final class MenuCollectionViewController: UICollectionViewController {
     _ collectionView: UICollectionView,
     didSelectItemAt indexPath: IndexPath
   ) {
-    let x = view.frame.width / 3 * CGFloat(indexPath.item)
-    UIView.animate(
-      withDuration: 0.5,
-      delay: 0,
-      usingSpringWithDamping: 1,
-      initialSpringVelocity: 1,
-      options: .curveEaseOut
-    ) {
-      self.menuBarView.transform = CGAffineTransform(translationX: x, y: 0)
-    }
     delegate?.didTappedMenuItem(indexPath: indexPath)
   }
 
