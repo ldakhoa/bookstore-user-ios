@@ -94,6 +94,8 @@
 		64EC821D25559E1C00EE8E51 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC821C25559E1C00EE8E51 /* MenuCell.swift */; };
 		64EC82222555A31400EE8E51 /* MyOrdersMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC82212555A31400EE8E51 /* MyOrdersMainCell.swift */; };
 		64EC827525564D5300EE8E51 /* MyOrdersItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC827425564D5300EE8E51 /* MyOrdersItemController.swift */; };
+		64EC827A25564F0200EE8E51 /* MyOrdersItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64EC827925564F0200EE8E51 /* MyOrdersItemCell.xib */; };
+		64EC82822556552000EE8E51 /* MyOrdersItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EC82812556552000EE8E51 /* MyOrdersItemCell.swift */; };
 		64F686CF254FEFBC002C3C47 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64F686CE254FEFBC002C3C47 /* Profile.storyboard */; };
 		64F686D7254FFF48002C3C47 /* EditAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F686D6254FFF48002C3C47 /* EditAddressController.swift */; };
 		64F686DF25500056002C3C47 /* EditShippingAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F686DE25500056002C3C47 /* EditShippingAddressCell.swift */; };
@@ -218,6 +220,8 @@
 		64EC821C25559E1C00EE8E51 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		64EC82212555A31400EE8E51 /* MyOrdersMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersMainCell.swift; sourceTree = "<group>"; };
 		64EC827425564D5300EE8E51 /* MyOrdersItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersItemController.swift; sourceTree = "<group>"; };
+		64EC827925564F0200EE8E51 /* MyOrdersItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyOrdersItemCell.xib; sourceTree = "<group>"; };
+		64EC82812556552000EE8E51 /* MyOrdersItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersItemCell.swift; sourceTree = "<group>"; };
 		64F686CE254FEFBC002C3C47 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		64F686D6254FFF48002C3C47 /* EditAddressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddressController.swift; sourceTree = "<group>"; };
 		64F686DE25500056002C3C47 /* EditShippingAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditShippingAddressCell.swift; sourceTree = "<group>"; };
@@ -385,13 +389,10 @@
 		647C77D92532C7940034159E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				64DBEDBB2555634C00ECD341 /* My Orders */,
 				64F686CE254FEFBC002C3C47 /* Profile.storyboard */,
 				64A3C8EB253E0BB60019F28A /* Edit profile */,
-				64D5EA4825335362005788A3 /* ProfileTableViewController.swift */,
-				64D5EA5D25336385005788A3 /* ProfileHeaderView.swift */,
-				64D5EA62253363B2005788A3 /* LogoutCell.swift */,
-				64D5EA5325335768005788A3 /* ProfileCell.xib */,
-				64D5EA582533577C005788A3 /* ProfileCell.swift */,
+				64EC82862556950500EE8E51 /* Main Profile */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -476,7 +477,6 @@
 		64BA8BA5254C015500AC56C6 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				64DBEDBB2555634C00ECD341 /* My Orders */,
 				64BA8BA9254C0CB000AC56C6 /* OrderViewController.swift */,
 				64BA8BB1254C0D5D00AC56C6 /* Order.storyboard */,
 				64F686E425500401002C3C47 /* Success */,
@@ -616,11 +616,25 @@
 			children = (
 				64EC82122555943C00EE8E51 /* MyOrdersController.swift */,
 				64EC827425564D5300EE8E51 /* MyOrdersItemController.swift */,
+				64EC82812556552000EE8E51 /* MyOrdersItemCell.swift */,
+				64EC827925564F0200EE8E51 /* MyOrdersItemCell.xib */,
 				64EC82212555A31400EE8E51 /* MyOrdersMainCell.swift */,
 				64EC821725559DE700EE8E51 /* MenuCollectionViewController.swift */,
 				64EC821C25559E1C00EE8E51 /* MenuCell.swift */,
 			);
 			path = "My Orders";
+			sourceTree = "<group>";
+		};
+		64EC82862556950500EE8E51 /* Main Profile */ = {
+			isa = PBXGroup;
+			children = (
+				64D5EA4825335362005788A3 /* ProfileTableViewController.swift */,
+				64D5EA5D25336385005788A3 /* ProfileHeaderView.swift */,
+				64D5EA62253363B2005788A3 /* LogoutCell.swift */,
+				64D5EA5325335768005788A3 /* ProfileCell.xib */,
+				64D5EA582533577C005788A3 /* ProfileCell.swift */,
+			);
+			path = "Main Profile";
 			sourceTree = "<group>";
 		};
 		64F686E3255003EA002C3C47 /* Edit address */ = {
@@ -786,6 +800,7 @@
 				64AD6EB525343FB0008D4EF6 /* Category.storyboard in Resources */,
 				6490119625427C4400E5D9DE /* BookDetailDescriptionCell.xib in Resources */,
 				641C84F5254B0455004AD797 /* AirbnbCereal-Bold.ttf in Resources */,
+				64EC827A25564F0200EE8E51 /* MyOrdersItemCell.xib in Resources */,
 				64A3C8DD253DEF6D0019F28A /* Search.storyboard in Resources */,
 				64AD6ED5253476E6008D4EF6 /* BookList.storyboard in Resources */,
 				64D5EA5425335768005788A3 /* ProfileCell.xib in Resources */,
@@ -979,6 +994,7 @@
 				64BA8BAA254C0CB000AC56C6 /* OrderViewController.swift in Sources */,
 				64B027742542999500C1CDB2 /* HorizontalSnappingController.swift in Sources */,
 				64F686D7254FFF48002C3C47 /* EditAddressController.swift in Sources */,
+				64EC82822556552000EE8E51 /* MyOrdersItemCell.swift in Sources */,
 				64EC82222555A31400EE8E51 /* MyOrdersMainCell.swift in Sources */,
 				649B00A2253B5C4300BE315A /* AlertAction.swift in Sources */,
 				649BFFFA253A9CDB00BE315A /* Category.swift in Sources */,
