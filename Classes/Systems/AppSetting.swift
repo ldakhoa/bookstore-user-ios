@@ -46,6 +46,7 @@ struct AppSetting {
 
     enum Profile {
       static let editPersonalInfoVC = profile.instantiateViewController(withIdentifier: "EditPersonalInfoController")
+      static let orderDetailVC = profile.instantiateViewController(withIdentifier: "OrderDetailController")
     }
 
     static let registration = UIStoryboard(name: "Registration", bundle: nil)

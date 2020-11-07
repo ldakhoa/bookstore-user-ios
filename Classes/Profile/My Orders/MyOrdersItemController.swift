@@ -7,7 +7,17 @@
 
 import UIKit
 
+// MARK: - MyOrdersItemControllerDelegate
+
+protocol MyOrdersItemControllerDelegate: AnyObject {
+  func didSelectItemCell()
+}
+
+// MARK: - MyOrdersItemController
+
 final class MyOrdersItemController: UITableViewController {
+
+  weak var delegate: MyOrdersItemControllerDelegate?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -55,5 +65,9 @@ final class MyOrdersItemController: UITableViewController {
     let view = UIView()
     view.backgroundColor = Styles.Colors.background.color
     return view
+  }
+
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    delegate?.didSelectItemCell()
   }
 }
