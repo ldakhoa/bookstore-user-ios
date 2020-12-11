@@ -66,7 +66,7 @@ extension Request {
 
     // MARK: Properties
 
-    fileprivate var acceptableStatusCodes: Range<Int> { 200 ..< 300 }
+    fileprivate var acceptableStatusCodes: Range<Int> { 200..<300 }
 
     fileprivate var acceptableContentTypes: [String] {
         if let accept = request?.value(forHTTPHeaderField: "Accept") {
@@ -81,8 +81,7 @@ extension Request {
     fileprivate func validate<S: Sequence>(statusCode acceptableStatusCodes: S,
                                            response: HTTPURLResponse)
         -> ValidationResult
-        where S.Iterator.Element == Int
-    {
+        where S.Iterator.Element == Int {
         if acceptableStatusCodes.contains(response.statusCode) {
             return .success(())
         } else {
@@ -97,8 +96,7 @@ extension Request {
                                            response: HTTPURLResponse,
                                            data: Data?)
         -> ValidationResult
-        where S.Iterator.Element == String
-    {
+        where S.Iterator.Element == String {
         guard let data = data, !data.isEmpty else { return .success(()) }
 
         return validate(contentType: acceptableContentTypes, response: response)
@@ -107,8 +105,7 @@ extension Request {
     fileprivate func validate<S: Sequence>(contentType acceptableContentTypes: S,
                                            response: HTTPURLResponse)
         -> ValidationResult
-        where S.Iterator.Element == String
-    {
+        where S.Iterator.Element == String {
         guard
             let responseContentType = response.mimeType,
             let responseMIMEType = MIMEType(responseContentType)
@@ -160,7 +157,7 @@ extension DataRequest {
     /// - Returns:              The instance.
     @discardableResult
     public func validate<S: Sequence>(statusCode acceptableStatusCodes: S) -> Self where S.Iterator.Element == Int {
-        return validate { [unowned self] _, response, _ in
+        validate { [unowned self] _, response, _ in
             self.validate(statusCode: acceptableStatusCodes, response: response)
         }
     }
@@ -174,7 +171,7 @@ extension DataRequest {
     /// - returns: The request.
     @discardableResult
     public func validate<S: Sequence>(contentType acceptableContentTypes: @escaping @autoclosure () -> S) -> Self where S.Iterator.Element == String {
-        return validate { [unowned self] _, response, data in
+        validate { [unowned self] _, response, data in
             self.validate(contentType: acceptableContentTypes(), response: response, data: data)
         }
     }
@@ -208,7 +205,7 @@ extension DataStreamRequest {
     /// - Returns:              The instance.
     @discardableResult
     public func validate<S: Sequence>(statusCode acceptableStatusCodes: S) -> Self where S.Iterator.Element == Int {
-        return validate { [unowned self] _, response in
+        validate { [unowned self] _, response in
             self.validate(statusCode: acceptableStatusCodes, response: response)
         }
     }
@@ -222,7 +219,7 @@ extension DataStreamRequest {
     /// - returns: The request.
     @discardableResult
     public func validate<S: Sequence>(contentType acceptableContentTypes: @escaping @autoclosure () -> S) -> Self where S.Iterator.Element == String {
-        return validate { [unowned self] _, response in
+        validate { [unowned self] _, response in
             self.validate(contentType: acceptableContentTypes(), response: response)
         }
     }
@@ -261,7 +258,7 @@ extension DownloadRequest {
     /// - Returns:              The instance.
     @discardableResult
     public func validate<S: Sequence>(statusCode acceptableStatusCodes: S) -> Self where S.Iterator.Element == Int {
-        return validate { [unowned self] _, response, _ in
+        validate { [unowned self] _, response, _ in
             self.validate(statusCode: acceptableStatusCodes, response: response)
         }
     }
@@ -275,7 +272,7 @@ extension DownloadRequest {
     /// - returns: The request.
     @discardableResult
     public func validate<S: Sequence>(contentType acceptableContentTypes: @escaping @autoclosure () -> S) -> Self where S.Iterator.Element == String {
-        return validate { [unowned self] _, response, fileURL in
+        validate { [unowned self] _, response, fileURL in
             guard let validFileURL = fileURL else {
                 return .failure(AFError.responseValidationFailed(reason: .dataFileNil))
             }

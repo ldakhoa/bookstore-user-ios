@@ -37,13 +37,13 @@ open class Theme: Themes {
 
     /**
      Creates and returns a theme with the specified colors.
-
+     
      - parameter trace:   The color for the trace level.
      - parameter debug:   The color for the debug level.
      - parameter info:    The color for the info level.
      - parameter warning: The color for the warning level.
      - parameter error:   The color for the error level.
-
+     
      - returns: A theme with the specified colors.
      */
     public init(trace: String, debug: String, info: String, warning: String, error: String) {
@@ -52,15 +52,15 @@ open class Theme: Themes {
             .debug: Theme.formatHex(debug),
             .info: Theme.formatHex(info),
             .warning: Theme.formatHex(warning),
-            .error: Theme.formatHex(error),
+            .error: Theme.formatHex(error)
         ]
     }
 
     /**
      Returns a string representation of the hex color.
-
+     
      - parameter hex: The hex color.
-
+     
      - returns: A string representation of the hex color.
      */
     private static func formatHex(_ hex: String) -> String {
@@ -74,6 +74,6 @@ open class Theme: Themes {
         let g = (hex & 0xFF00) >> 8
         let b = (hex & 0xFF)
 
-        return [r, g, b].map { String($0) }.joined(separator: ",")
+        return [r, g, b].map({ String($0) }).joined(separator: ",")
     }
 }

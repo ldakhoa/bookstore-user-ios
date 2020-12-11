@@ -93,15 +93,14 @@ public protocol RequestRetrier {
 public protocol RequestInterceptor: RequestAdapter, RequestRetrier {}
 
 extension RequestInterceptor {
-    public func adapt(_ urlRequest: URLRequest, for _: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
+    public func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         completion(.success(urlRequest))
     }
 
-    public func retry(_: Request,
-                      for _: Session,
-                      dueTo _: Error,
-                      completion: @escaping (RetryResult) -> Void)
-    {
+    public func retry(_ request: Request,
+                      for session: Session,
+                      dueTo error: Error,
+                      completion: @escaping (RetryResult) -> Void) {
         completion(.doNotRetry)
     }
 }
@@ -145,8 +144,7 @@ open class Retrier: RequestInterceptor {
     open func retry(_ request: Request,
                     for session: Session,
                     dueTo error: Error,
-                    completion: @escaping (RetryResult) -> Void)
-    {
+                    completion: @escaping (RetryResult) -> Void) {
         retryHandler(request, session, error, completion)
     }
 }
@@ -198,8 +196,7 @@ open class Interceptor: RequestInterceptor {
     private func adapt(_ urlRequest: URLRequest,
                        for session: Session,
                        using adapters: [RequestAdapter],
-                       completion: @escaping (Result<URLRequest, Error>) -> Void)
-    {
+                       completion: @escaping (Result<URLRequest, Error>) -> Void) {
         var pendingAdapters = adapters
 
         guard !pendingAdapters.isEmpty else { completion(.success(urlRequest)); return }
@@ -219,8 +216,7 @@ open class Interceptor: RequestInterceptor {
     open func retry(_ request: Request,
                     for session: Session,
                     dueTo error: Error,
-                    completion: @escaping (RetryResult) -> Void)
-    {
+                    completion: @escaping (RetryResult) -> Void) {
         retry(request, for: session, dueTo: error, using: retriers, completion: completion)
     }
 
@@ -228,8 +224,7 @@ open class Interceptor: RequestInterceptor {
                        for session: Session,
                        dueTo error: Error,
                        using retriers: [RequestRetrier],
-                       completion: @escaping (RetryResult) -> Void)
-    {
+                       completion: @escaping (RetryResult) -> Void) {
         var pendingRetriers = retriers
 
         guard !pendingRetriers.isEmpty else { completion(.doNotRetry); return }

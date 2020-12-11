@@ -161,7 +161,7 @@ final class ProfileTableViewController: UITableViewController {
 
   private func logout() {
     AppSetting.shared.logout()
-    AppSetting.shared.checkMainScreen()
+    AppSetting.shared.getMainController()
   }
 
   @objc

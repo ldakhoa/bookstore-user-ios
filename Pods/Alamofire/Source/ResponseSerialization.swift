@@ -142,8 +142,8 @@ extension ResponseSerializer {
 
 /// By default, any serializer declared to conform to both types will get file serialization for free, as it just feeds
 /// the data read from disk into the data response serializer.
-public extension DownloadResponseSerializerProtocol where Self: DataResponseSerializerProtocol {
-    func serializeDownload(request: URLRequest?, response: HTTPURLResponse?, fileURL: URL?, error: Error?) throws -> Self.SerializedObject {
+extension DownloadResponseSerializerProtocol where Self: DataResponseSerializerProtocol {
+    public func serializeDownload(request: URLRequest?, response: HTTPURLResponse?, fileURL: URL?, error: Error?) throws -> Self.SerializedObject {
         guard error == nil else { throw error! }
 
         guard let fileURL = fileURL else {
@@ -211,8 +211,7 @@ extension DataRequest {
     public func response<Serializer: DataResponseSerializerProtocol>(queue: DispatchQueue = .main,
                                                                      responseSerializer: Serializer,
                                                                      completionHandler: @escaping (AFDataResponse<Serializer.SerializedObject>) -> Void)
-        -> Self
-    {
+        -> Self {
         appendResponseSerializer {
             // Start work that should be on the serialization queue.
             let start = ProcessInfo.processInfo.systemUptime
@@ -290,8 +289,7 @@ extension DownloadRequest {
     @discardableResult
     public func response(queue: DispatchQueue = .main,
                          completionHandler: @escaping (AFDownloadResponse<URL?>) -> Void)
-        -> Self
-    {
+        -> Self {
         appendResponseSerializer {
             // Start work that should be on the serialization queue.
             let result = AFResult<URL?>(value: self.fileURL, error: self.error)
@@ -328,8 +326,7 @@ extension DownloadRequest {
     public func response<Serializer: DownloadResponseSerializerProtocol>(queue: DispatchQueue = .main,
                                                                          responseSerializer: Serializer,
                                                                          completionHandler: @escaping (AFDownloadResponse<Serializer.SerializedObject>) -> Void)
-        -> Self
-    {
+        -> Self {
         appendResponseSerializer {
             // Start work that should be on the serialization queue.
             let start = ProcessInfo.processInfo.systemUptime
@@ -397,6 +394,43 @@ extension DownloadRequest {
     }
 }
 
+// MARK: - URL
+
+/// A `DownloadResponseSerializerProtocol` that performs only `Error` checking and ensures that a downloaded `fileURL`
+/// is present.
+public struct URLResponseSerializer: DownloadResponseSerializerProtocol {
+    /// Creates an instance.
+    public init() {}
+
+    public func serializeDownload(request: URLRequest?,
+                                  response: HTTPURLResponse?,
+                                  fileURL: URL?,
+                                  error: Error?) throws -> URL {
+        guard error == nil else { throw error! }
+
+        guard let url = fileURL else {
+            throw AFError.responseSerializationFailed(reason: .inputFileNil)
+        }
+
+        return url
+    }
+}
+
+extension DownloadRequest {
+    /// Adds a handler using a `URLResponseSerializer` to be called once the request is finished.
+    ///
+    /// - Parameters:
+    ///   - queue:             The queue on which the completion handler is called. `.main` by default.
+    ///   - completionHandler: A closure to be executed once the request has finished.
+    ///
+    /// - Returns:             The request.
+    @discardableResult
+    public func responseURL(queue: DispatchQueue = .main,
+                            completionHandler: @escaping (AFDownloadResponse<URL>) -> Void) -> Self {
+        response(queue: queue, responseSerializer: URLResponseSerializer(), completionHandler: completionHandler)
+    }
+}
+
 // MARK: - Data
 
 /// A `ResponseSerializer` that performs minimal response checking and returns any response `Data` as-is. By default, a
@@ -415,8 +449,7 @@ public final class DataResponseSerializer: ResponseSerializer {
     ///   - emptyRequestMethods: The HTTP request methods for which empty responses are allowed. `[.head]` by default.
     public init(dataPreprocessor: DataPreprocessor = DataResponseSerializer.defaultDataPreprocessor,
                 emptyResponseCodes: Set<Int> = DataResponseSerializer.defaultEmptyResponseCodes,
-                emptyRequestMethods: Set<HTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods)
-    {
+                emptyRequestMethods: Set<HTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods) {
         self.dataPreprocessor = dataPreprocessor
         self.emptyResponseCodes = emptyResponseCodes
         self.emptyRequestMethods = emptyRequestMethods
@@ -456,8 +489,7 @@ extension DataRequest {
                              dataPreprocessor: DataPreprocessor = DataResponseSerializer.defaultDataPreprocessor,
                              emptyResponseCodes: Set<Int> = DataResponseSerializer.defaultEmptyResponseCodes,
                              emptyRequestMethods: Set<HTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods,
-                             completionHandler: @escaping (AFDataResponse<Data>) -> Void) -> Self
-    {
+                             completionHandler: @escaping (AFDataResponse<Data>) -> Void) -> Self {
         response(queue: queue,
                  responseSerializer: DataResponseSerializer(dataPreprocessor: dataPreprocessor,
                                                             emptyResponseCodes: emptyResponseCodes,
@@ -483,8 +515,7 @@ extension DownloadRequest {
                              dataPreprocessor: DataPreprocessor = DataResponseSerializer.defaultDataPreprocessor,
                              emptyResponseCodes: Set<Int> = DataResponseSerializer.defaultEmptyResponseCodes,
                              emptyRequestMethods: Set<HTTPMethod> = DataResponseSerializer.defaultEmptyRequestMethods,
-                             completionHandler: @escaping (AFDownloadResponse<Data>) -> Void) -> Self
-    {
+                             completionHandler: @escaping (AFDownloadResponse<Data>) -> Void) -> Self {
         response(queue: queue,
                  responseSerializer: DataResponseSerializer(dataPreprocessor: dataPreprocessor,
                                                             emptyResponseCodes: emptyResponseCodes,
@@ -516,8 +547,7 @@ public final class StringResponseSerializer: ResponseSerializer {
     public init(dataPreprocessor: DataPreprocessor = StringResponseSerializer.defaultDataPreprocessor,
                 encoding: String.Encoding? = nil,
                 emptyResponseCodes: Set<Int> = StringResponseSerializer.defaultEmptyResponseCodes,
-                emptyRequestMethods: Set<HTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods)
-    {
+                emptyRequestMethods: Set<HTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods) {
         self.dataPreprocessor = dataPreprocessor
         self.encoding = encoding
         self.emptyResponseCodes = emptyResponseCodes
@@ -573,8 +603,7 @@ extension DataRequest {
                                encoding: String.Encoding? = nil,
                                emptyResponseCodes: Set<Int> = StringResponseSerializer.defaultEmptyResponseCodes,
                                emptyRequestMethods: Set<HTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods,
-                               completionHandler: @escaping (AFDataResponse<String>) -> Void) -> Self
-    {
+                               completionHandler: @escaping (AFDataResponse<String>) -> Void) -> Self {
         response(queue: queue,
                  responseSerializer: StringResponseSerializer(dataPreprocessor: dataPreprocessor,
                                                               encoding: encoding,
@@ -604,8 +633,7 @@ extension DownloadRequest {
                                encoding: String.Encoding? = nil,
                                emptyResponseCodes: Set<Int> = StringResponseSerializer.defaultEmptyResponseCodes,
                                emptyRequestMethods: Set<HTTPMethod> = StringResponseSerializer.defaultEmptyRequestMethods,
-                               completionHandler: @escaping (AFDownloadResponse<String>) -> Void) -> Self
-    {
+                               completionHandler: @escaping (AFDownloadResponse<String>) -> Void) -> Self {
         response(queue: queue,
                  responseSerializer: StringResponseSerializer(dataPreprocessor: dataPreprocessor,
                                                               encoding: encoding,
@@ -637,8 +665,7 @@ public final class JSONResponseSerializer: ResponseSerializer {
     public init(dataPreprocessor: DataPreprocessor = JSONResponseSerializer.defaultDataPreprocessor,
                 emptyResponseCodes: Set<Int> = JSONResponseSerializer.defaultEmptyResponseCodes,
                 emptyRequestMethods: Set<HTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods,
-                options: JSONSerialization.ReadingOptions = .allowFragments)
-    {
+                options: JSONSerialization.ReadingOptions = .allowFragments) {
         self.dataPreprocessor = dataPreprocessor
         self.emptyResponseCodes = emptyResponseCodes
         self.emptyRequestMethods = emptyRequestMethods
@@ -688,8 +715,7 @@ extension DataRequest {
                              emptyResponseCodes: Set<Int> = JSONResponseSerializer.defaultEmptyResponseCodes,
                              emptyRequestMethods: Set<HTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods,
                              options: JSONSerialization.ReadingOptions = .allowFragments,
-                             completionHandler: @escaping (AFDataResponse<Any>) -> Void) -> Self
-    {
+                             completionHandler: @escaping (AFDataResponse<Any>) -> Void) -> Self {
         response(queue: queue,
                  responseSerializer: JSONResponseSerializer(dataPreprocessor: dataPreprocessor,
                                                             emptyResponseCodes: emptyResponseCodes,
@@ -721,8 +747,7 @@ extension DownloadRequest {
                              emptyResponseCodes: Set<Int> = JSONResponseSerializer.defaultEmptyResponseCodes,
                              emptyRequestMethods: Set<HTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods,
                              options: JSONSerialization.ReadingOptions = .allowFragments,
-                             completionHandler: @escaping (AFDownloadResponse<Any>) -> Void) -> Self
-    {
+                             completionHandler: @escaping (AFDownloadResponse<Any>) -> Void) -> Self {
         response(queue: queue,
                  responseSerializer: JSONResponseSerializer(dataPreprocessor: dataPreprocessor,
                                                             emptyResponseCodes: emptyResponseCodes,
@@ -799,8 +824,7 @@ public final class DecodableResponseSerializer<T: Decodable>: ResponseSerializer
     public init(dataPreprocessor: DataPreprocessor = DecodableResponseSerializer.defaultDataPreprocessor,
                 decoder: DataDecoder = JSONDecoder(),
                 emptyResponseCodes: Set<Int> = DecodableResponseSerializer.defaultEmptyResponseCodes,
-                emptyRequestMethods: Set<HTTPMethod> = DecodableResponseSerializer.defaultEmptyRequestMethods)
-    {
+                emptyRequestMethods: Set<HTTPMethod> = DecodableResponseSerializer.defaultEmptyRequestMethods) {
         self.dataPreprocessor = dataPreprocessor
         self.decoder = decoder
         self.emptyResponseCodes = emptyResponseCodes
@@ -851,14 +875,13 @@ extension DataRequest {
     ///
     /// - Returns:               The request.
     @discardableResult
-    public func responseDecodable<T: Decodable>(of _: T.Type = T.self,
+    public func responseDecodable<T: Decodable>(of type: T.Type = T.self,
                                                 queue: DispatchQueue = .main,
                                                 dataPreprocessor: DataPreprocessor = DecodableResponseSerializer<T>.defaultDataPreprocessor,
                                                 decoder: DataDecoder = JSONDecoder(),
                                                 emptyResponseCodes: Set<Int> = DecodableResponseSerializer<T>.defaultEmptyResponseCodes,
                                                 emptyRequestMethods: Set<HTTPMethod> = DecodableResponseSerializer<T>.defaultEmptyRequestMethods,
-                                                completionHandler: @escaping (AFDataResponse<T>) -> Void) -> Self
-    {
+                                                completionHandler: @escaping (AFDataResponse<T>) -> Void) -> Self {
         response(queue: queue,
                  responseSerializer: DecodableResponseSerializer(dataPreprocessor: dataPreprocessor,
                                                                  decoder: decoder,
@@ -887,14 +910,13 @@ extension DownloadRequest {
     ///
     /// - Returns:               The request.
     @discardableResult
-    public func responseDecodable<T: Decodable>(of _: T.Type = T.self,
+    public func responseDecodable<T: Decodable>(of type: T.Type = T.self,
                                                 queue: DispatchQueue = .main,
                                                 dataPreprocessor: DataPreprocessor = DecodableResponseSerializer<T>.defaultDataPreprocessor,
                                                 decoder: DataDecoder = JSONDecoder(),
                                                 emptyResponseCodes: Set<Int> = DecodableResponseSerializer<T>.defaultEmptyResponseCodes,
                                                 emptyRequestMethods: Set<HTTPMethod> = DecodableResponseSerializer<T>.defaultEmptyRequestMethods,
-                                                completionHandler: @escaping (AFDownloadResponse<T>) -> Void) -> Self
-    {
+                                                completionHandler: @escaping (AFDownloadResponse<T>) -> Void) -> Self {
         response(queue: queue,
                  responseSerializer: DecodableResponseSerializer(dataPreprocessor: dataPreprocessor,
                                                                  decoder: decoder,
@@ -967,14 +989,17 @@ extension DataStreamRequest {
     /// - Returns:  The `DataStreamRequest`.
     @discardableResult
     public func responseStream(on queue: DispatchQueue = .main, stream: @escaping Handler<Data, Never>) -> Self {
-        $streamMutableState.write { [unowned self] state in
-            let capture = (queue, { data in
+        let parser = { [unowned self] (data: Data) in
+            queue.async {
                 self.capturingError {
                     try stream(.init(event: .stream(.success(data)), token: .init(self)))
                 }
-            })
-            state.streams.append(capture)
+
+                self.updateAndCompleteIfPossible()
+            }
         }
+
+        $streamMutableState.write { $0.streams.append(parser) }
         appendStreamCompletion(on: queue, stream: stream)
 
         return self
@@ -991,27 +1016,32 @@ extension DataStreamRequest {
     @discardableResult
     public func responseStream<Serializer: DataStreamSerializer>(using serializer: Serializer,
                                                                  on queue: DispatchQueue = .main,
-                                                                 stream: @escaping Handler<Serializer.SerializedObject, AFError>) -> Self
-    {
+                                                                 stream: @escaping Handler<Serializer.SerializedObject, AFError>) -> Self {
         let parser = { [unowned self] (data: Data) in
             self.serializationQueue.async {
                 // Start work on serialization queue.
                 let result = Result { try serializer.serialize(data) }
                     .mapError { $0.asAFError(or: .responseSerializationFailed(reason: .customSerializationFailed(error: $0))) }
                 // End work on serialization queue.
-                queue.async {
+                self.underlyingQueue.async {
                     self.eventMonitor?.request(self, didParseStream: result)
+
                     if result.isFailure, self.automaticallyCancelOnStreamError {
-                        queue.async { self.cancel() }
+                        self.cancel()
                     }
-                    self.capturingError {
-                        try stream(.init(event: .stream(result), token: .init(self)))
+
+                    queue.async {
+                        self.capturingError {
+                            try stream(.init(event: .stream(result), token: .init(self)))
+                        }
+
+                        self.updateAndCompleteIfPossible()
                     }
                 }
             }
         }
 
-        $streamMutableState.write { $0.streams.append((queue, parser)) }
+        $streamMutableState.write { $0.streams.append(parser) }
         appendStreamCompletion(on: queue, stream: stream)
 
         return self
@@ -1026,25 +1056,42 @@ extension DataStreamRequest {
     /// - Returns:  The `DataStreamRequest`.
     @discardableResult
     public func responseStreamString(on queue: DispatchQueue = .main,
-                                     stream: @escaping Handler<String, Never>) -> Self
-    {
+                                     stream: @escaping Handler<String, Never>) -> Self {
         let parser = { [unowned self] (data: Data) in
             self.serializationQueue.async {
                 // Start work on serialization queue.
                 let string = String(decoding: data, as: UTF8.self)
                 // End work on serialization queue.
-                queue.async {
-                    self.capturingError {
-                        try stream(.init(event: .stream(.success(string)), token: .init(self)))
+                self.underlyingQueue.async {
+                    self.eventMonitor?.request(self, didParseStream: .success(string))
+
+                    queue.async {
+                        self.capturingError {
+                            try stream(.init(event: .stream(.success(string)), token: .init(self)))
+                        }
+
+                        self.updateAndCompleteIfPossible()
                     }
                 }
             }
         }
 
-        $streamMutableState.write { $0.streams.append((queue, parser)) }
+        $streamMutableState.write { $0.streams.append(parser) }
         appendStreamCompletion(on: queue, stream: stream)
 
         return self
+    }
+
+    private func updateAndCompleteIfPossible() {
+        $streamMutableState.write { state in
+            state.numberOfExecutingStreams -= 1
+
+            guard state.numberOfExecutingStreams == 0, !state.enqueuedCompletionEvents.isEmpty else { return }
+
+            let completionEvents = state.enqueuedCompletionEvents
+            self.underlyingQueue.async { completionEvents.forEach { $0() } }
+            state.enqueuedCompletionEvents.removeAll()
+        }
     }
 
     /// Adds a `StreamHandler` which parses incoming `Data` using the provided `DataDecoder`.
@@ -1058,12 +1105,11 @@ extension DataStreamRequest {
     ///
     /// - Returns: The `DataStreamRequest`.
     @discardableResult
-    public func responseStreamDecodable<T: Decodable>(of _: T.Type = T.self,
-                                                      on _: DispatchQueue = .main,
+    public func responseStreamDecodable<T: Decodable>(of type: T.Type = T.self,
+                                                      on queue: DispatchQueue = .main,
                                                       using decoder: DataDecoder = JSONDecoder(),
                                                       preprocessor: DataPreprocessor = PassthroughPreprocessor(),
-                                                      stream: @escaping Handler<T, AFError>) -> Self
-    {
+                                                      stream: @escaping Handler<T, AFError>) -> Self {
         responseStream(using: DecodableStreamSerializer<T>(decoder: decoder, dataPreprocessor: preprocessor),
                        stream: stream)
     }

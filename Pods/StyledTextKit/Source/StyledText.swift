@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 public class StyledText: Hashable, Equatable {
+
     public struct ImageFitOptions: OptionSet {
         public let rawValue: Int
 
@@ -30,34 +31,35 @@ public class StyledText: Hashable, Equatable {
 
         public var hashValue: Int {
             switch self {
-            case let .text(text): return text.hashValue
-            case let .attributedText(text): return text.hashValue
-            case let .image(image, _): return image.hashValue
+            case .text(let text): return text.hashValue
+            case .attributedText(let text): return text.hashValue
+            case .image(let image, _): return image.hashValue
             }
         }
 
         // MARK: Equatable
 
-        public static func == (lhs: Storage, rhs: Storage) -> Bool {
+        public static func ==(lhs: Storage, rhs: Storage) -> Bool {
             switch lhs {
-            case let .text(lhsText):
+            case .text(let lhsText):
                 switch rhs {
-                case let .text(rhsText): return lhsText == rhsText
+                case .text(let rhsText): return lhsText == rhsText
                 case .attributedText, .image: return false
                 }
-            case let .attributedText(lhsText):
+            case .attributedText(let lhsText):
                 switch rhs {
                 case .text, .image: return false
-                case let .attributedText(rhsText): return lhsText == rhsText
+                case .attributedText(let rhsText): return lhsText == rhsText
                 }
-            case let .image(lhsImage, lhsOptions):
+            case .image(let lhsImage, let lhsOptions):
                 switch rhs {
                 case .text, .attributedText: return false
-                case let .image(rhsImage, rhsOptions):
+                case .image(let rhsImage, let rhsOptions):
                     return lhsImage == rhsImage && lhsOptions == rhsOptions
                 }
             }
         }
+
     }
 
     public let storage: Storage
@@ -74,8 +76,8 @@ public class StyledText: Hashable, Equatable {
 
     internal var text: String {
         switch storage {
-        case let .text(text): return text
-        case let .attributedText(text): return text.string
+        case .text(let text): return text
+        case .attributedText(let text): return text.string
         case .image: return ""
         }
     }
@@ -85,9 +87,9 @@ public class StyledText: Hashable, Equatable {
         let font = style.font(contentSizeCategory: contentSizeCategory)
         attributes[.font] = font
         switch storage {
-        case let .text(text):
+        case .text(let text):
             return NSAttributedString(string: text, attributes: attributes)
-        case let .attributedText(text):
+        case .attributedText(let text):
             guard text.length > 0 else { return text }
             let mutable = text.mutableCopy() as? NSMutableAttributedString ?? NSMutableAttributedString()
             let range = NSRange(location: 0, length: mutable.length)
@@ -98,7 +100,7 @@ public class StyledText: Hashable, Equatable {
                 }
             }
             return mutable
-        case let .image(image, options):
+        case .image(let image, let options):
             let attachment = NSTextAttachment()
             attachment.image = image
 
@@ -141,8 +143,9 @@ public class StyledText: Hashable, Equatable {
 
     // MARK: Equatable
 
-    public static func == (lhs: StyledText, rhs: StyledText) -> Bool {
+    public static func ==(lhs: StyledText, rhs: StyledText) -> Bool {
         return lhs.storage == rhs.storage
             && lhs.style == rhs.style
     }
+
 }

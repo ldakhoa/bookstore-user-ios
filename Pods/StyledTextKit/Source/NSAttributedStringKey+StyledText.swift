@@ -9,5 +9,7 @@
 import Foundation
 
 public extension NSAttributedStringKey {
+
     static let highlight = NSAttributedStringKey("com.whoisryannystrom.styledtextkit.highlight")
+
 }

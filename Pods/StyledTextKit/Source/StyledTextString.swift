@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 public final class StyledTextString: Hashable, Equatable {
+
     public enum RenderMode {
         case trimWhitespaceAndNewlines
         case trimWhitespace
@@ -28,7 +29,7 @@ public final class StyledTextString: Hashable, Equatable {
     }
 
     public var allText: String {
-        return styledTexts.reduce("") { $0 + $1.text }
+        return styledTexts.reduce("", { $0 + $1.text })
     }
 
     public func render(contentSizeCategory: UIContentSizeCategory) -> NSAttributedString {
@@ -50,8 +51,9 @@ public final class StyledTextString: Hashable, Equatable {
 
     // MARK: Equatable
 
-    public static func == (lhs: StyledTextString, rhs: StyledTextString) -> Bool {
+    public static func ==(lhs: StyledTextString, rhs: StyledTextString) -> Bool {
         if lhs === rhs { return true }
         return lhs.styledTexts == rhs.styledTexts
     }
+
 }

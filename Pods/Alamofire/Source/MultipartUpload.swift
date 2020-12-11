@@ -37,8 +37,7 @@ final class MultipartUpload {
     init(isInBackgroundSession: Bool,
          encodingMemoryThreshold: UInt64,
          request: URLRequestConvertible,
-         multipartFormData: MultipartFormData)
-    {
+         multipartFormData: MultipartFormData) {
         self.isInBackgroundSession = isInBackgroundSession
         self.encodingMemoryThreshold = encodingMemoryThreshold
         self.request = request
@@ -51,7 +50,7 @@ final class MultipartUpload {
         urlRequest.setValue(multipartFormData.contentType, forHTTPHeaderField: "Content-Type")
 
         let uploadable: UploadRequest.Uploadable
-        if multipartFormData.contentLength < encodingMemoryThreshold, !isInBackgroundSession {
+        if multipartFormData.contentLength < encodingMemoryThreshold && !isInBackgroundSession {
             let data = try multipartFormData.encode()
 
             uploadable = .data(data)
@@ -68,6 +67,7 @@ final class MultipartUpload {
             } catch {
                 // Cleanup after attempted write if it fails.
                 try? fileManager.removeItem(at: fileURL)
+                throw error
             }
 
             uploadable = .file(fileURL, shouldRemove: true)

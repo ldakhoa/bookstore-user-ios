@@ -52,6 +52,12 @@ final class BookDetailController: UIViewController {
       action: #selector(didTappedDismissImageView)
     ))
     topContainerView.dismissView.isUserInteractionEnabled = true
+    bottomContainerView.buyNowButton.addTarget(
+      self,
+      action: #selector(didTappedBuyNowButton),
+      for: .touchUpInside
+    )
+
     isEnabledShadowForTopView(opacity: 0.25)
   }
 
@@ -92,6 +98,15 @@ final class BookDetailController: UIViewController {
   @objc
   private func didTappedDismissImageView() {
     dismiss(animated: true)
+  }
+
+  @objc
+  private func didTappedBuyNowButton() {
+    if AppSecurity.shared.isAuthorized == false {
+      guard let loginVC = AppSetting.Storyboards.Registration.login as? LoginViewController else { return }
+      loginVC.isInBookDetail = true
+      present(loginVC, animated: true)
+    }
   }
 }
 

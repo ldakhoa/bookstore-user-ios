@@ -15,6 +15,7 @@ target 'bsuser' do
   pod 'SDWebImage', '~> 5.0'
   pod 'CountryPickerView'
   pod 'IQKeyboardManagerSwift'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
 
   # Pods for bsuser
 

@@ -35,9 +35,9 @@ extension String {
 
     /**
      Returns a string colored with the specified color.
-
+     
      - parameter color: The string representation of the color.
-
+     
      - returns: A string colored with the specified color.
      */
     func withColor(_ color: String?) -> String {

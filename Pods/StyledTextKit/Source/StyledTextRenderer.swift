@@ -9,9 +9,10 @@
 import UIKit
 
 public final class StyledTextRenderer {
+
     internal let layoutManager: NSLayoutManager
     internal let textContainer: NSTextContainer
-
+    
     public let scale: CGFloat
     public let inset: UIEdgeInsets
     public let string: StyledTextString
@@ -44,7 +45,7 @@ public final class StyledTextRenderer {
         layoutManager: NSLayoutManager = NSLayoutManager(),
         scale: CGFloat = StyledTextScreenScale,
         maximumNumberOfLines: Int = 0
-    ) {
+        ) {
         self.init(
             string: string,
             contentSizeCategory: contentSizeCategory,
@@ -68,7 +69,7 @@ public final class StyledTextRenderer {
         maximumNumberOfLines: Int,
         sizeCache: LRUCache<StyledTextRenderCacheKey, CGSize>?,
         bitmapCache: LRUCache<StyledTextRenderCacheKey, CGImage>?
-    ) {
+        ) {
         self.string = string
         self.contentSizeCategory = contentSizeCategory
         self.inset = inset
@@ -169,8 +170,7 @@ public final class StyledTextRenderer {
         )
         if index != NSNotFound,
             fractionDistance < 1.0,
-            let attributes = layoutManager.textStorage?.attributes(at: index, effectiveRange: nil)
-        {
+            let attributes = layoutManager.textStorage?.attributes(at: index, effectiveRange: nil) {
             return (attributes, index)
         }
         return nil
@@ -184,11 +184,12 @@ public final class StyledTextRenderer {
     public func warm(
         _ option: WarmOption = .size,
         width: CGFloat
-    ) -> StyledTextRenderer {
+        ) -> StyledTextRenderer {
         switch option {
-        case .size: _ = size(in: width)
-        case .bitmap: _ = render(for: width)
+        case .size: let _ = size(in: width)
+        case .bitmap: let _ = render(for: width)
         }
         return self
     }
+
 }

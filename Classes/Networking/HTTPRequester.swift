@@ -8,7 +8,8 @@
 import Alamofire
 import Foundation
 
-let coreURL = "http://localhost:8000/"
+//let coreURL = "http://localhost:8000/"
+let coreURL = "http://192.168.1.3:8000/"
 
 // MARK: - Requestable
 

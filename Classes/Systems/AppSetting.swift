@@ -10,7 +10,6 @@ import UIKit
 struct AppSetting {
   enum Storyboards {
     enum Registration {
-      static let signup = registration.instantiateViewController(withIdentifier: "SignUpViewController")
       static let login = registration.instantiateViewController(withIdentifier: "LoginViewController")
     }
 
@@ -32,6 +31,7 @@ struct AppSetting {
 
     enum Cart {
       static let cartVC = cart.instantiateViewController(withIdentifier: "CartViewController")
+      static let notLoginVC = cart.instantiateViewController(withIdentifier: "CartNotLoginController")
     }
 
     enum Order {
@@ -47,6 +47,11 @@ struct AppSetting {
     enum Profile {
       static let editPersonalInfoVC = profile.instantiateViewController(withIdentifier: "EditPersonalInfoController")
       static let orderDetailVC = profile.instantiateViewController(withIdentifier: "OrderDetailController")
+      static let notLoginVC = profile.instantiateViewController(withIdentifier: "ProfileNotLoginController")
+    }
+
+    enum Main {
+      static let mainTabBarController = main.instantiateViewController(withIdentifier: "MainTabBarController")
     }
 
     static let registration = UIStoryboard(name: "Registration", bundle: nil)
@@ -57,24 +62,18 @@ struct AppSetting {
     static let cart = UIStoryboard(name: "Cart", bundle: nil)
     static let order = UIStoryboard(name: "Order", bundle: nil)
     static let profile = UIStoryboard(name: "Profile", bundle: nil)
+    static let main = UIStoryboard(name: "Main", bundle: nil)
   }
 
   static let shared = AppSetting()
 
   static let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
-  func getLoginController() {
-    AppSetting.appDelegate?.window?.rootViewController = AppSetting.Storyboards.Registration.login
-  }
-
-  func getMainController() {
-    let mainTabBarController = MainTabBarController()
+  func getMainController(with index: Int = 0) {
+    guard let mainTabBarController = AppSetting.Storyboards.Main.mainTabBarController as? MainTabBarController else { return }
+    mainTabBarController.selectedIndex = index
     AppSetting.appDelegate?.window?.rootViewController = mainTabBarController
     AppSetting.appDelegate?.window?.makeKeyAndVisible()
-  }
-
-  func checkMainScreen() {
-    AppSecurity.shared.isAuthorized == true ? AppSetting.shared.getMainController() : AppSetting.shared.getLoginController()
   }
 
   func logout() {

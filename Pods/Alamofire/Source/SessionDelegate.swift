@@ -44,7 +44,7 @@ open class SessionDelegate: NSObject {
     /// - Parameters:
     ///   - task: The `URLSessionTask` for which to find the associated `Request`.
     ///   - type: The `Request` subclass type to cast any `Request` associate with `task`.
-    func request<R: Request>(for task: URLSessionTask, as _: R.Type) -> R? {
+    func request<R: Request>(for task: URLSessionTask, as type: R.Type) -> R? {
         guard let provider = stateProvider else {
             assertionFailure("StateProvider is nil.")
             return nil
@@ -86,8 +86,7 @@ extension SessionDelegate: URLSessionTaskDelegate {
     open func urlSession(_ session: URLSession,
                          task: URLSessionTask,
                          didReceive challenge: URLAuthenticationChallenge,
-                         completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void)
-    {
+                         completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         eventMonitor?.urlSession(session, task: task, didReceive: challenge)
 
         let evaluation: ChallengeEvaluation
@@ -117,7 +116,7 @@ extension SessionDelegate: URLSessionTaskDelegate {
         let host = challenge.protectionSpace.host
 
         guard challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust,
-            let trust = challenge.protectionSpace.serverTrust
+              let trust = challenge.protectionSpace.serverTrust
         else {
             return (.performDefaultHandling, nil, nil)
         }
@@ -143,8 +142,7 @@ extension SessionDelegate: URLSessionTaskDelegate {
     ///
     /// - Returns:     The `ChallengeEvaluation`.
     func attemptCredentialAuthentication(for challenge: URLAuthenticationChallenge,
-                                         belongingTo task: URLSessionTask) -> ChallengeEvaluation
-    {
+                                         belongingTo task: URLSessionTask) -> ChallengeEvaluation {
         guard challenge.previousFailureCount == 0 else {
             return (.rejectProtectionSpace, nil, nil)
         }
@@ -160,8 +158,7 @@ extension SessionDelegate: URLSessionTaskDelegate {
                          task: URLSessionTask,
                          didSendBodyData bytesSent: Int64,
                          totalBytesSent: Int64,
-                         totalBytesExpectedToSend: Int64)
-    {
+                         totalBytesExpectedToSend: Int64) {
         eventMonitor?.urlSession(session,
                                  task: task,
                                  didSendBodyData: bytesSent,
@@ -174,8 +171,7 @@ extension SessionDelegate: URLSessionTaskDelegate {
 
     open func urlSession(_ session: URLSession,
                          task: URLSessionTask,
-                         needNewBodyStream completionHandler: @escaping (InputStream?) -> Void)
-    {
+                         needNewBodyStream completionHandler: @escaping (InputStream?) -> Void) {
         eventMonitor?.urlSession(session, taskNeedsNewBodyStream: task)
 
         guard let request = request(for: task, as: UploadRequest.self) else {
@@ -191,8 +187,7 @@ extension SessionDelegate: URLSessionTaskDelegate {
                          task: URLSessionTask,
                          willPerformHTTPRedirection response: HTTPURLResponse,
                          newRequest request: URLRequest,
-                         completionHandler: @escaping (URLRequest?) -> Void)
-    {
+                         completionHandler: @escaping (URLRequest?) -> Void) {
         eventMonitor?.urlSession(session, task: task, willPerformHTTPRedirection: response, newRequest: request)
 
         if let redirectHandler = stateProvider?.request(for: task)?.redirectHandler ?? stateProvider?.redirectHandler {
@@ -245,8 +240,7 @@ extension SessionDelegate: URLSessionDataDelegate {
     open func urlSession(_ session: URLSession,
                          dataTask: URLSessionDataTask,
                          willCacheResponse proposedResponse: CachedURLResponse,
-                         completionHandler: @escaping (CachedURLResponse?) -> Void)
-    {
+                         completionHandler: @escaping (CachedURLResponse?) -> Void) {
         eventMonitor?.urlSession(session, dataTask: dataTask, willCacheResponse: proposedResponse)
 
         if let handler = stateProvider?.request(for: dataTask)?.cachedResponseHandler ?? stateProvider?.cachedResponseHandler {
@@ -263,8 +257,7 @@ extension SessionDelegate: URLSessionDownloadDelegate {
     open func urlSession(_ session: URLSession,
                          downloadTask: URLSessionDownloadTask,
                          didResumeAtOffset fileOffset: Int64,
-                         expectedTotalBytes: Int64)
-    {
+                         expectedTotalBytes: Int64) {
         eventMonitor?.urlSession(session,
                                  downloadTask: downloadTask,
                                  didResumeAtOffset: fileOffset,
@@ -282,8 +275,7 @@ extension SessionDelegate: URLSessionDownloadDelegate {
                          downloadTask: URLSessionDownloadTask,
                          didWriteData bytesWritten: Int64,
                          totalBytesWritten: Int64,
-                         totalBytesExpectedToWrite: Int64)
-    {
+                         totalBytesExpectedToWrite: Int64) {
         eventMonitor?.urlSession(session,
                                  downloadTask: downloadTask,
                                  didWriteData: bytesWritten,
@@ -306,11 +298,13 @@ extension SessionDelegate: URLSessionDownloadDelegate {
             return
         }
 
-        guard let response = request.response else {
-            fatalError("URLSessionDownloadTask finished downloading with no response.")
+        let (destination, options): (URL, DownloadRequest.Options)
+        if let response = request.response {
+            (destination, options) = request.destination(location, response)
+        } else {
+            // If there's no response this is likely a local file download, so generate the temporary URL directly.
+            (destination, options) = (DownloadRequest.defaultDestinationURL(location), [])
         }
-
-        let (destination, options) = (request.destination)(location, response)
 
         eventMonitor?.request(request, didCreateDestinationURL: destination)
 
