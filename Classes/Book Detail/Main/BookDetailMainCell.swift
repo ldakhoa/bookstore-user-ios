@@ -20,11 +20,16 @@ final class BookDetailMainCell: UITableViewCell {
       guard let book = book,
             let imageUrl = URL(string: book.imageUrl) else { return }
       bookTitleLabel.text = book.title
-      authorLabel.text = book.author
       ratingsView.rating = book.ratings
       ratingsView.text = "\(book.numberOfRatings)"
       priceLabel.text = "$\(book.price)"
       bookImageView.sd_setImage(with: imageUrl)
+
+			var authorNames = [String]()
+			book.authors.forEach {
+				authorNames.append($0.name)
+			}
+			authorLabel.text = authorNames.joined(separator: ", ")
     }
   }
 
