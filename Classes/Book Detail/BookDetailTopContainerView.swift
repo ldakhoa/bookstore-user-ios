@@ -22,6 +22,7 @@ final class BookDetailTopContainerView: UIView {
     addSubview(dismissView)
     addSubview(favoriteView)
     addSubview(cartView)
+    addSubview(itemCountLabel)
 
     dismissView.anchor(
       top: nil,
@@ -61,6 +62,14 @@ final class BookDetailTopContainerView: UIView {
       )
     )
     cartView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    itemCountLabel.anchor(
+      top: cartView.topAnchor,
+      leading: nil,
+      bottom: nil,
+      trailing: cartView.trailingAnchor,
+      padding: .init(top: -3, left: 0, bottom: 0, right: -4),
+      size: .init(width: 16, height: 16)
+    )
   }
 
   @available(*, unavailable)
@@ -74,6 +83,17 @@ final class BookDetailTopContainerView: UIView {
   let dismissView = createView(with: #imageLiteral(resourceName: "dismiss"), size: 13)
   let cartView = createView(with: #imageLiteral(resourceName: "cart-top"), size: 17)
   let bottomLayer = CALayer()
+  let itemCountLabel: UILabel = {
+    let label = UILabel()
+    label.text = "3"
+    label.font = Styles.Text.cartItemCount.preferredFont
+    label.backgroundColor = Styles.Colors.Gradient.color3Wo
+    label.textAlignment = .center
+    label.textColor = Styles.Colors.White.normal
+    label.layer.cornerRadius = 16 / 2
+    label.clipsToBounds = true
+    return label
+  }()
 
   // MARK: Private
 

@@ -29,6 +29,7 @@ enum Styles {
       static let color4 = UIColor(red: 0.949, green: 0.498, blue: 0.408, alpha: 1).cgColor
       static let color5 = UIColor(red: 0.973, green: 0.584, blue: 0.502, alpha: 1).cgColor
       static let color6 = UIColor(red: 0.988, green: 0.671, blue: 0.6, alpha: 1).cgColor
+      static let color3Wo = UIColor(red: 0.925, green: 0.408, blue: 0.314, alpha: 1)
     }
 
     enum White {
@@ -75,6 +76,7 @@ enum Styles {
     static let helper = TextStyle(font: .name(cerealBook), size: 12)
     static let button = TextStyle(font: .name(cerealMedium), size: 15)
     static let location = TextStyle(font: .name(cerealMedium), size: 15)
+    static let cartItemCount = TextStyle(font: .name(cerealBook), size: 11)
 
     // MARK: Private
 

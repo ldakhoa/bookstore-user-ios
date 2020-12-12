@@ -52,6 +52,11 @@ final class BookDetailController: UIViewController {
       action: #selector(didTappedDismissImageView)
     ))
     topContainerView.dismissView.isUserInteractionEnabled = true
+    topContainerView.cartView.addGestureRecognizer(UITapGestureRecognizer(
+      target: self,
+      action: #selector(didTappedCartButton)
+    ))
+
     bottomContainerView.buyNowButton.addTarget(
       self,
       action: #selector(didTappedBuyNowButton),
@@ -59,9 +64,34 @@ final class BookDetailController: UIViewController {
     )
 
     isEnabledShadowForTopView(opacity: 0.25)
+
+    fetchCart()
   }
 
   // MARK: Private
+
+  private var cart: Cart?
+
+  private func fetchCart() {
+    NetworkManagement.getCartByUser(id: AppSecurity.shared.userID) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.cart = Cart.parseData(json: data["cart"])
+        self.topContainerView.itemCountLabel.isHidden = self.cart?.books.count ?? 0 > 0 ? false : true
+        self.topContainerView.itemCountLabel.text = "\(self.cart?.books.count ?? 0)"
+        self.topContainerView.itemCountLabel.setNeedsLayout()
+        self.topContainerView.itemCountLabel.layoutIfNeeded()
+      } else {
+        let errMessage = data["message"].stringValue
+        let alert = UIAlertController.configured(
+          title: "Something wrong",
+          message: errMessage,
+          preferredStyle: .alert
+        )
+        alert.addAction(AlertAction.ok())
+        self.present(alert, animated: true)
+      }
+    }
+  }
 
   private func setupLayout() {
     view.backgroundColor = UIColor.white
@@ -98,6 +128,14 @@ final class BookDetailController: UIViewController {
   @objc
   private func didTappedDismissImageView() {
     dismiss(animated: true)
+  }
+
+  @objc
+  private func didTappedCartButton() {
+    guard let referenceForTabBarController = presentingViewController as? MainTabBarController else { return }
+    dismiss(animated: true) {
+      referenceForTabBarController.selectedIndex = 2
+    }
   }
 
   @objc
