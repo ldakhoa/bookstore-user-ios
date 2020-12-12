@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     IQKeyboardManager.shared.enable = true
-    // TODO: - Turn off this when implement cart/checkout feature
-//    AppSetting.shared.checkMainScreen()
 
     return true
   }

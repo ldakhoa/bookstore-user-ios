@@ -81,6 +81,20 @@ struct NetworkManagement {
     }
   }
 
+  public static func getCartByUser(id: Int, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getCartByUser(id: id)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func postCartByUser(id: Int, bookId: Int, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.postCartByUser(id: id, bookId: bookId)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
   // MARK: Internal
 
   typealias ResponseHandler = (_ code: Int, _ result: JSON) -> Void

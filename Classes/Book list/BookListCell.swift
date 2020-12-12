@@ -27,11 +27,11 @@ final class BookListCell: UITableViewCell {
       }
 
       bookTitleLabel.text = book.title
-			var authorNames = [String]()
-			book.authors.forEach {
-				authorNames.append($0.name)
-			}
-			authorLabel.text = authorNames.joined(separator: ", ")
+      var authorNames = [String]()
+      book.authors.forEach {
+        authorNames.append($0.name)
+      }
+      authorLabel.text = "by \(authorNames.joined(separator: ", "))"
       priceLabel.text = "$\(book.price)"
       bookImageView.sd_setImage(with: bookImageUrl)
       ratingView.rating = book.ratings

@@ -74,11 +74,15 @@ final class SearchViewController: UIViewController {
 
   @objc
   private func textEditingChanged(textField: UITextField) {
-    guard let textString = textField.text, !textString.isEmpty else { return }
+    guard let textString = textField.text else { return }
     timer?.invalidate()
     timer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { _ in
-//            self.getBookBySearch(text: textString)
-      self.getBookBySearch(text: "National")
+      if textString.count == 0 {
+        self.books.removeAll()
+        self.tableView.reloadData()
+      } else {
+        self.getBookBySearch(text: textString)
+      }
     })
   }
 

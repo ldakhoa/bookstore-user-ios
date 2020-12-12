@@ -25,11 +25,11 @@ final class BookDetailMainCell: UITableViewCell {
       priceLabel.text = "$\(book.price)"
       bookImageView.sd_setImage(with: imageUrl)
 
-			var authorNames = [String]()
-			book.authors.forEach {
-				authorNames.append($0.name)
-			}
-			authorLabel.text = authorNames.joined(separator: ", ")
+      var authorNames = [String]()
+      book.authors.forEach {
+        authorNames.append($0.name)
+      }
+      authorLabel.text = authorNames.joined(separator: ", ")
     }
   }
 

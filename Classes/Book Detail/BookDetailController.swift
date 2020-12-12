@@ -107,6 +107,21 @@ final class BookDetailController: UIViewController {
       loginVC.isInBookDetail = true
       present(loginVC, animated: true)
     }
+    NetworkManagement.postCartByUser(id: AppSecurity.shared.userID, bookId: book?.id ?? 1) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        print("Success add to cart")
+        // TODO: - Implement bottom sheet
+      } else {
+        let errMessage = data["message"].stringValue
+        let alert = UIAlertController.configured(
+          title: "Something wrong",
+          message: errMessage,
+          preferredStyle: .alert
+        )
+        alert.addAction(AlertAction.ok())
+        self.present(alert, animated: true)
+      }
+    }
   }
 }
 

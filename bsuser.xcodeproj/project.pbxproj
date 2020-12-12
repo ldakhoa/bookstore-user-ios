@@ -70,6 +70,9 @@
 		64BA8C0B254C544B00AC56C6 /* OrderAddCardDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8C0A254C544B00AC56C6 /* OrderAddCardDetailsController.swift */; };
 		64BA8C13254C5DA300AC56C6 /* CardTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8C12254C5DA300AC56C6 /* CardTextField.swift */; };
 		64BA8C45254C6C3200AC56C6 /* OrderAddPaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA8C44254C6C3200AC56C6 /* OrderAddPaymentController.swift */; };
+		64C200DF2584F5970062894A /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C200DE2584F5970062894A /* Cart.swift */; };
+		64C200E42584F83A0062894A /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C200E32584F83A0062894A /* Author.swift */; };
+		64C200E92584F8C10062894A /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C200E82584F8C00062894A /* Publisher.swift */; };
 		64CB9A562546998800DC3E92 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9A552546998800DC3E92 /* CartViewController.swift */; };
 		64CB9A692546FD3700DC3E92 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CB9A682546FD3700DC3E92 /* Cart.storyboard */; };
 		64CB9AA425471BD400DC3E92 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9AA325471BD400DC3E92 /* CartCell.swift */; };
@@ -201,6 +204,9 @@
 		64BA8C0A254C544B00AC56C6 /* OrderAddCardDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAddCardDetailsController.swift; sourceTree = "<group>"; };
 		64BA8C12254C5DA300AC56C6 /* CardTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTextField.swift; sourceTree = "<group>"; };
 		64BA8C44254C6C3200AC56C6 /* OrderAddPaymentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAddPaymentController.swift; sourceTree = "<group>"; };
+		64C200DE2584F5970062894A /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		64C200E32584F83A0062894A /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		64C200E82584F8C00062894A /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		64CB9A552546998800DC3E92 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		64CB9A682546FD3700DC3E92 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		64CB9AA325471BD400DC3E92 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
@@ -334,7 +340,10 @@
 				64364E702545E6170073B8DC /* Types */,
 				6476F6672535700F00879CC1 /* User.swift */,
 				6476F66F2535701300879CC1 /* Book.swift */,
+				64C200E32584F83A0062894A /* Author.swift */,
+				64C200E82584F8C00062894A /* Publisher.swift */,
 				649BFFF9253A9CDB00BE315A /* Category.swift */,
+				64C200DE2584F5970062894A /* Cart.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1004,6 +1013,7 @@
 				647C77902532B3980034159E /* AppSetting.swift in Sources */,
 				64B0276A254295F900C1CDB2 /* RecommendationOverallCell.swift in Sources */,
 				64AD6ECB25345614008D4EF6 /* BookListCell.swift in Sources */,
+				64C200DF2584F5970062894A /* Cart.swift in Sources */,
 				649B00A7253B5C5500BE315A /* AlertActionBuilder.swift in Sources */,
 				643DA93E2539E55D0052CE35 /* NetworkManagement.swift in Sources */,
 				647C77F32532F50A0034159E /* LocationTopView.swift in Sources */,
@@ -1047,6 +1057,7 @@
 				649BFFFA253A9CDB00BE315A /* Category.swift in Sources */,
 				64CB9AA92547200E00DC3E92 /* PromoCodeCell.swift in Sources */,
 				64EC82A02556A41D00EE8E51 /* PaymentMethodCell.swift in Sources */,
+				64C200E42584F83A0062894A /* Author.swift in Sources */,
 				647C777E2532325B0034159E /* TextfieldShadow.swift in Sources */,
 				64BA8BFF254C45EA00AC56C6 /* OrderShippingAddressCell.swift in Sources */,
 				647C77832532330F0034159E /* IBooksButton.swift in Sources */,
@@ -1074,6 +1085,7 @@
 				64A3C8CE253DE8A60019F28A /* String+CapitalizingFirstLetter.swift in Sources */,
 				64D5EA592533577C005788A3 /* ProfileCell.swift in Sources */,
 				647C77982532B5E10034159E /* LoginViewController.swift in Sources */,
+				64C200E92584F8C10062894A /* Publisher.swift in Sources */,
 				647C77A62532BFA10034159E /* HomeViewController.swift in Sources */,
 				64AD6EBD253447D8008D4EF6 /* CategoryCell.swift in Sources */,
 			);

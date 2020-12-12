@@ -32,6 +32,8 @@ final class CartViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(false, animated: animated)
+
+    fetchCart()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -40,6 +42,26 @@ final class CartViewController: UIViewController {
   }
 
   // MARK: Private
+
+  private var cart: Cart?
+
+  private func fetchCart() {
+    NetworkManagement.getCartByUser(id: AppSecurity.shared.userID) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.cart = Cart.parseData(json: data["cart"])
+        self.tableView.reloadData()
+      } else {
+        let errMessage = data["message"].stringValue
+        let alert = UIAlertController.configured(
+          title: "Something wrong",
+          message: errMessage,
+          preferredStyle: .alert
+        )
+        alert.addAction(AlertAction.ok())
+        self.present(alert, animated: true)
+      }
+    }
+  }
 
   @IBAction
   private func didTappedCheckoutButton(_: Any) {
@@ -57,7 +79,7 @@ extension CartViewController: UITableViewDataSource {
   }
 
   func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-    section == 1 ? 1 : 3
+    section == 1 ? 1 : cart?.books.count ?? 0
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,6 +88,8 @@ extension CartViewController: UITableViewDataSource {
         withIdentifier: "CartCell",
         for: indexPath
       ) as? CartCell else { return UITableViewCell() }
+      let book = cart?.books[indexPath.row]
+      cell.book = book
       cell.selectionStyle = .none
       return cell
     } else if indexPath.section == 1 {
