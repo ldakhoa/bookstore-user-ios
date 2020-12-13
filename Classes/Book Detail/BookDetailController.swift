@@ -5,6 +5,8 @@
 //  Created by Khoa Le on 22/10/2020.
 //
 
+import AudioToolbox
+import JGProgressHUD
 import UIKit
 
 // MARK: - BookDetailController
@@ -70,14 +72,14 @@ final class BookDetailController: UIViewController {
 
   // MARK: Private
 
-  private var cart: Cart?
+  private var cartInfo: CartInfo?
 
   private func fetchCart() {
-    NetworkManagement.getCartByUser(id: AppSecurity.shared.userID) { code, data in
+    NetworkManagement.getCartInfoByUser(id: AppSecurity.shared.userID) { code, data in
       if code == ResponseCode.ok.rawValue {
-        self.cart = Cart.parseData(json: data["cart"])
-        self.topContainerView.itemCountLabel.isHidden = self.cart?.books.count ?? 0 > 0 ? false : true
-        self.topContainerView.itemCountLabel.text = "\(self.cart?.books.count ?? 0)"
+        self.cartInfo = CartInfo.parseData(json: data)
+        self.topContainerView.itemCountLabel.isHidden = self.cartInfo?.booksQuantity ?? 0 > 0 ? false : true
+        self.topContainerView.itemCountLabel.text = "\(self.cartInfo?.booksQuantity ?? 0)"
         self.topContainerView.itemCountLabel.setNeedsLayout()
         self.topContainerView.itemCountLabel.layoutIfNeeded()
       } else {
@@ -145,10 +147,22 @@ final class BookDetailController: UIViewController {
       loginVC.isInBookDetail = true
       present(loginVC, animated: true)
     }
+
     NetworkManagement.postCartByUser(id: AppSecurity.shared.userID, bookId: book?.id ?? 1) { code, data in
       if code == ResponseCode.ok.rawValue {
-        print("Success add to cart")
-        // TODO: - Implement bottom sheet
+        self.fetchCart()
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Added to cart"
+        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 1.0)
+
+        self.topContainerView.cartView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+        UIView.animate(withDuration: 0.5) {
+          self.topContainerView.cartView.transform = .identity
+        }
+
       } else {
         let errMessage = data["message"].stringValue
         let alert = UIAlertController.configured(

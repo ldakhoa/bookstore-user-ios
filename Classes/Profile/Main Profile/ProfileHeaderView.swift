@@ -59,6 +59,6 @@ class ProfileHeaderView: UIView {
     font: Styles.Text.h3.preferredFont,
     textColor: Styles.Colors.black.color
   )
-  let profileImageView = UIImageView(image: #imageLiteral(resourceName: "avatar"))
+  let profileImageView = UIImageView(image: #imageLiteral(resourceName: "user_placeholder"))
   let showProfileButton = UIButton(type: .system)
 }

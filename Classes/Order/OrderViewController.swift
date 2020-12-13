@@ -5,6 +5,7 @@
 //  Created by Khoa Le on 30/10/2020.
 //
 
+import JGProgressHUD
 import UIKit
 
 // MARK: - OrderViewController
@@ -13,7 +14,13 @@ final class OrderViewController: UIViewController {
 
   // MARK: Internal
 
+  @IBOutlet weak var totalPriceLabel: UILabel!
   @IBOutlet var tableView: UITableView!
+
+  var createdOrder: CreatedOrder?
+  let hud = JGProgressHUD(style: .dark)
+
+  var cart: Cart?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -21,6 +28,14 @@ final class OrderViewController: UIViewController {
     tableView.backgroundColor = Styles.Colors.background.color
     tableView.dataSource = self
     tableView.delegate = self
+
+    totalPriceLabel.text = "$\(cart?.totalPrice ?? 0)"
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    tableView.reloadData()
   }
 
   // MARK: Private
@@ -32,8 +47,26 @@ final class OrderViewController: UIViewController {
 
   @IBAction
   private func didTappedPlaceYourOrderButton(_: Any) {
-    let orderSuccessController = AppSetting.Storyboards.Order.orderSuccessVC
-    navigationController?.pushViewController(orderSuccessController, animated: true)
+    hud.show(in: view)
+    NetworkManagement.postPaymentOrderByUser(id: AppSecurity.shared.userID) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.createdOrder = CreatedOrder.parseData(json: data)
+        guard let orderSuccessController = AppSetting.Storyboards.Order.orderSuccessVC as? OrderSuccessController else { return }
+        orderSuccessController.createdOrder = self.createdOrder
+        self.present(orderSuccessController, animated: true, completion: nil)
+        self.hud.dismiss()
+      } else {
+        let errMessage = data["message"].stringValue
+        let alert = UIAlertController.configured(
+          title: "Something wrong",
+          message: errMessage,
+          preferredStyle: .alert
+        )
+        alert.addAction(AlertAction.ok())
+        self.present(alert, animated: true)
+
+      }
+    }
   }
 
   @IBAction
@@ -63,7 +96,7 @@ final class OrderViewController: UIViewController {
 
 extension OrderViewController: UITableViewDataSource {
   func numberOfSections(in _: UITableView) -> Int {
-    4
+    3
   }
 
   func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -74,41 +107,31 @@ extension OrderViewController: UITableViewDataSource {
     switch indexPath.section {
     case 0:
       guard let cell = tableView.dequeueReusableCell(
-        withIdentifier: "OrderInformationCell",
-        for: indexPath
-      ) as? OrderInformationCell else { return UITableViewCell() }
-      cell.selectionStyle = .none
-      cell.editButton.addTarget(
-        self,
-        action: #selector(didTappedEditOrderInfoButton),
-        for: .touchUpInside
-      )
-      return cell
-    case 1:
-      guard let cell = tableView.dequeueReusableCell(
         withIdentifier: "OrderShippingAddressCell",
         for: indexPath
       ) as? OrderShippingAddressCell else { return UITableViewCell() }
       cell.selectionStyle = .none
+      cell.cart = cart
       cell.editButton.addTarget(
         self,
         action: #selector(didTappedEditAddressButton),
         for: .touchUpInside
       )
       return cell
-    case 2:
+    case 1:
       guard let cell = tableView.dequeueReusableCell(
         withIdentifier: "OrderPaymentCell",
         for: indexPath
       ) as? OrderPaymentCell else { return UITableViewCell() }
       cell.selectionStyle = .none
       return cell
-    case 3:
+    case 2:
       guard let cell = tableView.dequeueReusableCell(
         withIdentifier: "OrderSubtotalCell",
         for: indexPath
       ) as? OrderSubtotalCell else { return UITableViewCell() }
       cell.selectionStyle = .none
+      cell.cart = cart
       return cell
     default:
       return UITableViewCell()
@@ -122,12 +145,10 @@ extension OrderViewController: UITableViewDelegate {
   func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch indexPath.section {
     case 0:
-      return 300
+      return UITableView.automaticDimension
     case 1:
       return UITableView.automaticDimension
     case 2:
-      return UITableView.automaticDimension
-    case 3:
       return 100
     default:
       return 0

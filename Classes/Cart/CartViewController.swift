@@ -5,6 +5,7 @@
 //  Created by Khoa Le on 26/10/2020.
 //
 
+import JGProgressHUD
 import UIKit
 
 // MARK: - CartViewController
@@ -13,7 +14,10 @@ final class CartViewController: UIViewController {
 
   // MARK: Internal
 
+  @IBOutlet weak var subtotalLabel: UILabel!
   @IBOutlet var tableView: UITableView!
+  @IBOutlet weak var subtotalItemLabel: UILabel!
+  @IBOutlet weak var bottomView: UIView!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,9 +28,10 @@ final class CartViewController: UIViewController {
 
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.backgroundColor = Styles.Colors.background.color
+    tableView.backgroundColor = cart?.books.count ?? 0 > 0 ? Styles.Colors.background.color : Styles.Colors.White.normal
     tableView.separatorInset = .init(top: 0, left: 24, bottom: 0, right: 24)
     tableView.keyboardDismissMode = .interactive
+    bottomView.isHidden = true
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +39,8 @@ final class CartViewController: UIViewController {
     navigationController?.setNavigationBarHidden(false, animated: animated)
 
     fetchCart()
+    fetchCartInfo()
+
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -43,13 +50,47 @@ final class CartViewController: UIViewController {
 
   // MARK: Private
 
+  private let hud = JGProgressHUD(style: .dark)
+
   private var cart: Cart?
 
+  private var cartInfo: CartInfo? {
+    didSet {
+      let subtotal = cartInfo?.subtotalPrice ?? 0
+      subtotalLabel.text = "$\(Double(subtotal))"
+
+      let itemText = cartInfo?.booksQuantity ?? 0 > 1 ? "items" : "item"
+      subtotalItemLabel.text = "Subtotal (\(cartInfo?.booksQuantity ?? 0) \(itemText))"
+    }
+  }
+
   private func fetchCart() {
+    hud.show(in: view)
     NetworkManagement.getCartByUser(id: AppSecurity.shared.userID) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.cart = Cart.parseData(json: data["cart"])
         self.tableView.reloadData()
+        self.hud.dismiss()
+        self.bottomView.isHidden = self.cart?.books.count ?? 0 > 0 ? false : true
+      } else {
+        let errMessage = data["message"].stringValue
+        let alert = UIAlertController.configured(
+          title: "Something wrong",
+          message: errMessage,
+          preferredStyle: .alert
+        )
+        alert.addAction(AlertAction.ok())
+        self.present(alert, animated: true)
+      }
+    }
+  }
+
+  private func fetchCartInfo() {
+    hud.show(in: view)
+    NetworkManagement.getCartInfoByUser(id: AppSecurity.shared.userID) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.cartInfo = CartInfo.parseData(json: data)
+        self.hud.dismiss()
       } else {
         let errMessage = data["message"].stringValue
         let alert = UIAlertController.configured(
@@ -65,7 +106,9 @@ final class CartViewController: UIViewController {
 
   @IBAction
   private func didTappedCheckoutButton(_: Any) {
-    let orderNavController = AppSetting.Storyboards.Order.orderNavController
+    guard let orderNavController = AppSetting.Storyboards.Order.orderNavController as? UINavigationController,
+          let orderController = orderNavController.children.first as? OrderViewController else { return }
+    orderController.cart = cart
     orderNavController.modalPresentationStyle = .fullScreen
     present(orderNavController, animated: true)
   }
@@ -75,11 +118,15 @@ final class CartViewController: UIViewController {
 
 extension CartViewController: UITableViewDataSource {
   func numberOfSections(in _: UITableView) -> Int {
-    2
+    cart?.books.count ?? 0 > 0 ? 2 : 1
   }
 
   func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-    section == 1 ? 1 : cart?.books.count ?? 0
+    if section == 1 {
+      return cart?.books.count ?? 0 > 0 ? 1 : 0
+    } else {
+      return cart?.books.count ?? 0
+    }
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,6 +155,69 @@ extension CartViewController: UITableViewDataSource {
 // MARK: UITableViewDelegate
 
 extension CartViewController: UITableViewDelegate {
+
+  // MARK: Internal
+
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let headerView = UIView()
+
+    let imageView = UIImageView(image: UIImage(named: "cart_placeholder"))
+    imageView.contentMode = .scaleAspectFill
+
+    let label = UILabel(
+      text: "You have no books in your shopping cart",
+      font: Styles.Text.body.preferredFont,
+      textColor: Styles.Colors.black.color,
+      textAlignment: .center,
+      numberOfLines: 2
+    )
+
+    let button = UIButton(type: .system)
+    button.setTitle("Continue shopping", for: .normal)
+    button.setTitleColor(Styles.Colors.White.normal, for: .normal)
+    button.backgroundColor = Styles.Colors.primary.color
+    button.layer.cornerRadius = 8
+    button.titleLabel?.font = Styles.Text.button.preferredFont
+
+    headerView.addSubview(label)
+    headerView.addSubview(imageView)
+    headerView.addSubview(button)
+
+    label.anchor(
+      top: imageView.bottomAnchor,
+      leading: headerView.leadingAnchor,
+      bottom: nil,
+      trailing: headerView.trailingAnchor,
+      padding: .init(top: 8, left: 24, bottom: 0, right: 24)
+    )
+
+    imageView.anchor(
+      top: headerView.topAnchor,
+      leading: nil,
+      bottom: nil,
+      trailing: nil,
+      padding: .init(top: 8, left: 0, bottom: 0, right: 0),
+      size: .init(width: 250, height: 250)
+    )
+    imageView.centerXAnchor.constraint(equalTo: headerView.centerXAnchor).isActive = true
+
+    button.anchor(
+      top: label.bottomAnchor,
+      leading: label.leadingAnchor,
+      bottom: nil,
+      trailing: label.trailingAnchor,
+      padding: .init(top: 24, left: 0, bottom: 0, right: 0),
+      size: .init(width: 0, height: 50)
+    )
+    button.addTarget(self, action: #selector(didTappedContinueShopping), for: .touchUpInside)
+
+    return headerView
+  }
+
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    cart?.books.count ?? 0 > 0 ? 0 : 400
+  }
+
   func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     indexPath.section == 0 ? UITableView.automaticDimension : 100
   }
@@ -122,7 +232,15 @@ extension CartViewController: UITableViewDelegate {
 
   func tableView(_: UITableView, viewForFooterInSection _: Int) -> UIView? {
     let view = UIView()
-    view.backgroundColor = Styles.Colors.background.color
+    view.backgroundColor = cart?.books.count ?? 0 > 0 ? Styles.Colors.background.color : Styles.Colors.White.normal
     return view
   }
+
+  // MARK: Private
+
+  @objc
+  private func didTappedContinueShopping() {
+    tabBarController?.selectedIndex = 0
+  }
+
 }

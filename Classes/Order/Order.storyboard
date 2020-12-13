@@ -91,48 +91,8 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderInformationCell" rowHeight="277" id="1c1-1V-eHN" customClass="OrderInformationCell" customModule="bsuser" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="277"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1c1-1V-eHN" id="6GE-MK-tA1">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="277"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKT-oY-WGb">
-                                                    <rect key="frame" x="24" y="24" width="126.5" height="19"/>
-                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
-                                                    <color key="textColor" name="black"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JUv-Xq-jmi">
-                                                    <rect key="frame" x="360" y="18.5" width="30" height="30.5"/>
-                                                    <state key="normal">
-                                                        <attributedString key="attributedTitle">
-                                                            <fragment content="Edit">
-                                                                <attributes>
-                                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                    <font key="NSFont" size="16" name="AirbnbCerealApp-Book"/>
-                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    <integer key="NSUnderline" value="1"/>
-                                                                </attributes>
-                                                            </fragment>
-                                                        </attributedString>
-                                                    </state>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="JUv-Xq-jmi" secondAttribute="trailing" constant="24" id="4jW-FH-99U"/>
-                                                <constraint firstItem="JUv-Xq-jmi" firstAttribute="centerY" secondItem="sKT-oY-WGb" secondAttribute="centerY" id="V9l-2D-wrh"/>
-                                                <constraint firstItem="sKT-oY-WGb" firstAttribute="leading" secondItem="6GE-MK-tA1" secondAttribute="leading" constant="24" id="Xmf-iA-t53"/>
-                                                <constraint firstItem="sKT-oY-WGb" firstAttribute="top" secondItem="6GE-MK-tA1" secondAttribute="top" constant="24" id="fBP-s3-WpE"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="editButton" destination="JUv-Xq-jmi" id="WBx-ks-sXT"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderShippingAddressCell" rowHeight="104" id="ZO5-Te-EVR" customClass="OrderShippingAddressCell" customModule="bsuser" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="305" width="414" height="104"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZO5-Te-EVR" id="5yD-Qa-eHS">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
@@ -193,7 +153,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderPaymentCell" rowHeight="100" id="ByJ-95-iCm" customClass="OrderPaymentCell" customModule="bsuser" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="409" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="132" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ByJ-95-iCm" id="r31-TB-XLk">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -285,8 +245,8 @@
                                             <outlet property="addButton" destination="TN0-57-Ss5" id="e8Q-xH-KMd"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderSubtotalCell" rowHeight="100" id="JuV-tG-1x8" customClass="OrderSubtotalCell">
-                                        <rect key="frame" x="0.0" y="509" width="414" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderSubtotalCell" rowHeight="100" id="JuV-tG-1x8" customClass="OrderSubtotalCell" customModule="bsuser" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="232" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JuV-tG-1x8" id="BtR-cd-QdA">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -330,6 +290,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="XMk-Tu-0Qm" secondAttribute="trailing" constant="24" id="mWz-Ah-SCz"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="shippingFeeLabel" destination="XMk-Tu-0Qm" id="pul-NJ-IMJ"/>
+                                            <outlet property="subtotalPriceLabel" destination="V6C-Gl-rVQ" id="RXZ-Kf-K6m"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -356,6 +320,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="tAM-Kk-xMi" id="T4M-CB-I7i"/>
+                        <outlet property="totalPriceLabel" destination="OcY-7W-Zwz" id="NDe-6v-qfg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fdp-3a-gLQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -602,6 +567,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="didTappedMyOrder:" destination="eWz-gk-dHQ" eventType="touchUpInside" id="WxL-vF-nnC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -658,6 +626,9 @@
                             <color key="tintColor" name="black"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="orderIdLabel" destination="wh2-Ad-CVm" id="Wyv-Oz-tOw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OQO-Tg-FcA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

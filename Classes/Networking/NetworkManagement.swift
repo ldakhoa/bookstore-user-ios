@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import JGProgressHUD
 import SwiftyJSON
 
 // MARK: - ResponseCode
@@ -90,6 +91,20 @@ struct NetworkManagement {
 
   public static func postCartByUser(id: Int, bookId: Int, response: @escaping ResponseHandler) {
     let requester = HTTPRequester.postCartByUser(id: id, bookId: bookId)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func getCartInfoByUser(id: Int, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getCartInfoByUser(id: id)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func postPaymentOrderByUser(id: Int, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.postPaymentOrderByUser(id: id)
     callAPI(requester) { code, json in
       response(code, json)
     }

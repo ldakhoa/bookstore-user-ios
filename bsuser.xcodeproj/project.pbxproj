@@ -73,6 +73,7 @@
 		64C200DF2584F5970062894A /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C200DE2584F5970062894A /* Cart.swift */; };
 		64C200E42584F83A0062894A /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C200E32584F83A0062894A /* Author.swift */; };
 		64C200E92584F8C10062894A /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C200E82584F8C00062894A /* Publisher.swift */; };
+		64C2013F2585D48A0062894A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C2013E2585D48A0062894A /* Order.swift */; };
 		64CB9A562546998800DC3E92 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9A552546998800DC3E92 /* CartViewController.swift */; };
 		64CB9A692546FD3700DC3E92 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CB9A682546FD3700DC3E92 /* Cart.storyboard */; };
 		64CB9AA425471BD400DC3E92 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9AA325471BD400DC3E92 /* CartCell.swift */; };
@@ -207,6 +208,7 @@
 		64C200DE2584F5970062894A /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		64C200E32584F83A0062894A /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		64C200E82584F8C00062894A /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
+		64C2013E2585D48A0062894A /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		64CB9A552546998800DC3E92 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		64CB9A682546FD3700DC3E92 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		64CB9AA325471BD400DC3E92 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				64C200E82584F8C00062894A /* Publisher.swift */,
 				649BFFF9253A9CDB00BE315A /* Category.swift */,
 				64C200DE2584F5970062894A /* Cart.swift */,
+				64C2013E2585D48A0062894A /* Order.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1027,6 +1030,7 @@
 				64BA8BB7254C1CEB00AC56C6 /* OrderSuccessController.swift in Sources */,
 				644B6C792536129F00F7FE32 /* EditPersonalInfoCell.swift in Sources */,
 				6476F6702535701300879CC1 /* Book.swift in Sources */,
+				64C2013F2585D48A0062894A /* Order.swift in Sources */,
 				64EC82BD2556A4AB00EE8E51 /* TrackingOrderCell.swift in Sources */,
 				64EC821825559DE700EE8E51 /* MenuCollectionViewController.swift in Sources */,
 				64D501A125838F25006FA9CD /* ProfileNotLoginController.swift in Sources */,

@@ -14,8 +14,10 @@ final class MainTabBarController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    tabBar.tintColor = Styles.Colors.black.color
+    fetchCart()
 
+    tabBar.tintColor = Styles.Colors.black.color
+    tabBarItem.badgeColor = Styles.Colors.Gradient.color3Wo
     let profileNotLoginVC = AppSetting.Storyboards.Profile.notLoginVC
     let cartNotLoginVC = AppSetting.Storyboards.Cart.notLoginVC
 
@@ -53,7 +55,44 @@ final class MainTabBarController: UITabBarController {
     ]
   }
 
+  func repositionBadge() {
+    for badgeView in tabBar.subviews[3].subviews {
+      if NSStringFromClass(badgeView.classForCoder) == "_UIBadgeView" {
+        badgeView.layer.transform = CATransform3DIdentity
+        badgeView.layer.transform = CATransform3DMakeTranslation(-10.0, -1.0, -1)
+      }
+    }
+  }
+
   // MARK: Private
+
+  private var cartInfo: CartInfo?
+
+  private func fetchCart() {
+    NetworkManagement.getCartInfoByUser(id: AppSecurity.shared.userID) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.cartInfo = CartInfo.parseData(json: data)
+        if let tabItems = self.tabBar.items {
+          let tabItem = tabItems[2]
+          if self.cartInfo?.booksQuantity ?? 0 <= 0 {
+            tabItem.badgeValue = nil
+          } else {
+            tabItem.badgeValue = "\(self.cartInfo?.booksQuantity ?? 0)"
+            self.repositionBadge()
+          }
+        }
+      } else {
+        let errMessage = data["message"].stringValue
+        let alert = UIAlertController.configured(
+          title: "Something wrong",
+          message: errMessage,
+          preferredStyle: .alert
+        )
+        alert.addAction(AlertAction.ok())
+        self.present(alert, animated: true)
+      }
+    }
+  }
 
   private func createNavController(
     viewController: UIViewController,

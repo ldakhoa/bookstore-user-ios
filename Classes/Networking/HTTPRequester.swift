@@ -8,11 +8,11 @@
 import Alamofire
 import Foundation
 
-let coreURL = "http://localhost:3000/"
+let coreURL = "http://10.8.168.114:3000/"
 
 // MARK: - Requestable
 
-//let coreURL = "http://192.168.1.3:8000/"
+//let coreURL = "http://localhost:3000/"
 
 protocol Requestable {
   func params() -> (
@@ -34,6 +34,8 @@ enum HTTPRequester {
   case getBookSearchWithFilterBy(searchString: String, filterType: FilterType)
   case getCartByUser(id: Int)
   case postCartByUser(id: Int, bookId: Int)
+  case getCartInfoByUser(id: Int)
+  case postPaymentOrderByUser(id: Int)
 }
 
 // MARK: Requestable
@@ -108,6 +110,20 @@ extension HTTPRequester: Requestable {
         path: URL(string: coreURL + "api/carts/\(id)")!,
         method: .post,
         parameter: params,
+        encoding: JSONEncoding.default
+      )
+    case let .getCartInfoByUser(id):
+      return (
+        path: URL(string: coreURL + "api/carts/\(id)/info")!,
+        method: .get,
+        parameter: nil,
+        encoding: JSONEncoding.default
+      )
+    case let .postPaymentOrderByUser(id):
+      return (
+        path: URL(string: coreURL + "api/carts/\(id)/payment")!,
+        method: .post,
+        parameter: nil,
         encoding: JSONEncoding.default
       )
     }

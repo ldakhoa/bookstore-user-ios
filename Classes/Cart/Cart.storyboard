@@ -290,6 +290,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="EKq-Gr-YCi" id="Wdb-Ek-ecx"/>
+                        <outlet property="subtotalItemLabel" destination="vyb-WR-dU0" id="2n1-wd-4lb"/>
+                        <outlet property="subtotalLabel" destination="2w4-53-Fke" id="3MQ-ds-vyR"/>
                         <outlet property="tableView" destination="bww-lb-0ZG" id="mZH-Xf-vEv"/>
                     </connections>
                 </viewController>
