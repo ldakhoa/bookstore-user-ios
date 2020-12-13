@@ -48,6 +48,7 @@ struct AppSetting {
       static let editPersonalInfoVC = profile.instantiateViewController(withIdentifier: "EditPersonalInfoController")
       static let orderDetailVC = profile.instantiateViewController(withIdentifier: "OrderDetailController")
       static let notLoginVC = profile.instantiateViewController(withIdentifier: "ProfileNotLoginController")
+      static let leaveFeedbackVC = profile.instantiateViewController(withIdentifier: "LeaveFeedbackController")
     }
 
     enum Main {

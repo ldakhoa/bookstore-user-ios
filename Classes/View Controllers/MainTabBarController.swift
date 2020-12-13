@@ -59,7 +59,7 @@ final class MainTabBarController: UITabBarController {
     for badgeView in tabBar.subviews[3].subviews {
       if NSStringFromClass(badgeView.classForCoder) == "_UIBadgeView" {
         badgeView.layer.transform = CATransform3DIdentity
-        badgeView.layer.transform = CATransform3DMakeTranslation(-10.0, -1.0, -1)
+        badgeView.layer.transform = CATransform3DMakeTranslation(-4.5, -1.0, -1)
       }
     }
   }

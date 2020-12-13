@@ -630,7 +630,115 @@
             </objects>
             <point key="canvasLocation" x="2090" y="202"/>
         </scene>
+        <!--Leave Feedback Controller-->
+        <scene sceneID="wdZ-zZ-XvN">
+            <objects>
+                <viewController storyboardIdentifier="LeaveFeedbackController" id="ApV-v6-6XW" customClass="LeaveFeedbackController" customModule="bsuser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wNT-83-AQA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GT5-0g-NiH">
+                                <rect key="frame" x="24" y="459.5" width="327" height="50"/>
+                                <color key="backgroundColor" name="primary"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="BRy-xu-WSO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="15"/>
+                                <state key="normal" title="Leave feedback">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapLeaveFeedbackButton:" destination="ApV-v6-6XW" eventType="touchUpInside" id="JfR-VU-4NQ"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2QN-JU-UCo">
+                                <rect key="frame" x="24" y="135.5" width="327" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="HyS-VE-Gsq"/>
+                                </constraints>
+                                <color key="textColor" name="black"/>
+                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leave a feedback!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGh-5B-1pd">
+                                <rect key="frame" x="24" y="24" width="327" height="23.5"/>
+                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="20"/>
+                                <color key="textColor" name="black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dnZ-m9-9xg">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="1"/>
+                                <color key="backgroundColor" name="seperated"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="SEH-vJ-o2q"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NUQ-3A-AmJ">
+                                <rect key="frame" x="24" y="24" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="ZqP-Ry-6yb"/>
+                                    <constraint firstAttribute="width" constant="24" id="hVd-Pd-Hs4"/>
+                                </constraints>
+                                <state key="normal" image="dismiss"/>
+                                <connections>
+                                    <action selector="didTappedDismissButton:" destination="ApV-v6-6XW" eventType="touchUpInside" id="Cfx-HT-g56"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G0l-D8-qbI" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="77.5" y="71.5" width="220" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7tL-Yp-cYW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="G0l-D8-qbI" firstAttribute="top" secondItem="XGh-5B-1pd" secondAttribute="bottom" constant="24" id="Axr-bY-ggJ"/>
+                            <constraint firstItem="GT5-0g-NiH" firstAttribute="top" secondItem="2QN-JU-UCo" secondAttribute="bottom" constant="24" id="MkS-3p-ArE"/>
+                            <constraint firstItem="XGh-5B-1pd" firstAttribute="leading" secondItem="7tL-Yp-cYW" secondAttribute="leading" constant="24" id="N7s-eY-9BW"/>
+                            <constraint firstItem="7tL-Yp-cYW" firstAttribute="trailing" secondItem="dnZ-m9-9xg" secondAttribute="trailing" id="OAA-s7-tyD"/>
+                            <constraint firstItem="dnZ-m9-9xg" firstAttribute="top" secondItem="XGh-5B-1pd" secondAttribute="bottom" constant="8" id="RPn-hu-gdG"/>
+                            <constraint firstItem="7tL-Yp-cYW" firstAttribute="trailing" secondItem="XGh-5B-1pd" secondAttribute="trailing" constant="24" id="ZbX-QI-fhQ"/>
+                            <constraint firstItem="dnZ-m9-9xg" firstAttribute="leading" secondItem="7tL-Yp-cYW" secondAttribute="leading" id="ayr-9t-I36"/>
+                            <constraint firstItem="2QN-JU-UCo" firstAttribute="leading" secondItem="7tL-Yp-cYW" secondAttribute="leading" constant="24" id="bX0-hW-oCg"/>
+                            <constraint firstItem="NUQ-3A-AmJ" firstAttribute="leading" secondItem="7tL-Yp-cYW" secondAttribute="leading" constant="24" id="dtI-Rh-9In"/>
+                            <constraint firstItem="XGh-5B-1pd" firstAttribute="top" secondItem="7tL-Yp-cYW" secondAttribute="top" constant="24" id="eKV-4t-JqM"/>
+                            <constraint firstItem="7tL-Yp-cYW" firstAttribute="trailing" secondItem="2QN-JU-UCo" secondAttribute="trailing" constant="24" id="elV-g3-3R8"/>
+                            <constraint firstItem="7tL-Yp-cYW" firstAttribute="trailing" secondItem="GT5-0g-NiH" secondAttribute="trailing" constant="24" id="g0C-Gk-IWg"/>
+                            <constraint firstItem="GT5-0g-NiH" firstAttribute="leading" secondItem="7tL-Yp-cYW" secondAttribute="leading" constant="24" id="i0L-cz-wRa"/>
+                            <constraint firstItem="G0l-D8-qbI" firstAttribute="centerX" secondItem="wNT-83-AQA" secondAttribute="centerX" id="kJD-EH-GWv"/>
+                            <constraint firstItem="NUQ-3A-AmJ" firstAttribute="centerY" secondItem="XGh-5B-1pd" secondAttribute="centerY" id="tlO-rV-1Nn"/>
+                            <constraint firstItem="2QN-JU-UCo" firstAttribute="top" secondItem="G0l-D8-qbI" secondAttribute="bottom" constant="24" id="wiJ-2U-ced"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="2QN-JU-UCo" id="znL-9Q-ird"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Pd-QX-Mtj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2909.5999999999999" y="201.94902548725639"/>
+        </scene>
     </scenes>
+    <designables>
+        <designable name="G0l-D8-qbI">
+            <size key="intrinsicContentSize" width="220" height="40"/>
+        </designable>
+    </designables>
     <resources>
         <image name="OrderDetail_info" width="50" height="50"/>
         <image name="OrderDetail_location" width="50" height="50"/>
@@ -638,6 +746,7 @@
         <image name="OrderDetail_payment" width="50" height="50"/>
         <image name="OrderDetail_tracking" width="50" height="50"/>
         <image name="book3" width="406" height="500"/>
+        <image name="dismiss" width="14" height="14"/>
         <namedColor name="black">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

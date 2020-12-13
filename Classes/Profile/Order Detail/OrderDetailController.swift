@@ -32,6 +32,11 @@ final class OrderDetailController: UIViewController {
 
     leaveFeedbackButton.layer.borderWidth = 1
     leaveFeedbackButton.layer.borderColor = Styles.Colors.darkGreen.color.cgColor
+    leaveFeedbackButton.addTarget(
+      self,
+      action: #selector(didTappedLeaveFeedbackButton),
+      for: .touchUpInside
+    )
 
     tableView.delegate = self
     tableView.dataSource = self
@@ -44,6 +49,13 @@ final class OrderDetailController: UIViewController {
   private func didTappedDismissButton() {
     navigationController?.popViewController(animated: true)
   }
+
+  @objc
+  private func didTappedLeaveFeedbackButton() {
+    let vc = AppSetting.Storyboards.Profile.leaveFeedbackVC
+    present(vc, animated: true)
+  }
+
 }
 
 // MARK: UITableViewDataSource

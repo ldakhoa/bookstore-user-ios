@@ -9,11 +9,11 @@ import Cosmos
 import UIKit
 
 final class ReviewCell: UICollectionViewCell {
-	@IBOutlet weak var userImageView: UIImageView!
-	@IBOutlet weak var ratingLabel: UILabel!
-	@IBOutlet weak var contentLabel: UILabel!
+  @IBOutlet weak var userImageView: UIImageView!
+  @IBOutlet weak var ratingLabel: UILabel!
+  @IBOutlet weak var contentLabel: UILabel!
 
-	override func awakeFromNib() {
+  override func awakeFromNib() {
     super.awakeFromNib()
 
     layer.cornerRadius = 8

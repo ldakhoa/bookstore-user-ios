@@ -79,6 +79,7 @@
 		64C201522585FDF10062894A /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C201512585FDF10062894A /* ReviewCell.swift */; };
 		64C201572586061A0062894A /* BookDetailReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C201562586061A0062894A /* BookDetailReviewCell.swift */; };
 		64C2015C25860D350062894A /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C2015B25860D350062894A /* ReviewCell.xib */; };
+		64C20161258619DB0062894A /* LeaveFeedbackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C20160258619DB0062894A /* LeaveFeedbackController.swift */; };
 		64CB9A562546998800DC3E92 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9A552546998800DC3E92 /* CartViewController.swift */; };
 		64CB9A692546FD3700DC3E92 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CB9A682546FD3700DC3E92 /* Cart.storyboard */; };
 		64CB9AA425471BD400DC3E92 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9AA325471BD400DC3E92 /* CartCell.swift */; };
@@ -219,6 +220,7 @@
 		64C201512585FDF10062894A /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		64C201562586061A0062894A /* BookDetailReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailReviewCell.swift; sourceTree = "<group>"; };
 		64C2015B25860D350062894A /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
+		64C20160258619DB0062894A /* LeaveFeedbackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackController.swift; sourceTree = "<group>"; };
 		64CB9A552546998800DC3E92 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		64CB9A682546FD3700DC3E92 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		64CB9AA325471BD400DC3E92 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				64EC828F2556A03E00EE8E51 /* Order Detail */,
 				64DBEDBB2555634C00ECD341 /* My Orders */,
 				64F686CE254FEFBC002C3C47 /* Profile.storyboard */,
+				64C20160258619DB0062894A /* LeaveFeedbackController.swift */,
 				64A3C8EB253E0BB60019F28A /* Edit profile */,
 				64EC82862556950500EE8E51 /* Main Profile */,
 			);
@@ -1049,6 +1052,7 @@
 				64CE1B692531B19800A194E3 /* Styles.swift in Sources */,
 				64A3C8D3253DEEB10019F28A /* SearchViewController.swift in Sources */,
 				64BA8BFA254C45CA00AC56C6 /* OrderPaymentCell.swift in Sources */,
+				64C20161258619DB0062894A /* LeaveFeedbackController.swift in Sources */,
 				644B6C5C2535FF3400F7FE32 /* EditPersonalInfoController.swift in Sources */,
 				648768512539FA91002B2AD6 /* Log.swift in Sources */,
 				64364E722545E62B0073B8DC /* FilterType.swift in Sources */,
