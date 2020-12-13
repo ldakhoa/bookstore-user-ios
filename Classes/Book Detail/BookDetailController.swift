@@ -16,6 +16,9 @@ final class BookDetailController: UIViewController {
   // MARK: Internal
 
   var book: Book?
+  var recommendBooks = [Book]()
+  var recommendBookFromBookId = [Book]()
+  let hud = JGProgressHUD(style: .dark)
   let cellsID: [String] = [
     "BookDetailMainCell",
     "BookDetailDescriptionCell",
@@ -69,14 +72,30 @@ final class BookDetailController: UIViewController {
 
     isEnabledShadowForTopView(opacity: 0.25)
 
+    setInteractiveRecognizer()
     fetchCart()
+    fetchRecommendBooks()
+    fetchRecommendBooksWithBookId()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.setNavigationBarHidden(true, animated: animated)
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    navigationController?.setNavigationBarHidden(false, animated: animated)
   }
 
   // MARK: Private
 
+  private var popRecognizer: InteractivePopRecognizer?
+
   private var cartInfo: CartInfo?
 
   private func fetchCart() {
+    hud.show(in: view)
     NetworkManagement.getCartInfoByUser(id: AppSecurity.shared.userID) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.cartInfo = CartInfo.parseData(json: data)
@@ -84,15 +103,38 @@ final class BookDetailController: UIViewController {
         self.topContainerView.itemCountLabel.text = "\(self.cartInfo?.booksQuantity ?? 0)"
         self.topContainerView.itemCountLabel.setNeedsLayout()
         self.topContainerView.itemCountLabel.layoutIfNeeded()
+        self.hud.dismiss()
       } else {
-        let errMessage = data["message"].stringValue
-        let alert = UIAlertController.configured(
-          title: "Something wrong",
-          message: errMessage,
-          preferredStyle: .alert
-        )
-        alert.addAction(AlertAction.ok())
-        self.present(alert, animated: true)
+        self.presentErrorAlert(with: data)
+      }
+    }
+  }
+
+  private func fetchRecommendBooks() {
+    hud.show(in: view)
+    NetworkManagement.getRecommendBooks { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.recommendBooks = Book.parseRecommendBooksData(json: data)
+        self.tableView.reloadData()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(with: data)
+      }
+    }
+  }
+
+  private func fetchRecommendBooksWithBookId() {
+    hud.show(in: view)
+    NetworkManagement.getRecommendFromBook(id: book?.id ?? 1) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.recommendBookFromBookId = Book.parseRecommendBooksByBookIdData(json: data)
+        print("data: ")
+        self.recommendBookFromBookId.forEach { print($0.title) }
+        print("Book: ")
+        self.tableView.reloadData()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(with: data)
       }
     }
   }
@@ -129,9 +171,20 @@ final class BookDetailController: UIViewController {
     )
   }
 
+  private func setInteractiveRecognizer() {
+    guard let controller = navigationController else { return }
+    popRecognizer = InteractivePopRecognizer(controller: controller)
+    controller.interactivePopGestureRecognizer?.delegate = popRecognizer
+  }
+
   @objc
   private func didTappedDismissImageView() {
-    dismiss(animated: true)
+    let vc = navigationController?.viewControllers.first
+    if vc == navigationController?.visibleViewController {
+      dismiss(animated: true)
+    } else {
+      navigationController?.popViewController(animated: true)
+    }
   }
 
   @objc
@@ -216,6 +269,8 @@ extension BookDetailController: UITableViewDataSource {
         for: indexPath
       ) as? BookDetailRecommendationCell else { return UITableViewCell() }
       cell.selectionStyle = .none
+      cell.bookDetailRecommendHorizontalController.recommendBooks = recommendBooks
+      cell.bookDetailRecommendHorizontalController.delegate = self
       return cell
     } else if indexPath.section == 4 {
       guard let cell = tableView.dequeueReusableCell(
@@ -224,6 +279,8 @@ extension BookDetailController: UITableViewDataSource {
       ) as? BookDetailRecommendationCell else { return UITableViewCell() }
       cell.titleLabel.text = "Customers who bought this item also bought"
       cell.selectionStyle = .none
+      cell.bookDetailRecommendHorizontalController.recommendBooks = recommendBookFromBookId
+      cell.bookDetailRecommendHorizontalController.delegate = self
       return cell
     }
     return UITableViewCell()
@@ -276,5 +333,16 @@ extension BookDetailController: UITableViewDelegate {
     topContainerView.dismissView.toTopViewShadow(opacity: opacity)
     topContainerView.favoriteView.toTopViewShadow(opacity: opacity)
     topContainerView.cartView.toTopViewShadow(opacity: opacity)
+  }
+}
+
+// MARK: BookDetailRecommendHorizontalControllerDelegate
+
+extension BookDetailController: BookDetailRecommendHorizontalControllerDelegate {
+  func didSelectedBook(_ book: Book) {
+    let bookDetailController = BookDetailController()
+    bookDetailController.modalPresentationStyle = .fullScreen
+    bookDetailController.book = book
+    navigationController?.pushViewController(bookDetailController, animated: true)
   }
 }

@@ -7,26 +7,37 @@
 
 import UIKit
 
+// MARK: - BookDetailRecommendHorizontalControllerDelegate
+
+protocol BookDetailRecommendHorizontalControllerDelegate: AnyObject {
+  func didSelectedBook(_ book: Book)
+}
+
 // MARK: - BookDetailRecommendHorizontalController
 
 final class BookDetailRecommendHorizontalController: HorizontalSnappingController {
+
+  weak var delegate: BookDetailRecommendHorizontalControllerDelegate?
+
+  var recommendBooks = [Book]() {
+    didSet {
+      collectionView.reloadData()
+    }
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionView.register(
       UINib(nibName: "BookDetailRecommendCollectionCell", bundle: nil),
       forCellWithReuseIdentifier: "BookDetailRecommendCollectionCell"
     )
-//    collectionView.showsHorizontalScrollIndicator = false
-//    if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
-//      layout.scrollDirection = .horizontal
-//    }
   }
 
   override func collectionView(
     _: UICollectionView,
     numberOfItemsInSection _: Int
   ) -> Int {
-    11
+    recommendBooks.count
   }
 
   override func collectionView(
@@ -37,7 +48,16 @@ final class BookDetailRecommendHorizontalController: HorizontalSnappingControlle
       withReuseIdentifier: "BookDetailRecommendCollectionCell",
       for: indexPath
     ) as? BookDetailRecommendCollectionCell else { return UICollectionViewCell() }
+    cell.book = recommendBooks[indexPath.item]
     return cell
+  }
+
+  override func collectionView(
+    _ collectionView: UICollectionView,
+    didSelectItemAt indexPath: IndexPath
+  ) {
+    let book = recommendBooks[indexPath.row]
+    delegate?.didSelectedBook(book)
   }
 }
 

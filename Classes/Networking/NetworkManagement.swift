@@ -122,6 +122,20 @@ struct NetworkManagement {
     }
   }
 
+  public static func getRecommendBooks(response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getRecommendBooks
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func getRecommendFromBook(id: Int, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getRecommendFromBook(id: id)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
   // MARK: Internal
 
   typealias ResponseHandler = (_ code: Int, _ result: JSON) -> Void

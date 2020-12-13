@@ -94,7 +94,9 @@ extension BookListViewController: UITableViewDelegate {
     let bookDetailController = BookDetailController()
     bookDetailController.modalPresentationStyle = .fullScreen
     bookDetailController.book = books[indexPath.row]
-    present(bookDetailController, animated: true)
+    let navVC = UINavigationController(rootViewController: bookDetailController)
+    navVC.modalPresentationStyle = .fullScreen
+    present(navVC, animated: true)
   }
 }
 

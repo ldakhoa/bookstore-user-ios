@@ -12,6 +12,28 @@ final class Book {
 
   // MARK: Public
 
+  public static func parseRecommendBooksData(json: JSON) -> [Book] {
+    var books = [Book]()
+    if let bookArray = json["recommendBooks"].array {
+      bookArray.forEach { book in
+        let book = Book.parseItem(item: book)
+        books.append(book)
+      }
+    }
+    return books
+  }
+
+  public static func parseRecommendBooksByBookIdData(json: JSON) -> [Book] {
+    var books = [Book]()
+    if let bookArray = json["booksSameCategory"].array {
+      bookArray.forEach { book in
+        let book = Book.parseItem(item: book)
+        books.append(book)
+      }
+    }
+    return books
+  }
+
   public static func parseData(json: JSON) -> [Book] {
     var books = [Book]()
     if let bookArray = json["books"].array {
@@ -76,4 +98,5 @@ final class Book {
   var categories = [Category]()
   var quantity: Int = 1
 
+  var recommendBooks = [Book]()
 }

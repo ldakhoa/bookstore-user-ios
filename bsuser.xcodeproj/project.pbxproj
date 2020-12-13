@@ -37,6 +37,7 @@
 		647C77F32532F50A0034159E /* LocationTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77F22532F50A0034159E /* LocationTopView.swift */; };
 		647C77FB2532FB270034159E /* IBooksSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647C77FA2532FB270034159E /* IBooksSearchTextField.swift */; };
 		648768512539FA91002B2AD6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648768502539FA91002B2AD6 /* Log.swift */; };
+		648E02092586584600A7CB00 /* InteractivePopRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E02082586584600A7CB00 /* InteractivePopRecognizer.swift */; };
 		6490119625427C4400E5D9DE /* BookDetailDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6490119525427C4400E5D9DE /* BookDetailDescriptionCell.xib */; };
 		6490119B25427D0200E5D9DE /* BookDetailDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6490119A25427D0200E5D9DE /* BookDetailDescriptionCell.swift */; };
 		649B0063253AE56100BE315A /* AppSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B0062253AE56100BE315A /* AppSecurity.swift */; };
@@ -80,6 +81,7 @@
 		64C201572586061A0062894A /* BookDetailReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C201562586061A0062894A /* BookDetailReviewCell.swift */; };
 		64C2015C25860D350062894A /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C2015B25860D350062894A /* ReviewCell.xib */; };
 		64C20161258619DB0062894A /* LeaveFeedbackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C20160258619DB0062894A /* LeaveFeedbackController.swift */; };
+		64C20166258650910062894A /* Extensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C20165258650910062894A /* Extensions+UIViewController.swift */; };
 		64CB9A562546998800DC3E92 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9A552546998800DC3E92 /* CartViewController.swift */; };
 		64CB9A692546FD3700DC3E92 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CB9A682546FD3700DC3E92 /* Cart.storyboard */; };
 		64CB9AA425471BD400DC3E92 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CB9AA325471BD400DC3E92 /* CartCell.swift */; };
@@ -178,6 +180,7 @@
 		647C77F22532F50A0034159E /* LocationTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTopView.swift; sourceTree = "<group>"; };
 		647C77FA2532FB270034159E /* IBooksSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBooksSearchTextField.swift; sourceTree = "<group>"; };
 		648768502539FA91002B2AD6 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		648E02082586584600A7CB00 /* InteractivePopRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePopRecognizer.swift; sourceTree = "<group>"; };
 		6490119525427C4400E5D9DE /* BookDetailDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailDescriptionCell.xib; sourceTree = "<group>"; };
 		6490119A25427D0200E5D9DE /* BookDetailDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailDescriptionCell.swift; sourceTree = "<group>"; };
 		649B0062253AE56100BE315A /* AppSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecurity.swift; sourceTree = "<group>"; };
@@ -221,6 +224,7 @@
 		64C201562586061A0062894A /* BookDetailReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailReviewCell.swift; sourceTree = "<group>"; };
 		64C2015B25860D350062894A /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
 		64C20160258619DB0062894A /* LeaveFeedbackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveFeedbackController.swift; sourceTree = "<group>"; };
+		64C20165258650910062894A /* Extensions+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIViewController.swift"; sourceTree = "<group>"; };
 		64CB9A552546998800DC3E92 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		64CB9A682546FD3700DC3E92 /* Cart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		64CB9AA325471BD400DC3E92 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
@@ -657,6 +661,8 @@
 				643E3702253C8EED003D70E9 /* UIAlertController+AddAction.swift */,
 				649B00A6253B5C5500BE315A /* AlertActionBuilder.swift */,
 				64A3C8CD253DE8A60019F28A /* String+CapitalizingFirstLetter.swift */,
+				64C20165258650910062894A /* Extensions+UIViewController.swift */,
+				648E02082586584600A7CB00 /* InteractivePopRecognizer.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1037,6 +1043,7 @@
 				64FB7A4C2541230800158989 /* BookDetailController.swift in Sources */,
 				649B0063253AE56100BE315A /* AppSecurity.swift in Sources */,
 				64F8EEC0255449D000198A8A /* ListOfAddressesCell.swift in Sources */,
+				648E02092586584600A7CB00 /* InteractivePopRecognizer.swift in Sources */,
 				64EC82912556A05200EE8E51 /* OrderNoCell.swift in Sources */,
 				64C2014D2585FD790062894A /* ReviewsHorizontalController.swift in Sources */,
 				64EC829B2556A40D00EE8E51 /* OrderDetailInformationCell.swift in Sources */,
@@ -1119,6 +1126,7 @@
 				647C77AB2532BFC60034159E /* SearchGradientView.swift in Sources */,
 				64C201572586061A0062894A /* BookDetailReviewCell.swift in Sources */,
 				64A3C8CE253DE8A60019F28A /* String+CapitalizingFirstLetter.swift in Sources */,
+				64C20166258650910062894A /* Extensions+UIViewController.swift in Sources */,
 				64D5EA592533577C005788A3 /* ProfileCell.swift in Sources */,
 				647C77982532B5E10034159E /* LoginViewController.swift in Sources */,
 				64C200E92584F8C10062894A /* Publisher.swift in Sources */,

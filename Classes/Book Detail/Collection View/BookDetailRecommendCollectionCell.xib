@@ -102,6 +102,14 @@
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="458" height="315"/>
+            <connections>
+                <outlet property="authorsLabel" destination="0V8-OZ-dk4" id="JyU-MT-unx"/>
+                <outlet property="bookImageView" destination="SgD-H7-wGG" id="SJd-lc-4RB"/>
+                <outlet property="bookTitleLabel" destination="RT1-ZF-FyF" id="rXJ-g9-La2"/>
+                <outlet property="numberOfRatingsLabel" destination="Mm0-a4-20X" id="qV3-FO-XEA"/>
+                <outlet property="priceLabel" destination="C2B-MX-rvZ" id="NsO-Ol-WIX"/>
+                <outlet property="ratingsLabel" destination="Waa-aw-QU6" id="Kpj-Bg-Zgz"/>
+            </connections>
             <point key="canvasLocation" x="857.97101449275374" y="220.64732142857142"/>
         </collectionViewCell>
     </objects>
