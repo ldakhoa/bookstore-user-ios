@@ -66,7 +66,7 @@ final class BookDetailController: UIViewController {
 
     bottomContainerView.buyNowButton.addTarget(
       self,
-      action: #selector(didTappedBuyNowButton),
+      action: #selector(didTappedAddToCartButton),
       for: .touchUpInside
     )
 
@@ -103,6 +103,18 @@ final class BookDetailController: UIViewController {
         self.topContainerView.itemCountLabel.text = "\(self.cartInfo?.booksQuantity ?? 0)"
         self.topContainerView.itemCountLabel.setNeedsLayout()
         self.topContainerView.itemCountLabel.layoutIfNeeded()
+
+        guard let referenceForTabBarController = self.presentingViewController as? MainTabBarController else { return }
+        if let tabItems = referenceForTabBarController.tabBar.items {
+          let tabItem = tabItems[2]
+          if self.cartInfo?.booksQuantity ?? 0 <= 0 {
+            tabItem.badgeValue = nil
+          } else {
+            tabItem.badgeValue = "\(self.cartInfo?.booksQuantity ?? 0)"
+            referenceForTabBarController.repositionBadge()
+          }
+        }
+
         self.hud.dismiss()
       } else {
         self.presentErrorAlert(with: data)
@@ -128,9 +140,7 @@ final class BookDetailController: UIViewController {
     NetworkManagement.getRecommendFromBook(id: book?.id ?? 1) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.recommendBookFromBookId = Book.parseRecommendBooksByBookIdData(json: data)
-        print("data: ")
         self.recommendBookFromBookId.forEach { print($0.title) }
-        print("Book: ")
         self.tableView.reloadData()
         self.hud.dismiss()
       } else {
@@ -196,7 +206,7 @@ final class BookDetailController: UIViewController {
   }
 
   @objc
-  private func didTappedBuyNowButton() {
+  private func didTappedAddToCartButton() {
     if AppSecurity.shared.isAuthorized == false {
       guard let loginVC = AppSetting.Storyboards.Registration.login as? LoginViewController else { return }
       loginVC.isInBookDetail = true
@@ -217,7 +227,6 @@ final class BookDetailController: UIViewController {
         UIView.animate(withDuration: 0.5) {
           self.topContainerView.cartView.transform = .identity
         }
-
       } else {
         let errMessage = data["message"].stringValue
         let alert = UIAlertController.configured(
