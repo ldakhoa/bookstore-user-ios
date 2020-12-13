@@ -24,14 +24,14 @@ final class BookDetailRecommendationCell: UITableViewCell {
       leading: leadingAnchor,
       bottom: nil,
       trailing: trailingAnchor,
-      padding: .init(top: 16, left: 16, bottom: 0, right: 16)
+      padding: .init(top: 16, left: 24, bottom: 0, right: 24)
     )
     bookDetailRecommendHorizontalController.view.anchor(
       top: titleLabel.bottomAnchor,
       leading: leadingAnchor,
       bottom: bottomAnchor,
       trailing: trailingAnchor,
-      padding: .init(top: 12, left: 16, bottom: 12, right: 0)
+      padding: .init(top: 12, left: 24, bottom: 12, right: 0)
     )
   }
 

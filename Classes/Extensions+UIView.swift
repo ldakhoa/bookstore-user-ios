@@ -134,6 +134,30 @@ extension UIView {
     return stackView
   }
 
+  @discardableResult
+  func stack(
+    _ axis: NSLayoutConstraint.Axis,
+    views: [UIView],
+    spacing: CGFloat = 0
+  ) -> UIStackView {
+    let stackView = UIStackView(arrangedSubviews: views)
+    stackView.axis = axis
+    stackView.spacing = spacing
+    addSubview(stackView)
+    stackView.fillSuperview()
+    return stackView
+  }
+
+  @discardableResult
+  func VStack(_ views: UIView..., spacing: CGFloat = 0) -> UIStackView {
+    stack(.vertical, views: views, spacing: spacing)
+  }
+
+  @discardableResult
+  func HStack(_ views: UIView..., spacing: CGFloat = 0) -> UIStackView {
+    stack(.horizontal, views: views, spacing: spacing)
+  }
+
   // MARK: - ShadowLayer
 
   func setupShadow(
@@ -151,6 +175,16 @@ extension UIView {
 }
 
 extension UIStackView {
+
+  // MARK: Lifecycle
+
+  convenience init(arrangedSubviews: [UIView], spacing: CGFloat = 0) {
+    self.init(arrangedSubviews: arrangedSubviews)
+    self.spacing = spacing
+  }
+
+  // MARK: Internal
+
   @discardableResult
   func withMargins(_ margins: UIEdgeInsets) -> UIStackView {
     layoutMargins = margins
@@ -171,4 +205,5 @@ extension UIStackView {
     layoutMargins.top = top
     return self
   }
+
 }

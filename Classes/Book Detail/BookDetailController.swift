@@ -20,6 +20,7 @@ final class BookDetailController: UIViewController {
     "BookDetailMainCell",
     "BookDetailDescriptionCell",
     "BookDetailRecommendationCell",
+    "BookDetailReviewCell",
   ]
   let topContainerView = BookDetailTopContainerView()
   let bottomContainerView = BookDetailBottomContainerView()
@@ -38,6 +39,7 @@ final class BookDetailController: UIViewController {
     )
     tableView.register(BookDetailRecommendationCell.self, forCellReuseIdentifier: cellsID[2])
     tableView.register(BookDetailRecommendationCell.self, forCellReuseIdentifier: "cellID")
+    tableView.register(BookDetailReviewCell.self, forCellReuseIdentifier: cellsID[3])
     tableView.delegate = self
     tableView.dataSource = self
     tableView.separatorInset = .init(top: 0, left: 16, bottom: 0, right: 16)
@@ -205,13 +207,17 @@ extension BookDetailController: UITableViewDataSource {
       cell.selectionStyle = .none
       return cell
     } else if indexPath.section == 2 {
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: cellsID[3], for: indexPath) as? BookDetailReviewCell else { return UITableViewCell() }
+      cell.selectionStyle = .none
+      return cell
+    } else if indexPath.section == 3 {
       guard let cell = tableView.dequeueReusableCell(
         withIdentifier: cellsID[2],
         for: indexPath
       ) as? BookDetailRecommendationCell else { return UITableViewCell() }
       cell.selectionStyle = .none
       return cell
-    } else if indexPath.section == 3 {
+    } else if indexPath.section == 4 {
       guard let cell = tableView.dequeueReusableCell(
         withIdentifier: "cellID",
         for: indexPath
@@ -232,8 +238,10 @@ extension BookDetailController: UITableViewDelegate {
 
   func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == 2 {
-      return 376
+      return 280
     } else if indexPath.section == 3 {
+      return 376
+    } else if indexPath.section == 4 {
       return 396
     }
     return UITableView.automaticDimension

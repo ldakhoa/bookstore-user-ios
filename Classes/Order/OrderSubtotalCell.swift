@@ -19,7 +19,6 @@ final class OrderSubtotalCell: UITableViewCell {
     }
   }
 
-
   override func awakeFromNib() {
     super.awakeFromNib()
   }

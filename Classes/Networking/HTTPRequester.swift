@@ -8,11 +8,9 @@
 import Alamofire
 import Foundation
 
-let coreURL = "http://10.8.168.114:3000/"
+let coreURL = "http://localhost:3000/"
 
 // MARK: - Requestable
-
-//let coreURL = "http://localhost:3000/"
 
 protocol Requestable {
   func params() -> (

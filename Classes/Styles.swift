@@ -54,6 +54,7 @@ enum Styles {
     static let filterBorder = "CC7F3E"
     static let filterBackground = "FDF7F2"
     static let textFieldBottomLine = "F1F2F2"
+    static let reviewBorder = "DCDCDC"
   }
 
   enum Text {

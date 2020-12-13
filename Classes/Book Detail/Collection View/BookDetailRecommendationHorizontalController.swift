@@ -16,10 +16,10 @@ final class BookDetailRecommendHorizontalController: HorizontalSnappingControlle
       UINib(nibName: "BookDetailRecommendCollectionCell", bundle: nil),
       forCellWithReuseIdentifier: "BookDetailRecommendCollectionCell"
     )
-    collectionView.showsHorizontalScrollIndicator = false
-    if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
-      layout.scrollDirection = .horizontal
-    }
+//    collectionView.showsHorizontalScrollIndicator = false
+//    if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
+//      layout.scrollDirection = .horizontal
+//    }
   }
 
   override func collectionView(

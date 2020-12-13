@@ -42,19 +42,19 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Engineering: A compilerEngineering: A compilerEngineering: A compilerEngineering: A compilerEngineering: A compiler" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFH-C6-j1P">
-                        <rect key="frame" x="16" y="312" width="726" height="29"/>
+                        <rect key="frame" x="24" y="312" width="710" height="29"/>
                         <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="24"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Keith Copper and 1 more" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wu2-1v-MMT">
-                        <rect key="frame" x="16" y="349" width="726" height="17"/>
+                        <rect key="frame" x="24" y="349" width="710" height="17"/>
                         <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="14"/>
                         <color key="textColor" name="gray"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26b-Tp-DuL" customClass="CosmosView" customModule="Cosmos">
-                        <rect key="frame" x="16" y="374" width="96" height="16"/>
+                        <rect key="frame" x="24" y="374" width="96" height="16"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -85,26 +85,26 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$51.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXJ-Gu-dBz">
-                        <rect key="frame" x="16" y="399" width="726" height="29"/>
+                        <rect key="frame" x="24" y="399" width="710" height="29"/>
                         <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="20"/>
                         <color key="textColor" name="black"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="wu2-1v-MMT" secondAttribute="trailing" constant="16" id="0Za-RF-ILM"/>
+                    <constraint firstAttribute="trailing" secondItem="wu2-1v-MMT" secondAttribute="trailing" constant="24" id="0Za-RF-ILM"/>
                     <constraint firstItem="wu2-1v-MMT" firstAttribute="top" secondItem="lFH-C6-j1P" secondAttribute="bottom" constant="8" id="1dA-Jh-V5z"/>
                     <constraint firstItem="Qia-cz-Fy1" firstAttribute="top" secondItem="rjd-YY-gbg" secondAttribute="top" id="4ne-Z8-d51"/>
-                    <constraint firstItem="tXJ-Gu-dBz" firstAttribute="leading" secondItem="rjd-YY-gbg" secondAttribute="leading" constant="16" id="7KD-p4-tMq"/>
+                    <constraint firstItem="tXJ-Gu-dBz" firstAttribute="leading" secondItem="rjd-YY-gbg" secondAttribute="leading" constant="24" id="7KD-p4-tMq"/>
                     <constraint firstItem="tXJ-Gu-dBz" firstAttribute="top" secondItem="26b-Tp-DuL" secondAttribute="bottom" constant="8" id="DJR-PE-SYv"/>
-                    <constraint firstItem="wu2-1v-MMT" firstAttribute="leading" secondItem="rjd-YY-gbg" secondAttribute="leading" constant="16" id="Edn-lN-fY2"/>
+                    <constraint firstItem="wu2-1v-MMT" firstAttribute="leading" secondItem="rjd-YY-gbg" secondAttribute="leading" constant="24" id="Edn-lN-fY2"/>
                     <constraint firstItem="Qia-cz-Fy1" firstAttribute="leading" secondItem="rjd-YY-gbg" secondAttribute="leading" id="HPg-5h-5Rl"/>
                     <constraint firstItem="lFH-C6-j1P" firstAttribute="top" secondItem="Qia-cz-Fy1" secondAttribute="bottom" constant="12" id="J3e-0g-t3X"/>
                     <constraint firstAttribute="trailing" secondItem="Qia-cz-Fy1" secondAttribute="trailing" id="VAx-yZ-3ZG"/>
-                    <constraint firstAttribute="trailing" secondItem="lFH-C6-j1P" secondAttribute="trailing" constant="16" id="gce-12-rEu"/>
-                    <constraint firstItem="26b-Tp-DuL" firstAttribute="leading" secondItem="rjd-YY-gbg" secondAttribute="leading" constant="16" id="iJR-xi-Fl9"/>
-                    <constraint firstItem="lFH-C6-j1P" firstAttribute="leading" secondItem="rjd-YY-gbg" secondAttribute="leading" constant="16" id="kW0-Si-DtR"/>
-                    <constraint firstAttribute="trailing" secondItem="tXJ-Gu-dBz" secondAttribute="trailing" constant="16" id="kiO-fs-pZr"/>
+                    <constraint firstAttribute="trailing" secondItem="lFH-C6-j1P" secondAttribute="trailing" constant="24" id="gce-12-rEu"/>
+                    <constraint firstItem="26b-Tp-DuL" firstAttribute="leading" secondItem="rjd-YY-gbg" secondAttribute="leading" constant="24" id="iJR-xi-Fl9"/>
+                    <constraint firstItem="lFH-C6-j1P" firstAttribute="leading" secondItem="rjd-YY-gbg" secondAttribute="leading" constant="24" id="kW0-Si-DtR"/>
+                    <constraint firstAttribute="trailing" secondItem="tXJ-Gu-dBz" secondAttribute="trailing" constant="24" id="kiO-fs-pZr"/>
                     <constraint firstItem="26b-Tp-DuL" firstAttribute="top" secondItem="wu2-1v-MMT" secondAttribute="bottom" constant="8" id="lyi-Im-maK"/>
                     <constraint firstAttribute="bottom" secondItem="tXJ-Gu-dBz" secondAttribute="bottom" constant="12" id="pUi-r2-KAp"/>
                 </constraints>
