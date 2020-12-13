@@ -104,8 +104,9 @@ final class BookDetailController: UIViewController {
         self.topContainerView.itemCountLabel.setNeedsLayout()
         self.topContainerView.itemCountLabel.layoutIfNeeded()
 
-        guard let referenceForTabBarController = self.presentingViewController as? MainTabBarController else { return }
-        if let tabItems = referenceForTabBarController.tabBar.items {
+        if let referenceForTabBarController = self.presentingViewController as? MainTabBarController,
+           let tabItems = referenceForTabBarController.tabBar.items
+        {
           let tabItem = tabItems[2]
           if self.cartInfo?.booksQuantity ?? 0 <= 0 {
             tabItem.badgeValue = nil
