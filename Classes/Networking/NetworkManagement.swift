@@ -110,6 +110,18 @@ struct NetworkManagement {
     }
   }
 
+  public static func putQuantityOfBookByUser(
+    id: Int,
+    at bookId: Int,
+    quantity: Int,
+    response: @escaping ResponseHandler
+  ) {
+    let requester = HTTPRequester.putQuantityOfBookByUser(id: id, bookId: bookId, quantity: quantity)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
   // MARK: Internal
 
   typealias ResponseHandler = (_ code: Int, _ result: JSON) -> Void

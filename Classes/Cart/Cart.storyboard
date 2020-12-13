@@ -217,6 +217,7 @@
                                             <outlet property="bookAmountLabel" destination="j2C-En-Hyz" id="58k-9G-N6d"/>
                                             <outlet property="bookImageView" destination="Aox-Pn-BRz" id="4R3-VO-Lh1"/>
                                             <outlet property="decreaseButton" destination="FTc-Do-lAb" id="eJT-B3-phW"/>
+                                            <outlet property="deleteButton" destination="H7K-Hf-tNy" id="i7j-8Z-HkI"/>
                                             <outlet property="increaseButton" destination="NVm-ea-6q6" id="ZqW-wI-0u0"/>
                                             <outlet property="priceLabel" destination="tli-bM-70e" id="2PK-LO-Luv"/>
                                             <outlet property="titleLabel" destination="7nw-zW-QbC" id="nvj-fN-fWU"/>

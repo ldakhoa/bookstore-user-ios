@@ -90,6 +90,16 @@ final class CartViewController: UIViewController {
     NetworkManagement.getCartInfoByUser(id: AppSecurity.shared.userID) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.cartInfo = CartInfo.parseData(json: data)
+        let tabBarVC = self.tabBarController as? MainTabBarController
+        if let tabItems = tabBarVC?.tabBar.items {
+          let tabItem = tabItems[2]
+          if self.cartInfo?.booksQuantity ?? 0 <= 0 {
+            tabItem.badgeValue = nil
+          } else {
+            tabItem.badgeValue = "\(self.cartInfo?.booksQuantity ?? 0)"
+            tabBarVC?.repositionBadge()
+          }
+        }
         self.hud.dismiss()
       } else {
         let errMessage = data["message"].stringValue
@@ -138,6 +148,8 @@ extension CartViewController: UITableViewDataSource {
       let book = cart?.books[indexPath.row]
       cell.book = book
       cell.selectionStyle = .none
+      cell.delegate = self
+      //			cell.increaseButton.addTarget(self, action: #selector(didTappedIncreaseButton), for: .touchUpInside)
       return cell
     } else if indexPath.section == 1 {
       guard let cell = tableView.dequeueReusableCell(
@@ -150,6 +162,10 @@ extension CartViewController: UITableViewDataSource {
 
     return UITableViewCell()
   }
+
+  //	@objc private func didTappedIncreaseButton() {
+  //		NetworkManagement.putQuantityOfBookByUser(id: AppSecurity.shared.userID, at: <#T##Int#>, quantity: <#T##Int#>, response: <#T##NetworkManagement.ResponseHandler##NetworkManagement.ResponseHandler##(Int, JSON) -> Void#>)
+  //	}
 }
 
 // MARK: UITableViewDelegate
@@ -243,4 +259,28 @@ extension CartViewController: UITableViewDelegate {
     tabBarController?.selectedIndex = 0
   }
 
+}
+
+// MARK: CartCellDelegate
+
+extension CartViewController: CartCellDelegate {
+  func didFinishedTapUpdateAmountButton() {
+    hud.show(in: view)
+  }
+
+  func shouldDismissHUD() {
+    fetchCartInfo()
+  }
+
+  func shouldShowError(_ errString: String) {
+    let alert = UIAlertController.configured(
+      title: "Something wrong",
+      message: errString,
+      preferredStyle: .alert
+    )
+    alert.addAction(AlertAction.ok())
+    present(alert, animated: true) {
+      self.hud.dismiss()
+    }
+  }
 }

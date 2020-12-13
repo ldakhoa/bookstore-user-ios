@@ -34,6 +34,7 @@ enum HTTPRequester {
   case postCartByUser(id: Int, bookId: Int)
   case getCartInfoByUser(id: Int)
   case postPaymentOrderByUser(id: Int)
+  case putQuantityOfBookByUser(id: Int, bookId: Int, quantity: Int)
 }
 
 // MARK: Requestable
@@ -122,6 +123,14 @@ extension HTTPRequester: Requestable {
         path: URL(string: coreURL + "api/carts/\(id)/payment")!,
         method: .post,
         parameter: nil,
+        encoding: JSONEncoding.default
+      )
+    case let .putQuantityOfBookByUser(id, bookId, quantity):
+      let params: [String: Int] = ["quantity": quantity]
+      return (
+        path: URL(string: coreURL + "api/carts/\(id)/books/\(bookId)")!,
+        method: .put,
+        parameter: params,
         encoding: JSONEncoding.default
       )
     }
