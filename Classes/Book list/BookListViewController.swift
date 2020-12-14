@@ -13,6 +13,7 @@ final class BookListViewController: UIViewController {
 
   // MARK: Internal
 
+  var shouldPresentSearchController = false
   var books = [Book]()
   var isAscending = true
   var isChoosingPrice = false
@@ -30,7 +31,7 @@ final class BookListViewController: UIViewController {
   @IBOutlet var searchGradientView: SearchGradientView! {
     didSet {
       searchGradientView.searchTextField.isUserInteractionEnabled = false
-      searchGradientView.layoutForOtherViewController()
+      searchGradientView.layoutForBookListController()
     }
   }
 
@@ -47,13 +48,29 @@ final class BookListViewController: UIViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
 
+    if shouldPresentSearchController {
+      didTappedSearchGradientView()
+      shouldPresentSearchController = false
+    }
+
     searchGradientView.addGestureRecognizer(UITapGestureRecognizer(
       target: self,
       action: #selector(didTappedSearchGradientView)
     ))
+
+    searchGradientView.backButton.addTarget(
+      self,
+      action: #selector(didTappedBackButton),
+      for: .touchUpInside
+    )
   }
 
   // MARK: Private
+
+  @objc
+  private func didTappedBackButton() {
+    navigationController?.popViewController(animated: true)
+  }
 
   @objc
   private func didTappedSearchGradientView() {

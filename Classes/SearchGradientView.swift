@@ -20,6 +20,12 @@ class SearchGradientView: UIView, UITextFieldDelegate {
     return button
   }()
 
+  let backButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setImage(#imageLiteral(resourceName: "back"), for: .normal)
+    return button
+  }()
+
 //    var anchorConstraint: AnchoredConstraints!
 
   override func awakeFromNib() {
@@ -61,6 +67,30 @@ class SearchGradientView: UIView, UITextFieldDelegate {
       padding: .init(top: 54, left: 15, bottom: 0, right: 15),
       size: .init(width: 0, height: 40)
     )
+  }
+
+  func layoutForBookListController() {
+    addSubview(searchTextField)
+    addSubview(backButton)
+
+    searchTextField.anchor(
+      top: topAnchor,
+      leading: backButton.trailingAnchor,
+      bottom: nil,
+      trailing: trailingAnchor,
+      padding: .init(top: 54, left: 15, bottom: 0, right: 8),
+      size: .init(width: 0, height: 40)
+    )
+
+    backButton.anchor(
+      top: nil,
+      leading: leadingAnchor,
+      bottom: nil,
+      trailing: nil,
+      padding: .init(top: 0, left: 15, bottom: 0, right: 0),
+      size: .init(width: 24, height: 24)
+    )
+    backButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
   }
 
   func layoutForSearchController() {

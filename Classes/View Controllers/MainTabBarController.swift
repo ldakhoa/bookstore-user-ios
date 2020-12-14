@@ -29,7 +29,7 @@ final class MainTabBarController: UITabBarController {
 
     viewControllers = [
       createNavController(
-        viewController: searchVC,
+        viewController: homeVC,
         title: "Shop",
         imageName: "home-inactive",
         selectedImageName: "home-activated"

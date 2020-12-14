@@ -322,7 +322,7 @@ extension BookDetailController: UITableViewDelegate {
 
   func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == 2 {
-      return 280
+      return reviews.count > 0 ? 280 : 0
     } else if indexPath.section == 3 {
       return 376
     } else if indexPath.section == 4 {
