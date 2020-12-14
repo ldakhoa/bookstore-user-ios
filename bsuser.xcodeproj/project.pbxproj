@@ -39,6 +39,9 @@
 		648768512539FA91002B2AD6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648768502539FA91002B2AD6 /* Log.swift */; };
 		648E02092586584600A7CB00 /* InteractivePopRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E02082586584600A7CB00 /* InteractivePopRecognizer.swift */; };
 		648E0268258716D000A7CB00 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E0267258716D000A7CB00 /* DateExtension.swift */; };
+		648E026D2587506B00A7CB00 /* HomePageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E026C2587506B00A7CB00 /* HomePageHeader.swift */; };
+		648E0272258751B500A7CB00 /* HomeHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E0271258751B500A7CB00 /* HomeHeaderHorizontalController.swift */; };
+		648E0277258751D400A7CB00 /* HomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E0276258751D400A7CB00 /* HomeHeaderCell.swift */; };
 		6490119625427C4400E5D9DE /* BookDetailDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6490119525427C4400E5D9DE /* BookDetailDescriptionCell.xib */; };
 		6490119B25427D0200E5D9DE /* BookDetailDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6490119A25427D0200E5D9DE /* BookDetailDescriptionCell.swift */; };
 		649B0063253AE56100BE315A /* AppSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B0062253AE56100BE315A /* AppSecurity.swift */; };
@@ -183,6 +186,9 @@
 		648768502539FA91002B2AD6 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		648E02082586584600A7CB00 /* InteractivePopRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePopRecognizer.swift; sourceTree = "<group>"; };
 		648E0267258716D000A7CB00 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		648E026C2587506B00A7CB00 /* HomePageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageHeader.swift; sourceTree = "<group>"; };
+		648E0271258751B500A7CB00 /* HomeHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderHorizontalController.swift; sourceTree = "<group>"; };
+		648E0276258751D400A7CB00 /* HomeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCell.swift; sourceTree = "<group>"; };
 		6490119525427C4400E5D9DE /* BookDetailDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailDescriptionCell.xib; sourceTree = "<group>"; };
 		6490119A25427D0200E5D9DE /* BookDetailDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailDescriptionCell.swift; sourceTree = "<group>"; };
 		649B0062253AE56100BE315A /* AppSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecurity.swift; sourceTree = "<group>"; };
@@ -403,6 +409,9 @@
 			children = (
 				647C77A02532BF970034159E /* Home.storyboard */,
 				647C77A52532BFA10034159E /* HomeViewController.swift */,
+				648E026C2587506B00A7CB00 /* HomePageHeader.swift */,
+				648E0271258751B500A7CB00 /* HomeHeaderHorizontalController.swift */,
+				648E0276258751D400A7CB00 /* HomeHeaderCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1054,6 +1063,7 @@
 				647C77902532B3980034159E /* AppSetting.swift in Sources */,
 				64B0276A254295F900C1CDB2 /* RecommendationOverallCell.swift in Sources */,
 				64AD6ECB25345614008D4EF6 /* BookListCell.swift in Sources */,
+				648E0277258751D400A7CB00 /* HomeHeaderCell.swift in Sources */,
 				64C200DF2584F5970062894A /* Cart.swift in Sources */,
 				649B00A7253B5C5500BE315A /* AlertActionBuilder.swift in Sources */,
 				643DA93E2539E55D0052CE35 /* NetworkManagement.swift in Sources */,
@@ -1084,6 +1094,7 @@
 				64BA8BF5254C45A500AC56C6 /* OrderSubtotalCell.swift in Sources */,
 				64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */,
 				64D5EA4925335362005788A3 /* ProfileTableViewController.swift in Sources */,
+				648E026D2587506B00A7CB00 /* HomePageHeader.swift in Sources */,
 				64FB7A54254126C900158989 /* BottomContainerView.swift in Sources */,
 				64BA8C13254C5DA300AC56C6 /* CardTextField.swift in Sources */,
 				64EC82132555943C00EE8E51 /* MyOrdersController.swift in Sources */,
@@ -1123,6 +1134,7 @@
 				64EC828B2556969800EE8E51 /* OrderDetailController.swift in Sources */,
 				64B0276F2542980300C1CDB2 /* BookDetailRecommendationHorizontalController.swift in Sources */,
 				64D501BD2583D324006FA9CD /* CartNotLoginController.swift in Sources */,
+				648E0272258751B500A7CB00 /* HomeHeaderHorizontalController.swift in Sources */,
 				64EC827525564D5300EE8E51 /* MyOrdersItemController.swift in Sources */,
 				6490119B25427D0200E5D9DE /* BookDetailDescriptionCell.swift in Sources */,
 				64EC82A52556A43400EE8E51 /* TotalPriceCell.swift in Sources */,

@@ -78,6 +78,7 @@ enum Styles {
     static let button = TextStyle(font: .name(cerealMedium), size: 15)
     static let location = TextStyle(font: .name(cerealMedium), size: 15)
     static let cartItemCount = TextStyle(font: .name(cerealBook), size: 11)
+    static let homeHeader = TextStyle(font: .name(cerealMedium), size: 18)
 
     // MARK: Private
 

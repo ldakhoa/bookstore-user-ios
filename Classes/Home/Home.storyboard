@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tyJ-O8-AfF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tyJ-O8-AfF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,20 +31,30 @@
                                     <constraint firstAttribute="height" constant="40" id="Uae-8o-Q43"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RQe-1q-sJT">
+                                <rect key="frame" x="0.0" y="145" width="414" height="717"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="P8G-Zg-6lI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="RQe-1q-sJT" firstAttribute="top" secondItem="GMY-Bx-9nw" secondAttribute="bottom" id="B1f-zN-rAB"/>
                             <constraint firstItem="P8G-Zg-6lI" firstAttribute="trailing" secondItem="abt-iI-Eaz" secondAttribute="trailing" id="Omo-Dn-oll"/>
+                            <constraint firstItem="RQe-1q-sJT" firstAttribute="leading" secondItem="P8G-Zg-6lI" secondAttribute="leading" id="ScO-jd-oVm"/>
                             <constraint firstItem="GMY-Bx-9nw" firstAttribute="leading" secondItem="P8G-Zg-6lI" secondAttribute="leading" id="eYq-UN-D5K"/>
+                            <constraint firstItem="P8G-Zg-6lI" firstAttribute="bottom" secondItem="RQe-1q-sJT" secondAttribute="bottom" id="f7T-ii-ZZg"/>
                             <constraint firstItem="GMY-Bx-9nw" firstAttribute="top" secondItem="abt-iI-Eaz" secondAttribute="bottom" constant="-4" id="gHE-0H-1yE"/>
                             <constraint firstItem="abt-iI-Eaz" firstAttribute="leading" secondItem="P8G-Zg-6lI" secondAttribute="leading" id="ogS-ub-35V"/>
                             <constraint firstItem="P8G-Zg-6lI" firstAttribute="trailing" secondItem="GMY-Bx-9nw" secondAttribute="trailing" id="v7F-UP-BUM"/>
                             <constraint firstItem="abt-iI-Eaz" firstAttribute="top" secondItem="8JN-ff-uIZ" secondAttribute="top" id="veF-BG-KTI"/>
+                            <constraint firstItem="P8G-Zg-6lI" firstAttribute="trailing" secondItem="RQe-1q-sJT" secondAttribute="trailing" id="xHe-vS-y6y"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="locationTopView" destination="GMY-Bx-9nw" id="zwI-aS-bcR"/>
                         <outlet property="searchGradientView" destination="abt-iI-Eaz" id="Hde-04-5lY"/>
+                        <outlet property="tableView" destination="RQe-1q-sJT" id="SGd-ND-k1D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDr-a5-Rj6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

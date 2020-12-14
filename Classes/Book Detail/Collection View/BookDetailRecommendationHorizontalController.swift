@@ -13,11 +13,18 @@ protocol BookDetailRecommendHorizontalControllerDelegate: AnyObject {
   func didSelectedBook(_ book: Book)
 }
 
+// MARK: - BookDetailRecommendHorizontalControllerHomeDelegate
+
+protocol BookDetailRecommendHorizontalControllerHomeDelegate: AnyObject {
+  func didSelectedBook(_ book: Book)
+}
+
 // MARK: - BookDetailRecommendHorizontalController
 
 final class BookDetailRecommendHorizontalController: HorizontalSnappingController {
 
   weak var delegate: BookDetailRecommendHorizontalControllerDelegate?
+  weak var homeDelegate: BookDetailRecommendHorizontalControllerHomeDelegate?
 
   var recommendBooks = [Book]() {
     didSet {
@@ -58,6 +65,7 @@ final class BookDetailRecommendHorizontalController: HorizontalSnappingControlle
   ) {
     let book = recommendBooks[indexPath.row]
     delegate?.didSelectedBook(book)
+    homeDelegate?.didSelectedBook(book)
   }
 }
 
