@@ -39,7 +39,7 @@ enum HTTPRequester {
   case getRecommendFromBook(id: Int)
   case postReviewByBook(id: Int, userId: Int, content: String, ratings: Int)
   case getReviewsByBook(id: Int)
-  case putProfileImageUrlWithUser(id: Int, imageUrl: String)
+  case putProfileImageUrl(imageUrl: String)
 }
 
 // MARK: Requestable
@@ -161,10 +161,10 @@ extension HTTPRequester: Requestable {
         parameter: nil,
         encoding: JSONEncoding.default
       )
-    case let .putProfileImageUrlWithUser(id, imageUrl):
+    case let .putProfileImageUrl(imageUrl):
       let params: [String: String] = ["profile_image_url": imageUrl]
       return (
-        path: URL(string: coreURL + "api/users/\(id)")!,
+        path: URL(string: coreURL + "api/users/information")!,
         method: .put,
         parameter: params,
         encoding: JSONEncoding.default

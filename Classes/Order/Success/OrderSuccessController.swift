@@ -7,12 +7,21 @@
 
 import UIKit
 
+// MARK: - OrderSuccessControllerDelegate
+
+protocol OrderSuccessControllerDelegate: AnyObject {
+  func didTappedContinueShoppingButton()
+}
+
+// MARK: - OrderSuccessController
+
 final class OrderSuccessController: UIViewController {
 
   // MARK: Internal
 
   @IBOutlet weak var orderIdLabel: UILabel!
   var createdOrder: CreatedOrder?
+  weak var delegate: OrderSuccessControllerDelegate?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,7 +35,9 @@ final class OrderSuccessController: UIViewController {
   @IBAction
   private func didTappedContinueShoppingButton(_: Any) {
     presentingViewController?.tabBarController?.selectedIndex = 0
-    presentingViewController?.dismiss(animated: true)
+    presentingViewController?.dismiss(animated: true) {
+      self.delegate?.didTappedContinueShoppingButton()
+    }
   }
 
   @IBAction

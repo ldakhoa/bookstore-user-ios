@@ -21,6 +21,7 @@ final class OrderViewController: UIViewController {
   let hud = JGProgressHUD(style: .dark)
 
   var cart: Cart?
+  var user: User?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,9 +37,28 @@ final class OrderViewController: UIViewController {
     super.viewDidAppear(animated)
 
     tableView.reloadData()
+    fetchUserInfo()
   }
 
   // MARK: Private
+
+  private func fetchUserInfo() {
+    NetworkManagement.getInformationOfUser { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.user = User.parseData(json: data["user"])
+        self.tableView.reloadData()
+      } else {
+        let errMessage = data["message"].stringValue
+        let alert = UIAlertController.configured(
+          title: "Something wrong",
+          message: errMessage,
+          preferredStyle: .alert
+        )
+        alert.addAction(AlertAction.ok())
+        self.present(alert, animated: true)
+      }
+    }
+  }
 
   @IBAction
   private func didTappedDismissButton(_: Any) {
@@ -47,12 +67,25 @@ final class OrderViewController: UIViewController {
 
   @IBAction
   private func didTappedPlaceYourOrderButton(_: Any) {
+    if cart?.address.count ?? 0 < 10 && cart?.phone ?? -1 < 100_000 {
+      let alert = UIAlertController(
+        title: "Please fill your address",
+        message: "We need your address and your phone number to ship your books",
+        preferredStyle: .alert
+      )
+      alert.addAction(AlertAction.ok({ [weak self] _ in
+        self?.didTappedEditAddressButton()
+      }))
+      present(alert, animated: true)
+      return
+    }
     hud.show(in: view)
     NetworkManagement.postPaymentOrderByUser(id: AppSecurity.shared.userID) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.createdOrder = CreatedOrder.parseData(json: data)
         guard let orderSuccessController = AppSetting.Storyboards.Order.orderSuccessVC as? OrderSuccessController else { return }
         orderSuccessController.createdOrder = self.createdOrder
+        orderSuccessController.delegate = self
         self.present(orderSuccessController, animated: true, completion: nil)
         self.hud.dismiss()
       } else {
@@ -79,7 +112,8 @@ final class OrderViewController: UIViewController {
 
   @objc
   private func didTappedEditAddressButton() {
-    let listOfAddressVC = AppSetting.Storyboards.Order.listOfAddressVC
+    guard let listOfAddressVC = AppSetting.Storyboards.Order.listOfAddressVC as? ListOfAddressController else { return }
+    listOfAddressVC.user = user
     let navController = UINavigationController(rootViewController: listOfAddressVC)
     navController.setNavigationBarHidden(true, animated: true)
     navController.modalPresentationStyle = .fullScreen
@@ -111,7 +145,8 @@ extension OrderViewController: UITableViewDataSource {
         for: indexPath
       ) as? OrderShippingAddressCell else { return UITableViewCell() }
       cell.selectionStyle = .none
-      cell.cart = cart
+
+      cell.user = user
       cell.editButton.addTarget(
         self,
         action: #selector(didTappedEditAddressButton),
@@ -167,5 +202,13 @@ extension OrderViewController: UITableViewDelegate {
     let view = UIView()
     view.backgroundColor = Styles.Colors.background.color
     return view
+  }
+}
+
+// MARK: OrderSuccessControllerDelegate
+
+extension OrderViewController: OrderSuccessControllerDelegate {
+  func didTappedContinueShoppingButton() {
+    dismiss(animated: true)
   }
 }

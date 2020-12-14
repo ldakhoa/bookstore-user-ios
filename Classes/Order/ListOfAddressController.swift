@@ -65,6 +65,7 @@ final class ListOfAddressController: UIViewController {
   private func editShippingAddress() {
     guard let editAddressVC = AppSetting.Storyboards.Order.editAddressVC as? EditAddressController else { return }
     editAddressVC.user = user
+    editAddressVC.delegate = self
     navigationController?.pushViewController(editAddressVC, animated: true)
   }
 
@@ -101,5 +102,14 @@ extension ListOfAddressController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     dismiss(animated: true)
+  }
+}
+
+// MARK: EditAddressControllerDelegate
+
+extension ListOfAddressController: EditAddressControllerDelegate {
+  func didTappedSaveButton(user: User) {
+    self.user = user
+    tableView.reloadData()
   }
 }

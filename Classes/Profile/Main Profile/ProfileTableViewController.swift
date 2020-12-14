@@ -258,7 +258,7 @@ extension ProfileTableViewController: UINavigationControllerDelegate, UIImagePic
           let thumbnails = self.putUserImageUrl(json: imageResData)
           print("thumb:", thumbnails)
           let imageUrl = thumbnails[0]
-          NetworkManagement.putProfileImageUrlWithUser(id: AppSecurity.shared.userID, with: imageUrl) { code, data in
+          NetworkManagement.putProfileImageUrl(imageUrl) { code, data in
             if code == ResponseCode.ok.rawValue {
               self.hud.textLabel.text = "Success upload profile image"
               self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()

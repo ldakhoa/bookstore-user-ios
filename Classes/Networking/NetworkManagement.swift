@@ -165,12 +165,11 @@ struct NetworkManagement {
     }
   }
 
-  public static func putProfileImageUrlWithUser(
-    id: Int,
-    with imageUrl: String,
+  public static func putProfileImageUrl(
+    _ imageUrl: String,
     response: @escaping ResponseHandler
   ) {
-    let requester = HTTPRequester.putProfileImageUrlWithUser(id: id, imageUrl: imageUrl)
+    let requester = HTTPRequester.putProfileImageUrl(imageUrl: imageUrl)
     callAPI(requester) { code, json in
       response(code, json)
     }
@@ -181,6 +180,14 @@ struct NetworkManagement {
     response: @escaping ((_ code: Int, _ result: JSON) -> Void)
   ) {
 //    let headers: HTTPHeaders = ["Content-type": "multipart/form-data", "Accept": "application/json"]
+    var header: HTTPHeaders = [
+      "content-type": "multipart/form-data",
+      "Accept": "application/json",
+    ]
+    if AppSecurity.shared.token.isEmpty == false {
+      header["authorization"] = "Bearer " + AppSecurity.shared.token
+    }
+
     AF.upload(
       multipartFormData: { multipartFormData in
         let imageName = NSUUID().uuidString + ".jpg"
@@ -197,7 +204,7 @@ struct NetworkManagement {
       to: URL(string: coreURL + "api/images/profile_image")!,
       usingThreshold: UInt64.init(),
       method: .post,
-      headers: getHeader()
+      headers: header
     ).responseJSON { responseData in
       switch responseData.result {
       case .success(_):

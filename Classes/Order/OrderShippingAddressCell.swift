@@ -12,10 +12,9 @@ final class OrderShippingAddressCell: UITableViewCell {
   @IBOutlet var addressLabel: UILabel!
   @IBOutlet var editButton: UIButton!
 
-  var cart: Cart? {
+  var user: User? {
     didSet {
-      nameAndPhoneNumberLabel.text = "\(cart?.userName ?? "") - \(cart?.phone ?? 0)"
-      addressLabel.text = cart?.address
+      addressLabel.text = "\(user?.address ?? "") Ward \(user?.ward ?? "") District \(user?.district ?? "")"
     }
   }
 
