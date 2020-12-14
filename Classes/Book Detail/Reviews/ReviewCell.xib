@@ -27,7 +27,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="YzS-7v-DVn">
-                        <rect key="frame" x="16" y="16" width="300" height="75.5"/>
+                        <rect key="frame" x="16" y="16" width="300" height="79.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XQo-4l-tqM">
                                 <rect key="frame" x="0.0" y="0.0" width="100" height="32"/>
@@ -38,6 +38,11 @@
                                             <constraint firstAttribute="height" constant="32" id="SRe-eT-jBC"/>
                                             <constraint firstAttribute="width" constant="32" id="wBg-Xq-M1Q"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AJ3-VO-m8v">
                                         <rect key="frame" x="40" y="0.0" width="60" height="32"/>
@@ -71,13 +76,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="1 hour ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Kf-AS-bht">
-                                <rect key="frame" x="0.0" y="36" width="67.5" height="16.5"/>
+                                <rect key="frame" x="0.0" y="36" width="66.5" height="18.5"/>
                                 <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="14"/>
                                 <color key="textColor" name="gray"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best book I've read!" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMH-ot-2h8">
-                                <rect key="frame" x="0.0" y="56.5" width="143.5" height="19"/>
+                                <rect key="frame" x="0.0" y="58.5" width="143" height="21"/>
                                 <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
                                 <color key="textColor" name="black"/>
                                 <nil key="highlightedColor"/>

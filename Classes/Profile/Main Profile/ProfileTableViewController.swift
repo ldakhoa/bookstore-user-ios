@@ -6,7 +6,10 @@
 //
 
 import JGProgressHUD
+import SwiftyJSON
 import UIKit
+
+// MARK: - ProfileTableViewController
 
 final class ProfileTableViewController: UITableViewController {
 
@@ -14,6 +17,7 @@ final class ProfileTableViewController: UITableViewController {
 
   var user = User()
   let hud = JGProgressHUD(style: .dark)
+  var selectedImage: UIImage?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -63,6 +67,14 @@ final class ProfileTableViewController: UITableViewController {
   override func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
     let headerView = ProfileHeaderView()
     headerView.nameLabel.text = user.username.capitalizingFirstLetter()
+    headerView.profileImageView.addGestureRecognizer(UITapGestureRecognizer(
+      target: self,
+      action: #selector(didTappedProfileImageView)
+    ))
+    headerView.profileImageView.isUserInteractionEnabled = true
+    if let url = URL(string: user.profileImageUrl) {
+      headerView.profileImageView.sd_setImage(with: url)
+    }
     headerView.showProfileButton.addTarget(
       self,
       action: #selector(didTapShowProfile),
@@ -159,6 +171,38 @@ final class ProfileTableViewController: UITableViewController {
 
   private let cellID = "ProfileCell"
 
+  @objc
+  private func didTappedProfileImageView() {
+    let alert = UIAlertController.configured(preferredStyle: .actionSheet)
+    alert.addActions([
+      AlertAction.cancel(),
+      AlertAction(AlertActionBuilder {
+        $0.title = "Capture photo from camera"
+        $0.style = .default
+      }).get { [weak self] _ in
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+          let imagePickerController = UIImagePickerController()
+          imagePickerController.delegate = self
+          imagePickerController.sourceType = .camera
+          self?.present(imagePickerController, animated: true)
+        }
+      },
+      AlertAction(AlertActionBuilder {
+        $0.title = "Select photo from gallery"
+        $0.style = .default
+      }).get { [weak self] _ in
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+          let imagePickerController = UIImagePickerController()
+          imagePickerController.delegate = self
+          imagePickerController.sourceType = .photoLibrary
+          self?.present(imagePickerController, animated: true)
+        }
+      },
+    ])
+    present(alert, animated: true)
+
+  }
+
   private func logout() {
     AppSetting.shared.logout()
     AppSetting.shared.getMainController()
@@ -189,5 +233,59 @@ final class ProfileTableViewController: UITableViewController {
         self.present(alert, animated: true)
       }
     }
+  }
+}
+
+// MARK: UINavigationControllerDelegate, UIImagePickerControllerDelegate
+
+extension ProfileTableViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+
+  // MARK: Internal
+
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    dismiss(animated: true)
+  }
+
+  func imagePickerController(
+    _ picker: UIImagePickerController,
+    didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+  ) {
+    if let image = info[.originalImage] as? UIImage {
+      selectedImage = image
+      hud.show(in: view)
+      NetworkManagement.uploadProfileImage(image: image) { imageResCode, imageResData in
+        if imageResCode == ResponseCode.ok.rawValue {
+          let thumbnails = self.putUserImageUrl(json: imageResData)
+          print("thumb:", thumbnails)
+          let imageUrl = thumbnails[0]
+          NetworkManagement.putProfileImageUrlWithUser(id: AppSecurity.shared.userID, with: imageUrl) { code, data in
+            if code == ResponseCode.ok.rawValue {
+              self.hud.textLabel.text = "Success upload profile image"
+              self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+              self.hud.show(in: self.view)
+              self.hud.dismiss(afterDelay: 1.0)
+              self.fetchUserInfo()
+            } else {
+              self.presentErrorAlert(with: data)
+            }
+          }
+        } else {
+          self.presentErrorAlert(with: imageResData)
+        }
+      }
+    }
+    dismiss(animated: true)
+  }
+
+  // MARK: Private
+
+  private func putUserImageUrl(json: JSON) -> [String] {
+    var strings = [String]()
+    if let arr = json["thumbnails"].array {
+      arr.forEach { item in
+        strings.append(item.string ?? "")
+      }
+    }
+    return strings
   }
 }

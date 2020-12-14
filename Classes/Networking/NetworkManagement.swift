@@ -161,6 +161,57 @@ struct NetworkManagement {
     }
   }
 
+  public static func putProfileImageUrlWithUser(
+    id: Int,
+    with imageUrl: String,
+    response: @escaping ResponseHandler
+  ) {
+    let requester = HTTPRequester.putProfileImageUrlWithUser(id: id, imageUrl: imageUrl)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func uploadProfileImage(
+    image: UIImage,
+    response: @escaping ((_ code: Int, _ result: JSON) -> Void)
+  ) {
+    let headers: HTTPHeaders = ["Content-type": "multipart/form-data", "Accept": "application/json"]
+    AF.upload(
+      multipartFormData: { multipartFormData in
+        let imageName = NSUUID().uuidString + ".jpg"
+        let avatarData = image.jpegData(compressionQuality: 0.1)!
+        print("data: ", avatarData)
+        print("Filename: ", imageName)
+        multipartFormData.append(
+          avatarData,
+          withName: "filetoupload",
+          fileName: imageName,
+          mimeType: "image/jpeg"
+        )
+
+      },
+      to: URL(string: coreURL + "api/images/profile_image")!,
+      usingThreshold: UInt64.init(),
+      method: .post,
+      headers: headers
+    ).responseJSON { responseData in
+      switch responseData.result {
+      case .success(_):
+        guard let data = responseData.data,
+              let parseJSON = try? JSON(data: data) else { return }
+        var responseCode = ResponseCode.ok.rawValue
+        if let code = parseJSON["code"].int {
+          Log.debug("Response code: ", code)
+          responseCode = code
+        }
+        response(responseCode, parseJSON)
+      case .failure:
+        response(ResponseCode.internalServerError.rawValue, JSON.null)
+      }
+    }
+  }
+
   // MARK: Internal
 
   typealias ResponseHandler = (_ code: Int, _ result: JSON) -> Void
