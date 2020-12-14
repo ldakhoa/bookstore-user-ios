@@ -112,7 +112,7 @@ final class BookDetailController: UIViewController {
 
   private func fetchCart() {
     hud.show(in: view)
-    NetworkManagement.getCartInfoByUser(id: AppSecurity.shared.userID) { code, data in
+    NetworkManagement.getCartInfoByUser { code, data in
       if code == ResponseCode.ok.rawValue {
         self.cartInfo = CartInfo.parseData(json: data)
         self.topContainerView.itemCountLabel.isHidden = self.cartInfo?.booksQuantity ?? 0 > 0 ? false : true
@@ -230,7 +230,7 @@ final class BookDetailController: UIViewController {
       present(loginVC, animated: true)
     }
 
-    NetworkManagement.postCartByUser(id: AppSecurity.shared.userID, bookId: book?.id ?? 1) { code, data in
+    NetworkManagement.postCartByUser(bookId: book?.id ?? 1) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.fetchCart()
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))

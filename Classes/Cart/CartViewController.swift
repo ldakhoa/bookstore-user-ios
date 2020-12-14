@@ -87,7 +87,7 @@ final class CartViewController: UIViewController {
 
   private func fetchCartInfo() {
     hud.show(in: view)
-    NetworkManagement.getCartInfoByUser(id: AppSecurity.shared.userID) { code, data in
+    NetworkManagement.getCartInfoByUser { code, data in
       if code == ResponseCode.ok.rawValue {
         self.cartInfo = CartInfo.parseData(json: data)
         let tabBarVC = self.tabBarController as? MainTabBarController

@@ -25,17 +25,16 @@ protocol Requestable {
 
 enum HTTPRequester {
   case login(email: String, password: String)
-  case signup(username: String, email: String, password: String)
-  case getInformationOfUserWith(id: Int)
-  case updateInformationOfUserWith(id: Int)
+  case getInformationOfUser
+  case updateInformationOfUserWith(param: [String: Any])
   case getBookSearchBy(searchString: String)
   case getBookSearchWithFilterBy(searchString: String, filterType: FilterType)
   case getBookByCategory(category: String)
-  case getCartByUser(id: Int)
-  case postCartByUser(id: Int, bookId: Int)
-  case getCartInfoByUser(id: Int)
+  case getCartByUser
+  case postCartByUser(bookId: Int)
+  case getCartInfoByUser
   case postPaymentOrderByUser(id: Int)
-  case putQuantityOfBookByUser(id: Int, bookId: Int, quantity: Int)
+  case putQuantityOfBookByUser(bookId: Int, quantity: Int)
   case getRecommendBooks
   case getRecommendFromBook(id: Int)
   case postReviewByBook(id: Int, userId: Int, content: String, ratings: Int)
@@ -56,34 +55,21 @@ extension HTTPRequester: Requestable {
     case let .login(email, password):
       let params: [String: String] = ["email": email, "password": password]
       return (
-        path: URL(string: coreURL + "api/users/login")!,
+        path: URL(string: coreURL + "api/auth")!,
         method: .post,
         parameter: params,
         encoding: JSONEncoding.default
       )
-    case let .signup(username, email, password):
-      let params: [String: String] = [
-        "username": username,
-        "email": email,
-        "password": password,
-      ]
+    case .getInformationOfUser:
       return (
-        path: URL(string: coreURL + "api/users/login")!,
-        method: .post,
-        parameter: params,
-        encoding: JSONEncoding.default
-      )
-    case let .getInformationOfUserWith(id):
-      return (
-        path: URL(string: coreURL + "api/users/\(id)")!,
+        path: URL(string: coreURL + "api/users/information")!,
         method: .get,
         parameter: nil,
         encoding: JSONEncoding.default
       )
-    case let .updateInformationOfUserWith(id):
-      let params: [String: Int] = ["id": id]
+    case let .updateInformationOfUserWith(params):
       return (
-        path: URL(string: coreURL + "api/users/\(id)")!,
+        path: URL(string: coreURL + "api/users/information")!,
         method: .put,
         parameter: params,
         encoding: JSONEncoding.default
@@ -109,39 +95,39 @@ extension HTTPRequester: Requestable {
         parameter: nil,
         encoding: JSONEncoding.default
       )
-    case let .getCartByUser(id):
+    case .getCartByUser:
       return (
-        path: URL(string: coreURL + "api/carts/\(id)")!,
+        path: URL(string: coreURL + "api/carts/mine")!,
         method: .get,
         parameter: nil,
         encoding: JSONEncoding.default
       )
-    case let .postCartByUser(id, bookId):
+    case let .postCartByUser(bookId):
       let params: [String: Int] = ["bookId": bookId]
       return (
-        path: URL(string: coreURL + "api/carts/\(id)")!,
+        path: URL(string: coreURL + "api/carts/mine")!,
         method: .post,
         parameter: params,
         encoding: JSONEncoding.default
       )
-    case let .getCartInfoByUser(id):
+    case .getCartInfoByUser:
       return (
-        path: URL(string: coreURL + "api/carts/\(id)/info")!,
+        path: URL(string: coreURL + "api/carts/mine/info")!,
         method: .get,
         parameter: nil,
         encoding: JSONEncoding.default
       )
-    case let .postPaymentOrderByUser(id):
+    case .postPaymentOrderByUser:
       return (
-        path: URL(string: coreURL + "api/carts/\(id)/payment")!,
+        path: URL(string: coreURL + "api/carts/mine/payment")!,
         method: .post,
         parameter: nil,
         encoding: JSONEncoding.default
       )
-    case let .putQuantityOfBookByUser(id, bookId, quantity):
+    case let .putQuantityOfBookByUser(bookId, quantity):
       let params: [String: Int] = ["quantity": quantity]
       return (
-        path: URL(string: coreURL + "api/carts/\(id)/books/\(bookId)")!,
+        path: URL(string: coreURL + "api/carts/mine/books/\(bookId)")!,
         method: .put,
         parameter: params,
         encoding: JSONEncoding.default

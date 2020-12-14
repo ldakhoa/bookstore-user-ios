@@ -70,9 +70,11 @@ struct AppSetting {
 
   static let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
-  func getMainController(with index: Int = 0) {
-    guard let mainTabBarController = AppSetting.Storyboards.Main.mainTabBarController as? MainTabBarController else { return }
-    mainTabBarController.selectedIndex = index
+  func getMainController() {
+//    guard let mainTabBarController = AppSetting.Storyboards.Main.mainTabBarController as? MainTabBarController else { return }
+//    AppSetting.appDelegate?.window?.rootViewController = mainTabBarController
+//    AppSetting.appDelegate?.window?.makeKeyAndVisible()
+    let mainTabBarController = MainTabBarController()
     AppSetting.appDelegate?.window?.rootViewController = mainTabBarController
     AppSetting.appDelegate?.window?.makeKeyAndVisible()
   }
@@ -81,5 +83,6 @@ struct AppSetting {
     AppSecurity.shared.userID = -1
     AppSecurity.shared.isAuthorized = false
     AppSecurity.shared.isUserInfoExist = false
+    AppSecurity.shared.token = ""
   }
 }

@@ -22,9 +22,7 @@ final class ProfileNotLoginController: UIViewController {
   @IBAction
   private func didTappedLoginButton(_ sender: Any) {
     guard let vc = AppSetting.Storyboards.Registration.login as? LoginViewController else { return }
-    present(vc, animated: true) {
-      vc.selectedIndex = self.selectedIndex
-    }
+    present(vc, animated: true)
   }
 
 }

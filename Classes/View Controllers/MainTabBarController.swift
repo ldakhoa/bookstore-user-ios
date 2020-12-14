@@ -14,7 +14,9 @@ final class MainTabBarController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    fetchCart()
+    if AppSecurity.shared.isAuthorized == true {
+      fetchCart()
+    }
 
     tabBar.tintColor = Styles.Colors.black.color
     tabBarItem.badgeColor = Styles.Colors.Gradient.color3Wo
@@ -68,7 +70,7 @@ final class MainTabBarController: UITabBarController {
   private var cartInfo: CartInfo?
 
   private func fetchCart() {
-    NetworkManagement.getCartInfoByUser(id: AppSecurity.shared.userID) { code, data in
+    NetworkManagement.getCartInfoByUser { code, data in
       if code == ResponseCode.ok.rawValue {
         self.cartInfo = CartInfo.parseData(json: data)
         if let tabItems = self.tabBar.items {

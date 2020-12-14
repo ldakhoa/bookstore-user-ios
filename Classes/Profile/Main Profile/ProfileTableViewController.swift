@@ -15,7 +15,7 @@ final class ProfileTableViewController: UITableViewController {
 
   // MARK: Internal
 
-  var user = User()
+  var user: User?
   let hud = JGProgressHUD(style: .dark)
   var selectedImage: UIImage?
 
@@ -66,13 +66,13 @@ final class ProfileTableViewController: UITableViewController {
 
   override func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
     let headerView = ProfileHeaderView()
-    headerView.nameLabel.text = user.username.capitalizingFirstLetter()
+    headerView.nameLabel.text = user?.username.capitalizingFirstLetter()
     headerView.profileImageView.addGestureRecognizer(UITapGestureRecognizer(
       target: self,
       action: #selector(didTappedProfileImageView)
     ))
     headerView.profileImageView.isUserInteractionEnabled = true
-    if let url = URL(string: user.profileImageUrl) {
+    if let url = URL(string: user?.profileImageUrl ?? "") {
       headerView.profileImageView.sd_setImage(with: url)
     }
     headerView.showProfileButton.addTarget(
@@ -99,7 +99,8 @@ final class ProfileTableViewController: UITableViewController {
       navController.setNavigationBarHidden(true, animated: false)
       present(navController, animated: true)
     case Sections.shippingAddress.rawValue:
-      let listOfAddressVC = AppSetting.Storyboards.Order.listOfAddressVC
+      guard let listOfAddressVC = AppSetting.Storyboards.Order.listOfAddressVC as? ListOfAddressController else { return }
+      listOfAddressVC.user = user
       let navController = UINavigationController(rootViewController: listOfAddressVC)
       navController.setNavigationBarHidden(true, animated: false)
       navController.modalPresentationStyle = .fullScreen
@@ -217,8 +218,7 @@ final class ProfileTableViewController: UITableViewController {
   }
 
   private func fetchUserInfo() {
-    guard let userId = AppSecurity.shared.userID else { return }
-    NetworkManagement.getInformationOfUserWith(id: userId) { code, data in
+    NetworkManagement.getInformationOfUser { code, data in
       if code == ResponseCode.ok.rawValue {
         self.user = User.parseData(json: data["user"])
         self.tableView.reloadData()

@@ -23,7 +23,7 @@ final class LoginViewController: UIViewController {
   @IBOutlet weak var fieldView: UIView!
   @IBOutlet weak var separatedFieldView: UIView!
 
-  var selectedIndex: Int?
+//  var selectedIndex: Int?
   var isInBookDetail: Bool = false
 
   let hud = JGProgressHUD(style: .dark)
@@ -128,18 +128,11 @@ final class LoginViewController: UIViewController {
         if self.isInBookDetail {
           self.dismiss(animated: true)
         }
-        AppSetting.shared.getMainController(with: self.selectedIndex ?? 0)
+        AppSetting.shared.getMainController()
         self.hud.dismiss()
         Log.debug("Login response \(data)")
       } else {
-        let message = data["message"].stringValue
-        let alert = UIAlertController.configured(
-          title: "",
-          message: message,
-          preferredStyle: .alert
-        )
-        alert.addAction(AlertAction.ok())
-        self.present(alert, animated: true)
+        self.presentErrorAlert(with: data)
         self.hud.dismiss()
       }
     }

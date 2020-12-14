@@ -36,23 +36,18 @@ struct NetworkManagement {
     }
   }
 
-  public static func signup(
-    username: String,
-    email: String,
-    password: String,
-    response: @escaping ResponseHandler
-  ) {
-    let requester = HTTPRequester.signup(username: username, email: email, password: password)
+  public static func getInformationOfUser(response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getInformationOfUser
     callAPI(requester) { code, json in
       response(code, json)
     }
   }
 
-  public static func getInformationOfUserWith(
-    id: Int,
+  public static func updateInformationOfUserWith(
+    params: [String: Any],
     response: @escaping ResponseHandler
   ) {
-    let requester = HTTPRequester.getInformationOfUserWith(id: id)
+    let requester = HTTPRequester.updateInformationOfUserWith(param: params)
     callAPI(requester) { code, json in
       response(code, json)
     }
@@ -93,21 +88,21 @@ struct NetworkManagement {
   }
 
   public static func getCartByUser(id: Int, response: @escaping ResponseHandler) {
-    let requester = HTTPRequester.getCartByUser(id: id)
+    let requester = HTTPRequester.getCartByUser
     callAPI(requester) { code, json in
       response(code, json)
     }
   }
 
-  public static func postCartByUser(id: Int, bookId: Int, response: @escaping ResponseHandler) {
-    let requester = HTTPRequester.postCartByUser(id: id, bookId: bookId)
+  public static func postCartByUser(bookId: Int, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.postCartByUser(bookId: bookId)
     callAPI(requester) { code, json in
       response(code, json)
     }
   }
 
-  public static func getCartInfoByUser(id: Int, response: @escaping ResponseHandler) {
-    let requester = HTTPRequester.getCartInfoByUser(id: id)
+  public static func getCartInfoByUser(response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getCartInfoByUser
     callAPI(requester) { code, json in
       response(code, json)
     }
@@ -121,12 +116,11 @@ struct NetworkManagement {
   }
 
   public static func putQuantityOfBookByUser(
-    id: Int,
     at bookId: Int,
     quantity: Int,
     response: @escaping ResponseHandler
   ) {
-    let requester = HTTPRequester.putQuantityOfBookByUser(id: id, bookId: bookId, quantity: quantity)
+    let requester = HTTPRequester.putQuantityOfBookByUser(bookId: bookId, quantity: quantity)
     callAPI(requester) { code, json in
       response(code, json)
     }
@@ -186,7 +180,7 @@ struct NetworkManagement {
     image: UIImage,
     response: @escaping ((_ code: Int, _ result: JSON) -> Void)
   ) {
-    let headers: HTTPHeaders = ["Content-type": "multipart/form-data", "Accept": "application/json"]
+//    let headers: HTTPHeaders = ["Content-type": "multipart/form-data", "Accept": "application/json"]
     AF.upload(
       multipartFormData: { multipartFormData in
         let imageName = NSUUID().uuidString + ".jpg"
@@ -199,12 +193,11 @@ struct NetworkManagement {
           fileName: imageName,
           mimeType: "image/jpeg"
         )
-
       },
       to: URL(string: coreURL + "api/images/profile_image")!,
       usingThreshold: UInt64.init(),
       method: .post,
-      headers: headers
+      headers: getHeader()
     ).responseJSON { responseData in
       switch responseData.result {
       case .success(_):
@@ -228,6 +221,18 @@ struct NetworkManagement {
 
   // MARK: Private
 
+  private static func getHeader() -> HTTPHeaders {
+    var header: HTTPHeaders = [
+      "content-type": "application/json",
+      "Accept": "application/json",
+    ]
+    if AppSecurity.shared.token.isEmpty == false {
+      header["authorization"] = "Bearer " + AppSecurity.shared.token
+    }
+
+    return header
+  }
+
   private static func callAPI(
     _ request: HTTPRequester,
     response: @escaping ((_ code: Int, _ result: JSON) -> Void)
@@ -238,7 +243,8 @@ struct NetworkManagement {
       request.params().path,
       method: request.params().method,
       parameters: request.params().parameter,
-      encoding: request.params().encoding
+      encoding: request.params().encoding,
+      headers: getHeader()
     ).responseJSON { responseData in
       switch responseData.result {
       case .success:
@@ -248,6 +254,10 @@ struct NetworkManagement {
         if let code = parseJSON["code"].int {
           Log.debug("Response code: ", code)
           responseCode = code
+        }
+
+        if let token = parseJSON["token"].string {
+          AppSecurity.shared.token = token
         }
         response(responseCode, parseJSON)
       case .failure:

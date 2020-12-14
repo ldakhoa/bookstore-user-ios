@@ -15,6 +15,7 @@ final class ListOfAddressController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var dismissButton: UIButton!
+  var user: User?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -62,7 +63,8 @@ final class ListOfAddressController: UIViewController {
   }
 
   private func editShippingAddress() {
-    let editAddressVC = AppSetting.Storyboards.Order.editAddressVC
+    guard let editAddressVC = AppSetting.Storyboards.Order.editAddressVC as? EditAddressController else { return }
+    editAddressVC.user = user
     navigationController?.pushViewController(editAddressVC, animated: true)
   }
 
@@ -72,7 +74,7 @@ final class ListOfAddressController: UIViewController {
 
 extension ListOfAddressController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    4
+    1
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

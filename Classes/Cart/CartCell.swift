@@ -84,7 +84,6 @@ final class CartCell: UITableViewCell {
   private func updateQuantity(_ quantity: Int, isIncreased: Bool) {
     delegate?.didFinishedTapUpdateAmountButton()
     NetworkManagement.putQuantityOfBookByUser(
-      id: AppSecurity.shared.userID,
       at: book?.id ?? 0,
       quantity: quantity
     ) { code, data in

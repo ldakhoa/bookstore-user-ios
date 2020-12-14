@@ -14,6 +14,7 @@ final class EditAddressController: UIViewController {
   @IBOutlet var tableView: UITableView!
   let countryPickerView = CountryPickerView()
   var country: Country?
+  var user: User?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -98,31 +99,56 @@ extension EditAddressController: UITableViewDataSource {
     case Sections.name.rawValue:
       cell.titleLabel.text = Sections.name.getTitleText()
       cell.editTextField.placeholder = Sections.name.getPlaceHolderText()
-      cell.editTextField.text = "Khoa Le"
+      cell.editTextField.text = user?.username
+      cell.editTextField.addTarget(self, action: #selector(handleNameChange), for: .editingChanged)
     case Sections.phoneNumber.rawValue:
       cell.titleLabel.text = Sections.phoneNumber.getTitleText()
       cell.editTextField.keyboardType = .phonePad
+      cell.editTextField.text = "\(user?.phone ?? 0912312841)"
       cell.editTextField.placeholder = Sections.phoneNumber.getPlaceHolderText()
+      cell.editTextField.addTarget(
+        self,
+        action: #selector(handlePhoneNumberChange),
+        for: .editingChanged
+      )
     case Sections.specificAddress.rawValue:
       cell.titleLabel.text = Sections.specificAddress.getTitleText()
       cell.editTextField.placeholder = Sections.specificAddress.getPlaceHolderText()
+      cell.editTextField.addTarget(
+        self,
+        action: #selector(handleAddressChange),
+        for: .editingChanged
+      )
+
     case Sections.cityOrProvide.rawValue:
       cell.titleLabel.text = Sections.cityOrProvide.getTitleText()
       cell.editTextField.placeholder = Sections.cityOrProvide.getPlaceHolderText()
+      cell.editTextField.addTarget(self, action: #selector(handleCityChange), for: .editingChanged)
     case Sections.district.rawValue:
       cell.titleLabel.text = Sections.district.getTitleText()
       cell.editTextField.placeholder = Sections.district.getPlaceHolderText()
+      cell.editTextField.addTarget(
+        self,
+        action: #selector(handleDistrictChange),
+        for: .editingChanged
+      )
     case Sections.ward.rawValue:
       cell.titleLabel.text = Sections.ward.getTitleText()
       cell.editTextField.placeholder = Sections.ward.getPlaceHolderText()
+      cell.editTextField.addTarget(self, action: #selector(handleWardChange), for: .editingChanged)
     case Sections.postalCode.rawValue:
       cell.titleLabel.text = Sections.postalCode.getTitleText()
       cell.editTextField.placeholder = Sections.postalCode.getPlaceHolderText()
+      cell.editTextField.addTarget(
+        self,
+        action: #selector(handlePostalCodeChange),
+        for: .editingChanged
+      )
     case Sections.country.rawValue:
       cell.titleLabel.text = Sections.country.getTitleText()
       cell.editTextField.placeholder = Sections.country.getPlaceHolderText()
       cell.editTextField.isUserInteractionEnabled = false
-      cell.editTextField.text = country?.name
+      cell.editTextField.text = "Vietnam"
     default:
       ()
     }
@@ -192,6 +218,42 @@ extension EditAddressController: UITableViewDataSource {
       }
     }
   }
+
+  @objc
+  private func handleNameChange(textField: UITextField) {
+    user?.username = textField.text ?? ""
+  }
+
+  @objc
+  private func handlePhoneNumberChange(textField: UITextField) {
+    user?.phone = Int(textField.text ?? "") ?? 0
+  }
+
+  @objc
+  private func handleAddressChange(textField: UITextField) {
+
+  }
+
+  @objc
+  private func handleCityChange(textField: UITextField) {
+
+  }
+
+  @objc
+  private func handleDistrictChange(textField: UITextField) {
+
+  }
+
+  @objc
+  private func handleWardChange(textField: UITextField) {
+
+  }
+
+  @objc
+  private func handlePostalCodeChange(textField: UITextField) {
+
+  }
+
 }
 
 // MARK: UITableViewDelegate

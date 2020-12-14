@@ -16,6 +16,7 @@ final class AppSecurity {
     case userID
     case isAuthorized
     case isUserInfoExist
+    case token
   }
 
   static let shared = AppSecurity()
@@ -41,6 +42,14 @@ final class AppSecurity {
       defaults.object(forKey: Keys.isAuthorized.rawValue) == nil ? false : (defaults.object(forKey: Keys.isAuthorized.rawValue) as? Bool)!
     } set {
       defaults.set(newValue, forKey: Keys.isAuthorized.rawValue)
+    }
+  }
+
+  var token: String! {
+    get {
+      defaults.object(forKey: Keys.token.rawValue) == nil ? "" : (defaults.object(forKey: Keys.token.rawValue) as? String)!
+    } set {
+      defaults.set(newValue, forKey: Keys.token.rawValue)
     }
   }
 
