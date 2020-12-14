@@ -82,6 +82,7 @@ extension ListOfAddressController: UITableViewDataSource {
       withIdentifier: "ListOfAddressesCell",
       for: indexPath
     ) as? ListOfAddressesCell else { return UITableViewCell() }
+    cell.user = user
     return cell
   }
 }

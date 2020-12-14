@@ -15,6 +15,16 @@ final class ListOfAddressesCell: UITableViewCell {
   @IBOutlet weak var countryLabel: UILabel!
   @IBOutlet weak var phoneNumberLabel: UILabel!
 
+  var user: User? {
+    didSet {
+      nameLabel.text = user?.username
+      specificAddressLabel.text = "\(user?.address ?? "") Ward \(user?.ward ?? "") District \(user?.district ?? "")"
+      cityAndZIPLabel.text = "\(user?.city ?? "") \(user?.zipCode ?? 700000)"
+      countryLabel.text = user?.country
+      phoneNumberLabel.text = "Phone number: \(user?.phone ?? 091323133)"
+    }
+  }
+
   override func awakeFromNib() {
     super.awakeFromNib()
   }

@@ -6,11 +6,15 @@
 //
 
 import CountryPickerView
+import JGProgressHUD
 import UIKit
 
 // MARK: - EditAddressController
 
 final class EditAddressController: UIViewController {
+
+  // MARK: Internal
+
   @IBOutlet var tableView: UITableView!
   let countryPickerView = CountryPickerView()
   var country: Country?
@@ -59,13 +63,34 @@ final class EditAddressController: UIViewController {
     navigationController?.setNavigationBarHidden(true, animated: animated)
   }
 
+  // MARK: Private
+
   @objc
-  func didTappedSaveButton() {
-    navigationController?.popViewController(animated: true)
+  private func didTappedSaveButton() {
+    let params: [String: Any] = [
+      "userName": user?.username ?? "",
+      "address": user?.address ?? "",
+      "phone": user?.phone ?? 012359341,
+      "city": user?.city ?? "",
+      "district": user?.district ?? "",
+      "ward": user?.ward ?? "",
+      "zipCode": user?.zipCode ?? "",
+      "country": user?.country ?? "Vietnam",
+    ]
+    let hud = JGProgressHUD(style: .dark)
+    hud.show(in: view)
+    NetworkManagement.updateInformationOfUserWith(params: params) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        hud.dismiss()
+        self.navigationController?.popViewController(animated: true)
+      } else {
+        self.presentErrorAlert(with: data)
+      }
+    }
   }
 
   @objc
-  func didTappedDismissButton() {
+  private func didTappedDismissButton() {
     navigationController?.popViewController(animated: true)
   }
 }
@@ -119,11 +144,12 @@ extension EditAddressController: UITableViewDataSource {
         action: #selector(handleAddressChange),
         for: .editingChanged
       )
-
+      cell.editTextField.text = user?.address
     case Sections.cityOrProvide.rawValue:
       cell.titleLabel.text = Sections.cityOrProvide.getTitleText()
       cell.editTextField.placeholder = Sections.cityOrProvide.getPlaceHolderText()
       cell.editTextField.addTarget(self, action: #selector(handleCityChange), for: .editingChanged)
+      cell.editTextField.text = user?.city
     case Sections.district.rawValue:
       cell.titleLabel.text = Sections.district.getTitleText()
       cell.editTextField.placeholder = Sections.district.getPlaceHolderText()
@@ -136,6 +162,7 @@ extension EditAddressController: UITableViewDataSource {
       cell.titleLabel.text = Sections.ward.getTitleText()
       cell.editTextField.placeholder = Sections.ward.getPlaceHolderText()
       cell.editTextField.addTarget(self, action: #selector(handleWardChange), for: .editingChanged)
+      cell.editTextField.text = user?.ward
     case Sections.postalCode.rawValue:
       cell.titleLabel.text = Sections.postalCode.getTitleText()
       cell.editTextField.placeholder = Sections.postalCode.getPlaceHolderText()
@@ -144,11 +171,12 @@ extension EditAddressController: UITableViewDataSource {
         action: #selector(handlePostalCodeChange),
         for: .editingChanged
       )
+      cell.editTextField.text = "\(user?.zipCode ?? 700000)"
     case Sections.country.rawValue:
       cell.titleLabel.text = Sections.country.getTitleText()
       cell.editTextField.placeholder = Sections.country.getPlaceHolderText()
       cell.editTextField.isUserInteractionEnabled = false
-      cell.editTextField.text = "Vietnam"
+      cell.editTextField.text = user?.country
     default:
       ()
     }
@@ -231,27 +259,27 @@ extension EditAddressController: UITableViewDataSource {
 
   @objc
   private func handleAddressChange(textField: UITextField) {
-
+    user?.address = textField.text
   }
 
   @objc
   private func handleCityChange(textField: UITextField) {
-
+    user?.city = textField.text
   }
 
   @objc
   private func handleDistrictChange(textField: UITextField) {
-
+    user?.district = textField.text
   }
 
   @objc
   private func handleWardChange(textField: UITextField) {
-
+    user?.ward = textField.text
   }
 
   @objc
   private func handlePostalCodeChange(textField: UITextField) {
-
+    user?.zipCode = Int(textField.text ?? "") ?? 700000
   }
 
 }
