@@ -11,6 +11,7 @@ import UIKit
 
 protocol SearchViewControllerDelegate: AnyObject {
   func didTappedSearchCell(_ books: [Book], searchText: String)
+  func didTappedCancelButton()
 }
 
 // MARK: - SearchViewController
@@ -69,7 +70,9 @@ final class SearchViewController: UIViewController {
 
   @objc
   private func didTappedCancelButton() {
-    dismiss(animated: true)
+    dismiss(animated: true) {
+      self.delegate?.didTappedCancelButton()
+    }
   }
 
   @objc

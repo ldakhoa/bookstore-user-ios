@@ -118,8 +118,8 @@ final class HomeViewController: UIViewController {
     }
 
     dispatchGroup.notify(queue: .main) {
-      hud.dismiss()
       self.tableView.reloadData()
+      hud.dismiss()
     }
 
   }

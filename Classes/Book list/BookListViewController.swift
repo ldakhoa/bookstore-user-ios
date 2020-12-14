@@ -48,10 +48,10 @@ final class BookListViewController: UIViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
 
-    if shouldPresentSearchController {
-      didTappedSearchGradientView()
-      shouldPresentSearchController = false
-    }
+//    if shouldPresentSearchController {
+//      didTappedSearchGradientView()
+//      shouldPresentSearchController = false
+//    }
 
     searchGradientView.addGestureRecognizer(UITapGestureRecognizer(
       target: self,
@@ -63,6 +63,15 @@ final class BookListViewController: UIViewController {
       action: #selector(didTappedBackButton),
       for: .touchUpInside
     )
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    if searchGradientView.searchTextField.text?.count == 0 && shouldPresentSearchController {
+      didTappedSearchGradientView()
+      shouldPresentSearchController = false
+    }
   }
 
   // MARK: Private
@@ -284,6 +293,12 @@ extension BookListViewController: UICollectionViewDelegateFlowLayout {
 // MARK: SearchViewControllerDelegate
 
 extension BookListViewController: SearchViewControllerDelegate {
+  func didTappedCancelButton() {
+    if searchGradientView.searchTextField.text?.count == 0 && books.count == 0 {
+      navigationController?.popViewController(animated: true)
+    }
+  }
+
   func didTappedSearchCell(_ books: [Book], searchText: String) {
     searchGradientView.searchTextField.text = searchText
     self.books = books

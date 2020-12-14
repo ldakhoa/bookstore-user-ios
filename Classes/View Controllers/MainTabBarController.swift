@@ -22,7 +22,6 @@ final class MainTabBarController: UITabBarController {
     let cartNotLoginVC = AppSetting.Storyboards.Cart.notLoginVC
 
     let homeVC = AppSetting.Storyboards.Home.homeVC
-    let searchVC = AppSetting.Storyboards.BookList.bookListVC
     let profileVC = AppSecurity.shared.isAuthorized == false ? profileNotLoginVC : ProfileTableViewController()
     let categoryVC = AppSetting.Storyboards.Category.categoryVC
     let cartVC = AppSecurity.shared.isAuthorized == false ? cartNotLoginVC : AppSetting.Storyboards.Cart.cartVC

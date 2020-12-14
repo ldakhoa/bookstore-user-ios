@@ -17,7 +17,9 @@ final class CategoryViewController: UIViewController {
 
   @IBOutlet var searchGradientView: SearchGradientView! {
     didSet {
+      searchGradientView.searchTextField.isUserInteractionEnabled = false
       searchGradientView.searchTextField.placeholder = "Category"
+      searchGradientView.layoutForOtherViewController()
     }
   }
 
@@ -29,6 +31,12 @@ final class CategoryViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.tableFooterView = UIView()
+
+    searchGradientView.addGestureRecognizer(UITapGestureRecognizer(
+      target: self,
+      action: #selector(didTappedSearchGradientView)
+    ))
+    searchGradientView.isUserInteractionEnabled = true
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +62,14 @@ final class CategoryViewController: UIViewController {
   ]
 
   private let cellID = "CategoryCell"
+
+  @objc
+  private func didTappedSearchGradientView() {
+    guard let bookListVC = AppSetting.Storyboards.BookList.bookListVC as? BookListViewController else { return }
+    bookListVC.shouldPresentSearchController = true
+    navigationController?.pushViewController(bookListVC, animated: true)
+  }
+
 }
 
 // MARK: UITableViewDataSource
