@@ -38,6 +38,7 @@ enum HTTPRequester {
   case getRecommendBooks
   case getRecommendFromBook(id: Int)
   case postReviewByBook(id: Int, userId: Int, content: String, ratings: Int)
+  case getReviewsByBook(id: Int)
 }
 
 // MARK: Requestable
@@ -156,6 +157,13 @@ extension HTTPRequester: Requestable {
         path: URL(string: coreURL + "api/books/\(id)/reviews")!,
         method: .post,
         parameter: params,
+        encoding: JSONEncoding.default
+      )
+    case let .getReviewsByBook(id):
+      return (
+        path: URL(string: coreURL + "api/books/\(id)/reviews")!,
+        method: .get,
+        parameter: nil,
         encoding: JSONEncoding.default
       )
     }

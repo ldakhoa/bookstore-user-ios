@@ -16,6 +16,7 @@ final class User {
   var address: String = ""
   var gender: String = ""
   var phone: Int = -1
+  var profileImageUrl: String = ""
 
   static func parseData(json: JSON) -> User {
     let user = User()
@@ -26,6 +27,7 @@ final class User {
     user.address = json["address"].string ?? ""
     user.gender = json["gender"].string ?? ""
     user.phone = json["phone"].int ?? -1
+    user.profileImageUrl = json["profile_image_url"].string ?? ""
     return user
   }
 }

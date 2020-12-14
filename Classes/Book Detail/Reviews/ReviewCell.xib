@@ -26,43 +26,58 @@
                 <rect key="frame" x="0.0" y="0.0" width="332" height="255"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AJ3-VO-m8v">
-                        <rect key="frame" x="56" y="22.5" width="59.5" height="19"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="YzS-7v-DVn">
+                        <rect key="frame" x="16" y="16" width="300" height="75.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Khoa Le" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRr-Hr-GE3">
-                                <rect key="frame" x="0.0" y="0.0" width="59.5" height="19"/>
-                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
-                                <color key="textColor" name="black"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XQo-4l-tqM">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="32"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="wla-KB-idr">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="SRe-eT-jBC"/>
+                                            <constraint firstAttribute="width" constant="32" id="wBg-Xq-M1Q"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AJ3-VO-m8v">
+                                        <rect key="frame" x="40" y="0.0" width="60" height="32"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRr-Hr-GE3">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="16"/>
+                                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
+                                                <color key="textColor" name="black"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Epg-1u-PS3">
+                                                <rect key="frame" x="0.0" y="16" width="60" height="16"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="wIN-Hy-yet">
+                                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="16" id="08A-bW-cYT"/>
+                                                            <constraint firstAttribute="height" constant="16" id="qE7-DQ-Llt"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roJ-uy-F6b">
+                                                        <rect key="frame" x="18" y="0.0" width="42" height="16"/>
+                                                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                        <color key="textColor" name="black"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="1 hour ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Kf-AS-bht">
+                                <rect key="frame" x="0.0" y="36" width="67.5" height="16.5"/>
+                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="14"/>
+                                <color key="textColor" name="gray"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                        </subviews>
-                    </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMH-ot-2h8">
-                        <rect key="frame" x="16" y="74" width="300" height="165"/>
-                        <string key="text">Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text Review text</string>
-                        <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
-                        <color key="textColor" name="black"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="wla-KB-idr">
-                        <rect key="frame" x="16" y="16" width="32" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="32" id="SRe-eT-jBC"/>
-                            <constraint firstAttribute="width" constant="32" id="wBg-Xq-M1Q"/>
-                        </constraints>
-                    </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Epg-1u-PS3">
-                        <rect key="frame" x="16" y="54" width="40.5" height="16"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="wIN-Hy-yet">
-                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="08A-bW-cYT"/>
-                                    <constraint firstAttribute="height" constant="16" id="qE7-DQ-Llt"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roJ-uy-F6b">
-                                <rect key="frame" x="18" y="0.0" width="22.5" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best book I've read!" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMH-ot-2h8">
+                                <rect key="frame" x="0.0" y="56.5" width="143.5" height="19"/>
                                 <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
                                 <color key="textColor" name="black"/>
                                 <nil key="highlightedColor"/>
@@ -71,22 +86,17 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="wla-KB-idr" firstAttribute="top" secondItem="A9C-tY-d6d" secondAttribute="top" constant="16" id="BLk-aS-roz"/>
-                    <constraint firstAttribute="bottom" secondItem="dMH-ot-2h8" secondAttribute="bottom" constant="16" id="RRa-ai-IRW"/>
-                    <constraint firstItem="AJ3-VO-m8v" firstAttribute="centerY" secondItem="wla-KB-idr" secondAttribute="centerY" id="fHx-aj-dga"/>
-                    <constraint firstAttribute="trailing" secondItem="dMH-ot-2h8" secondAttribute="trailing" constant="16" id="fPM-xX-DAi"/>
-                    <constraint firstItem="wla-KB-idr" firstAttribute="leading" secondItem="A9C-tY-d6d" secondAttribute="leading" constant="16" id="hjZ-MP-MhW"/>
-                    <constraint firstItem="Epg-1u-PS3" firstAttribute="top" secondItem="wla-KB-idr" secondAttribute="bottom" constant="6" id="ib5-B9-Gmh"/>
-                    <constraint firstItem="dMH-ot-2h8" firstAttribute="leading" secondItem="A9C-tY-d6d" secondAttribute="leading" constant="16" id="j0G-Ub-nKn"/>
-                    <constraint firstItem="AJ3-VO-m8v" firstAttribute="leading" secondItem="wla-KB-idr" secondAttribute="trailing" constant="8" id="n0g-kO-onP"/>
-                    <constraint firstItem="Epg-1u-PS3" firstAttribute="leading" secondItem="A9C-tY-d6d" secondAttribute="leading" constant="16" id="v6I-4t-17E"/>
-                    <constraint firstItem="dMH-ot-2h8" firstAttribute="top" secondItem="Epg-1u-PS3" secondAttribute="bottom" constant="4" id="zOq-ki-VBC"/>
+                    <constraint firstItem="YzS-7v-DVn" firstAttribute="leading" secondItem="A9C-tY-d6d" secondAttribute="leading" constant="16" id="86o-xz-gkm"/>
+                    <constraint firstAttribute="trailing" secondItem="YzS-7v-DVn" secondAttribute="trailing" constant="16" id="pr9-rO-DYa"/>
+                    <constraint firstItem="YzS-7v-DVn" firstAttribute="top" secondItem="A9C-tY-d6d" secondAttribute="top" constant="16" id="x2b-Hx-uSi"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="332" height="255"/>
             <connections>
                 <outlet property="contentLabel" destination="dMH-ot-2h8" id="gDw-Hi-qAe"/>
+                <outlet property="nameLabel" destination="oRr-Hr-GE3" id="znq-en-x1d"/>
                 <outlet property="ratingLabel" destination="roJ-uy-F6b" id="5Cz-XX-M7e"/>
+                <outlet property="timeLabel" destination="4Kf-AS-bht" id="YH1-8d-535"/>
                 <outlet property="userImageView" destination="wla-KB-idr" id="yMB-fb-YUh"/>
             </connections>
             <point key="canvasLocation" x="-47.826086956521742" y="184.48660714285714"/>
@@ -97,6 +107,9 @@
         <image name="user_placeholder" width="64" height="64"/>
         <namedColor name="black">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray">
+            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

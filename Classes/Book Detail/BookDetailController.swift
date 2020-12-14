@@ -18,6 +18,8 @@ final class BookDetailController: UIViewController {
   var book: Book?
   var recommendBooks = [Book]()
   var recommendBookFromBookId = [Book]()
+  var reviews = [Review]()
+
   let hud = JGProgressHUD(style: .dark)
   let cellsID: [String] = [
     "BookDetailMainCell",
@@ -49,6 +51,10 @@ final class BookDetailController: UIViewController {
     return tableView
   }()
 
+  var popRecognizer: InteractivePopRecognizer?
+
+  var cartInfo: CartInfo?
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -76,6 +82,7 @@ final class BookDetailController: UIViewController {
     fetchCart()
     fetchRecommendBooks()
     fetchRecommendBooksWithBookId()
+    fetchReviews()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -90,9 +97,18 @@ final class BookDetailController: UIViewController {
 
   // MARK: Private
 
-  private var popRecognizer: InteractivePopRecognizer?
-
-  private var cartInfo: CartInfo?
+  private func fetchReviews() {
+    hud.show(in: view)
+    NetworkManagement.getReviewByBook(id: book?.id ?? -1) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.reviews = Review.parseListOfReview(data)
+        self.tableView.reloadData()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(with: data)
+      }
+    }
+  }
 
   private func fetchCart() {
     hud.show(in: view)
@@ -272,6 +288,7 @@ extension BookDetailController: UITableViewDataSource {
     } else if indexPath.section == 2 {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: cellsID[3], for: indexPath) as? BookDetailReviewCell else { return UITableViewCell() }
       cell.selectionStyle = .none
+      cell.reviewsHorizontalController.reviews = reviews
       return cell
     } else if indexPath.section == 3 {
       guard let cell = tableView.dequeueReusableCell(
