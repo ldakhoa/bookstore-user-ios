@@ -68,6 +68,16 @@ struct NetworkManagement {
     }
   }
 
+  public static func getBookByCategory(
+    _ category: String,
+    response: @escaping ResponseHandler
+  ) {
+    let requester = HTTPRequester.getBookByCategory(category: category)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
   public static func getBookSearchWithFilterBy(
     searchString: String,
     filterType: FilterType,

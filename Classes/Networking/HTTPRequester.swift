@@ -30,6 +30,7 @@ enum HTTPRequester {
   case updateInformationOfUserWith(id: Int)
   case getBookSearchBy(searchString: String)
   case getBookSearchWithFilterBy(searchString: String, filterType: FilterType)
+  case getBookByCategory(category: String)
   case getCartByUser(id: Int)
   case postCartByUser(id: Int, bookId: Int)
   case getCartInfoByUser(id: Int)
@@ -90,6 +91,13 @@ extension HTTPRequester: Requestable {
     case let .getBookSearchBy(searchString):
       return (
         path: URL(string: coreURL + "api/books/?search=\(searchString)")!,
+        method: .get,
+        parameter: nil,
+        encoding: JSONEncoding.default
+      )
+    case let .getBookByCategory(category):
+      return (
+        path: URL(string: coreURL + "api/books/?category=\(category)&filter=category&limit=20")!,
         method: .get,
         parameter: nil,
         encoding: JSONEncoding.default

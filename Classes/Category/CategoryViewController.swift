@@ -39,16 +39,6 @@ final class CategoryViewController: UIViewController {
     searchGradientView.isUserInteractionEnabled = true
   }
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    navigationController?.setNavigationBarHidden(true, animated: animated)
-  }
-
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
-    navigationController?.setNavigationBarHidden(false, animated: animated)
-  }
-
   // MARK: Private
 
   private let categories: [Category] = [
@@ -91,5 +81,14 @@ extension CategoryViewController: UITableViewDataSource {
 extension CategoryViewController: UITableViewDelegate {
   func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
     50
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    guard let bookListVC = AppSetting.Storyboards.BookList.bookListVC as? BookListViewController else { return }
+    bookListVC.shouldPresentSearchController = false
+    bookListVC.category = categories[indexPath.row].categoryName
+    bookListVC.isPresetedFromCategory = true
+    navigationController?.pushViewController(bookListVC, animated: true)
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 }

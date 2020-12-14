@@ -5,6 +5,7 @@
 //  Created by Khoa Le on 12/10/2020.
 //
 
+import JGProgressHUD
 import UIKit
 
 // MARK: - BookListViewController
@@ -18,6 +19,8 @@ final class BookListViewController: UIViewController {
   var isAscending = true
   var isChoosingPrice = false
   var isChoosingRatings = false
+  var isPresetedFromCategory = false
+  var category: String?
 
   @IBOutlet var tableView: UITableView!
   @IBOutlet var collectionView: UICollectionView!
@@ -63,6 +66,10 @@ final class BookListViewController: UIViewController {
       action: #selector(didTappedBackButton),
       for: .touchUpInside
     )
+
+    if isPresetedFromCategory {
+      fetchBookByCategory()
+    }
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +82,19 @@ final class BookListViewController: UIViewController {
   }
 
   // MARK: Private
+
+  private func fetchBookByCategory() {
+    let hud = JGProgressHUD(style: .dark)
+    NetworkManagement.getBookByCategory(category ?? "") { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.books = Book.parseData(json: data)
+        self.tableView.reloadData()
+        hud.dismiss()
+      } else {
+        self.presentErrorAlert(with: data)
+      }
+    }
+  }
 
   @objc
   private func didTappedBackButton() {
