@@ -638,9 +638,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GT5-0g-NiH">
-                                <rect key="frame" x="24" y="459.5" width="327" height="50"/>
-                                <color key="backgroundColor" name="primary"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GT5-0g-NiH">
+                                <rect key="frame" x="24" y="523.5" width="327" height="50"/>
+                                <color key="backgroundColor" name="gray"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BRy-xu-WSO"/>
                                 </constraints>
@@ -658,7 +658,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2QN-JU-UCo">
-                                <rect key="frame" x="24" y="135.5" width="327" height="300"/>
+                                <rect key="frame" x="24" y="199.5" width="327" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="HyS-VE-Gsq"/>
@@ -703,29 +703,40 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make sure your review text greater than 20 characters, and only contains numbers and characters!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pst-WO-OwO">
+                                <rect key="frame" x="24" y="119.5" width="327" height="56"/>
+                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7tL-Yp-cYW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="G0l-D8-qbI" firstAttribute="top" secondItem="XGh-5B-1pd" secondAttribute="bottom" constant="24" id="Axr-bY-ggJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Pst-WO-OwO" secondAttribute="trailing" constant="24" id="JQk-vE-sDn"/>
                             <constraint firstItem="GT5-0g-NiH" firstAttribute="top" secondItem="2QN-JU-UCo" secondAttribute="bottom" constant="24" id="MkS-3p-ArE"/>
                             <constraint firstItem="XGh-5B-1pd" firstAttribute="leading" secondItem="7tL-Yp-cYW" secondAttribute="leading" constant="24" id="N7s-eY-9BW"/>
                             <constraint firstItem="7tL-Yp-cYW" firstAttribute="trailing" secondItem="dnZ-m9-9xg" secondAttribute="trailing" id="OAA-s7-tyD"/>
                             <constraint firstItem="dnZ-m9-9xg" firstAttribute="top" secondItem="XGh-5B-1pd" secondAttribute="bottom" constant="8" id="RPn-hu-gdG"/>
+                            <constraint firstItem="Pst-WO-OwO" firstAttribute="top" secondItem="G0l-D8-qbI" secondAttribute="bottom" constant="8" id="W0C-1z-seY"/>
                             <constraint firstItem="7tL-Yp-cYW" firstAttribute="trailing" secondItem="XGh-5B-1pd" secondAttribute="trailing" constant="24" id="ZbX-QI-fhQ"/>
                             <constraint firstItem="dnZ-m9-9xg" firstAttribute="leading" secondItem="7tL-Yp-cYW" secondAttribute="leading" id="ayr-9t-I36"/>
                             <constraint firstItem="2QN-JU-UCo" firstAttribute="leading" secondItem="7tL-Yp-cYW" secondAttribute="leading" constant="24" id="bX0-hW-oCg"/>
                             <constraint firstItem="NUQ-3A-AmJ" firstAttribute="leading" secondItem="7tL-Yp-cYW" secondAttribute="leading" constant="24" id="dtI-Rh-9In"/>
                             <constraint firstItem="XGh-5B-1pd" firstAttribute="top" secondItem="7tL-Yp-cYW" secondAttribute="top" constant="24" id="eKV-4t-JqM"/>
                             <constraint firstItem="7tL-Yp-cYW" firstAttribute="trailing" secondItem="2QN-JU-UCo" secondAttribute="trailing" constant="24" id="elV-g3-3R8"/>
+                            <constraint firstItem="Pst-WO-OwO" firstAttribute="leading" secondItem="7tL-Yp-cYW" secondAttribute="leading" constant="24" id="ezb-rf-tsa"/>
                             <constraint firstItem="7tL-Yp-cYW" firstAttribute="trailing" secondItem="GT5-0g-NiH" secondAttribute="trailing" constant="24" id="g0C-Gk-IWg"/>
                             <constraint firstItem="GT5-0g-NiH" firstAttribute="leading" secondItem="7tL-Yp-cYW" secondAttribute="leading" constant="24" id="i0L-cz-wRa"/>
                             <constraint firstItem="G0l-D8-qbI" firstAttribute="centerX" secondItem="wNT-83-AQA" secondAttribute="centerX" id="kJD-EH-GWv"/>
+                            <constraint firstItem="2QN-JU-UCo" firstAttribute="top" secondItem="Pst-WO-OwO" secondAttribute="bottom" constant="24" id="rmU-ga-Zwe"/>
                             <constraint firstItem="NUQ-3A-AmJ" firstAttribute="centerY" secondItem="XGh-5B-1pd" secondAttribute="centerY" id="tlO-rV-1Nn"/>
-                            <constraint firstItem="2QN-JU-UCo" firstAttribute="top" secondItem="G0l-D8-qbI" secondAttribute="bottom" constant="24" id="wiJ-2U-ced"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="leaveFeedbackButton" destination="GT5-0g-NiH" id="ai7-nz-yE2"/>
+                        <outlet property="ratingsView" destination="G0l-D8-qbI" id="0T4-7o-N8v"/>
                         <outlet property="textView" destination="2QN-JU-UCo" id="znL-9Q-ird"/>
                     </connections>
                 </viewController>
@@ -752,6 +763,9 @@
         </namedColor>
         <namedColor name="darkGreen">
             <color red="0.21568627450980393" green="0.50196078431372548" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray">
+            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primary">
             <color red="0.85882352941176465" green="0.18823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

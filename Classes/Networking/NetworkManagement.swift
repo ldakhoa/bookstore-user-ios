@@ -136,6 +136,24 @@ struct NetworkManagement {
     }
   }
 
+  public static func postReviewByBook(
+    id: Int,
+    by userId: Int,
+    with content: String,
+    ratings: Int,
+    response: @escaping ResponseHandler
+  ) {
+    let requester = HTTPRequester.postReviewByBook(
+      id: id,
+      userId: userId,
+      content: content,
+      ratings: ratings
+    )
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
   // MARK: Internal
 
   typealias ResponseHandler = (_ code: Int, _ result: JSON) -> Void

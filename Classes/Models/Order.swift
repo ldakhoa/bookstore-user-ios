@@ -59,8 +59,7 @@ final class Order {
     data.status = json["status"].string ?? ""
     data.paymentMethod = json["payment_method"].string ?? ""
     data.totalPrice = json["total_price"].int ?? 0
-    // FIXME: fix typo
-    data.shippingAddress = json["shipping_adress"].string ?? ""
+    data.shippingAddress = json["shipping_address"].string ?? ""
     return data
   }
 
