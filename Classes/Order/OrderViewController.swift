@@ -67,7 +67,7 @@ final class OrderViewController: UIViewController {
 
   @IBAction
   private func didTappedPlaceYourOrderButton(_: Any) {
-    if cart?.address.count ?? 0 < 10 && cart?.phone ?? -1 < 100_000 {
+    if user?.address?.count ?? 0 < 10 {
       let alert = UIAlertController(
         title: "Please fill your address",
         message: "We need your address and your phone number to ship your books",
@@ -86,6 +86,7 @@ final class OrderViewController: UIViewController {
         guard let orderSuccessController = AppSetting.Storyboards.Order.orderSuccessVC as? OrderSuccessController else { return }
         orderSuccessController.createdOrder = self.createdOrder
         orderSuccessController.delegate = self
+        orderSuccessController.modalPresentationStyle = .fullScreen
         self.present(orderSuccessController, animated: true, completion: nil)
         self.hud.dismiss()
       } else {
@@ -209,6 +210,9 @@ extension OrderViewController: UITableViewDelegate {
 
 extension OrderViewController: OrderSuccessControllerDelegate {
   func didTappedContinueShoppingButton() {
-    dismiss(animated: true)
+    guard let referenceForTabBarController = presentingViewController as? MainTabBarController else { return }
+    dismiss(animated: true) {
+      referenceForTabBarController.selectedIndex = 2
+    }
   }
 }

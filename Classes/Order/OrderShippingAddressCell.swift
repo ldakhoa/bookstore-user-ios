@@ -14,7 +14,11 @@ final class OrderShippingAddressCell: UITableViewCell {
 
   var user: User? {
     didSet {
-      addressLabel.text = "\(user?.address ?? "") Ward \(user?.ward ?? "") District \(user?.district ?? "")"
+      if user?.ward?.count ?? -1 < 1 && user?.district?.count ?? -1 < 1 {
+        addressLabel.text = "Please fill your shipping address and your phone number."
+      } else {
+        addressLabel.text = "\(user?.address ?? "") Ward \(user?.ward ?? "") District \(user?.district ?? "")"
+      }
     }
   }
 

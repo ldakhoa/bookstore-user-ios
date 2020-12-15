@@ -28,7 +28,7 @@ final class BookDetailRecommendCollectionCell: UICollectionViewCell {
       ratingsLabel.text = "\(book?.ratings ?? 1)"
       numberOfRatingsLabel.text = "(\(book?.numberOfRatings ?? 0))"
 
-      priceLabel.text = "\(book?.price ?? 0)"
+      priceLabel.text = "$\(book?.price ?? 0)"
 
       if let url = URL(string: book?.imageUrl ?? "") {
         bookImageView.sd_setImage(with: url)

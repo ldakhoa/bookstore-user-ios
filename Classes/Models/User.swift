@@ -14,7 +14,7 @@ final class User {
   var username: String = ""
   var password: String = ""
   var gender: String = ""
-  var phone: Int = -1
+  var phone: Int = 84
   var profileImageUrl: String = ""
   var address: String? = ""
   var district: String? = ""
@@ -31,7 +31,7 @@ final class User {
     user.username = json["userName"].string ?? ""
     user.password = json["password"].string ?? ""
     user.gender = json["gender"].string ?? ""
-    user.phone = json["phone"].int ?? -1
+    user.phone = json["phone"].int ?? 84
     user.profileImageUrl = json["profile_image_url"].string ?? ""
     user.address = json["address"].string ?? ""
     user.district = json["district"].string ?? ""

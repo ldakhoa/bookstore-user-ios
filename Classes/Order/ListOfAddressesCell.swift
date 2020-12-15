@@ -21,7 +21,7 @@ final class ListOfAddressesCell: UITableViewCell {
       specificAddressLabel.text = "\(user?.address ?? "") Ward \(user?.ward ?? "") District \(user?.district ?? "")"
       cityAndZIPLabel.text = "\(user?.city ?? "") \(user?.zipCode ?? 700000)"
       countryLabel.text = user?.country
-      phoneNumberLabel.text = "Phone number: \(user?.phone ?? 091323133)"
+      phoneNumberLabel.text = "Phone number: \(user?.phone ?? 84)"
     }
   }
 

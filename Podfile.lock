@@ -5,6 +5,12 @@ PODS:
   - IQKeyboardManagerSwift (6.5.6)
   - JGProgressHUD (2.2)
   - Log (2.0)
+  - PhoneNumberKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.1)
+    - PhoneNumberKit/UIKit (= 3.3.1)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.1)
+  - PhoneNumberKit/UIKit (3.3.1):
+    - PhoneNumberKit/PhoneNumberKitCore
   - SDWebImage (5.10.0):
     - SDWebImage/Core (= 5.10.0)
   - SDWebImage/Core (5.10.0)
@@ -19,6 +25,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - JGProgressHUD
   - Log
+  - PhoneNumberKit (~> 3.3)
   - SDWebImage (~> 5.0)
   - SkyFloatingLabelTextField (~> 3.0)
   - StyledTextKit
@@ -32,6 +39,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - JGProgressHUD
     - Log
+    - PhoneNumberKit
     - SDWebImage
     - SkyFloatingLabelTextField
     - StyledTextKit
@@ -44,11 +52,12 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   Log: 73fab10e8b88f15cef5f322b12c9be87cf19ee6e
+  PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
   SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   StyledTextKit: dbfb29a59922c6f18897a0266acd139b7c9e712b
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 26495af70be9aa5a59367f0e397cd791832ba1ce
+PODFILE CHECKSUM: 42eb89569351bab59603c62a8d9382d3d5fe7bea
 
 COCOAPODS: 1.8.3

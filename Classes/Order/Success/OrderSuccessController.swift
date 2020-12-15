@@ -27,7 +27,7 @@ final class OrderSuccessController: UIViewController {
     super.viewDidLoad()
 
     title = "iBooks.com Thanks you"
-    orderIdLabel.text = "\(createdOrder?.order?.id ?? 0)"
+    orderIdLabel.text = "#\(createdOrder?.order?.id ?? "")"
   }
 
   // MARK: Private

@@ -55,7 +55,7 @@ final class Order {
 
   public static func parseData(json: JSON) -> Order {
     let data = Order()
-    data.id = json["id"].int ?? 0
+    data.id = json["id"].string ?? ""
     data.status = json["status"].string ?? ""
     data.paymentMethod = json["payment_method"].string ?? ""
     data.totalPrice = json["total_price"].int ?? 0
@@ -65,7 +65,7 @@ final class Order {
 
   // MARK: Internal
 
-  var id: Int = 0
+  var id: String = ""
   var status: String = ""
   var paymentMethod: String = ""
   var totalPrice: Int = 0

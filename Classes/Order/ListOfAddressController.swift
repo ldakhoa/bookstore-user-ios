@@ -25,6 +25,12 @@ final class ListOfAddressController: UIViewController {
     tableView.backgroundColor = Styles.Colors.background.color
   }
 
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    tableView.reloadData()
+  }
+
   // MARK: Private
 
   @IBAction
@@ -34,6 +40,21 @@ final class ListOfAddressController: UIViewController {
 
   @IBAction
   private func didTappedAddNewShippingAddressButton(_ sender: Any) {
+    let isInvalidShippingAddress = user?.phone ?? -1 < 10000
+      && user?.address?.count ?? -1 < 1
+      && user?.city?.count ?? -1 < 1
+      && user?.district?.count ?? -1 < 1
+      && user?.ward?.count ?? -1 < 1
+    if !isInvalidShippingAddress {
+      let alert = UIAlertController.configured(
+        title: "Sorry for this inconvenience",
+        message: "We have not support multi shipping address yet! Please edit your current shipping address",
+        preferredStyle: .alert
+      )
+      alert.addAction(AlertAction.ok())
+      present(alert, animated: true)
+      return
+    }
     editShippingAddress()
   }
 
@@ -75,7 +96,12 @@ final class ListOfAddressController: UIViewController {
 
 extension ListOfAddressController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    1
+    let isInvalidShippingAddress = user?.phone ?? -1 < 10000
+      && user?.address?.count ?? -1 < 1
+      && user?.city?.count ?? -1 < 1
+      && user?.district?.count ?? -1 < 1
+      && user?.ward?.count ?? -1 < 1
+    return isInvalidShippingAddress ? 0 : 1
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
