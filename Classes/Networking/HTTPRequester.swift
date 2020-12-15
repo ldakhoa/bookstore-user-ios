@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-let coreURL = "http://172.17.71.200:3000/"
+let coreURL = "http://192.168.1.3:3000/"
 
 // MARK: - Requestable
 
@@ -38,6 +38,7 @@ enum HTTPRequester {
   case postPaymentOrder
   case getAllOrders
   case getOrderBy(id: String)
+  case getAllOrdersBy(status: String)
   case putQuantityOfBookByUser(bookId: Int, quantity: Int)
   case getRecommendBooks
   case getRecommendFromBook(id: Int)
@@ -152,6 +153,13 @@ extension HTTPRequester: Requestable {
     case let .getOrderBy(id):
       return (
         path: URL(string: coreURL + "api/orders/\(id)")!,
+        method: .get,
+        parameter: nil,
+        encoding: JSONEncoding.default
+      )
+    case let .getAllOrdersBy(status):
+      return (
+        path: URL(string: coreURL + "api/orders?status=\(status)")!,
         method: .get,
         parameter: nil,
         encoding: JSONEncoding.default

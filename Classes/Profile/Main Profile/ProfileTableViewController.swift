@@ -106,7 +106,7 @@ final class ProfileTableViewController: UITableViewController {
     case Sections.orders.rawValue:
       let myOrderViewController = MyOrdersController()
       myOrderViewController.modalPresentationStyle = .fullScreen
-      myOrderViewController.orders = orders
+//      myOrderViewController.orders = orders
       let navController = UINavigationController(rootViewController: myOrderViewController)
       navController.modalPresentationStyle = .fullScreen
       navController.setNavigationBarHidden(true, animated: false)

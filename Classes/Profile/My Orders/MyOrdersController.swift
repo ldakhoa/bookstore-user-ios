@@ -5,6 +5,7 @@
 //  Created by Khoa Le on 06/11/2020.
 //
 
+import JGProgressHUD
 import UIKit
 
 // MARK: - MyOrdersController
@@ -15,6 +16,10 @@ final class MyOrdersController: UIViewController {
 
   let cellID = "cellID"
   var orders = [Order]()
+  var processingOrders = [Order]()
+  var deliveredOrders = [Order]()
+  var cancelledOrders = [Order]()
+  let hud = JGProgressHUD(style: .dark)
 
   let titleLabel = UILabel(
     text: "My Orders",
@@ -64,6 +69,7 @@ final class MyOrdersController: UIViewController {
 
     // TODO: - Filter by status
 //    fetchOrder()
+    fetchOrderByStatus()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -77,6 +83,47 @@ final class MyOrdersController: UIViewController {
   }
 
   // MARK: Private
+
+  private func fetchOrderByStatus() {
+    let dispatchGroup = DispatchGroup()
+    hud.show(in: view)
+
+    dispatchGroup.enter()
+    NetworkManagement.getAllOrdersByStatus("processing") { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.processingOrders = Order.parseAllOrders(json: data)
+        dispatchGroup.leave()
+      } else {
+        self.presentErrorAlert(with: data)
+      }
+    }
+
+    dispatchGroup.enter()
+    NetworkManagement.getAllOrdersByStatus("delivered") { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.deliveredOrders = Order.parseAllOrders(json: data)
+        dispatchGroup.leave()
+      } else {
+        self.presentErrorAlert(with: data)
+      }
+    }
+
+    // TODO: - Rename cancel
+    dispatchGroup.enter()
+    NetworkManagement.getAllOrdersByStatus("cancel") { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.cancelledOrders = Order.parseAllOrders(json: data)
+        dispatchGroup.leave()
+      } else {
+        self.presentErrorAlert(with: data)
+      }
+    }
+
+    dispatchGroup.notify(queue: .main) {
+      self.collectionView.reloadData()
+      self.hud.dismiss()
+    }
+  }
 
   private func fetchOrder() {
     NetworkManagement.getAllOrders { code, data in
@@ -149,8 +196,17 @@ extension MyOrdersController: UICollectionViewDataSource {
       for: indexPath
     ) as? MyOrdersMainCell else { return UICollectionViewCell() }
     cell.myOrdersItemController.delegate = self
-//    cell.backgroundColor = colors[indexPath.item]
-    cell.myOrdersItemController.orders = orders
+    if indexPath.item == MyOrderItems.processing.rawValue {
+      cell.myOrdersItemController.orders = processingOrders
+      cell.myOrdersItemController.isSelectedInStatus = .processing
+    } else if indexPath.item == MyOrderItems.delivered.rawValue {
+      cell.myOrdersItemController.orders = deliveredOrders
+      cell.myOrdersItemController.isSelectedInStatus = .delivered
+    } else if indexPath.item == MyOrderItems.cancelled.rawValue {
+      cell.myOrdersItemController.orders = cancelledOrders
+      cell.myOrdersItemController.isSelectedInStatus = .cancelled
+    }
+
     return cell
   }
 }
@@ -210,9 +266,17 @@ extension MyOrdersController: MyOrdersItemControllerDelegate {
     present(navVC, animated: true)
   }
 
-  func didSelectItemCellAt(_ indexPath: IndexPath) {
+  func didSelectItemCellAt(_ indexPath: IndexPath, with status: OrderStatus) {
     guard let orderDetailController = AppSetting.Storyboards.Profile.orderDetailVC as? OrderDetailController else { return }
-    orderDetailController.orderID = orders[indexPath.row].id
+    switch status {
+    case .processing:
+      orderDetailController.orderID = processingOrders[indexPath.row].id
+    case .delivered:
+      orderDetailController.orderID = deliveredOrders[indexPath.row].id
+    case .cancelled:
+      orderDetailController.orderID = cancelledOrders[indexPath.row].id
+    }
+
     navigationController?.pushViewController(orderDetailController, animated: true)
   }
 }

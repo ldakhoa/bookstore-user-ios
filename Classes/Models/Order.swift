@@ -10,7 +10,7 @@ import SwiftyJSON
 
 // MARK: - OrderStatus
 
-enum OrderStatus: CustomStringConvertible {
+enum OrderStatus: String, CustomStringConvertible {
   case processing
   case delivered
   case cancelled

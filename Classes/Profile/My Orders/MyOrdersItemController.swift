@@ -10,7 +10,7 @@ import UIKit
 // MARK: - MyOrdersItemControllerDelegate
 
 protocol MyOrdersItemControllerDelegate: AnyObject {
-  func didSelectItemCellAt(_ indexPath: IndexPath)
+  func didSelectItemCellAt(_ indexPath: IndexPath, with status: OrderStatus)
 }
 
 // MARK: - MyOrdersItemController
@@ -18,6 +18,8 @@ protocol MyOrdersItemControllerDelegate: AnyObject {
 final class MyOrdersItemController: UITableViewController {
 
   weak var delegate: MyOrdersItemControllerDelegate?
+
+  var isSelectedInStatus: OrderStatus?
 
   var orders = [Order]() {
     didSet {
@@ -75,6 +77,6 @@ final class MyOrdersItemController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    delegate?.didSelectItemCellAt(indexPath)
+    delegate?.didSelectItemCellAt(indexPath, with: isSelectedInStatus ?? .processing)
   }
 }

@@ -132,6 +132,13 @@ struct NetworkManagement {
     }
   }
 
+  public static func getAllOrdersByStatus(_ status: String, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getAllOrdersBy(status: status)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
   public static func getAllOrders(response: @escaping ResponseHandler) {
     let requester = HTTPRequester.getAllOrders
     callAPI(requester) { code, json in
