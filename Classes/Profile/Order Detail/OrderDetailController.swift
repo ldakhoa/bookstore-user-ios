@@ -20,6 +20,7 @@ final class OrderDetailController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   var order: Order?
   var orderID: String?
+  var orderStatus: OrderStatus?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -52,7 +53,12 @@ final class OrderDetailController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     fetchOrder()
+    leaveFeedbackButton.isHidden = orderStatus == OrderStatus.delivered ? false : true
   }
 
   // MARK: Private

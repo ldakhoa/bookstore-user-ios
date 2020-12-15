@@ -268,6 +268,7 @@ extension MyOrdersController: MyOrdersItemControllerDelegate {
 
   func didSelectItemCellAt(_ indexPath: IndexPath, with status: OrderStatus) {
     guard let orderDetailController = AppSetting.Storyboards.Profile.orderDetailVC as? OrderDetailController else { return }
+    orderDetailController.orderStatus = status
     switch status {
     case .processing:
       orderDetailController.orderID = processingOrders[indexPath.row].id

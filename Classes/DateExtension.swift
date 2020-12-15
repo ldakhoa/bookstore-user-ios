@@ -26,7 +26,7 @@ extension String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
     dateFormatter.timeZone = TimeZone.current
-    dateFormatter.locale = Locale.current
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
     return dateFormatter.date(from: self)
   }
 }
