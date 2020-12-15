@@ -30,6 +30,7 @@ excluded:
   - Classes/Systems/AppSecurity.swift
   - bsuserTests
   - bsuserUITests
+  - Classes/Home/HomeHeaderHorizontalController.swift
 
 colon:
   apply_to_dictionaries: false

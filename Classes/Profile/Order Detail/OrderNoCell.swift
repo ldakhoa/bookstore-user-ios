@@ -21,7 +21,6 @@ final class OrderNoCell: UITableViewCell {
     }
   }
 
-
   override func awakeFromNib() {
     super.awakeFromNib()
   }

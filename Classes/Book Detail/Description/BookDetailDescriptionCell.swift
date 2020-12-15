@@ -16,7 +16,6 @@ final class BookDetailDescriptionCell: UITableViewCell {
     }
   }
 
-
   override func awakeFromNib() {
     super.awakeFromNib()
   }

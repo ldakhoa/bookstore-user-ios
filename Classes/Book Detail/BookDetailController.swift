@@ -55,12 +55,6 @@ final class BookDetailController: UIViewController {
 
   var cartInfo: CartInfo?
 
-  var bookId: Int? {
-    didSet {
-      fetchBookWith(id: bookId ?? 1)
-    }
-  }
-
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -107,19 +101,6 @@ final class BookDetailController: UIViewController {
   }
 
   // MARK: Private
-
-  private func fetchBookWith(id: Int) {
-    hud.show(in: view)
-    NetworkManagement.getBookBy(id: id) { code, data in
-      if code == ResponseCode.ok.rawValue {
-        self.book = Book.parseItem(item: data)
-        self.tableView.reloadData()
-        self.hud.dismiss()
-      } else {
-        self.presentErrorAlert(with: data)
-      }
-    }
-  }
 
   private func fetchReviews() {
     hud.show(in: view)
