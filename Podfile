@@ -16,7 +16,6 @@ target 'bsuser' do
   pod 'CountryPickerView'
   pod 'IQKeyboardManagerSwift'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
-  pod 'PhoneNumberKit', '~> 3.3'
 
   # Pods for bsuser
 
