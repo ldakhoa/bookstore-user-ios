@@ -18,6 +18,7 @@ final class ProfileTableViewController: UITableViewController {
   var user: User?
   let hud = JGProgressHUD(style: .dark)
   var selectedImage: UIImage?
+  var orders = [Order]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -31,7 +32,12 @@ final class ProfileTableViewController: UITableViewController {
     tableView.register(nib, forCellReuseIdentifier: cellID)
     tabBarController?.tabBar.isHidden = true
 
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     fetchUserInfo()
+    fetchOrder()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +56,12 @@ final class ProfileTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ProfileCell else { return UITableViewCell() }
+    if indexPath.row != Sections.orders.rawValue {
+      cell.subtitleLabel.removeFromSuperview()
+    } else {
+      let countText = orders.count > 1 ? "orders" : "order"
+      cell.subtitleLabel.text = "Already have \(orders.count) \(countText)"
+    }
     if indexPath.row == Sections.logout.rawValue {
       let logoutCell = LogoutCell(style: .default, reuseIdentifier: nil)
       return logoutCell
@@ -94,6 +106,7 @@ final class ProfileTableViewController: UITableViewController {
     case Sections.orders.rawValue:
       let myOrderViewController = MyOrdersController()
       myOrderViewController.modalPresentationStyle = .fullScreen
+      myOrderViewController.orders = orders
       let navController = UINavigationController(rootViewController: myOrderViewController)
       navController.modalPresentationStyle = .fullScreen
       navController.setNavigationBarHidden(true, animated: false)
@@ -217,10 +230,25 @@ final class ProfileTableViewController: UITableViewController {
     navigationController?.pushViewController(editPersonalInfoController, animated: true)
   }
 
+  private func fetchOrder() {
+    hud.show(in: view)
+    NetworkManagement.getAllOrders { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.orders = Order.parseAllOrders(json: data)
+        self.tableView.reloadData()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(title: "Cannot get orders", with: data)
+      }
+    }
+  }
+
   private func fetchUserInfo() {
+    hud.show(in: view)
     NetworkManagement.getInformationOfUser { code, data in
       if code == ResponseCode.ok.rawValue {
         self.user = User.parseData(json: data["user"])
+        self.hud.dismiss()
         self.tableView.reloadData()
       } else {
         let errMessage = data["message"].stringValue

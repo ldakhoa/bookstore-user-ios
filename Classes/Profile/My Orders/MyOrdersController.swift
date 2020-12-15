@@ -63,7 +63,7 @@ final class MyOrdersController: UIViewController {
     setupLayout()
 
     // TODO: - Filter by status
-    fetchOrder()
+//    fetchOrder()
   }
 
   override func viewWillAppear(_ animated: Bool) {
