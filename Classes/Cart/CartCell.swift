@@ -14,6 +14,7 @@ protocol CartCellDelegate: AnyObject {
   func didFinishedTapUpdateAmountButton()
   func shouldDismissHUD()
   func shouldShowError(_ errString: String)
+  func didTappedCancelButton(_ bookId: Int)
 }
 
 // MARK: - CartCell
@@ -35,6 +36,7 @@ final class CartCell: UITableViewCell {
   var quantity: Int?
 
   weak var delegate: CartCellDelegate?
+  var indexPath: IndexPath?
 
   var book: Book? {
     didSet {
@@ -59,7 +61,7 @@ final class CartCell: UITableViewCell {
     super.awakeFromNib()
 
     increaseButton.addTarget(self, action: #selector(didTappedIncreaseButton), for: .touchUpInside)
-
+    //		deleteButton.addTarget(self, action: #selector(#didTappedDeleteButton), for: .touchUpInside)
     decreaseButton.addTarget(self, action: #selector(didTappedDecreaseButton), for: .touchUpInside)
   }
 
@@ -79,6 +81,11 @@ final class CartCell: UITableViewCell {
       quantity? -= 1
     }
     updateQuantity(quantity ?? 1, isIncreased: false)
+  }
+
+  @objc
+  private func didTappedDeleteButton() {
+    delegate?.didTappedCancelButton(book?.id ?? 0)
   }
 
   private func updateQuantity(_ quantity: Int, isIncreased: Bool) {

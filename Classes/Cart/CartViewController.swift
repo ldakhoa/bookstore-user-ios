@@ -57,7 +57,7 @@ final class CartViewController: UIViewController {
   private var cartInfo: CartInfo? {
     didSet {
       let subtotal = cartInfo?.subtotalPrice ?? 0
-      subtotalLabel.text = "$\(Double(subtotal))"
+      subtotalLabel.text = String(format: "$%.2f", subtotal)
 
       let itemText = cartInfo?.booksQuantity ?? 0 > 1 ? "items" : "item"
       subtotalItemLabel.text = "Subtotal (\(cartInfo?.booksQuantity ?? 0) \(itemText))"
@@ -149,7 +149,6 @@ extension CartViewController: UITableViewDataSource {
       cell.book = book
       cell.selectionStyle = .none
       cell.delegate = self
-      //			cell.increaseButton.addTarget(self, action: #selector(didTappedIncreaseButton), for: .touchUpInside)
       return cell
     } else if indexPath.section == 1 {
       guard let cell = tableView.dequeueReusableCell(
@@ -163,9 +162,6 @@ extension CartViewController: UITableViewDataSource {
     return UITableViewCell()
   }
 
-  //	@objc private func didTappedIncreaseButton() {
-  //		NetworkManagement.putQuantityOfBookByUser(id: AppSecurity.shared.userID, at: <#T##Int#>, quantity: <#T##Int#>, response: <#T##NetworkManagement.ResponseHandler##NetworkManagement.ResponseHandler##(Int, JSON) -> Void#>)
-  //	}
 }
 
 // MARK: UITableViewDelegate
@@ -252,6 +248,35 @@ extension CartViewController: UITableViewDelegate {
     return view
   }
 
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let bookDetailController = BookDetailController()
+    bookDetailController.modalPresentationStyle = .fullScreen
+    bookDetailController.book = cart?.books[indexPath.row]
+    let navVC = UINavigationController(rootViewController: bookDetailController)
+    navVC.modalPresentationStyle = .fullScreen
+    present(navVC, animated: true)
+  }
+
+  func tableView(
+    _ tableView: UITableView,
+    commit editingStyle: UITableViewCell.EditingStyle,
+    forRowAt indexPath: IndexPath
+  ) {
+    if editingStyle == .delete {
+      guard let bookId = cart?.books[indexPath.row].id else { return }
+      hud.show(in: view)
+      NetworkManagement.deleteCartWithBook(id: bookId) { code, data in
+        if code == ResponseCode.ok.rawValue {
+          self.cart?.books.remove(at: indexPath.row)
+          self.tableView.deleteRows(at: [indexPath], with: .automatic)
+          self.fetchCartInfo()
+        } else {
+          self.presentErrorAlert(title: "Cannot delete book", with: data)
+        }
+      }
+    }
+  }
+
   // MARK: Private
 
   @objc
@@ -264,6 +289,10 @@ extension CartViewController: UITableViewDelegate {
 // MARK: CartCellDelegate
 
 extension CartViewController: CartCellDelegate {
+  func didTappedCancelButton(_ bookId: Int) {
+    //
+  }
+
   func didFinishedTapUpdateAmountButton() {
     hud.show(in: view)
   }

@@ -14,7 +14,9 @@ final class OrderSubtotalCell: UITableViewCell {
 
   var cart: Cart? {
     didSet {
-      subtotalPriceLabel.text = "$\(cart?.subtotalPrice ?? 0)"
+      let subtotal = cart?.subtotalPrice ?? 0
+      subtotalPriceLabel.text = String(format: "$%.2f", subtotal)
+
       shippingFeeLabel.text = "$\(cart?.shippingFee ?? 0)"
     }
   }

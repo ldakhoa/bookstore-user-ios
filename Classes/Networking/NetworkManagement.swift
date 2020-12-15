@@ -118,6 +118,13 @@ struct NetworkManagement {
     }
   }
 
+  public static func deleteCartWithBook(id: Int, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.deleteCartWithBook(id: id)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
   public static func postPaymentOrder(response: @escaping ResponseHandler) {
     let requester = HTTPRequester.postPaymentOrder
     callAPI(requester) { code, json in

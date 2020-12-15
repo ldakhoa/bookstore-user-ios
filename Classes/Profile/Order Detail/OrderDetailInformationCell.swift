@@ -25,6 +25,7 @@ final class OrderDetailInformationCell: UITableViewCell {
 
     tableView.dataSource = self
     tableView.delegate = self
+    tableView.isScrollEnabled = false
   }
 
   override func layoutSubviews() {

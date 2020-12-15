@@ -30,7 +30,7 @@ final class OrderViewController: UIViewController {
     tableView.dataSource = self
     tableView.delegate = self
 
-    totalPriceLabel.text = "$\(cart?.totalPrice ?? 0)"
+    totalPriceLabel.text = String(format: "$%.2f", cart?.totalPrice ?? 0)
   }
 
   override func viewDidAppear(_ animated: Bool) {

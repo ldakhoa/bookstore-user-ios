@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-let coreURL = "http://localhost:3000/"
+let coreURL = "http://172.17.71.200:3000/"
 
 // MARK: - Requestable
 
@@ -34,6 +34,7 @@ enum HTTPRequester {
   case getCartByUser
   case postCartByUser(bookId: Int)
   case getCartInfoByUser
+  case deleteCartWithBook(id: Int)
   case postPaymentOrder
   case getAllOrders
   case getOrderBy(id: String)
@@ -124,6 +125,13 @@ extension HTTPRequester: Requestable {
       return (
         path: URL(string: coreURL + "api/carts/mine/info")!,
         method: .get,
+        parameter: nil,
+        encoding: JSONEncoding.default
+      )
+    case let .deleteCartWithBook(id):
+      return (
+        path: URL(string: coreURL + "api/carts/mine/books/\(id)")!,
+        method: .delete,
         parameter: nil,
         encoding: JSONEncoding.default
       )
