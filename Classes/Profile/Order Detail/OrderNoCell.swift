@@ -16,6 +16,7 @@ final class OrderNoCell: UITableViewCell {
     didSet {
       orderNoLabel.text = "Order no: #\(order?.id ?? "")"
       purchaseDateLabel.text = "Date of purchase: \(order?.purchaseDate.getDate()?.getFormattedDate() ?? "")"
+      print("Date in here", order?.purchaseDate)
       statusLabel.text = order?.status.capitalizingFirstLetter()
 
     }
