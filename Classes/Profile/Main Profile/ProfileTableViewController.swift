@@ -22,7 +22,7 @@ final class ProfileTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-		tableView.backgroundColor = Styles.Colors.White.normal
+    tableView.backgroundColor = Styles.Colors.White.normal
     tableView.tableFooterView = UIView()
     tableView.isScrollEnabled = false
 

@@ -53,6 +53,16 @@ struct NetworkManagement {
     }
   }
 
+  public static func getBookBy(
+    id: Int,
+    response: @escaping ResponseHandler
+  ) {
+    let requester = HTTPRequester.getBookBy(id: id)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
   public static func getBookSearchBy(
     searchString: String,
     response: @escaping ResponseHandler
@@ -108,8 +118,22 @@ struct NetworkManagement {
     }
   }
 
-  public static func postPaymentOrderByUser(id: Int, response: @escaping ResponseHandler) {
-    let requester = HTTPRequester.postPaymentOrderByUser(id: id)
+  public static func postPaymentOrder(response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.postPaymentOrder
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func getAllOrders(response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getAllOrders
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func getOrderBy(id: String, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getOrderBy(id: id)
     callAPI(requester) { code, json in
       response(code, json)
     }
@@ -142,14 +166,12 @@ struct NetworkManagement {
 
   public static func postReviewByBook(
     id: Int,
-    by userId: Int,
     with content: String,
     ratings: Int,
     response: @escaping ResponseHandler
   ) {
     let requester = HTTPRequester.postReviewByBook(
       id: id,
-      userId: userId,
       content: content,
       ratings: ratings
     )

@@ -10,8 +10,6 @@ import UIKit
 
 final class ReviewCell: UICollectionViewCell {
 
-  // MARK: Internal
-
   @IBOutlet weak var userImageView: UIImageView!
   @IBOutlet weak var ratingLabel: UILabel!
   @IBOutlet weak var contentLabel: UILabel!
@@ -23,7 +21,7 @@ final class ReviewCell: UICollectionViewCell {
       nameLabel.text = review?.user?.username
       contentLabel.text = review?.content
       ratingLabel.text = "\(review?.ratings ?? -1)"
-      let date = getDate(date: review?.updateDate ?? "")
+      let date = review?.updateDate?.getDate()
       timeLabel.text = date?.timeAgoDisplay()
 
       if let url = URL(string: review?.user?.profileImageUrl ?? "") {
@@ -41,16 +39,6 @@ final class ReviewCell: UICollectionViewCell {
     backgroundColor = Styles.Colors.White.normal
     layer.borderColor = Styles.Colors.reviewBorder.color.cgColor
     layer.borderWidth = 1
-  }
-
-  // MARK: Private
-
-  private func getDate(date: String) -> Date? {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-    dateFormatter.timeZone = TimeZone.current
-    dateFormatter.locale = Locale.current
-    return dateFormatter.date(from: date)
   }
 
 }

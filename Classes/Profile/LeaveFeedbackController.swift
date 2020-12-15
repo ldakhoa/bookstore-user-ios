@@ -75,8 +75,7 @@ final class LeaveFeedbackController: UIViewController, UITextViewDelegate {
     }
 
     NetworkManagement.postReviewByBook(
-      id: AppSecurity.shared.userID,
-      by: book?.id ?? -1,
+      id: book?.id ?? -1,
       with: content,
       ratings: Int(ratingsView.rating)
     ) { code, data in

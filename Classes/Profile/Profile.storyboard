@@ -132,7 +132,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="608"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderNoCell" rowHeight="123" id="kX5-kv-p3M">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderNoCell" rowHeight="123" id="kX5-kv-p3M" customClass="OrderNoCell" customModule="bsuser" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kX5-kv-p3M" id="X9o-nH-vJM">
@@ -179,6 +179,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="6sr-Z9-Rut" secondAttribute="trailing" constant="24" id="vkV-wd-P3z"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="orderNoLabel" destination="8HL-6R-ryF" id="lJq-pW-hjE"/>
+                                            <outlet property="purchaseDateLabel" destination="Q46-Nb-xMh" id="0Lr-nt-NH9"/>
+                                            <outlet property="statusLabel" destination="OYU-OJ-995" id="Ja9-Q8-Tbv"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TrackingOrderCell" rowHeight="123" id="koj-Ig-tag" customClass="TrackingOrderCell" customModule="bsuser" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="151" width="375" height="123"/>
@@ -227,6 +232,10 @@
                                                 <constraint firstItem="Lai-WX-P7j" firstAttribute="top" secondItem="nlq-T0-giE" secondAttribute="top" constant="20" id="pcv-wX-zID"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="statusLabel" destination="dba-oX-Cno" id="k6p-s7-iv5"/>
+                                            <outlet property="updatedDateLabel" destination="cWr-w3-PPw" id="iw9-We-VQP"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShippingAddressCell" rowHeight="138" id="Jxr-1O-T9f" customClass="ShippingAddressCell" customModule="bsuser" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="274" width="375" height="138"/>
@@ -281,6 +290,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="d5e-Tz-v2b" secondAttribute="trailing" constant="24" id="sdh-2c-eN7"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="MjR-2C-cWy" id="ltJ-bx-ibl"/>
+                                            <outlet property="phoneLabel" destination="0uS-Xw-G0v" id="MIx-at-wev"/>
+                                            <outlet property="usernameLabel" destination="MBN-Hm-aeE" id="aUr-Uf-zVf"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderDetailInformationCell" rowHeight="306" id="ntO-bO-CB2" customClass="OrderDetailInformationCell" customModule="bsuser" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="412" width="375" height="306"/>
@@ -289,25 +303,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="306"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86O-A6-Ezd">
-                                                    <rect key="frame" x="56" y="27" width="126" height="19"/>
-                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OrderDetail_info" translatesAutoresizingMaskIntoConstraints="NO" id="J3C-bf-yos">
-                                                    <rect key="frame" x="24" y="24" width="24" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="24" id="HxO-io-GFw"/>
-                                                        <constraint firstAttribute="height" constant="20" id="wiW-OV-Nx1"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N3G-bz-W5k">
-                                                    <rect key="frame" x="0.0" y="54" width="375" height="228"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4LI-qJ-veq">
+                                                    <rect key="frame" x="24" y="24" width="158.5" height="64"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OrderDetail_info" translatesAutoresizingMaskIntoConstraints="NO" id="8nV-oB-fdA">
+                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="64"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="24" id="OXa-MK-fh2"/>
+                                                                <constraint firstAttribute="height" constant="24" id="jxJ-qz-QYl"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUV-PX-LST">
+                                                            <rect key="frame" x="32" y="0.0" width="126.5" height="64"/>
+                                                            <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N3G-bz-W5k" customClass="CustomInnerOrderTableView" customModule="bsuser" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="96" width="375" height="210"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="210" id="da5-hd-ApV"/>
+                                                    </constraints>
                                                     <inset key="separatorInset" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderDetailBookCell" rowHeight="190" id="xCd-GE-xPQ">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderDetailBookCell" rowHeight="190" id="xCd-GE-xPQ" customClass="OrderDetailBookCell" customModule="bsuser" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="375" height="190"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xCd-GE-xPQ" id="aL6-0t-EfM">
@@ -315,28 +337,28 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book3" translatesAutoresizingMaskIntoConstraints="NO" id="Rhb-Vw-XEI">
-                                                                        <rect key="frame" x="24" y="24" width="100" height="142"/>
+                                                                        <rect key="frame" x="24" y="0.0" width="100" height="190"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="100" id="wzA-sC-uwt"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rAJ-me-ICr">
-                                                                        <rect key="frame" x="132" y="57" width="219" height="76.5"/>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rAJ-me-ICr">
+                                                                        <rect key="frame" x="140" y="53" width="211" height="84.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting Started with LLVM Core Library" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yS3-F8-2oK">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="219" height="37.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Getting Started with LLVM Core Library" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yS3-F8-2oK">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="211" height="37.5"/>
                                                                                 <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
                                                                                 <color key="textColor" name="black"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$53.02" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXq-0B-4de">
-                                                                                <rect key="frame" x="0.0" y="37.5" width="219" height="20"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$53.02" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXq-0B-4de">
+                                                                                <rect key="frame" x="0.0" y="41.5" width="211" height="20"/>
                                                                                 <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="17"/>
                                                                                 <color key="textColor" name="black"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 items" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CuE-Ye-DE5">
-                                                                                <rect key="frame" x="0.0" y="57.5" width="219" height="19"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="3 items" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CuE-Ye-DE5">
+                                                                                <rect key="frame" x="0.0" y="65.5" width="211" height="19"/>
                                                                                 <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
                                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
@@ -345,27 +367,31 @@
                                                                     </stackView>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="bottom" secondItem="Rhb-Vw-XEI" secondAttribute="bottom" constant="24" id="3vr-m9-oel"/>
-                                                                    <constraint firstItem="Rhb-Vw-XEI" firstAttribute="top" secondItem="aL6-0t-EfM" secondAttribute="top" constant="24" id="4oT-WI-2Th"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Rhb-Vw-XEI" secondAttribute="bottom" id="3vr-m9-oel"/>
+                                                                    <constraint firstItem="Rhb-Vw-XEI" firstAttribute="top" secondItem="aL6-0t-EfM" secondAttribute="top" id="4oT-WI-2Th"/>
                                                                     <constraint firstItem="Rhb-Vw-XEI" firstAttribute="leading" secondItem="aL6-0t-EfM" secondAttribute="leading" constant="24" id="AFn-XM-5tY"/>
                                                                     <constraint firstItem="rAJ-me-ICr" firstAttribute="centerY" secondItem="Rhb-Vw-XEI" secondAttribute="centerY" id="CXh-xx-ctl"/>
-                                                                    <constraint firstItem="rAJ-me-ICr" firstAttribute="leading" secondItem="Rhb-Vw-XEI" secondAttribute="trailing" constant="8" id="Ecf-Xj-sR5"/>
+                                                                    <constraint firstItem="rAJ-me-ICr" firstAttribute="leading" secondItem="Rhb-Vw-XEI" secondAttribute="trailing" constant="16" id="Ecf-Xj-sR5"/>
                                                                     <constraint firstAttribute="trailing" secondItem="rAJ-me-ICr" secondAttribute="trailing" constant="24" id="icn-Bh-gUQ"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="bookCountLabel" destination="CuE-Ye-DE5" id="1OR-Zh-W84"/>
+                                                                <outlet property="bookImageView" destination="Rhb-Vw-XEI" id="7HA-tY-B1P"/>
+                                                                <outlet property="bookTitleLabel" destination="yS3-F8-2oK" id="irS-Bf-FmR"/>
+                                                                <outlet property="priceLabel" destination="ZXq-0B-4de" id="pC0-8H-PAf"/>
+                                                            </connections>
                                                         </tableViewCell>
                                                     </prototypes>
                                                 </tableView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="86O-A6-Ezd" firstAttribute="leading" secondItem="J3C-bf-yos" secondAttribute="trailing" constant="8" id="0lw-6i-caF"/>
-                                                <constraint firstItem="J3C-bf-yos" firstAttribute="leading" secondItem="2Xo-4H-0VJ" secondAttribute="leading" constant="24" id="8ZB-xk-Db5"/>
-                                                <constraint firstItem="N3G-bz-W5k" firstAttribute="top" secondItem="86O-A6-Ezd" secondAttribute="bottom" constant="8" id="Ox0-qD-fxf"/>
-                                                <constraint firstAttribute="bottom" secondItem="N3G-bz-W5k" secondAttribute="bottom" constant="24" id="Sor-xi-rDh"/>
+                                                <constraint firstItem="N3G-bz-W5k" firstAttribute="top" secondItem="4LI-qJ-veq" secondAttribute="bottom" constant="8" id="I0v-O0-Vqz"/>
+                                                <constraint firstAttribute="bottom" secondItem="N3G-bz-W5k" secondAttribute="bottom" id="Vq5-ja-tqp"/>
                                                 <constraint firstItem="N3G-bz-W5k" firstAttribute="leading" secondItem="2Xo-4H-0VJ" secondAttribute="leading" id="bgU-e0-rBa"/>
-                                                <constraint firstItem="J3C-bf-yos" firstAttribute="top" secondItem="2Xo-4H-0VJ" secondAttribute="top" constant="24" id="ixy-mp-ihn"/>
                                                 <constraint firstAttribute="trailing" secondItem="N3G-bz-W5k" secondAttribute="trailing" id="lYn-XJ-92h"/>
-                                                <constraint firstItem="86O-A6-Ezd" firstAttribute="top" secondItem="2Xo-4H-0VJ" secondAttribute="top" constant="27" id="zq4-5d-dgM"/>
+                                                <constraint firstItem="4LI-qJ-veq" firstAttribute="leading" secondItem="2Xo-4H-0VJ" secondAttribute="leading" constant="24" id="sRi-8Z-2yb"/>
+                                                <constraint firstItem="4LI-qJ-veq" firstAttribute="top" secondItem="2Xo-4H-0VJ" secondAttribute="top" constant="24" id="uVa-6B-nJA"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -421,53 +447,65 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="iLb-2T-nil">
-                                                    <rect key="frame" x="24" y="24" width="327" height="75"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="uzv-iv-cOb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="106" height="37.5"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFr-3l-Swr">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="53" height="16.5"/>
-                                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="14"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$51.02" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kx7-CO-Mlh">
-                                                                    <rect key="frame" x="53" y="0.0" width="53" height="17.5"/>
-                                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="15"/>
-                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ZL8-rZ-mZW">
-                                                            <rect key="frame" x="0.0" y="37.5" width="106" height="37.5"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOY-BD-PTX">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="53" height="16.5"/>
-                                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="14"/>
-                                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$51.02" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iym-Mh-zpL">
-                                                                    <rect key="frame" x="53" y="0.0" width="53" height="17.5"/>
-                                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="15"/>
-                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFr-3l-Swr">
+                                                    <rect key="frame" x="24" y="24" width="60.5" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$51.02" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kx7-CO-Mlh">
+                                                    <rect key="frame" x="302" y="24" width="49" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Shipping fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOY-BD-PTX">
+                                                    <rect key="frame" x="24" y="47" width="90" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$51.02" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iym-Mh-zpL">
+                                                    <rect key="frame" x="302" y="47" width="49" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwr-YL-WVU">
+                                                    <rect key="frame" x="24" y="70" width="34" height="29"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$51.02" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFF-yq-ycj">
+                                                    <rect key="frame" x="302" y="75" width="49" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="iLb-2T-nil" secondAttribute="trailing" constant="24" id="COh-Me-dDe"/>
-                                                <constraint firstAttribute="bottom" secondItem="iLb-2T-nil" secondAttribute="bottom" constant="24" id="Dkc-96-CWL"/>
-                                                <constraint firstItem="iLb-2T-nil" firstAttribute="leading" secondItem="hRT-CT-dBk" secondAttribute="leading" constant="24" id="Wv3-1g-Rds"/>
-                                                <constraint firstItem="iLb-2T-nil" firstAttribute="top" secondItem="hRT-CT-dBk" secondAttribute="top" constant="24" id="jeF-d7-jpa"/>
+                                                <constraint firstAttribute="trailing" secondItem="Kx7-CO-Mlh" secondAttribute="trailing" constant="24" id="5VK-yO-PdQ"/>
+                                                <constraint firstItem="Iym-Mh-zpL" firstAttribute="centerY" secondItem="ZOY-BD-PTX" secondAttribute="centerY" id="9YL-mU-y6U"/>
+                                                <constraint firstAttribute="trailing" secondItem="CFF-yq-ycj" secondAttribute="trailing" constant="24" id="AB0-8X-KEZ"/>
+                                                <constraint firstItem="wwr-YL-WVU" firstAttribute="top" secondItem="ZOY-BD-PTX" secondAttribute="bottom" constant="4" id="DBn-Yn-Fia"/>
+                                                <constraint firstAttribute="trailing" secondItem="Iym-Mh-zpL" secondAttribute="trailing" constant="24" id="DVw-N1-Y5T"/>
+                                                <constraint firstItem="vFr-3l-Swr" firstAttribute="leading" secondItem="hRT-CT-dBk" secondAttribute="leading" constant="24" id="F2J-gF-VQ3"/>
+                                                <constraint firstItem="CFF-yq-ycj" firstAttribute="centerY" secondItem="wwr-YL-WVU" secondAttribute="centerY" id="UFv-3R-azU"/>
+                                                <constraint firstItem="Kx7-CO-Mlh" firstAttribute="top" secondItem="hRT-CT-dBk" secondAttribute="top" constant="24" id="UGh-dw-iFz"/>
+                                                <constraint firstItem="ZOY-BD-PTX" firstAttribute="leading" secondItem="hRT-CT-dBk" secondAttribute="leading" constant="24" id="Yg5-yW-k1a"/>
+                                                <constraint firstItem="vFr-3l-Swr" firstAttribute="top" secondItem="hRT-CT-dBk" secondAttribute="top" constant="24" id="cD9-hQ-rxA"/>
+                                                <constraint firstAttribute="bottom" secondItem="wwr-YL-WVU" secondAttribute="bottom" constant="24" id="grb-iU-w16"/>
+                                                <constraint firstItem="ZOY-BD-PTX" firstAttribute="top" secondItem="vFr-3l-Swr" secondAttribute="bottom" constant="4" id="qb3-Dx-WLY"/>
+                                                <constraint firstItem="Kx7-CO-Mlh" firstAttribute="centerY" secondItem="vFr-3l-Swr" secondAttribute="centerY" id="r1r-N3-MZ3"/>
+                                                <constraint firstItem="wwr-YL-WVU" firstAttribute="leading" secondItem="hRT-CT-dBk" secondAttribute="leading" constant="24" id="ucE-9y-vZZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="shippingFeeLabel" destination="Iym-Mh-zpL" id="uYd-M1-zXT"/>
+                                            <outlet property="subtotalLabel" destination="Kx7-CO-Mlh" id="5x4-uj-bG9"/>
+                                            <outlet property="totalLabel" destination="CFF-yq-ycj" id="uQg-DB-v0z"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -505,6 +543,9 @@
                                                 <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTappedBuyAgainButton:" destination="mz7-K9-EBk" eventType="touchUpInside" id="XOX-aR-gx4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

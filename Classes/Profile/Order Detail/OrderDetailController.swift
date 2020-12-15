@@ -5,6 +5,7 @@
 //  Created by Khoa Le on 07/11/2020.
 //
 
+import JGProgressHUD
 import UIKit
 
 // MARK: - OrderDetailController
@@ -13,8 +14,12 @@ final class OrderDetailController: UIViewController {
 
   // MARK: Internal
 
+  let hud = JGProgressHUD(style: .dark)
+
   @IBOutlet weak var leaveFeedbackButton: UIButton!
   @IBOutlet weak var tableView: UITableView!
+  var order: Order?
+  var orderID: String?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -41,9 +46,29 @@ final class OrderDetailController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.backgroundColor = Styles.Colors.background.color
+
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    fetchOrder()
   }
 
   // MARK: Private
+
+  private func fetchOrder() {
+    hud.show(in: view)
+    NetworkManagement.getOrderBy(id: orderID ?? "") { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.order = Order.parseData(json: data["order"])
+        self.tableView.reloadData()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(title: "Cannot get order", with: data)
+      }
+    }
+  }
 
   @objc
   private func didTappedDismissButton() {
@@ -52,8 +77,19 @@ final class OrderDetailController: UIViewController {
 
   @objc
   private func didTappedLeaveFeedbackButton() {
-    let vc = AppSetting.Storyboards.Profile.leaveFeedbackVC
+    guard let vc = AppSetting.Storyboards.Profile.leaveFeedbackVC as? LeaveFeedbackController else { return }
+    vc.book = order?.books[0]
     present(vc, animated: true)
+  }
+
+  @IBAction
+  private func didTappedBuyAgainButton(_ sender: Any) {
+    let bookDetailController = BookDetailController()
+    bookDetailController.modalPresentationStyle = .fullScreen
+    bookDetailController.book = order?.books[0]
+    let navVC = UINavigationController(rootViewController: bookDetailController)
+    navVC.modalPresentationStyle = .fullScreen
+    present(navVC, animated: true)
   }
 
 }
@@ -79,40 +115,48 @@ extension OrderDetailController: UITableViewDataSource {
         withIdentifier: "OrderNoCell",
         for: indexPath
       ) as? OrderNoCell else { return UITableViewCell() }
+      cell.order = order
+      cell.selectionStyle = .none
       return cell
     case Sections.TrackingOrder.rawValue:
       guard let cell = tableView.dequeueReusableCell(
         withIdentifier: "TrackingOrderCell",
         for: indexPath
       ) as? TrackingOrderCell else { return UITableViewCell() }
+      cell.order = order
+      cell.selectionStyle = .none
       return cell
     case Sections.UserAddress.rawValue:
       guard let cell = tableView.dequeueReusableCell(
         withIdentifier: "ShippingAddressCell",
         for: indexPath
       ) as? ShippingAddressCell else { return UITableViewCell() }
+      cell.order = order
+      cell.selectionStyle = .none
       return cell
     case Sections.OrderInfo.rawValue:
       guard let cell = tableView.dequeueReusableCell(
         withIdentifier: "OrderDetailInformationCell",
         for: indexPath
       ) as? OrderDetailInformationCell else { return UITableViewCell() }
-      cell.tableView.reloadData()
-      cell.tableView.layoutIfNeeded()
-      cell.tableView.setNeedsLayout()
-      cell.tableView.scrollRectToVisible(CGRect.zero, animated: false)
+      cell.books = order?.books ?? []
+      cell.layoutSubviews()
+      cell.selectionStyle = .none
       return cell
     case Sections.PaymentMethod.rawValue:
       guard let cell = tableView.dequeueReusableCell(
         withIdentifier: "PaymentMethodCell",
         for: indexPath
       ) as? PaymentMethodCell else { return UITableViewCell() }
+      cell.selectionStyle = .none
       return cell
     case Sections.TotalPrice.rawValue:
       guard let cell = tableView.dequeueReusableCell(
         withIdentifier: "TotalPriceCell",
         for: indexPath
       ) as? TotalPriceCell else { return UITableViewCell() }
+      cell.order = order
+      cell.selectionStyle = .none
       return cell
     default:
       Void()
@@ -160,6 +204,6 @@ extension OrderDetailController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    200
+    229
   }
 }

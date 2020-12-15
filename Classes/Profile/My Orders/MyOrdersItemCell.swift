@@ -12,20 +12,24 @@ final class MyOrdersItemCell: UITableViewCell {
   @IBOutlet weak var bookImageView: UIImageView!
   @IBOutlet weak var titleBookLabel: UILabel!
   @IBOutlet weak var quantityAndPriceLabel: UILabel!
+  @IBOutlet weak var purchaseDate: UILabel!
+
+  var order: Order? {
+    didSet {
+      orderStatusLabel.text = order?.status.capitalizingFirstLetter()
+      titleBookLabel.text = order?.productName
+
+      let booksCount = order?.booksCount ?? 1
+      let booksCountText = booksCount > 1 ? "books" : "book"
+      quantityAndPriceLabel.text = "\(booksCount) \(booksCountText) | $\(order?.totalPrice ?? 0)"
+
+      let date = order?.purchaseDate.getDate()
+      purchaseDate.text = "Purchased \(date?.timeAgoDisplay() ?? "")"
+    }
+  }
 
   override func awakeFromNib() {
     super.awakeFromNib()
   }
 
-  //	override func layoutSubviews() {
-  //		super.layoutSubviews()
-  //		let size: CGFloat = 12
-//
-  //		contentView.frame = contentView.frame.inset(by: UIEdgeInsets(
-  //			top: size,
-  //			left: 0,
-  //			bottom: 0,
-  //			right: 0
-  //		))
-  //	}
 }

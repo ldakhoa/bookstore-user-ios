@@ -80,7 +80,7 @@ final class OrderViewController: UIViewController {
       return
     }
     hud.show(in: view)
-    NetworkManagement.postPaymentOrderByUser(id: AppSecurity.shared.userID) { code, data in
+    NetworkManagement.postPaymentOrder { code, data in
       if code == ResponseCode.ok.rawValue {
         self.createdOrder = CreatedOrder.parseData(json: data)
         guard let orderSuccessController = AppSetting.Storyboards.Order.orderSuccessVC as? OrderSuccessController else { return }

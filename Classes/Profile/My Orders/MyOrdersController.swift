@@ -14,6 +14,7 @@ final class MyOrdersController: UIViewController {
   // MARK: Internal
 
   let cellID = "cellID"
+  var orders = [Order]()
 
   let titleLabel = UILabel(
     text: "My Orders",
@@ -60,6 +61,9 @@ final class MyOrdersController: UIViewController {
     navigationController?.navigationBar.prefersLargeTitles = true
 
     setupLayout()
+
+    // TODO: - Filter by status
+    fetchOrder()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +77,17 @@ final class MyOrdersController: UIViewController {
   }
 
   // MARK: Private
+
+  private func fetchOrder() {
+    NetworkManagement.getAllOrders { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.orders = Order.parseAllOrders(json: data)
+        self.collectionView.reloadData()
+      } else {
+        self.presentErrorAlert(title: "Cannot get orders", with: data)
+      }
+    }
+  }
 
   private func setupLayout() {
     guard let menuView = menuController.view else { return }
@@ -134,7 +149,8 @@ extension MyOrdersController: UICollectionViewDataSource {
       for: indexPath
     ) as? MyOrdersMainCell else { return UICollectionViewCell() }
     cell.myOrdersItemController.delegate = self
-    cell.backgroundColor = colors[indexPath.item]
+//    cell.backgroundColor = colors[indexPath.item]
+    cell.myOrdersItemController.orders = orders
     return cell
   }
 }
@@ -185,8 +201,18 @@ extension MyOrdersController: MenuCollectionViewControllerDelegate {
 // MARK: MyOrdersItemControllerDelegate
 
 extension MyOrdersController: MyOrdersItemControllerDelegate {
-  func didSelectItemCell() {
-    let orderDetailController = AppSetting.Storyboards.Profile.orderDetailVC
+  func didTappedBuyAgainButton(book: Book) {
+    let bookDetailController = BookDetailController()
+    bookDetailController.modalPresentationStyle = .fullScreen
+    bookDetailController.book = book
+    let navVC = UINavigationController(rootViewController: bookDetailController)
+    navVC.modalPresentationStyle = .fullScreen
+    present(navVC, animated: true)
+  }
+
+  func didSelectItemCellAt(_ indexPath: IndexPath) {
+    guard let orderDetailController = AppSetting.Storyboards.Profile.orderDetailVC as? OrderDetailController else { return }
+    orderDetailController.orderID = orders[indexPath.row].id
     navigationController?.pushViewController(orderDetailController, animated: true)
   }
 }

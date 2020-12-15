@@ -10,7 +10,7 @@ import UIKit
 // MARK: - MyOrdersItemControllerDelegate
 
 protocol MyOrdersItemControllerDelegate: AnyObject {
-  func didSelectItemCell()
+  func didSelectItemCellAt(_ indexPath: IndexPath)
 }
 
 // MARK: - MyOrdersItemController
@@ -18,6 +18,12 @@ protocol MyOrdersItemControllerDelegate: AnyObject {
 final class MyOrdersItemController: UITableViewController {
 
   weak var delegate: MyOrdersItemControllerDelegate?
+
+  var orders = [Order]() {
+    didSet {
+      self.tableView.reloadData()
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,11 +39,11 @@ final class MyOrdersItemController: UITableViewController {
   }
 
   override func numberOfSections(in tableView: UITableView) -> Int {
-    5
+    1
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    1
+    orders.count
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,11 +52,12 @@ final class MyOrdersItemController: UITableViewController {
       for: indexPath
     ) as? MyOrdersItemCell else { return UITableViewCell() }
     cell.selectionStyle = .none
+    cell.order = orders[indexPath.row]
     return cell
   }
 
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    230
+    240
   }
 
   override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -68,6 +75,6 @@ final class MyOrdersItemController: UITableViewController {
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    delegate?.didSelectItemCell()
+    delegate?.didSelectItemCellAt(indexPath)
   }
 }

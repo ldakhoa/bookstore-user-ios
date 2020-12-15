@@ -44,6 +44,7 @@
 		648E0277258751D400A7CB00 /* HomeHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E0276258751D400A7CB00 /* HomeHeaderCell.swift */; };
 		6490119625427C4400E5D9DE /* BookDetailDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6490119525427C4400E5D9DE /* BookDetailDescriptionCell.xib */; };
 		6490119B25427D0200E5D9DE /* BookDetailDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6490119A25427D0200E5D9DE /* BookDetailDescriptionCell.swift */; };
+		6491ED852588857100FBBDB6 /* CustomInnerOrderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6491ED842588857100FBBDB6 /* CustomInnerOrderTableView.swift */; };
 		649B0063253AE56100BE315A /* AppSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B0062253AE56100BE315A /* AppSecurity.swift */; };
 		649B009D253B5BFA00BE315A /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B009C253B5BFA00BE315A /* UIViewController+Alerts.swift */; };
 		649B00A2253B5C4300BE315A /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649B00A1253B5C4300BE315A /* AlertAction.swift */; };
@@ -191,6 +192,7 @@
 		648E0276258751D400A7CB00 /* HomeHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCell.swift; sourceTree = "<group>"; };
 		6490119525427C4400E5D9DE /* BookDetailDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookDetailDescriptionCell.xib; sourceTree = "<group>"; };
 		6490119A25427D0200E5D9DE /* BookDetailDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailDescriptionCell.swift; sourceTree = "<group>"; };
+		6491ED842588857100FBBDB6 /* CustomInnerOrderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInnerOrderTableView.swift; sourceTree = "<group>"; };
 		649B0062253AE56100BE315A /* AppSecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecurity.swift; sourceTree = "<group>"; };
 		649B009C253B5BFA00BE315A /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		649B00A1253B5C4300BE315A /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				647C77C72532C4070034159E /* MainTabBarController.swift */,
 				649B009C253B5BFA00BE315A /* UIViewController+Alerts.swift */,
 				64B027732542999500C1CDB2 /* HorizontalSnappingController.swift */,
+				6491ED842588857100FBBDB6 /* CustomInnerOrderTableView.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1145,6 +1148,7 @@
 				64C20166258650910062894A /* Extensions+UIViewController.swift in Sources */,
 				64D5EA592533577C005788A3 /* ProfileCell.swift in Sources */,
 				647C77982532B5E10034159E /* LoginViewController.swift in Sources */,
+				6491ED852588857100FBBDB6 /* CustomInnerOrderTableView.swift in Sources */,
 				64C200E92584F8C10062894A /* Publisher.swift in Sources */,
 				647C77A62532BFA10034159E /* HomeViewController.swift in Sources */,
 				64AD6EBD253447D8008D4EF6 /* CategoryCell.swift in Sources */,

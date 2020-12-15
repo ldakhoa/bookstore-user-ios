@@ -7,60 +7,42 @@
 
 import UIKit
 
-// MARK: - SelfSizingTableView
-
-class SelfSizingTableView: UITableView {
-  //    var maxHeight = CGFloat.infinity
-  //
-  //    override var contentSize: CGSize {
-  //        didSet {
-  //            invalidateIntrinsicContentSize()
-  //            setNeedsLayout()
-  //        }
-  //    }
-  //
-  //    override var intrinsicContentSize: CGSize {
-  //        let height = min(maxHeight, contentSize.height)
-  //        return CGSize(width: contentSize.width, height: height)
-  //    }
-
-  override var intrinsicContentSize: CGSize {
-    self.layoutIfNeeded()
-    return self.contentSize
-  }
-
-  override var contentSize: CGSize {
-    didSet {
-      self.invalidateIntrinsicContentSize()
-    }
-  }
-
-  override func reloadData() {
-    super.reloadData()
-    invalidateIntrinsicContentSize()
-  }
-}
-
 // MARK: - OrderDetailInformationCell
 
 final class OrderDetailInformationCell: UITableViewCell {
 
-  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var tableView: CustomInnerOrderTableView!
+
+  var books = [Book]() {
+    didSet {
+      print("Book count", books.count)
+      self.tableView.reloadData()
+    }
+  }
 
   override func awakeFromNib() {
     super.awakeFromNib()
 
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.backgroundColor = .red
   }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+
+    tableView.layoutSubviews()
+    superTableView?.beginUpdates()
+    superTableView?.endUpdates()
+
+  }
+
 }
 
 // MARK: UITableViewDataSource
 
 extension OrderDetailInformationCell: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    3
+    books.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,6 +50,8 @@ extension OrderDetailInformationCell: UITableViewDataSource {
       withIdentifier: "OrderDetailBookCell",
       for: indexPath
     ) as? OrderDetailBookCell else { return UITableViewCell() }
+    cell.book = books[indexPath.row]
+    cell.selectionStyle = .none
     return cell
   }
 }
@@ -76,11 +60,6 @@ extension OrderDetailInformationCell: UITableViewDataSource {
 
 extension OrderDetailInformationCell: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    200
+    210
   }
-
-  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    frame.height
-  }
-
 }

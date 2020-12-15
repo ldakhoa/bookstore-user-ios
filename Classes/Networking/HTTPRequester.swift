@@ -30,14 +30,17 @@ enum HTTPRequester {
   case getBookSearchBy(searchString: String)
   case getBookSearchWithFilterBy(searchString: String, filterType: FilterType)
   case getBookByCategory(category: String)
+  case getBookBy(id: Int)
   case getCartByUser
   case postCartByUser(bookId: Int)
   case getCartInfoByUser
-  case postPaymentOrderByUser(id: Int)
+  case postPaymentOrder
+  case getAllOrders
+  case getOrderBy(id: String)
   case putQuantityOfBookByUser(bookId: Int, quantity: Int)
   case getRecommendBooks
   case getRecommendFromBook(id: Int)
-  case postReviewByBook(id: Int, userId: Int, content: String, ratings: Int)
+  case postReviewByBook(id: Int, content: String, ratings: Int)
   case getReviewsByBook(id: Int)
   case putProfileImageUrl(imageUrl: String)
 }
@@ -72,6 +75,13 @@ extension HTTPRequester: Requestable {
         path: URL(string: coreURL + "api/users/information")!,
         method: .put,
         parameter: params,
+        encoding: JSONEncoding.default
+      )
+    case let .getBookBy(id):
+      return (
+        path: URL(string: coreURL + "api/books/\(id)")!,
+        method: .get,
+        parameter: nil,
         encoding: JSONEncoding.default
       )
     case let .getBookSearchBy(searchString):
@@ -117,10 +127,24 @@ extension HTTPRequester: Requestable {
         parameter: nil,
         encoding: JSONEncoding.default
       )
-    case .postPaymentOrderByUser:
+    case .postPaymentOrder:
       return (
         path: URL(string: coreURL + "api/carts/mine/payment")!,
         method: .post,
+        parameter: nil,
+        encoding: JSONEncoding.default
+      )
+    case .getAllOrders:
+      return (
+        path: URL(string: coreURL + "api/orders")!,
+        method: .get,
+        parameter: nil,
+        encoding: JSONEncoding.default
+      )
+    case let .getOrderBy(id):
+      return (
+        path: URL(string: coreURL + "api/orders/\(id)")!,
+        method: .get,
         parameter: nil,
         encoding: JSONEncoding.default
       )
@@ -146,8 +170,8 @@ extension HTTPRequester: Requestable {
         parameter: nil,
         encoding: JSONEncoding.default
       )
-    case let .postReviewByBook(id, userId, content, ratings):
-      let params: [String: Any] = ["userId": userId, "content": content, "ratings": ratings]
+    case let .postReviewByBook(id, content, ratings):
+      let params: [String: Any] = ["content": content, "ratings": ratings]
       return (
         path: URL(string: coreURL + "api/books/\(id)/reviews")!,
         method: .post,

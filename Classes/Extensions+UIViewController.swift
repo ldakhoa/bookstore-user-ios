@@ -11,12 +11,12 @@ import UIKit
 
 extension UIViewController {
 
-  func presentErrorAlert(with data: JSON) {
+  func presentErrorAlert(title: String = "Something wrong", with data: JSON) {
     let hud = JGProgressHUD(style: .dark)
     hud.dismiss()
     let errMessage = data["message"].stringValue
     let alert = UIAlertController.configured(
-      title: "Something wrong",
+      title: title,
       message: errMessage,
       preferredStyle: .alert
     )

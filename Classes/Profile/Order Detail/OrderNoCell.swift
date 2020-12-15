@@ -8,6 +8,20 @@
 import UIKit
 
 final class OrderNoCell: UITableViewCell {
+  @IBOutlet weak var orderNoLabel: UILabel!
+  @IBOutlet weak var purchaseDateLabel: UILabel!
+  @IBOutlet weak var statusLabel: UILabel!
+
+  var order: Order? {
+    didSet {
+      orderNoLabel.text = "Order no: #\(order?.id ?? "")"
+      purchaseDateLabel.text = "Date of purchase: \(order?.purchaseDate.getDate()?.getFormattedDate() ?? "")"
+      statusLabel.text = order?.status.capitalizingFirstLetter()
+
+    }
+  }
+
+
   override func awakeFromNib() {
     super.awakeFromNib()
   }

@@ -55,6 +55,12 @@ final class BookDetailController: UIViewController {
 
   var cartInfo: CartInfo?
 
+  var bookId: Int? {
+    didSet {
+      fetchBookWith(id: bookId ?? 1)
+    }
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -90,12 +96,30 @@ final class BookDetailController: UIViewController {
     navigationController?.setNavigationBarHidden(true, animated: animated)
   }
 
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    tableView.reloadData()
+  }
+
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     navigationController?.setNavigationBarHidden(false, animated: animated)
   }
 
   // MARK: Private
+
+  private func fetchBookWith(id: Int) {
+    hud.show(in: view)
+    NetworkManagement.getBookBy(id: id) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.book = Book.parseItem(item: data)
+        self.tableView.reloadData()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(with: data)
+      }
+    }
+  }
 
   private func fetchReviews() {
     hud.show(in: view)
@@ -157,7 +181,6 @@ final class BookDetailController: UIViewController {
     NetworkManagement.getRecommendFromBook(id: book?.id ?? 1) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.recommendBookFromBookId = Book.parseRecommendBooksByBookIdData(json: data)
-        self.recommendBookFromBookId.forEach { print($0.title) }
         self.tableView.reloadData()
         self.hud.dismiss()
       } else {
@@ -283,6 +306,7 @@ extension BookDetailController: UITableViewDataSource {
         withIdentifier: cellsID[1],
         for: indexPath
       ) as? BookDetailDescriptionCell else { return UITableViewCell() }
+      cell.book = book
       cell.selectionStyle = .none
       return cell
     } else if indexPath.section == 2 {

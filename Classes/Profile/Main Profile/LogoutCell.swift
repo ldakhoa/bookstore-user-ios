@@ -10,7 +10,7 @@ import UIKit
 class LogoutCell: UITableViewCell {
   override init(style: UITableViewCell.CellStyle, reuseIdentifier _: String?) {
     super.init(style: style, reuseIdentifier: nil)
-    backgroundColor = Styles.Colors.background.color
+    backgroundColor = Styles.Colors.White.normal
     let label = UILabel(
       text: "Log out",
       font: Styles.Text.body.preferredFont,
