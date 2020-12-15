@@ -26,35 +26,11 @@ class SearchGradientView: UIView, UITextFieldDelegate {
     return button
   }()
 
-//    var anchorConstraint: AnchoredConstraints!
-
   override func awakeFromNib() {
     super.awakeFromNib()
 
     searchTextField.delegate = self
     insertGradientBackground()
-
-//        addSubview(searchTextField)
-//        addSubview(cancelButton)
-
-//        anchorConstraint =
-//        searchTextField.anchor(
-//            top: topAnchor,
-//            leading: leadingAnchor,
-//            bottom: nil,
-//            trailing: cancelButton.leadingAnchor,
-//            padding: .init(top: 54, left: 15, bottom: 0, right: 15),
-//            size: .init(width: 0, height: 40)
-//        )
-//
-//        cancelButton.anchor(
-//            top: nil,
-//            leading: nil,
-//            bottom: nil,
-//            trailing: trailingAnchor,
-//            padding: .init(top: 0, left: 0, bottom: 0, right: 12)
-//        )
-//        cancelButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
   }
 
   func layoutForOtherViewController() {
@@ -116,26 +92,7 @@ class SearchGradientView: UIView, UITextFieldDelegate {
     cancelButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
   }
 
-  @objc
-  func handleEditingChanged(textField: UITextField) {
-    if textField.text?.count == 0 {
-//            setTextFieldWithoutBack()
-    } else {
-//            setTextFieldWithBack()
-    }
-  }
-
   // MARK: Private
-
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        setTextFieldWithBack()
-//        return true
-//    }
-//
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        setTextFieldWithoutBack()
-//        return true
-//    }
 
   private func insertGradientBackground() {
     let layer = CAGradientLayer()
@@ -159,14 +116,4 @@ class SearchGradientView: UIView, UITextFieldDelegate {
     layer.position = center
     self.layer.insertSublayer(layer, at: 0)
   }
-
-//    func setTextFieldWithoutBack() {
-//        backButton.isHidden = true
-//        anchorConstraint.leading?.constant = 15
-//    }
-//
-//    func setTextFieldWithBack() {
-//        backButton.isHidden = false
-//        anchorConstraint.leading?.constant = 12 + 12 + 24
-//    }
 }

@@ -106,7 +106,6 @@ final class ProfileTableViewController: UITableViewController {
     case Sections.orders.rawValue:
       let myOrderViewController = MyOrdersController()
       myOrderViewController.modalPresentationStyle = .fullScreen
-//      myOrderViewController.orders = orders
       let navController = UINavigationController(rootViewController: myOrderViewController)
       navController.modalPresentationStyle = .fullScreen
       navController.setNavigationBarHidden(true, animated: false)
@@ -147,8 +146,7 @@ final class ProfileTableViewController: UITableViewController {
     case shippingAddress = 2
     case paymentMethods = 3
     case reviews = 4
-    case settings = 5
-    case logout = 6
+    case logout = 5
 
     // MARK: Internal
 
@@ -166,8 +164,6 @@ final class ProfileTableViewController: UITableViewController {
         return "Payment methods"
       case .reviews:
         return "My reviews"
-      case .settings:
-        return "Settings"
       case .logout:
         return "Log out"
       }
@@ -180,7 +176,6 @@ final class ProfileTableViewController: UITableViewController {
     "Shipping addresses",
     "Payment methods",
     "My reviews",
-    "Settings",
   ]
 
   private let cellID = "ProfileCell"
