@@ -19,12 +19,16 @@ final class MyOrdersItemCell: UITableViewCell {
       orderStatusLabel.text = order?.status.capitalizingFirstLetter()
       titleBookLabel.text = order?.productName
 
-      let booksCount = order?.booksCount ?? 1
+      let booksCount = order?.booksQuantity ?? 1
       let booksCountText = booksCount > 1 ? "books" : "book"
       quantityAndPriceLabel.text = "\(booksCount) \(booksCountText) | $\(order?.totalPrice ?? 0)"
 
       let date = order?.purchaseDate.getDate()
       purchaseDate.text = "Purchased \(date?.timeAgoDisplay() ?? "")"
+
+      if let url = URL(string: order?.books[0].imageUrl ?? "") {
+        bookImageView.sd_setImage(with: url)
+      }
     }
   }
 

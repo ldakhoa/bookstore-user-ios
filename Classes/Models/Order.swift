@@ -77,6 +77,7 @@ final class Order {
     data.updatedDate = json["updated_at"].string ?? ""
     data.productName = json["productName"].string ?? ""
     data.booksCount = json["books_count"].int ?? 0
+    data.booksQuantity = json["books_quantity"].int ?? 0
 
     if let bookArr = json["books"].array {
       bookArr.forEach {
@@ -105,6 +106,7 @@ final class Order {
   var updatedDate: String = ""
   var productName: String = ""
   var booksCount: Int = 0
+  var booksQuantity: Int = 0
   var books = [Book]()
   var user: User?
 
