@@ -10,18 +10,18 @@ import Foundation
 // MARK: - OrderStatus
 
 enum OrderStatus: String, CustomStringConvertible {
-	case processing
-	case delivered
-	case cancelled
+  case processing
+  case delivered
+  case cancelled
 
-	var description: String {
-		switch self {
-		case .processing:
-			return "Processing"
-		case .delivered:
-			return "Delivered"
-		case .cancelled:
-			return "Cancelled"
-		}
-	}
+  var description: String {
+    switch self {
+    case .processing:
+      return "Processing"
+    case .delivered:
+      return "Delivered"
+    case .cancelled:
+      return "Cancelled"
+    }
+  }
 }

@@ -5,8 +5,8 @@
 //  Created by Khoa Le on 12/10/2020.
 //
 
-import UIKit
 import JGProgressHUD
+import UIKit
 
 // MARK: - CategoryViewController
 
@@ -15,6 +15,8 @@ final class CategoryViewController: UIViewController {
   // MARK: Internal
 
   @IBOutlet var tableView: UITableView!
+
+  var categories = [Category]()
 
   @IBOutlet var searchGradientView: SearchGradientView! {
     didSet {
@@ -39,28 +41,26 @@ final class CategoryViewController: UIViewController {
     ))
     searchGradientView.isUserInteractionEnabled = true
 
-		fetchCategories()
+    fetchCategories()
   }
-
-	private func fetchCategories() {
-		let hud = JGProgressHUD(style: .dark)
-		hud.show(in: view)
-		NetworkManagement.getCategories { (code, data) in
-			if code == ResponseCode.ok.rawValue {
-				self.categories = Category.parseCategories(json: data)
-				self.tableView.reloadData()
-				hud.dismiss()
-			} else {
-				self.presentErrorAlert(title: "Cannot get categories", with: data)
-			}
-		}
-	}
 
   // MARK: Private
 
-  var categories = [Category]()
-
   private let cellID = "CategoryCell"
+
+  private func fetchCategories() {
+    let hud = JGProgressHUD(style: .dark)
+    hud.show(in: view)
+    NetworkManagement.getCategories { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.categories = Category.parseCategories(json: data)
+        self.tableView.reloadData()
+        hud.dismiss()
+      } else {
+        self.presentErrorAlert(title: "Cannot get categories", with: data)
+      }
+    }
+  }
 
   @objc
   private func didTappedSearchGradientView() {

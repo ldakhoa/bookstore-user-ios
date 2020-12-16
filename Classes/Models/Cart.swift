@@ -23,7 +23,7 @@ final class Cart {
     cart.shippingFee = json["shipping_fee"].double ?? 0
     cart.subtotalPrice = json["sub_total_price"].double ?? 0
     cart.totalPrice = json["total_price"].double ?? 0
-		cart.shippingAddressId = json["shipping_address_id"].int ?? 0
+    cart.shippingAddressId = json["shipping_address_id"].int ?? 0
 
     if let items = json["books"].array {
       items.forEach { item in
@@ -32,12 +32,12 @@ final class Cart {
       }
     }
 
-		if let items = json["addresses"].array {
-			items.forEach { item in
-				let address = Address.parseData(json: item)
-				cart.addresses.append(address)
-			}
-		}
+    if let items = json["addresses"].array {
+      items.forEach { item in
+        let address = Address.parseData(json: item)
+        cart.addresses.append(address)
+      }
+    }
 
     return cart
   }
@@ -52,8 +52,8 @@ final class Cart {
   var shippingFee: Double = 0
   var totalPrice: Double = 0
   var subtotalPrice: Double = 0
-	var addresses = [Address]()
-	var shippingAddressId: Int = 0
+  var addresses = [Address]()
+  var shippingAddressId: Int = 0
 
 }
 

@@ -83,12 +83,12 @@ struct NetworkManagement {
     }
   }
 
-	public static func getCategories(response: @escaping ResponseHandler) {
-		let requester = HTTPRequester.getCategories
-		callAPI(requester) { code, json in
-			response(code, json)
-		}
-	}
+  public static func getCategories(response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getCategories
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
 
   public static func getBookSearchWithFilterBy(
     searchString: String,
@@ -265,19 +265,50 @@ struct NetworkManagement {
     }
   }
 
-	public static func postAddressInformation(with params: [String: Any], response: @escaping ResponseHandler) {
-		let requester = HTTPRequester.postAddressInformation(params: params)
-		callAPI(requester) { code, json in
-			response(code, json)
-		}
-	}
+  public static func postAddressInformation(
+    with params: [String: Any],
+    response: @escaping ResponseHandler
+  ) {
+    let requester = HTTPRequester.postAddressInformation(params: params)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
 
-	public static func putShippingAddress(with addressId: String, response: @escaping ResponseHandler) {
-		let requester = HTTPRequester.putShippingAddress(id: addressId)
-		callAPI(requester) { code, json in
-			response(code, json)
-		}
-	}
+  public static func putShippingAddress(with addressId: String, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.putShippingAddress(id: addressId)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func deleteShippingAddress(at id: String, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.deleteShippingAddress(id: id)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func postFavorBookWithBookId(_ id: String, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.postFavorBookWithBookId(id: id)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func getAllFavorBooks(response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getAllFavorBooks
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func deleteFavorBookWithBookId(_ id: String, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.deleteFavorBookWithBookId(id: id)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
 
   // MARK: Internal
 

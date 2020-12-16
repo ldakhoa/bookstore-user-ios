@@ -19,7 +19,7 @@ final class EditAddressController: UIViewController {
   let countryPickerView = CountryPickerView()
   var country: Country?
 //  var user: User?
-	var address = Address()
+  var address = Address()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -68,13 +68,13 @@ final class EditAddressController: UIViewController {
 
   @objc
   private func didTappedSaveButton() {
-		// TODO: - Validate field when address have phone + name field
-		let valid = address.name?.count ?? -1 > 5
+    // TODO: - Validate field when address have phone + name field
+    let valid = address.name?.count ?? -1 > 5
       && address.city?.count ?? -1 > 1
-			&& address.district?.count ?? -1 > 0
-			&& address.ward ?? -1 > 0
+      && address.district?.count ?? -1 > 0
+      && address.ward ?? -1 > 0
       && address.country?.count ?? -1 > 0
-		//      && address?.phone ?? -1 > 1_000_000
+    //      && address?.phone ?? -1 > 1_000_000
 
     if !valid {
       let alert = UIAlertController.configured(
@@ -87,27 +87,27 @@ final class EditAddressController: UIViewController {
       return
     }
     let params: [String: Any] = [
-//      "userName": user?.username ?? "",
-			"name": address.name ?? "",
+      //      "userName": user?.username ?? "",
+      "name": address.name ?? "",
 //      "phone": user?.phone ?? 012359341,
-			"city": address.city ?? "",
-			"district": address.district ?? "",
-			"ward": address.ward ?? 0,
-			"zip_code": address.zipCode ?? 700000,
-			"country": address.country ?? "Vietnam",
+      "city": address.city ?? "",
+      "district": address.district ?? "",
+      "ward": address.ward ?? 0,
+      "zip_code": address.zipCode ?? 700000,
+      "country": address.country ?? "Vietnam",
     ]
     let hud = JGProgressHUD(style: .dark)
     hud.show(in: view)
 
-		NetworkManagement.postAddressInformation(with: params) { (code, data) in
-			if code == ResponseCode.ok.rawValue {
-				hud.dismiss()
-				self.navigationController?.popViewController(animated: true)
-			} else {
-				self.presentErrorAlert(with: data)
-			}
-		}
-		hud.dismiss()
+    NetworkManagement.postAddressInformation(with: params) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        hud.dismiss()
+        self.navigationController?.popViewController(animated: true)
+      } else {
+        self.presentErrorAlert(with: data)
+      }
+    }
+    hud.dismiss()
   }
 
   @objc
@@ -198,7 +198,7 @@ extension EditAddressController: UITableViewDataSource {
       cell.titleLabel.text = Sections.country.getTitleText()
       cell.editTextField.placeholder = Sections.country.getPlaceHolderText()
       cell.editTextField.isUserInteractionEnabled = false
-			cell.editTextField.text = address.country?.count ?? -1 < 1 ? country?.name : address.country
+      cell.editTextField.text = address.country?.count ?? -1 < 1 ? country?.name : address.country
       cell.editTextField.addTarget(
         self,
         action: #selector(handleCountryChange),
@@ -276,7 +276,7 @@ extension EditAddressController: UITableViewDataSource {
 
   @objc
   private func handleCountryChange(textField: UITextField) {
-		address.country = country?.name ?? "Vietnam"
+    address.country = country?.name ?? "Vietnam"
   }
 
   @objc
@@ -291,27 +291,27 @@ extension EditAddressController: UITableViewDataSource {
 
   @objc
   private func handleAddressChange(textField: UITextField) {
-		address.name = textField.text ?? ""
+    address.name = textField.text ?? ""
   }
 
   @objc
   private func handleCityChange(textField: UITextField) {
-		address.city = textField.text ?? ""
+    address.city = textField.text ?? ""
   }
 
   @objc
   private func handleDistrictChange(textField: UITextField) {
-		address.district = textField.text ?? ""
+    address.district = textField.text ?? ""
   }
 
   @objc
   private func handleWardChange(textField: UITextField) {
-		address.ward = Int(textField.text ?? "") ?? 0
+    address.ward = Int(textField.text ?? "") ?? 0
   }
 
   @objc
   private func handlePostalCodeChange(textField: UITextField) {
-		address.zipCode = Int(textField.text ?? "") ?? 700000
+    address.zipCode = Int(textField.text ?? "") ?? 700000
   }
 
 }

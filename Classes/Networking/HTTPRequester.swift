@@ -30,7 +30,7 @@ enum HTTPRequester {
   case getBookSearchBy(searchString: String)
   case getBookSearchWithFilterBy(searchString: String, filterType: FilterType)
   case getBookByCategory(category: String)
-	case getCategories
+  case getCategories
   case getBookBy(id: String)
   case getCartByUser
   case postCartByUser(bookId: String)
@@ -46,8 +46,12 @@ enum HTTPRequester {
   case postReviewByBook(id: String, content: String, ratings: Int)
   case getReviewsByBook(id: String)
   case putProfileImageUrl(imageUrl: String)
-	case postAddressInformation(params: [String: Any])
-	case putShippingAddress(id: String)
+  case postAddressInformation(params: [String: Any])
+  case putShippingAddress(id: String)
+  case deleteShippingAddress(id: String)
+  case postFavorBookWithBookId(id: String)
+  case getAllFavorBooks
+  case deleteFavorBookWithBookId(id: String)
 }
 
 // MARK: Requestable
@@ -103,13 +107,13 @@ extension HTTPRequester: Requestable {
         parameter: nil,
         encoding: JSONEncoding.default
       )
-		case .getCategories:
-			return (
-				path: URL(string: coreURL + "api/categories")!,
-				method: .get,
-				parameter: nil,
-				encoding: JSONEncoding.default
-			)
+    case .getCategories:
+      return (
+        path: URL(string: coreURL + "api/categories")!,
+        method: .get,
+        parameter: nil,
+        encoding: JSONEncoding.default
+      )
     case let .getBookSearchWithFilterBy(searchString, filter):
       return (
         path: URL(string: coreURL + "api/books/?search=\(searchString)&filter=\(filter)&limit=20")!,
@@ -219,22 +223,50 @@ extension HTTPRequester: Requestable {
         parameter: params,
         encoding: JSONEncoding.default
       )
-		case let .postAddressInformation(params):
-			return (
-				path: URL(string: coreURL + "api/users/information/address")!,
-				method: .post,
-				parameter: params,
-				encoding: JSONEncoding.default
-			)
-		case let .putShippingAddress(id):
-			let param: [String: Any] = ["addressId": id]
-			return (
-				path: URL(string: coreURL + "api/carts/mine/shipping_address")!,
-				method: .put,
-				parameter: param,
-				encoding: JSONEncoding.default
-			)
-
+    case let .postAddressInformation(params):
+      return (
+        path: URL(string: coreURL + "api/users/information/address")!,
+        method: .post,
+        parameter: params,
+        encoding: JSONEncoding.default
+      )
+    case let .putShippingAddress(id):
+      let param: [String: Any] = ["addressId": id]
+      return (
+        path: URL(string: coreURL + "api/carts/mine/shipping_address")!,
+        method: .put,
+        parameter: param,
+        encoding: JSONEncoding.default
+      )
+    case let .deleteShippingAddress(id):
+      return (
+        path: URL(string: coreURL + "api/users/information/address/\(id)")!,
+        method: .delete,
+        parameter: nil,
+        encoding: JSONEncoding.default
+      )
+    case let .postFavorBookWithBookId(id):
+      let param: [String: String] = ["bookId": id]
+      return (
+        path: URL(string: coreURL + "api/books/favor")!,
+        method: .post,
+        parameter: param,
+        encoding: JSONEncoding.default
+      )
+    case .getAllFavorBooks:
+      return (
+        path: URL(string: coreURL + "api/books/favor")!,
+        method: .get,
+        parameter: nil,
+        encoding: JSONEncoding.default
+      )
+    case let .deleteFavorBookWithBookId(id):
+      return (
+        path: URL(string: coreURL + "api/books/favor/\(id)")!,
+        method: .delete,
+        parameter: nil,
+        encoding: JSONEncoding.default
+      )
     }
   }
 }

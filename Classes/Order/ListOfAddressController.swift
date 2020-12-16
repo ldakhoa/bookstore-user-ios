@@ -5,8 +5,8 @@
 //  Created by Khoa Le on 05/11/2020.
 //
 
-import UIKit
 import JGProgressHUD
+import UIKit
 
 // MARK: - ListOfAddressController
 
@@ -17,7 +17,9 @@ final class ListOfAddressController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var dismissButton: UIButton!
 
-	var addresses = [Address]()
+  var addresses = [Address]()
+
+  let hud = JGProgressHUD(style: .dark)
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,30 +29,28 @@ final class ListOfAddressController: UIViewController {
     tableView.backgroundColor = Styles.Colors.background.color
   }
 
-	let hud = JGProgressHUD(style: .dark)
-
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
     tableView.reloadData()
-		fetchAddresses()
+    fetchAddresses()
   }
 
   // MARK: Private
 
-	private func fetchAddresses() {
-		hud.show(in: self.view)
-		NetworkManagement.getCartByUser { (code, data) in
-			if code == ResponseCode.ok.rawValue {
-				let cart = Cart.parseData(json: data["cart"])
-				self.addresses = cart.addresses
-				self.tableView.reloadData()
-				self.hud.dismiss()
-			} else {
-				self.presentErrorAlert(title: "Cannot get addresses", with: data)
-			}
-		}
-	}
+  private func fetchAddresses() {
+    hud.show(in: view)
+    NetworkManagement.getCartByUser { code, data in
+      if code == ResponseCode.ok.rawValue {
+        let cart = Cart.parseData(json: data["cart"])
+        self.addresses = cart.addresses
+        self.tableView.reloadData()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(title: "Cannot get addresses", with: data)
+      }
+    }
+  }
 
   @IBAction
   private func didTappedDismissButton(_ sender: Any) {
@@ -67,6 +67,12 @@ final class ListOfAddressController: UIViewController {
     let alert = UIAlertController.configured(preferredStyle: .actionSheet)
     alert.addActions([
       AlertAction.cancel(),
+      AlertAction(AlertActionBuilder {
+        $0.title = "Choose to default shipping address"
+        $0.style = .default
+      }).get { [weak self] _ in
+        self?.editShippingAddress()
+      },
       AlertAction(AlertActionBuilder {
         $0.title = "Edit shipping address"
         $0.style = .default
@@ -90,7 +96,7 @@ final class ListOfAddressController: UIViewController {
   private func editShippingAddress() {
     guard let editAddressVC = AppSetting.Storyboards.Order.editAddressVC as? EditAddressController else { return }
 //    editAddressVC.user = user
-//		editAddressVC.address
+    //		editAddressVC.address
 //    editAddressVC.delegate = self
     navigationController?.pushViewController(editAddressVC, animated: true)
   }
@@ -101,7 +107,7 @@ final class ListOfAddressController: UIViewController {
 
 extension ListOfAddressController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return addresses.count
+    addresses.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,7 +115,7 @@ extension ListOfAddressController: UITableViewDataSource {
       withIdentifier: "ListOfAddressesCell",
       for: indexPath
     ) as? ListOfAddressesCell else { return UITableViewCell() }
-		cell.address = addresses[indexPath.row]
+    cell.address = addresses[indexPath.row]
     return cell
   }
 }
@@ -126,16 +132,16 @@ extension ListOfAddressController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		hud.show(in: self.view)
+    hud.show(in: view)
     tableView.deselectRow(at: indexPath, animated: true)
-		guard let addressId = addresses[indexPath.row].id else { return }
-		NetworkManagement.putShippingAddress(with: addressId) { (code, data) in
-			if code == ResponseCode.ok.rawValue {
-				self.dismiss(animated: true)
-			} else {
-				self.presentErrorAlert(title: "Cannot choose shipping address", with: data)
-			}
-		}
+    guard let addressId = addresses[indexPath.row].id else { return }
+    NetworkManagement.putShippingAddress(with: addressId) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.dismiss(animated: true)
+      } else {
+        self.presentErrorAlert(title: "Cannot choose shipping address", with: data)
+      }
+    }
     dismiss(animated: true)
   }
 }

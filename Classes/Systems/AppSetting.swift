@@ -49,7 +49,7 @@ struct AppSetting {
       static let orderDetailVC = profile.instantiateViewController(withIdentifier: "OrderDetailController")
       static let notLoginVC = profile.instantiateViewController(withIdentifier: "ProfileNotLoginController")
       static let leaveFeedbackVC = profile.instantiateViewController(withIdentifier: "LeaveFeedbackController")
-			static let myFavoriteVC = profile.instantiateViewController(withIdentifier: "MyFavoriteController")
+      static let myFavoriteVC = profile.instantiateViewController(withIdentifier: "MyFavoriteController")
     }
 
     enum Main {

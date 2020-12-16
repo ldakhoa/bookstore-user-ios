@@ -76,10 +76,10 @@ final class BookListViewController: UIViewController {
       didTappedSearchGradientView()
       shouldPresentSearchController = false
     }
-		
-		if isPresetedFromCategory {
-			fetchBookByCategory()
-		}
+
+    if isPresetedFromCategory {
+      fetchBookByCategory()
+    }
   }
 
   // MARK: Private

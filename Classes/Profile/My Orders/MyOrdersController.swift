@@ -87,7 +87,7 @@ final class MyOrdersController: UIViewController {
     hud.show(in: view)
 
     dispatchGroup.enter()
-		NetworkManagement.getAllOrdersByStatus(OrderStatus.processing.rawValue) { code, data in
+    NetworkManagement.getAllOrdersByStatus(OrderStatus.processing.rawValue) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.processingOrders = Order.parseAllOrders(json: data)
         dispatchGroup.leave()
@@ -97,7 +97,7 @@ final class MyOrdersController: UIViewController {
     }
 
     dispatchGroup.enter()
-		NetworkManagement.getAllOrdersByStatus(OrderStatus.delivered.rawValue) { code, data in
+    NetworkManagement.getAllOrdersByStatus(OrderStatus.delivered.rawValue) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.deliveredOrders = Order.parseAllOrders(json: data)
         dispatchGroup.leave()
@@ -122,7 +122,7 @@ final class MyOrdersController: UIViewController {
       self.hud.dismiss()
     }
   }
-	
+
   private func setupLayout() {
     guard let menuView = menuController.view else { return }
 
@@ -244,6 +244,13 @@ extension MyOrdersController: MenuCollectionViewControllerDelegate {
 // MARK: MyOrdersItemControllerDelegate
 
 extension MyOrdersController: MyOrdersItemControllerDelegate {
+  func didTappedContinueShopping() {
+    guard let referenceForTabBarController = presentingViewController as? MainTabBarController else { return }
+    dismiss(animated: true) {
+      referenceForTabBarController.selectedIndex = 0
+    }
+  }
+
   func didTappedBuyAgainButton(book: Book) {
     let bookDetailController = BookDetailController()
     bookDetailController.modalPresentationStyle = .fullScreen

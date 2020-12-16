@@ -60,6 +60,11 @@ final class BookDetailController: UIViewController {
 
     setupLayout()
 
+    topContainerView.favoriteView.addGestureRecognizer(UITapGestureRecognizer(
+      target: self,
+      action: #selector(didTappedFavoriteView)
+    ))
+
     topContainerView.dismissView.addGestureRecognizer(UITapGestureRecognizer(
       target: self,
       action: #selector(didTappedDismissImageView)
@@ -206,6 +211,54 @@ final class BookDetailController: UIViewController {
     guard let controller = navigationController else { return }
     popRecognizer = InteractivePopRecognizer(controller: controller)
     controller.interactivePopGestureRecognizer?.delegate = popRecognizer
+  }
+
+  @objc
+  private func didTappedFavoriteView() {
+    // 1. if favor is select -> Post
+    NetworkManagement.postFavorBookWithBookId(book?.id ?? "") { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.hud.textLabel.text = "Added to favorite"
+        self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        self.topContainerView.favoriteSelectedView.isHidden = false
+        self.topContainerView.favoriteView.isHidden = true
+        self.topContainerView.favoriteSelectedView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+        self.hud.show(in: self.view)
+        self.hud.dismiss(afterDelay: 1.0)
+        UIView.animate(withDuration: 0.5) {
+          self.topContainerView.favoriteSelectedView.transform = .identity
+        }
+      } else {
+        self.presentErrorAlert(title: "Cannot add to favorite", with: data)
+        return
+      }
+    }
+
+    // 2. if selected is select -> Delete
+    //		var isFavorited = false
+//
+    //		if !isFavorited {
+    //			isFavorited = true
+    //			hud.textLabel.text = "Added to favorite"
+    //			hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+    //			self.topContainerView.favoriteSelectedView.isHidden = false
+    //			self.topContainerView.favoriteView.isHidden = true
+    //			self.topContainerView.favoriteSelectedView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+    //			hud.show(in: self.view)
+    //			hud.dismiss(afterDelay: 1.0)
+    //			UIView.animate(withDuration: 0.5) {
+    //				self.topContainerView.favoriteSelectedView.transform = .identity
+    //			}
+    //		}
+    //		if isFavorited {
+    //			isFavorited = false
+    //			self.topContainerView.favoriteSelectedView.isHidden = true
+    //			self.topContainerView.favoriteView.isHidden = false
+    //			self.topContainerView.favoriteView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+    //			UIView.animate(withDuration: 0.5) {
+    //				self.topContainerView.favoriteView.transform = .identity
+    //			}
+    //		}
   }
 
   @objc
@@ -364,6 +417,7 @@ extension BookDetailController: UITableViewDelegate {
   private func isEnabledShadowForTopView(opacity: Float) {
     topContainerView.dismissView.toTopViewShadow(opacity: opacity)
     topContainerView.favoriteView.toTopViewShadow(opacity: opacity)
+    topContainerView.favoriteSelectedView.toTopViewShadow(opacity: opacity)
     topContainerView.cartView.toTopViewShadow(opacity: opacity)
   }
 }

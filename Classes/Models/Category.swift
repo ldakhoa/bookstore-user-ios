@@ -28,13 +28,13 @@ final class Category {
     return category
   }
 
-	static func parseCategories(json: JSON) -> [Category] {
-		var data = [Category]()
-		if let arr = json["category"].array {
-			arr.forEach {
-				data.append(Category.parseData(item: $0))
-			}
-		}
-		return data
-	}
+  static func parseCategories(json: JSON) -> [Category] {
+    var data = [Category]()
+    if let arr = json["category"].array {
+      arr.forEach {
+        data.append(Category.parseData(item: $0))
+      }
+    }
+    return data
+  }
 }

@@ -19,6 +19,7 @@ final class ProfileTableViewController: UITableViewController {
   let hud = JGProgressHUD(style: .dark)
   var selectedImage: UIImage?
   var orders = [Order]()
+  var favoriteBooks = [Book]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,8 +37,7 @@ final class ProfileTableViewController: UITableViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    fetchUserInfo()
-    fetchOrder()
+    fetchAllData()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -56,12 +56,17 @@ final class ProfileTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ProfileCell else { return UITableViewCell() }
-    if indexPath.row != Sections.orders.rawValue {
-      cell.subtitleLabel.removeFromSuperview()
-    } else {
+
+    if indexPath.row == Sections.orders.rawValue {
       let countText = orders.count > 1 ? "orders" : "order"
       cell.subtitleLabel.text = "Already have \(orders.count) \(countText)"
+    } else if indexPath.row == Sections.favorite.rawValue {
+      let countText = favoriteBooks.count > 1 ? "books" : "book"
+      cell.subtitleLabel.text = "Already have \(favoriteBooks.count) \(countText)"
+    } else {
+      cell.subtitleLabel.removeFromSuperview()
     }
+
     if indexPath.row == Sections.logout.rawValue {
       let logoutCell = LogoutCell(style: .default, reuseIdentifier: nil)
       return logoutCell
@@ -112,7 +117,6 @@ final class ProfileTableViewController: UITableViewController {
       present(navController, animated: true)
     case Sections.shippingAddress.rawValue:
       guard let listOfAddressVC = AppSetting.Storyboards.Order.listOfAddressVC as? ListOfAddressController else { return }
-//      listOfAddressVC.user = user
       let navController = UINavigationController(rootViewController: listOfAddressVC)
       navController.setNavigationBarHidden(true, animated: false)
       navController.modalPresentationStyle = .fullScreen
@@ -133,6 +137,10 @@ final class ProfileTableViewController: UITableViewController {
         },
       ])
       present(alert, animated: true)
+    case Sections.favorite.rawValue:
+      guard let vc = AppSetting.Storyboards.Profile.myFavoriteVC as? MyFavoriteController else { return }
+      vc.books = favoriteBooks
+      navigationController?.pushViewController(vc, animated: true)
     default:
       Void()
     }
@@ -225,6 +233,58 @@ final class ProfileTableViewController: UITableViewController {
     navigationController?.pushViewController(editPersonalInfoController, animated: true)
   }
 
+  private func fetchAllData() {
+    let dispatchGroup = DispatchGroup()
+    hud.show(in: view)
+
+    dispatchGroup.enter()
+    NetworkManagement.getAllOrders { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.orders = Order.parseAllOrders(json: data)
+        dispatchGroup.leave()
+      } else {
+        self.presentErrorAlert(title: "Cannot get orders", with: data)
+        return
+      }
+    }
+
+    dispatchGroup.enter()
+    NetworkManagement.getAllFavorBooks { code, data in
+      if code == ResponseCode.ok.rawValue {
+        let books = Book.parseData(json: data)
+        self.favoriteBooks = books
+        dispatchGroup.leave()
+      } else {
+        self.presentErrorAlert(title: "Cannot get favorite books", with: data)
+        return
+      }
+    }
+
+    dispatchGroup.enter()
+    NetworkManagement.getInformationOfUser { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.user = User.parseData(json: data["user"])
+        dispatchGroup.leave()
+      } else {
+        let errMessage = data["message"].stringValue
+        let alert = UIAlertController.configured(
+          title: "Something wrong",
+          message: errMessage,
+          preferredStyle: .alert
+        )
+        alert.addAction(AlertAction.ok())
+        self.present(alert, animated: true)
+        return
+      }
+    }
+
+    dispatchGroup.notify(queue: .main) {
+      self.tableView.reloadData()
+      self.hud.dismiss()
+    }
+
+  }
+
   private func fetchOrder() {
     hud.show(in: view)
     NetworkManagement.getAllOrders { code, data in
@@ -234,6 +294,21 @@ final class ProfileTableViewController: UITableViewController {
         self.hud.dismiss()
       } else {
         self.presentErrorAlert(title: "Cannot get orders", with: data)
+      }
+    }
+  }
+
+  private func fetchFavoriteBooks() {
+    hud.show(in: view)
+    NetworkManagement.getAllFavorBooks { code, data in
+      if code == ResponseCode.ok.rawValue {
+        let books = Book.parseData(json: data)
+        self.favoriteBooks = books
+        self.tableView.reloadData()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(title: "Cannot get favorite books", with: data)
+        return
       }
     }
   }
