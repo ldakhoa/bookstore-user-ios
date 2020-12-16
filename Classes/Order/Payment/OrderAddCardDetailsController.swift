@@ -31,6 +31,17 @@ extension String {
       .map { String($0) }
       .joined(separator: String(separator))
   }
+
+  func trim() -> String {
+    trimmingCharacters(in: CharacterSet.whitespaces)
+      .trimmingCharacters(in: CharacterSet.controlCharacters)
+  }
+}
+
+// MARK: - OrderAddCardDetailsControllerDelegate
+
+protocol OrderAddCardDetailsControllerDelegate: AnyObject {
+  func didTappedNext()
 }
 
 // MARK: - OrderAddCardDetailsController
@@ -43,22 +54,19 @@ final class OrderAddCardDetailsController: UIViewController, UITextFieldDelegate
   @IBOutlet var cardNumberTextField: CardTextField!
   @IBOutlet var expirationTextField: CardTextField!
   @IBOutlet var cvvTextField: CardTextField!
+  @IBOutlet weak var errorLabel: UILabel!
   @IBOutlet var zipCodeTextField: CardTextField!
 
+  weak var delegate: OrderAddCardDetailsControllerDelegate?
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     cardNumberTextField.delegate = self
-    cardNumberTextField.addTarget(
-      self,
-      action: #selector(textFieldEditingChanged),
-      for: .editingChanged
-    )
-
     expirationTextField.delegate = self
     cvvTextField.delegate = self
     zipCodeTextField.delegate = self
+
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -99,7 +107,13 @@ final class OrderAddCardDetailsController: UIViewController, UITextFieldDelegate
   }
 
   func textFieldDidEndEditing(_ textField: UITextField) {
-    print(textField.text)
+    if textField == cardNumberTextField {
+      if cardNumberTextField.text ?? "" != "4242 4242 4242 4242" {
+        errorLabel.isHidden = false
+      } else {
+        errorLabel.isHidden = true
+      }
+    }
   }
 
   override func touchesBegan(_: Set<UITouch>, with _: UIEvent?) {
@@ -157,13 +171,25 @@ final class OrderAddCardDetailsController: UIViewController, UITextFieldDelegate
     return false
   }
 
-
   // MARK: Private
 
-  @objc
-  private func textFieldEditingChanged(textField: UITextField) {
-    if textField == cardNumberTextField {
-      print(textField.text)
+  private func checkValidNextButton() {
+    guard let cardText = cardNumberTextField.text,
+          let expirationText = expirationTextField.text,
+          let cvvText = cvvTextField.text,
+          let zipText = zipCodeTextField.text else { return }
+    let valid = cardText.count > 12
+      && expirationText.count > 3
+      && cvvText.count > 2
+      && zipText.count > 1
+    if !valid {
+      let alert = UIAlertController.configured(
+        title: "Please fill all fields",
+        message: "We need your card to process order",
+        preferredStyle: .alert
+      )
+      alert.addAction(AlertAction.ok())
+      present(alert, animated: true)
     }
   }
 
@@ -190,6 +216,14 @@ final class OrderAddCardDetailsController: UIViewController, UITextFieldDelegate
         self.nextButton.transform = .identity
       }
     )
+  }
+
+  @IBAction
+  private func didTappedNextButton(_ sender: Any) {
+    checkValidNextButton()
+
+    delegate?.didTappedNext()
+    navigationController?.popViewController(animated: true)
   }
 
   @IBAction

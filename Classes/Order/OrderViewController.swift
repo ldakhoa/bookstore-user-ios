@@ -21,6 +21,7 @@ final class OrderViewController: UIViewController {
   let hud = JGProgressHUD(style: .dark)
 
   var cart: Cart?
+  var isTappedNext: Bool?
 
 //  var user: User?
 
@@ -88,8 +89,24 @@ final class OrderViewController: UIViewController {
       present(alert, animated: true)
       return
     }
+
+    if !(isTappedNext ?? false) {
+      let alert = UIAlertController(
+        title: "Please add payment method",
+        message: "We need your payment method to place your order",
+        preferredStyle: .alert
+      )
+      alert.addAction(AlertAction.ok())
+      present(alert, animated: true)
+      return
+    }
     hud.show(in: view)
-    let params = [String: Any]()
+    let params: [String: Any] = [
+      "number": "4242424242424242",
+      "exp_month": 11,
+      "exp_year": 2021,
+      "cvc": 111,
+    ]
     NetworkManagement.postPaymentOrder(with: params) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.createdOrder = CreatedOrder.parseData(json: data)
@@ -115,7 +132,8 @@ final class OrderViewController: UIViewController {
 
   @IBAction
   private func didTappedAddPaymentMethod(_: Any) {
-    let orderPaymentController = AppSetting.Storyboards.Order.orderAddPaymentVC
+    guard let orderPaymentController = AppSetting.Storyboards.Order.orderAddPaymentVC as? OrderAddPaymentController else { return }
+    orderPaymentController.delegate = self
     let navController = UINavigationController(rootViewController: orderPaymentController)
     navController.setNavigationBarHidden(true, animated: true)
     present(navController, animated: true)
@@ -167,6 +185,14 @@ extension OrderViewController: UITableViewDataSource {
         withIdentifier: "OrderPaymentCell",
         for: indexPath
       ) as? OrderPaymentCell else { return UITableViewCell() }
+      //			cell.isTappedNext = self.isTappedNext
+      if isTappedNext ?? false {
+        cell.stackView.isHidden = true
+        cell.visaLabel.isHidden = false
+      } else {
+        cell.stackView.isHidden = false
+        cell.visaLabel.isHidden = true
+      }
       cell.selectionStyle = .none
       return cell
     case 2:
@@ -222,5 +248,14 @@ extension OrderViewController: OrderSuccessControllerDelegate {
     dismiss(animated: true) {
       referenceForTabBarController.selectedIndex = 2
     }
+  }
+}
+
+// MARK: OrderAddPaymentControllerDelegate
+
+extension OrderViewController: OrderAddPaymentControllerDelegate {
+  func didTappedNext() {
+    isTappedNext = true
+    tableView.reloadData()
   }
 }

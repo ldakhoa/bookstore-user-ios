@@ -7,12 +7,22 @@
 
 import UIKit
 
-final class OrderAddPaymentController: UIViewController {
+// MARK: - OrderAddPaymentControllerDelegate
+
+protocol OrderAddPaymentControllerDelegate: AnyObject {
+  func didTappedNext()
+}
+
+// MARK: - OrderAddPaymentController
+
+final class OrderAddPaymentController: UIViewController, OrderAddCardDetailsControllerDelegate {
 
   // MARK: Internal
 
   @IBOutlet var cardStackView: UIStackView!
   @IBOutlet var payPalStackView: UIStackView!
+  var isTappedNext: Bool = false
+  weak var delegate: OrderAddPaymentControllerDelegate?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,6 +37,12 @@ final class OrderAddPaymentController: UIViewController {
     ))
   }
 
+  func didTappedNext() {
+    dismiss(animated: true) {
+      self.delegate?.didTappedNext()
+    }
+  }
+
   // MARK: Private
 
   @IBAction
@@ -36,7 +52,8 @@ final class OrderAddPaymentController: UIViewController {
 
   @objc
   private func didTappedCardStackView() {
-    let orderAddPaymentMethodVC = AppSetting.Storyboards.Order.orderAddPaymentMethodVC
+    guard let orderAddPaymentMethodVC = AppSetting.Storyboards.Order.orderAddPaymentMethodVC as? OrderAddCardDetailsController else { return }
+    orderAddPaymentMethodVC.delegate = self
     navigationController?.pushViewController(orderAddPaymentMethodVC, animated: true)
   }
 
@@ -50,4 +67,5 @@ final class OrderAddPaymentController: UIViewController {
     alert.addAction(AlertAction.ok())
     present(alert, animated: true)
   }
+
 }

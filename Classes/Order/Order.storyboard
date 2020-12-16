@@ -165,6 +165,12 @@
                                                     <color key="textColor" name="black"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visa: xxxx xxxx xxxx 4242" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J40-5t-g7I">
+                                                    <rect key="frame" x="24" y="48" width="187" height="19"/>
+                                                    <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TN0-57-Ss5">
                                                     <rect key="frame" x="340" y="47" width="50" height="30"/>
                                                     <constraints>
@@ -234,15 +240,19 @@
                                             <constraints>
                                                 <constraint firstItem="PnJ-6I-col" firstAttribute="leading" secondItem="r31-TB-XLk" secondAttribute="leading" constant="24" id="CjH-ZG-T6Z"/>
                                                 <constraint firstAttribute="trailing" secondItem="TN0-57-Ss5" secondAttribute="trailing" constant="24" id="JHC-St-ong"/>
+                                                <constraint firstItem="J40-5t-g7I" firstAttribute="leading" secondItem="r31-TB-XLk" secondAttribute="leading" constant="24" id="NnA-1c-McO"/>
                                                 <constraint firstItem="PnJ-6I-col" firstAttribute="top" secondItem="r31-TB-XLk" secondAttribute="top" constant="24" id="O6h-AB-IeM"/>
                                                 <constraint firstAttribute="bottom" secondItem="UZ3-yf-MoF" secondAttribute="bottom" constant="24" id="R0g-d2-ocI"/>
                                                 <constraint firstItem="UZ3-yf-MoF" firstAttribute="top" secondItem="PnJ-6I-col" secondAttribute="bottom" constant="24" id="bqR-ET-Xhe"/>
                                                 <constraint firstItem="TN0-57-Ss5" firstAttribute="centerY" secondItem="UZ3-yf-MoF" secondAttribute="centerY" id="dT3-DJ-Mf5"/>
                                                 <constraint firstItem="UZ3-yf-MoF" firstAttribute="leading" secondItem="r31-TB-XLk" secondAttribute="leading" constant="24" id="l5o-v9-8tN"/>
+                                                <constraint firstItem="J40-5t-g7I" firstAttribute="top" secondItem="PnJ-6I-col" secondAttribute="bottom" constant="24" id="wb7-B6-Nvy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addButton" destination="TN0-57-Ss5" id="e8Q-xH-KMd"/>
+                                            <outlet property="stackView" destination="UZ3-yf-MoF" id="hLQ-bH-ZKy"/>
+                                            <outlet property="visaLabel" destination="J40-5t-g7I" id="0Fa-7j-eRr"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="OrderSubtotalCell" rowHeight="100" id="JuV-tG-1x8" customClass="OrderSubtotalCell" customModule="bsuser" customModuleProvider="target">
@@ -368,6 +378,9 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTappedNextButton:" destination="OcX-Pu-H7O" eventType="touchUpInside" id="jo9-Jb-GUe"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="gJZ-cb-K7N">
                                 <rect key="frame" x="24" y="201.5" width="366" height="154"/>
@@ -457,7 +470,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This card is not supported" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ba8-77-Bhp">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This card is not supported" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ba8-77-Bhp">
                                 <rect key="frame" x="24" y="161.5" width="366" height="21"/>
                                 <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="18"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
@@ -485,6 +498,7 @@
                     <connections>
                         <outlet property="cardNumberTextField" destination="6YA-JE-9Gl" id="umh-p0-7wC"/>
                         <outlet property="cvvTextField" destination="A9Y-8J-bUe" id="UoA-Dk-7M0"/>
+                        <outlet property="errorLabel" destination="ba8-77-Bhp" id="OU8-h7-ASV"/>
                         <outlet property="expirationTextField" destination="NbP-aF-bUe" id="qto-Ye-o5c"/>
                         <outlet property="nextButton" destination="Fjw-6F-VOs" id="DzH-de-c49"/>
                         <outlet property="zipCodeTextField" destination="2hw-R7-DhR" id="KRl-eW-6ko"/>
@@ -589,10 +603,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfs-1d-Q7E">
-                                <rect key="frame" x="24" y="205" width="200" height="50"/>
+                                <rect key="frame" x="24" y="205" width="366" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#1218412" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wh2-Ad-CVm">
-                                        <rect key="frame" x="60" y="14.5" width="80.5" height="21"/>
+                                        <rect key="frame" x="143" y="14.5" width="80.5" height="21"/>
                                         <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -600,7 +614,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.34509803921568627" green="0.71764705882352942" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="TGj-HV-zIe"/>
                                     <constraint firstItem="wh2-Ad-CVm" firstAttribute="centerX" secondItem="rfs-1d-Q7E" secondAttribute="centerX" id="cuq-2V-nxN"/>
                                     <constraint firstAttribute="height" constant="50" id="el3-Hh-1ev"/>
                                     <constraint firstItem="wh2-Ad-CVm" firstAttribute="centerY" secondItem="rfs-1d-Q7E" secondAttribute="centerY" id="qcQ-MS-h52"/>
@@ -623,6 +636,7 @@
                             <constraint firstItem="wUB-X4-1oq" firstAttribute="top" secondItem="aWN-GE-Mh1" secondAttribute="bottom" constant="8" id="OdT-Q6-rE4"/>
                             <constraint firstItem="aWN-GE-Mh1" firstAttribute="leading" secondItem="EdQ-t0-Wze" secondAttribute="leading" constant="24" id="Thy-5g-NmY"/>
                             <constraint firstItem="rfs-1d-Q7E" firstAttribute="leading" secondItem="EdQ-t0-Wze" secondAttribute="leading" constant="24" id="YF7-mX-Z0F"/>
+                            <constraint firstItem="EdQ-t0-Wze" firstAttribute="trailing" secondItem="rfs-1d-Q7E" secondAttribute="trailing" constant="24" id="ch0-gq-xSG"/>
                             <constraint firstItem="aWN-GE-Mh1" firstAttribute="top" secondItem="Wlf-r7-WnF" secondAttribute="bottom" constant="16" id="dMj-yc-JzD"/>
                             <constraint firstItem="Wlf-r7-WnF" firstAttribute="top" secondItem="EdQ-t0-Wze" secondAttribute="top" id="mgY-Lk-mFW"/>
                             <constraint firstItem="EdQ-t0-Wze" firstAttribute="trailing" secondItem="k3o-7g-4Hs" secondAttribute="trailing" constant="24" id="om5-D8-qrO"/>
