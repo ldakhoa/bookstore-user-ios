@@ -12,12 +12,13 @@ final class OrderShippingAddressCell: UITableViewCell {
   @IBOutlet var addressLabel: UILabel!
   @IBOutlet var editButton: UIButton!
 
-  var user: User? {
+  var cart: Cart? {
     didSet {
-      if user?.ward?.count ?? -1 < 1 && user?.district?.count ?? -1 < 1 {
+      if cart?.shippingAddress.count ?? 0 < 10 {
         addressLabel.text = "Please fill your shipping address and your phone number."
       } else {
-        addressLabel.text = "\(user?.address ?? "") Ward \(user?.ward ?? "") District \(user?.district ?? ""), \(user?.city ?? ""), \(user?.country ?? "")"
+        nameAndPhoneNumberLabel.text = "\(cart?.userName ?? "") | +\(cart?.contactPhoneNumber ?? "+84")"
+        addressLabel.text = cart?.shippingAddress
       }
     }
   }

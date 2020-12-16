@@ -116,9 +116,7 @@ final class CartViewController: UIViewController {
 
   @IBAction
   private func didTappedCheckoutButton(_: Any) {
-    guard let orderNavController = AppSetting.Storyboards.Order.orderNavController as? UINavigationController,
-          let orderController = orderNavController.children.first as? OrderViewController else { return }
-    orderController.cart = cart
+    let orderNavController = AppSetting.Storyboards.Order.orderNavController
     orderNavController.modalPresentationStyle = .fullScreen
     present(orderNavController, animated: true)
   }

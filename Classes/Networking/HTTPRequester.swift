@@ -48,6 +48,8 @@ enum HTTPRequester {
   case putProfileImageUrl(imageUrl: String)
   case postAddressInformation(params: [String: Any])
   case putShippingAddress(id: String)
+  case getShippingAddress(id: String)
+  case putShippingAddressWithParams(id: String, params: [String: Any])
   case deleteShippingAddress(id: String)
   case postFavorBookWithBookId(id: String)
   case getAllFavorBooks
@@ -236,6 +238,20 @@ extension HTTPRequester: Requestable {
         path: URL(string: coreURL + "api/carts/mine/shipping_address")!,
         method: .put,
         parameter: param,
+        encoding: JSONEncoding.default
+      )
+    case let .getShippingAddress(id):
+      return (
+        path: URL(string: coreURL + "api/users/information/address/\(id)")!,
+        method: .get,
+        parameter: nil,
+        encoding: JSONEncoding.default
+      )
+    case let .putShippingAddressWithParams(id, params):
+      return (
+        path: URL(string: coreURL + "api/users/information/address/\(id)")!,
+        method: .put,
+        parameter: params,
         encoding: JSONEncoding.default
       )
     case let .deleteShippingAddress(id):

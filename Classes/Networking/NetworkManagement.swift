@@ -289,6 +289,24 @@ struct NetworkManagement {
     }
   }
 
+  public static func getShippingAddress(at id: String, response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getShippingAddress(id: id)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
+  public static func putShippingAddress(
+    at id: String,
+    params: [String: Any],
+    response: @escaping ResponseHandler
+  ) {
+    let requester = HTTPRequester.putShippingAddressWithParams(id: id, params: params)
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
   public static func postFavorBookWithBookId(_ id: String, response: @escaping ResponseHandler) {
     let requester = HTTPRequester.postFavorBookWithBookId(id: id)
     callAPI(requester) { code, json in

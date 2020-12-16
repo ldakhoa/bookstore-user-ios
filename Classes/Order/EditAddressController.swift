@@ -24,6 +24,8 @@ final class EditAddressController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    print("Address id: ", address.id)
+
     tableView.delegate = self
     tableView.dataSource = self
 
@@ -57,6 +59,8 @@ final class EditAddressController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(false, animated: animated)
+
+    tableView.reloadData()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -72,9 +76,10 @@ final class EditAddressController: UIViewController {
     let valid = address.name?.count ?? -1 > 5
       && address.city?.count ?? -1 > 1
       && address.district?.count ?? -1 > 0
-      && address.ward ?? -1 > 0
+      && address.ward?.count ?? -1 > 0
       && address.country?.count ?? -1 > 0
-    //      && address?.phone ?? -1 > 1_000_000
+      && address.contactPhoneNumber?.count ?? -1 > 9
+      && address.userName.count > 2
 
     if !valid {
       let alert = UIAlertController.configured(
@@ -87,9 +92,9 @@ final class EditAddressController: UIViewController {
       return
     }
     let params: [String: Any] = [
-      //      "userName": user?.username ?? "",
-      "name": address.name ?? "",
-//      "phone": user?.phone ?? 012359341,
+      "userName": address.userName,
+      "address": address.name ?? "",
+      "phone": address.contactPhoneNumber ?? 0934512312,
       "city": address.city ?? "",
       "district": address.district ?? "",
       "ward": address.ward ?? 0,
@@ -97,8 +102,8 @@ final class EditAddressController: UIViewController {
       "country": address.country ?? "Vietnam",
     ]
     let hud = JGProgressHUD(style: .dark)
+    //		if address.id?.count ?? -1 < 2 {
     hud.show(in: view)
-
     NetworkManagement.postAddressInformation(with: params) { code, data in
       if code == ResponseCode.ok.rawValue {
         hud.dismiss()
@@ -107,6 +112,18 @@ final class EditAddressController: UIViewController {
         self.presentErrorAlert(with: data)
       }
     }
+    //		} else {
+    //			hud.show(in: view)
+    //			NetworkManagement.putShippingAddress(at: address.id ?? "", params: params) { code, data in
+    //				if code == ResponseCode.ok.rawValue {
+    //					hud.dismiss()
+    //					self.navigationController?.popViewController(animated: true)
+    //				} else {
+    //					self.presentErrorAlert(with: data)
+    //				}
+    //			}
+    //		}
+
     hud.dismiss()
   }
 
@@ -145,12 +162,12 @@ extension EditAddressController: UITableViewDataSource {
     case Sections.name.rawValue:
       cell.titleLabel.text = Sections.name.getTitleText()
       cell.editTextField.placeholder = Sections.name.getPlaceHolderText()
-//      cell.editTextField.text = address.username
+      cell.editTextField.text = address.userName
       cell.editTextField.addTarget(self, action: #selector(handleNameChange), for: .editingChanged)
     case Sections.phoneNumber.rawValue:
       cell.titleLabel.text = Sections.phoneNumber.getTitleText()
       cell.editTextField.keyboardType = .phonePad
-//      cell.editTextField.text = "\(user?.phone ?? 0912312841)"
+      cell.editTextField.text = address.contactPhoneNumber ?? "84"
       cell.editTextField.placeholder = Sections.phoneNumber.getPlaceHolderText()
       cell.editTextField.addTarget(
         self,
@@ -184,7 +201,7 @@ extension EditAddressController: UITableViewDataSource {
       cell.titleLabel.text = Sections.ward.getTitleText()
       cell.editTextField.placeholder = Sections.ward.getPlaceHolderText()
       cell.editTextField.addTarget(self, action: #selector(handleWardChange), for: .editingChanged)
-      cell.editTextField.text = "\(address.ward ?? 0)"
+      cell.editTextField.text = address.ward
     case Sections.postalCode.rawValue:
       cell.titleLabel.text = Sections.postalCode.getTitleText()
       cell.editTextField.placeholder = Sections.postalCode.getPlaceHolderText()
@@ -281,12 +298,12 @@ extension EditAddressController: UITableViewDataSource {
 
   @objc
   private func handleNameChange(textField: UITextField) {
-//    address?.username = textField.text ?? ""
+    address.userName = textField.text ?? ""
   }
 
   @objc
   private func handlePhoneNumberChange(textField: UITextField) {
-//    address?.phone = Int(textField.text ?? "") ?? 0
+    address.contactPhoneNumber = textField.text ?? "84"
   }
 
   @objc
@@ -306,7 +323,7 @@ extension EditAddressController: UITableViewDataSource {
 
   @objc
   private func handleWardChange(textField: UITextField) {
-    address.ward = Int(textField.text ?? "") ?? 0
+    address.ward = textField.text ?? ""
   }
 
   @objc

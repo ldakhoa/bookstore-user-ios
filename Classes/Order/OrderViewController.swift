@@ -21,7 +21,8 @@ final class OrderViewController: UIViewController {
   let hud = JGProgressHUD(style: .dark)
 
   var cart: Cart?
-  var user: User?
+
+//  var user: User?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,23 +31,31 @@ final class OrderViewController: UIViewController {
     tableView.dataSource = self
     tableView.delegate = self
 
-    totalPriceLabel.text = String(format: "$%.2f", cart?.totalPrice ?? 0)
   }
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
     tableView.reloadData()
-    fetchUserInfo()
+
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    fetchCart()
   }
 
   // MARK: Private
 
-  private func fetchUserInfo() {
-    NetworkManagement.getInformationOfUser { code, data in
+  private func fetchCart() {
+    hud.show(in: view)
+    NetworkManagement.getCartByUser { code, data in
       if code == ResponseCode.ok.rawValue {
-        self.user = User.parseData(json: data["user"])
+        self.cart = Cart.parseData(json: data["cart"])
+        self.totalPriceLabel.text = String(format: "$%.2f", self.cart?.totalPrice ?? 0)
         self.tableView.reloadData()
+        self.hud.dismiss()
       } else {
         let errMessage = data["message"].stringValue
         let alert = UIAlertController.configured(
@@ -67,7 +76,7 @@ final class OrderViewController: UIViewController {
 
   @IBAction
   private func didTappedPlaceYourOrderButton(_: Any) {
-    if user?.address?.count ?? 0 < 10 {
+    if cart?.shippingAddress.count ?? 0 < 10 {
       let alert = UIAlertController(
         title: "Please fill your address",
         message: "We need your address and your phone number to ship your books",
@@ -145,8 +154,7 @@ extension OrderViewController: UITableViewDataSource {
         for: indexPath
       ) as? OrderShippingAddressCell else { return UITableViewCell() }
       cell.selectionStyle = .none
-
-      cell.user = user
+      cell.cart = cart
       cell.editButton.addTarget(
         self,
         action: #selector(didTappedEditAddressButton),

@@ -51,11 +51,11 @@ final class User {
 final class Address {
   var id: String? = ""
   var name: String? = ""
-  //	var userPhone: String
-  //	var userName: String
+  var contactPhoneNumber: String? = "84"
+  var userName: String = ""
   var city: String? = ""
   var district: String? = ""
-  var ward: Int? = 0
+  var ward: String? = ""
   var zipCode: Int? = 700000
   var country: String? = "Vietnam"
   var userId: Int? = 0
@@ -65,9 +65,11 @@ final class Address {
     data.id = json["id"].string ?? ""
     data.name = json["name"].string ?? ""
     data.city = json["city"].string ?? ""
-    data.ward = json["ward"].int ?? 0
+    data.ward = json["ward"].string ?? ""
     data.zipCode = json["zip_code"].int ?? 700000
     data.country = json["country"].string ?? "Vietnam"
+    data.contactPhoneNumber = json["contact_phone_number"].string ?? "84"
+    data.userName = json["user_name"].string ?? ""
     return data
   }
 

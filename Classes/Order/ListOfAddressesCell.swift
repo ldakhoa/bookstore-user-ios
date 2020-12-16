@@ -7,7 +7,17 @@
 
 import UIKit
 
+// MARK: - ListOfAddressesCellDelegate
+
+protocol ListOfAddressesCellDelegate: AnyObject {
+  func didTappedEditButton(at addressId: String)
+}
+
+// MARK: - ListOfAddressesCell
+
 final class ListOfAddressesCell: UITableViewCell {
+
+  // MARK: Internal
 
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var specificAddressLabel: UILabel!
@@ -16,30 +26,29 @@ final class ListOfAddressesCell: UITableViewCell {
   @IBOutlet weak var phoneNumberLabel: UILabel!
   @IBOutlet weak var editAddressButton: UIButton!
 
-
-//  var user: User? {
-//    didSet {
-//      nameLabel.text = user?.username
-//      specificAddressLabel.text = "\(user?.address ?? "") Ward \(user?.ward ?? "") District \(user?.district ?? "")"
-//      cityAndZIPLabel.text = "\(user?.city ?? "") \(user?.zipCode ?? 700000)"
-//      countryLabel.text = user?.country
-//      phoneNumberLabel.text = "Phone number: \(user?.phone ?? 84)"
-//    }
-//  }
+  weak var delegate: ListOfAddressesCellDelegate?
 
   var address: Address? {
     didSet {
       // TODO: - Implement name + phone
-      //			phoneNumberLabel.text = "Phone number: \(user?.phone ?? 84)"
-      //			nameLabel.text = user?.username
-      specificAddressLabel.text = "\(address?.name ?? "") Ward \(address?.ward ?? 0) District \(address?.district ?? "")"
+      phoneNumberLabel.text = "Phone number: \(address?.contactPhoneNumber ?? "84")"
+      nameLabel.text = address?.userName
+      specificAddressLabel.text = "\(address?.name ?? "") Ward \(address?.ward ?? "") District \(address?.district ?? "")"
       cityAndZIPLabel.text = "\(address?.city ?? "") \(address?.zipCode ?? 700000)"
       countryLabel.text = address?.country
-
     }
   }
 
   override func awakeFromNib() {
     super.awakeFromNib()
+
+    editAddressButton.addTarget(self, action: #selector(didTappedEditButton), for: .touchUpInside)
+  }
+
+  // MARK: Private
+
+  @objc
+  private func didTappedEditButton() {
+    delegate?.didTappedEditButton(at: address?.id ?? "")
   }
 }

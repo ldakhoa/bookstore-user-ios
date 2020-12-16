@@ -24,6 +24,8 @@ final class Cart {
     cart.subtotalPrice = json["sub_total_price"].double ?? 0
     cart.totalPrice = json["total_price"].double ?? 0
     cart.shippingAddressId = json["shipping_address_id"].int ?? 0
+    cart.contactPhoneNumber = json["contact_phone_number"].string ?? "+84"
+    cart.shippingAddress = json["shipping_address"].string ?? ""
 
     if let items = json["books"].array {
       items.forEach { item in
@@ -54,7 +56,8 @@ final class Cart {
   var subtotalPrice: Double = 0
   var addresses = [Address]()
   var shippingAddressId: Int = 0
-
+  var contactPhoneNumber: String = ""
+  var shippingAddress: String = ""
 }
 
 // MARK: - CartInfo

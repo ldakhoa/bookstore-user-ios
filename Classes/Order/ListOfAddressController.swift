@@ -17,9 +17,13 @@ final class ListOfAddressController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var dismissButton: UIButton!
 
-  var addresses = [Address]()
-
   let hud = JGProgressHUD(style: .dark)
+
+  var addresses = [Address]() {
+    didSet {
+      tableView.reloadData()
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -59,45 +63,7 @@ final class ListOfAddressController: UIViewController {
 
   @IBAction
   private func didTappedAddNewShippingAddressButton(_ sender: Any) {
-    editShippingAddress()
-  }
-
-  @IBAction
-  private func didTappedEditButton(_ sender: Any) {
-    let alert = UIAlertController.configured(preferredStyle: .actionSheet)
-    alert.addActions([
-      AlertAction.cancel(),
-      AlertAction(AlertActionBuilder {
-        $0.title = "Choose to default shipping address"
-        $0.style = .default
-      }).get { [weak self] _ in
-        self?.editShippingAddress()
-      },
-      AlertAction(AlertActionBuilder {
-        $0.title = "Edit shipping address"
-        $0.style = .default
-      }).get { [weak self] _ in
-        self?.editShippingAddress()
-      },
-      AlertAction(AlertActionBuilder {
-        $0.title = "Delete shipping address"
-        $0.style = .destructive
-      }).get { [weak self] _ in
-        self?.deleteShippingAddress()
-      },
-    ])
-    present(alert, animated: true)
-  }
-
-  private func deleteShippingAddress() {
-    print("Delete shipping address")
-  }
-
-  private func editShippingAddress() {
     guard let editAddressVC = AppSetting.Storyboards.Order.editAddressVC as? EditAddressController else { return }
-//    editAddressVC.user = user
-    //		editAddressVC.address
-//    editAddressVC.delegate = self
     navigationController?.pushViewController(editAddressVC, animated: true)
   }
 
@@ -116,6 +82,7 @@ extension ListOfAddressController: UITableViewDataSource {
       for: indexPath
     ) as? ListOfAddressesCell else { return UITableViewCell() }
     cell.address = addresses[indexPath.row]
+    cell.delegate = self
     return cell
   }
 }
@@ -123,6 +90,9 @@ extension ListOfAddressController: UITableViewDataSource {
 // MARK: UITableViewDelegate
 
 extension ListOfAddressController: UITableViewDelegate {
+
+  // MARK: Internal
+
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     UITableView.automaticDimension
   }
@@ -135,13 +105,82 @@ extension ListOfAddressController: UITableViewDelegate {
     hud.show(in: view)
     tableView.deselectRow(at: indexPath, animated: true)
     guard let addressId = addresses[indexPath.row].id else { return }
+    putShippingAddress(with: addressId)
+  }
+
+  // MARK: Private
+
+  private func putShippingAddress(with addressId: String) {
     NetworkManagement.putShippingAddress(with: addressId) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.dismiss(animated: true)
       } else {
         self.presentErrorAlert(title: "Cannot choose shipping address", with: data)
+        return
       }
     }
-    dismiss(animated: true)
+  }
+}
+
+// MARK: ListOfAddressesCellDelegate
+
+extension ListOfAddressController: ListOfAddressesCellDelegate {
+
+  // MARK: Internal
+
+  func didTappedEditButton(at addressId: String) {
+    let alert = UIAlertController.configured(preferredStyle: .actionSheet)
+    alert.addActions([
+      AlertAction.cancel(),
+      AlertAction(AlertActionBuilder {
+        $0.title = "Choose to default shipping address"
+        $0.style = .default
+      }).get { [weak self] _ in
+        self?.putShippingAddress(with: addressId)
+      },
+      AlertAction(AlertActionBuilder {
+        $0.title = "Edit shipping address"
+        $0.style = .default
+      }).get { [weak self] _ in
+        self?.editShippingAddress(at: addressId)
+      },
+      AlertAction(AlertActionBuilder {
+        $0.title = "Delete shipping address"
+        $0.style = .destructive
+      }).get { [weak self] _ in
+        self?.deleteShippingAddress(at: addressId)
+      },
+    ])
+    present(alert, animated: true)
+  }
+
+  // MARK: Private
+
+  private func deleteShippingAddress(at addressId: String) {
+    hud.show(in: view)
+    NetworkManagement.deleteShippingAddress(at: addressId) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.fetchAddresses()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(title: "Cannot delete shipping address", with: data)
+        return
+      }
+    }
+  }
+
+  private func editShippingAddress(at addressId: String) {
+    hud.show(in: view)
+    NetworkManagement.getShippingAddress(at: addressId) { code, data in
+      if code == ResponseCode.ok.rawValue {
+        guard let editAddressVC = AppSetting.Storyboards.Order.editAddressVC as? EditAddressController else { return }
+        editAddressVC.address = Address.parseData(json: data["address"])
+        self.hud.dismiss()
+        self.navigationController?.pushViewController(editAddressVC, animated: true)
+      } else {
+        self.presentErrorAlert(title: "Cannot edit address", with: data)
+        self.hud.dismiss()
+      }
+    }
   }
 }

@@ -942,9 +942,6 @@
                                                             </fragment>
                                                         </attributedString>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="didTappedEditButton:" destination="0UX-bs-YyT" eventType="touchUpInside" id="o23-4d-kyH"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
