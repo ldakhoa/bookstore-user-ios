@@ -104,7 +104,7 @@ final class BookDetailController: UIViewController {
 
   private func fetchReviews() {
     hud.show(in: view)
-    NetworkManagement.getReviewByBook(id: book?.id ?? -1) { code, data in
+    NetworkManagement.getReviewByBook(id: book?.id ?? "") { code, data in
       if code == ResponseCode.ok.rawValue {
         self.reviews = Review.parseListOfReview(data)
         self.tableView.reloadData()
@@ -159,7 +159,7 @@ final class BookDetailController: UIViewController {
 
   private func fetchRecommendBooksWithBookId() {
     hud.show(in: view)
-    NetworkManagement.getRecommendFromBook(id: book?.id ?? 1) { code, data in
+    NetworkManagement.getRecommendFromBook(id: book?.id ?? "") { code, data in
       if code == ResponseCode.ok.rawValue {
         self.recommendBookFromBookId = Book.parseRecommendBooksByBookIdData(json: data)
         self.tableView.reloadData()
@@ -234,7 +234,7 @@ final class BookDetailController: UIViewController {
       present(loginVC, animated: true)
     }
 
-    NetworkManagement.postCartByUser(bookId: book?.id ?? 1) { code, data in
+    NetworkManagement.postCartByUser(bookId: book?.id ?? "") { code, data in
       if code == ResponseCode.ok.rawValue {
         self.fetchCart()
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))

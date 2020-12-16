@@ -9,12 +9,6 @@ import CountryPickerView
 import JGProgressHUD
 import UIKit
 
-// MARK: - EditAddressControllerDelegate
-
-protocol EditAddressControllerDelegate: AnyObject {
-  func didTappedSaveButton(user: User)
-}
-
 // MARK: - EditAddressController
 
 final class EditAddressController: UIViewController {
@@ -24,8 +18,8 @@ final class EditAddressController: UIViewController {
   @IBOutlet var tableView: UITableView!
   let countryPickerView = CountryPickerView()
   var country: Country?
-  var user: User?
-  weak var delegate: EditAddressControllerDelegate?
+//  var user: User?
+	var address = Address()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -74,13 +68,13 @@ final class EditAddressController: UIViewController {
 
   @objc
   private func didTappedSaveButton() {
-    let valid = user?.username.count ?? -1 > 2
-      && user?.address?.count ?? -1 > 5
-      && user?.phone ?? -1 > 10000
-      && user?.city?.count ?? -1 > 1
-      && user?.district?.count ?? -1 > 0
-      && user?.ward?.count ?? -1 > 0
-      && user?.country?.count ?? -1 > 0
+		// TODO: - Validate field when address have phone + name field
+		let valid = address.name?.count ?? -1 > 5
+      && address.city?.count ?? -1 > 1
+			&& address.district?.count ?? -1 > 0
+			&& address.ward ?? -1 > 0
+      && address.country?.count ?? -1 > 0
+		//      && address?.phone ?? -1 > 1_000_000
 
     if !valid {
       let alert = UIAlertController.configured(
@@ -93,26 +87,27 @@ final class EditAddressController: UIViewController {
       return
     }
     let params: [String: Any] = [
-      "userName": user?.username ?? "",
-      "address": user?.address ?? "",
-      "phone": user?.phone ?? 012359341,
-      "city": user?.city ?? "",
-      "district": user?.district ?? "",
-      "ward": user?.ward ?? "",
-      "zipCode": user?.zipCode ?? "",
-      "country": user?.country ?? "Vietnam",
+//      "userName": user?.username ?? "",
+			"name": address.name ?? "",
+//      "phone": user?.phone ?? 012359341,
+			"city": address.city ?? "",
+			"district": address.district ?? "",
+			"ward": address.ward ?? 0,
+			"zip_code": address.zipCode ?? 700000,
+			"country": address.country ?? "Vietnam",
     ]
     let hud = JGProgressHUD(style: .dark)
     hud.show(in: view)
-    NetworkManagement.updateInformationOfUserWith(params: params) { code, data in
-      if code == ResponseCode.ok.rawValue {
-        hud.dismiss()
-        self.delegate?.didTappedSaveButton(user: self.user!)
-        self.navigationController?.popViewController(animated: true)
-      } else {
-        self.presentErrorAlert(with: data)
-      }
-    }
+
+		NetworkManagement.postAddressInformation(with: params) { (code, data) in
+			if code == ResponseCode.ok.rawValue {
+				hud.dismiss()
+				self.navigationController?.popViewController(animated: true)
+			} else {
+				self.presentErrorAlert(with: data)
+			}
+		}
+		hud.dismiss()
   }
 
   @objc
@@ -150,12 +145,12 @@ extension EditAddressController: UITableViewDataSource {
     case Sections.name.rawValue:
       cell.titleLabel.text = Sections.name.getTitleText()
       cell.editTextField.placeholder = Sections.name.getPlaceHolderText()
-      cell.editTextField.text = user?.username
+//      cell.editTextField.text = address.username
       cell.editTextField.addTarget(self, action: #selector(handleNameChange), for: .editingChanged)
     case Sections.phoneNumber.rawValue:
       cell.titleLabel.text = Sections.phoneNumber.getTitleText()
       cell.editTextField.keyboardType = .phonePad
-      cell.editTextField.text = "\(user?.phone ?? 0912312841)"
+//      cell.editTextField.text = "\(user?.phone ?? 0912312841)"
       cell.editTextField.placeholder = Sections.phoneNumber.getPlaceHolderText()
       cell.editTextField.addTarget(
         self,
@@ -170,12 +165,12 @@ extension EditAddressController: UITableViewDataSource {
         action: #selector(handleAddressChange),
         for: .editingChanged
       )
-      cell.editTextField.text = user?.address
+      cell.editTextField.text = address.name
     case Sections.cityOrProvide.rawValue:
       cell.titleLabel.text = Sections.cityOrProvide.getTitleText()
       cell.editTextField.placeholder = Sections.cityOrProvide.getPlaceHolderText()
       cell.editTextField.addTarget(self, action: #selector(handleCityChange), for: .editingChanged)
-      cell.editTextField.text = user?.city
+      cell.editTextField.text = address.city
     case Sections.district.rawValue:
       cell.titleLabel.text = Sections.district.getTitleText()
       cell.editTextField.placeholder = Sections.district.getPlaceHolderText()
@@ -184,12 +179,12 @@ extension EditAddressController: UITableViewDataSource {
         action: #selector(handleDistrictChange),
         for: .editingChanged
       )
-      cell.editTextField.text = user?.district
+      cell.editTextField.text = address.district
     case Sections.ward.rawValue:
       cell.titleLabel.text = Sections.ward.getTitleText()
       cell.editTextField.placeholder = Sections.ward.getPlaceHolderText()
       cell.editTextField.addTarget(self, action: #selector(handleWardChange), for: .editingChanged)
-      cell.editTextField.text = user?.ward
+      cell.editTextField.text = "\(address.ward ?? 0)"
     case Sections.postalCode.rawValue:
       cell.titleLabel.text = Sections.postalCode.getTitleText()
       cell.editTextField.placeholder = Sections.postalCode.getPlaceHolderText()
@@ -198,12 +193,12 @@ extension EditAddressController: UITableViewDataSource {
         action: #selector(handlePostalCodeChange),
         for: .editingChanged
       )
-      cell.editTextField.text = "\(user?.zipCode ?? 700000)"
+      cell.editTextField.text = "\(address.zipCode ?? 700000)"
     case Sections.country.rawValue:
       cell.titleLabel.text = Sections.country.getTitleText()
       cell.editTextField.placeholder = Sections.country.getPlaceHolderText()
       cell.editTextField.isUserInteractionEnabled = false
-      cell.editTextField.text = user?.country?.count ?? -1 < 1 ? country?.name : user?.country
+			cell.editTextField.text = address.country?.count ?? -1 < 1 ? country?.name : address.country
       cell.editTextField.addTarget(
         self,
         action: #selector(handleCountryChange),
@@ -281,42 +276,42 @@ extension EditAddressController: UITableViewDataSource {
 
   @objc
   private func handleCountryChange(textField: UITextField) {
-    user?.country = country?.name
+		address.country = country?.name ?? "Vietnam"
   }
 
   @objc
   private func handleNameChange(textField: UITextField) {
-    user?.username = textField.text ?? ""
+//    address?.username = textField.text ?? ""
   }
 
   @objc
   private func handlePhoneNumberChange(textField: UITextField) {
-    user?.phone = Int(textField.text ?? "") ?? 0
+//    address?.phone = Int(textField.text ?? "") ?? 0
   }
 
   @objc
   private func handleAddressChange(textField: UITextField) {
-    user?.address = textField.text
+		address.name = textField.text ?? ""
   }
 
   @objc
   private func handleCityChange(textField: UITextField) {
-    user?.city = textField.text
+		address.city = textField.text ?? ""
   }
 
   @objc
   private func handleDistrictChange(textField: UITextField) {
-    user?.district = textField.text
+		address.district = textField.text ?? ""
   }
 
   @objc
   private func handleWardChange(textField: UITextField) {
-    user?.ward = textField.text
+		address.ward = Int(textField.text ?? "") ?? 0
   }
 
   @objc
   private func handlePostalCodeChange(textField: UITextField) {
-    user?.zipCode = Int(textField.text ?? "") ?? 700000
+		address.zipCode = Int(textField.text ?? "") ?? 700000
   }
 
 }

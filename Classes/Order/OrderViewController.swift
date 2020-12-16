@@ -114,7 +114,6 @@ final class OrderViewController: UIViewController {
   @objc
   private func didTappedEditAddressButton() {
     guard let listOfAddressVC = AppSetting.Storyboards.Order.listOfAddressVC as? ListOfAddressController else { return }
-    listOfAddressVC.user = user
     let navController = UINavigationController(rootViewController: listOfAddressVC)
     navController.setNavigationBarHidden(true, animated: true)
     navController.modalPresentationStyle = .fullScreen

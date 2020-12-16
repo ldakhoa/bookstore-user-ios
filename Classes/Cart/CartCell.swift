@@ -85,13 +85,13 @@ final class CartCell: UITableViewCell {
 
   @objc
   private func didTappedDeleteButton() {
-    delegate?.didTappedCancelButton(book?.id ?? 0)
+//    delegate?.didTappedCancelButton(book?.id ?? "")
   }
 
   private func updateQuantity(_ quantity: Int, isIncreased: Bool) {
     delegate?.didFinishedTapUpdateAmountButton()
     NetworkManagement.putQuantityOfBookByUser(
-      at: book?.id ?? 0,
+      at: book?.id ?? "",
       quantity: quantity
     ) { code, data in
       if code == ResponseCode.ok.rawValue {

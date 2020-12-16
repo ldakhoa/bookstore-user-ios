@@ -66,7 +66,7 @@ final class CartViewController: UIViewController {
 
   private func fetchCart() {
     hud.show(in: view)
-    NetworkManagement.getCartByUser(id: AppSecurity.shared.userID) { code, data in
+    NetworkManagement.getCartByUser { code, data in
       if code == ResponseCode.ok.rawValue {
         self.cart = Cart.parseData(json: data["cart"])
         self.tableView.reloadData()

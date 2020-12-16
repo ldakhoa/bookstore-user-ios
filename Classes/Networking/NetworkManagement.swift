@@ -54,7 +54,7 @@ struct NetworkManagement {
   }
 
   public static func getBookBy(
-    id: Int,
+    id: String,
     response: @escaping ResponseHandler
   ) {
     let requester = HTTPRequester.getBookBy(id: id)
@@ -83,6 +83,13 @@ struct NetworkManagement {
     }
   }
 
+	public static func getCategories(response: @escaping ResponseHandler) {
+		let requester = HTTPRequester.getCategories
+		callAPI(requester) { code, json in
+			response(code, json)
+		}
+	}
+
   public static func getBookSearchWithFilterBy(
     searchString: String,
     filterType: FilterType,
@@ -97,14 +104,14 @@ struct NetworkManagement {
     }
   }
 
-  public static func getCartByUser(id: Int, response: @escaping ResponseHandler) {
+  public static func getCartByUser(response: @escaping ResponseHandler) {
     let requester = HTTPRequester.getCartByUser
     callAPI(requester) { code, json in
       response(code, json)
     }
   }
 
-  public static func postCartByUser(bookId: Int, response: @escaping ResponseHandler) {
+  public static func postCartByUser(bookId: String, response: @escaping ResponseHandler) {
     let requester = HTTPRequester.postCartByUser(bookId: bookId)
     callAPI(requester) { code, json in
       response(code, json)
@@ -118,7 +125,7 @@ struct NetworkManagement {
     }
   }
 
-  public static func deleteCartWithBook(id: Int, response: @escaping ResponseHandler) {
+  public static func deleteCartWithBook(id: String, response: @escaping ResponseHandler) {
     let requester = HTTPRequester.deleteCartWithBook(id: id)
     callAPI(requester) { code, json in
       response(code, json)
@@ -154,7 +161,7 @@ struct NetworkManagement {
   }
 
   public static func putQuantityOfBookByUser(
-    at bookId: Int,
+    at bookId: String,
     quantity: Int,
     response: @escaping ResponseHandler
   ) {
@@ -171,7 +178,7 @@ struct NetworkManagement {
     }
   }
 
-  public static func getRecommendFromBook(id: Int, response: @escaping ResponseHandler) {
+  public static func getRecommendFromBook(id: String, response: @escaping ResponseHandler) {
     let requester = HTTPRequester.getRecommendFromBook(id: id)
     callAPI(requester) { code, json in
       response(code, json)
@@ -179,7 +186,7 @@ struct NetworkManagement {
   }
 
   public static func postReviewByBook(
-    id: Int,
+    id: String,
     with content: String,
     ratings: Int,
     response: @escaping ResponseHandler
@@ -194,7 +201,7 @@ struct NetworkManagement {
     }
   }
 
-  public static func getReviewByBook(id: Int, response: @escaping ResponseHandler) {
+  public static func getReviewByBook(id: String, response: @escaping ResponseHandler) {
     let requester = HTTPRequester.getReviewsByBook(id: id)
     callAPI(requester) { code, json in
       response(code, json)
@@ -257,6 +264,20 @@ struct NetworkManagement {
       }
     }
   }
+
+	public static func postAddressInformation(with params: [String: Any], response: @escaping ResponseHandler) {
+		let requester = HTTPRequester.postAddressInformation(params: params)
+		callAPI(requester) { code, json in
+			response(code, json)
+		}
+	}
+
+	public static func putShippingAddress(with addressId: String, response: @escaping ResponseHandler) {
+		let requester = HTTPRequester.putShippingAddress(id: addressId)
+		callAPI(requester) { code, json in
+			response(code, json)
+		}
+	}
 
   // MARK: Internal
 

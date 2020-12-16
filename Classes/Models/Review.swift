@@ -14,7 +14,7 @@ final class Review {
 
   public static func parseData(json: JSON) -> Review {
     let data = Review()
-    data.id = json["id"].int ?? 0
+    data.id = json["id"].string ?? ""
     data.content = json["content"].string ?? ""
     data.bookId = json["book_id"].int ?? -1
     data.updateDate = json["updated_at"].string ?? ""
@@ -40,7 +40,7 @@ final class Review {
 
   // MARK: Internal
 
-  var id: Int? = -1
+  var id: String? = ""
   var content: String? = ""
   var bookId: Int? = -1
   var updateDate: String? = ""

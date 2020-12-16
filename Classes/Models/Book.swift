@@ -47,7 +47,7 @@ final class Book {
 
   public static func parseItem(item: JSON) -> Book {
     let book = Book()
-    book.id = item["id"].int ?? -1
+    book.id = item["id"].string ?? ""
     book.title = item["title"].string ?? ""
     book.ratings = item["ratings"].double ?? 0
     book.numberOfRatings = item["numberOfRatings"].int ?? 0
@@ -82,7 +82,7 @@ final class Book {
 
   // MARK: Internal
 
-  var id: Int = -1
+  var id: String = ""
   var authors = [Author]()
   var title: String = ""
   var ratings: Double = 0

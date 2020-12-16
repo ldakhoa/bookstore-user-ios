@@ -18,9 +18,11 @@ final class BookDetailTopContainerView: UIView {
 
     backgroundColor = .clear
     setupLayer()
+		favoriteSelectedView.isHidden = true
 
     addSubview(dismissView)
     addSubview(favoriteView)
+		addSubview(favoriteSelectedView)
     addSubview(cartView)
     addSubview(itemCountLabel)
 
@@ -49,6 +51,19 @@ final class BookDetailTopContainerView: UIView {
       )
     )
     favoriteView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+
+		favoriteSelectedView.anchor(
+			top: nil,
+			leading: nil,
+			bottom: nil,
+			trailing: trailingAnchor,
+			padding: .init(top: 0, left: 0, bottom: 0, right: 16),
+			size: .init(
+				width: Styles.Sizes.bookDetailtopViewSize,
+				height: Styles.Sizes.bookDetailtopViewSize
+			)
+		)
+		favoriteSelectedView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 
     cartView.anchor(
       top: nil,
@@ -82,6 +97,8 @@ final class BookDetailTopContainerView: UIView {
   let favoriteView = createView(with: #imageLiteral(resourceName: "favorite_border"), size: 16)
   let dismissView = createView(with: #imageLiteral(resourceName: "dismiss"), size: 13)
   let cartView = createView(with: #imageLiteral(resourceName: "cart-top"), size: 17)
+	let favoriteSelectedView = createView(with: #imageLiteral(resourceName: "favo_activated"), size: 16)
+
   let bottomLayer = CALayer()
   let itemCountLabel: UILabel = {
     let label = UILabel()

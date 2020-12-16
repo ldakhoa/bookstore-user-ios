@@ -9,12 +9,12 @@ import Foundation
 import SwiftyJSON
 
 final class Publisher {
-  var id: Int = -1
+  var id: String = ""
   var name: String = ""
 
   static func parseData(item: JSON) -> Publisher {
     let publisher = Publisher()
-    publisher.id = item["id"].int ?? -1
+    publisher.id = item["id"].string ?? ""
     publisher.name = item["name"].string ?? ""
     return publisher
   }

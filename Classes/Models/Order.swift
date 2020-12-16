@@ -8,25 +8,6 @@
 import Foundation
 import SwiftyJSON
 
-// MARK: - OrderStatus
-
-enum OrderStatus: String, CustomStringConvertible {
-  case processing
-  case delivered
-  case cancelled
-
-  var description: String {
-    switch self {
-    case .processing:
-      return "Processing"
-    case .delivered:
-      return "Delivered"
-    case .cancelled:
-      return "Cancelled"
-    }
-  }
-}
-
 // MARK: - CreatedOrder
 
 final class CreatedOrder {

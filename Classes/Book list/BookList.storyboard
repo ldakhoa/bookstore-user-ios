@@ -153,22 +153,22 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="rvQ-Lc-1XY">
-                                                            <rect key="frame" x="122" y="25.666666666666664" width="278" height="91.666666666666686"/>
+                                                            <rect key="frame" x="122" y="28.999999999999993" width="278" height="85.333333333333314"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Engineering: A Compiler 2nd Edition" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUh-M3-xOV">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="278" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Engineering: A Compiler 2nd Edition" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUh-M3-xOV">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="278" height="18.666666666666668"/>
                                                                     <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
                                                                     <color key="textColor" name="black"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by Keith Cooper, Linda Torczon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w61-68-hUr">
-                                                                    <rect key="frame" x="0.0" y="27.000000000000011" width="278" height="15.666666666666668"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="by Keith Cooper, Linda Torczon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w61-68-hUr">
+                                                                    <rect key="frame" x="0.0" y="24.666666666666671" width="278" height="14"/>
                                                                     <fontDescription key="fontDescription" name="AirbnbCerealApp-Book" family="Airbnb Cereal App" pointSize="12"/>
                                                                     <color key="textColor" name="gray"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zME-jI-jSs" customClass="CosmosView" customModule="Cosmos">
-                                                                    <rect key="frame" x="0.0" y="48.666666666666664" width="278" height="15.999999999999993"/>
+                                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zME-jI-jSs" customClass="CosmosView" customModule="Cosmos">
+                                                                    <rect key="frame" x="0.0" y="44.666666666666671" width="278" height="16"/>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -198,8 +198,8 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$51" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tha-Ge-AL3">
-                                                                    <rect key="frame" x="0.0" y="70.666666666666657" width="278" height="21"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$51" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tha-Ge-AL3">
+                                                                    <rect key="frame" x="0.0" y="66.666666666666671" width="278" height="18.666666666666671"/>
                                                                     <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="16"/>
                                                                     <color key="textColor" name="black"/>
                                                                     <nil key="highlightedColor"/>

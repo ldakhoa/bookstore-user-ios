@@ -30,21 +30,24 @@ enum HTTPRequester {
   case getBookSearchBy(searchString: String)
   case getBookSearchWithFilterBy(searchString: String, filterType: FilterType)
   case getBookByCategory(category: String)
-  case getBookBy(id: Int)
+	case getCategories
+  case getBookBy(id: String)
   case getCartByUser
-  case postCartByUser(bookId: Int)
+  case postCartByUser(bookId: String)
   case getCartInfoByUser
-  case deleteCartWithBook(id: Int)
+  case deleteCartWithBook(id: String)
   case postPaymentOrder
   case getAllOrders
   case getOrderBy(id: String)
   case getAllOrdersBy(status: String)
-  case putQuantityOfBookByUser(bookId: Int, quantity: Int)
+  case putQuantityOfBookByUser(bookId: String, quantity: Int)
   case getRecommendBooks
-  case getRecommendFromBook(id: Int)
-  case postReviewByBook(id: Int, content: String, ratings: Int)
-  case getReviewsByBook(id: Int)
+  case getRecommendFromBook(id: String)
+  case postReviewByBook(id: String, content: String, ratings: Int)
+  case getReviewsByBook(id: String)
   case putProfileImageUrl(imageUrl: String)
+	case postAddressInformation(params: [String: Any])
+	case putShippingAddress(id: String)
 }
 
 // MARK: Requestable
@@ -100,6 +103,13 @@ extension HTTPRequester: Requestable {
         parameter: nil,
         encoding: JSONEncoding.default
       )
+		case .getCategories:
+			return (
+				path: URL(string: coreURL + "api/categories")!,
+				method: .get,
+				parameter: nil,
+				encoding: JSONEncoding.default
+			)
     case let .getBookSearchWithFilterBy(searchString, filter):
       return (
         path: URL(string: coreURL + "api/books/?search=\(searchString)&filter=\(filter)&limit=20")!,
@@ -115,7 +125,7 @@ extension HTTPRequester: Requestable {
         encoding: JSONEncoding.default
       )
     case let .postCartByUser(bookId):
-      let params: [String: Int] = ["bookId": bookId]
+      let params: [String: Any] = ["bookId": bookId]
       return (
         path: URL(string: coreURL + "api/carts/mine")!,
         method: .post,
@@ -209,6 +219,22 @@ extension HTTPRequester: Requestable {
         parameter: params,
         encoding: JSONEncoding.default
       )
+		case let .postAddressInformation(params):
+			return (
+				path: URL(string: coreURL + "api/users/information/address")!,
+				method: .post,
+				parameter: params,
+				encoding: JSONEncoding.default
+			)
+		case let .putShippingAddress(id):
+			let param: [String: Any] = ["addressId": id]
+			return (
+				path: URL(string: coreURL + "api/carts/mine/shipping_address")!,
+				method: .put,
+				parameter: param,
+				encoding: JSONEncoding.default
+			)
+
     }
   }
 }

@@ -67,8 +67,6 @@ final class MyOrdersController: UIViewController {
 
     setupLayout()
 
-    // TODO: - Filter by status
-//    fetchOrder()
     fetchOrderByStatus()
   }
 
@@ -89,7 +87,7 @@ final class MyOrdersController: UIViewController {
     hud.show(in: view)
 
     dispatchGroup.enter()
-    NetworkManagement.getAllOrdersByStatus("processing") { code, data in
+		NetworkManagement.getAllOrdersByStatus(OrderStatus.processing.rawValue) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.processingOrders = Order.parseAllOrders(json: data)
         dispatchGroup.leave()
@@ -99,7 +97,7 @@ final class MyOrdersController: UIViewController {
     }
 
     dispatchGroup.enter()
-    NetworkManagement.getAllOrdersByStatus("delivered") { code, data in
+		NetworkManagement.getAllOrdersByStatus(OrderStatus.delivered.rawValue) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.deliveredOrders = Order.parseAllOrders(json: data)
         dispatchGroup.leave()
@@ -110,7 +108,7 @@ final class MyOrdersController: UIViewController {
 
     // TODO: - Rename cancel
     dispatchGroup.enter()
-    NetworkManagement.getAllOrdersByStatus("cancel") { code, data in
+    NetworkManagement.getAllOrdersByStatus(OrderStatus.cancelled.rawValue) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.cancelledOrders = Order.parseAllOrders(json: data)
         dispatchGroup.leave()
@@ -124,18 +122,7 @@ final class MyOrdersController: UIViewController {
       self.hud.dismiss()
     }
   }
-
-  private func fetchOrder() {
-    NetworkManagement.getAllOrders { code, data in
-      if code == ResponseCode.ok.rawValue {
-        self.orders = Order.parseAllOrders(json: data)
-        self.collectionView.reloadData()
-      } else {
-        self.presentErrorAlert(title: "Cannot get orders", with: data)
-      }
-    }
-  }
-
+	
   private func setupLayout() {
     guard let menuView = menuController.view else { return }
 

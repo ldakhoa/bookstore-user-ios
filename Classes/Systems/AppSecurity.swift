@@ -21,9 +21,9 @@ final class AppSecurity {
 
   static let shared = AppSecurity()
 
-  var userID: Int! {
+  var userID: String! {
     get {
-      defaults.object(forKey: Keys.userID.rawValue) == nil ? -1 : (defaults.object(forKey: Keys.userID.rawValue) as? Int)!
+      defaults.object(forKey: Keys.userID.rawValue) == nil ? "" : (defaults.object(forKey: Keys.userID.rawValue) as? String)!
     } set {
       defaults.set(newValue, forKey: Keys.userID.rawValue)
     }

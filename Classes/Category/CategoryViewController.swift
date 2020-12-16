@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 // MARK: - CategoryViewController
 
@@ -37,19 +38,27 @@ final class CategoryViewController: UIViewController {
       action: #selector(didTappedSearchGradientView)
     ))
     searchGradientView.isUserInteractionEnabled = true
+
+		fetchCategories()
   }
+
+	private func fetchCategories() {
+		let hud = JGProgressHUD(style: .dark)
+		hud.show(in: view)
+		NetworkManagement.getCategories { (code, data) in
+			if code == ResponseCode.ok.rawValue {
+				self.categories = Category.parseCategories(json: data)
+				self.tableView.reloadData()
+				hud.dismiss()
+			} else {
+				self.presentErrorAlert(title: "Cannot get categories", with: data)
+			}
+		}
+	}
 
   // MARK: Private
 
-  private let categories: [Category] = [
-    Category(categoryName: "Computer and Technology"),
-    Category(categoryName: "Children's Books"),
-    Category(categoryName: "Food and Wine"),
-    Category(categoryName: "History"),
-    Category(categoryName: "Art and Photography"),
-    Category(categoryName: "Romance"),
-    Category(categoryName: "All"),
-  ]
+  var categories = [Category]()
 
   private let cellID = "CategoryCell"
 
@@ -86,7 +95,7 @@ extension CategoryViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let bookListVC = AppSetting.Storyboards.BookList.bookListVC as? BookListViewController else { return }
     bookListVC.shouldPresentSearchController = false
-    bookListVC.category = categories[indexPath.row].categoryName
+    bookListVC.categoryName = categories[indexPath.row].categoryName
     bookListVC.isPresetedFromCategory = true
     navigationController?.pushViewController(bookListVC, animated: true)
     tableView.deselectRow(at: indexPath, animated: true)

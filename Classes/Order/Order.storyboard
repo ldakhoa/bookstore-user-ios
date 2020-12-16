@@ -959,6 +959,7 @@
                                         <connections>
                                             <outlet property="cityAndZIPLabel" destination="hOG-Zq-u3C" id="P7H-uR-1C2"/>
                                             <outlet property="countryLabel" destination="pIf-P5-LDg" id="Aqv-Gu-zst"/>
+                                            <outlet property="editAddressButton" destination="Ieq-z9-hzo" id="sHF-yV-VUU"/>
                                             <outlet property="nameLabel" destination="OLx-3l-pAm" id="KI8-f7-3Aa"/>
                                             <outlet property="phoneNumberLabel" destination="4Z3-iR-2Qw" id="PBt-9k-HA5"/>
                                             <outlet property="specificAddressLabel" destination="KBY-gd-KeQ" id="sbQ-g7-NqG"/>

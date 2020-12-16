@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 // MARK: - ListOfAddressController
 
@@ -15,7 +16,8 @@ final class ListOfAddressController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var dismissButton: UIButton!
-  var user: User?
+
+	var addresses = [Address]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,13 +27,30 @@ final class ListOfAddressController: UIViewController {
     tableView.backgroundColor = Styles.Colors.background.color
   }
 
+	let hud = JGProgressHUD(style: .dark)
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
     tableView.reloadData()
+		fetchAddresses()
   }
 
   // MARK: Private
+
+	private func fetchAddresses() {
+		hud.show(in: self.view)
+		NetworkManagement.getCartByUser { (code, data) in
+			if code == ResponseCode.ok.rawValue {
+				let cart = Cart.parseData(json: data["cart"])
+				self.addresses = cart.addresses
+				self.tableView.reloadData()
+				self.hud.dismiss()
+			} else {
+				self.presentErrorAlert(title: "Cannot get addresses", with: data)
+			}
+		}
+	}
 
   @IBAction
   private func didTappedDismissButton(_ sender: Any) {
@@ -40,21 +59,6 @@ final class ListOfAddressController: UIViewController {
 
   @IBAction
   private func didTappedAddNewShippingAddressButton(_ sender: Any) {
-    let isInvalidShippingAddress = user?.phone ?? -1 < 10000
-      && user?.address?.count ?? -1 < 1
-      && user?.city?.count ?? -1 < 1
-      && user?.district?.count ?? -1 < 1
-      && user?.ward?.count ?? -1 < 1
-    if !isInvalidShippingAddress {
-      let alert = UIAlertController.configured(
-        title: "Sorry for this inconvenience",
-        message: "We have not support multi shipping address yet! Please edit your current shipping address",
-        preferredStyle: .alert
-      )
-      alert.addAction(AlertAction.ok())
-      present(alert, animated: true)
-      return
-    }
     editShippingAddress()
   }
 
@@ -85,8 +89,9 @@ final class ListOfAddressController: UIViewController {
 
   private func editShippingAddress() {
     guard let editAddressVC = AppSetting.Storyboards.Order.editAddressVC as? EditAddressController else { return }
-    editAddressVC.user = user
-    editAddressVC.delegate = self
+//    editAddressVC.user = user
+//		editAddressVC.address
+//    editAddressVC.delegate = self
     navigationController?.pushViewController(editAddressVC, animated: true)
   }
 
@@ -96,12 +101,7 @@ final class ListOfAddressController: UIViewController {
 
 extension ListOfAddressController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let isInvalidShippingAddress = user?.phone ?? -1 < 10000
-      && user?.address?.count ?? -1 < 1
-      && user?.city?.count ?? -1 < 1
-      && user?.district?.count ?? -1 < 1
-      && user?.ward?.count ?? -1 < 1
-    return isInvalidShippingAddress ? 0 : 1
+		return addresses.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -109,7 +109,7 @@ extension ListOfAddressController: UITableViewDataSource {
       withIdentifier: "ListOfAddressesCell",
       for: indexPath
     ) as? ListOfAddressesCell else { return UITableViewCell() }
-    cell.user = user
+		cell.address = addresses[indexPath.row]
     return cell
   }
 }
@@ -126,16 +126,16 @@ extension ListOfAddressController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		hud.show(in: self.view)
     tableView.deselectRow(at: indexPath, animated: true)
+		guard let addressId = addresses[indexPath.row].id else { return }
+		NetworkManagement.putShippingAddress(with: addressId) { (code, data) in
+			if code == ResponseCode.ok.rawValue {
+				self.dismiss(animated: true)
+			} else {
+				self.presentErrorAlert(title: "Cannot choose shipping address", with: data)
+			}
+		}
     dismiss(animated: true)
-  }
-}
-
-// MARK: EditAddressControllerDelegate
-
-extension ListOfAddressController: EditAddressControllerDelegate {
-  func didTappedSaveButton(user: User) {
-    self.user = user
-    tableView.reloadData()
   }
 }

@@ -112,7 +112,7 @@ final class ProfileTableViewController: UITableViewController {
       present(navController, animated: true)
     case Sections.shippingAddress.rawValue:
       guard let listOfAddressVC = AppSetting.Storyboards.Order.listOfAddressVC as? ListOfAddressController else { return }
-      listOfAddressVC.user = user
+//      listOfAddressVC.user = user
       let navController = UINavigationController(rootViewController: listOfAddressVC)
       navController.setNavigationBarHidden(true, animated: false)
       navController.modalPresentationStyle = .fullScreen

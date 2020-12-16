@@ -121,7 +121,7 @@ final class LoginViewController: UIViewController {
     guard let emailText = emailTextfield.text, let passwordText = passwordTextfield.text else { return }
     NetworkManagement.login(email: emailText, password: passwordText) { code, data in
       if code == ResponseCode.ok.rawValue {
-        AppSecurity.shared.userID = data["user"]["id"].int
+        AppSecurity.shared.userID = data["user"]["id"].string
         AppSecurity.shared.email = emailText
         AppSecurity.shared.isUserInfoExist = true
         AppSecurity.shared.isAuthorized = true

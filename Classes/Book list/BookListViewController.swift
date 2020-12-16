@@ -20,7 +20,7 @@ final class BookListViewController: UIViewController {
   var isChoosingPrice = false
   var isChoosingRatings = false
   var isPresetedFromCategory = false
-  var category: String?
+  var categoryName: String?
 
   @IBOutlet var tableView: UITableView!
   @IBOutlet var collectionView: UICollectionView!
@@ -67,9 +67,6 @@ final class BookListViewController: UIViewController {
       for: .touchUpInside
     )
 
-    if isPresetedFromCategory {
-      fetchBookByCategory()
-    }
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -79,13 +76,17 @@ final class BookListViewController: UIViewController {
       didTappedSearchGradientView()
       shouldPresentSearchController = false
     }
+		
+		if isPresetedFromCategory {
+			fetchBookByCategory()
+		}
   }
 
   // MARK: Private
 
   private func fetchBookByCategory() {
     let hud = JGProgressHUD(style: .dark)
-    NetworkManagement.getBookByCategory(category ?? "") { code, data in
+    NetworkManagement.getBookByCategory(categoryName ?? "") { code, data in
       if code == ResponseCode.ok.rawValue {
         self.books = Book.parseData(json: data)
         self.tableView.reloadData()

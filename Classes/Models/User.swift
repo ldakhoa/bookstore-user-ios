@@ -9,7 +9,7 @@ import Foundation
 import SwiftyJSON
 
 final class User {
-  var id: Int = -1
+  var id: String = ""
   var email: String = ""
   var username: String = ""
   var password: String = ""
@@ -26,7 +26,7 @@ final class User {
 
   static func parseData(json: JSON) -> User {
     let user = User()
-    user.id = json["id"].int ?? -1
+    user.id = json["id"].string ?? ""
     user.email = json["email"].string ?? ""
     user.username = json["userName"].string ?? ""
     user.password = json["password"].string ?? ""
@@ -42,4 +42,29 @@ final class User {
     user.birthDate = json["birthDate"].string ?? ""
     return user
   }
+}
+
+final class Address {
+	var id: String? = ""
+	var name: String? = ""
+//	var userPhone: String
+//	var userName: String
+	var city: String? = ""
+	var district: String? = ""
+	var ward: Int? = 0
+	var zipCode: Int? = 700000
+	var country: String? = "Vietnam"
+	var userId: Int? = 0
+
+	static func parseData(json: JSON) -> Address {
+		let data = Address()
+		data.id = json["id"].string ?? ""
+		data.name = json["name"].string ?? ""
+		data.city = json["city"].string ?? ""
+		data.ward = json["ward"].int ?? 0
+		data.zipCode = json["zip_code"].int ?? 700000
+		data.country = json["country"].string ?? "Vietnam"
+		return data
+	}
+
 }

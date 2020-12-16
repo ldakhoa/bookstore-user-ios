@@ -22,5 +22,6 @@ extension UIViewController {
     )
     alert.addAction(AlertAction.ok())
     present(alert, animated: true)
+		return
   }
 }
