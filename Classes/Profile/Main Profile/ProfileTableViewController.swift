@@ -50,31 +50,45 @@ final class ProfileTableViewController: UITableViewController {
     navigationController?.setNavigationBarHidden(false, animated: animated)
   }
 
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    1
+  }
+
   override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-    Sections.count
+    5
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ProfileCell else { return UITableViewCell() }
 
-    if indexPath.row == Sections.orders.rawValue {
+    switch indexPath.row {
+    case Sections.orders.rawValue:
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ProfileCell else { return UITableViewCell() }
       let countText = orders.count > 1 ? "orders" : "order"
       cell.subtitleLabel.text = "Already have \(orders.count) \(countText)"
-    } else if indexPath.row == Sections.favorite.rawValue {
+      cell.titleLabel?.text = Sections.orders.getText()
+      return cell
+    case Sections.favorite.rawValue:
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ProfileCell else { return UITableViewCell() }
       let countText = favoriteBooks.count > 1 ? "books" : "book"
       cell.subtitleLabel.text = "Already have \(favoriteBooks.count) \(countText)"
-    } else {
+      cell.titleLabel?.text = Sections.favorite.getText()
+      return cell
+    case Sections.shippingAddress.rawValue:
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ProfileCell else { return UITableViewCell() }
+      cell.titleLabel?.text = Sections.shippingAddress.getText()
       cell.subtitleLabel.removeFromSuperview()
-    }
-
-    if indexPath.row == Sections.logout.rawValue {
+      return cell
+    case Sections.reviews.rawValue:
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? ProfileCell else { return UITableViewCell() }
+      cell.titleLabel?.text = Sections.reviews.getText()
+      cell.subtitleLabel.removeFromSuperview()
+      return cell
+    case Sections.logout.rawValue:
       let logoutCell = LogoutCell(style: .default, reuseIdentifier: nil)
       return logoutCell
-    } else {
-      cell.titleLabel.text = datasource[indexPath.row]
+    default:
+      return UITableViewCell()
     }
-
-    return cell
   }
 
   override func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
@@ -141,6 +155,9 @@ final class ProfileTableViewController: UITableViewController {
       guard let vc = AppSetting.Storyboards.Profile.myFavoriteVC as? MyFavoriteController else { return }
       vc.books = favoriteBooks
       navigationController?.pushViewController(vc, animated: true)
+    case Sections.reviews.rawValue:
+      let vc = AppSetting.Storyboards.Profile.myReviewsVC
+      navigationController?.pushViewController(vc, animated: true)
     default:
       Void()
     }
@@ -152,9 +169,8 @@ final class ProfileTableViewController: UITableViewController {
     case orders = 0
     case favorite = 1
     case shippingAddress = 2
-    case paymentMethods = 3
-    case reviews = 4
-    case logout = 5
+    case reviews = 3
+    case logout = 4
 
     // MARK: Internal
 
@@ -168,8 +184,6 @@ final class ProfileTableViewController: UITableViewController {
         return "My favorite"
       case .shippingAddress:
         return "Shipping addresses"
-      case .paymentMethods:
-        return "Payment methods"
       case .reviews:
         return "My reviews"
       case .logout:
@@ -250,12 +264,8 @@ final class ProfileTableViewController: UITableViewController {
 
     dispatchGroup.enter()
     NetworkManagement.getAllFavorBooks { code, data in
-      print("Data: ", data)
       if code == ResponseCode.ok.rawValue {
         let books = Book.parseData(json: data)
-        books.forEach {
-          print($0.isFavor)
-        }
         self.favoriteBooks = books
         dispatchGroup.leave()
       } else {
@@ -358,7 +368,6 @@ extension ProfileTableViewController: UINavigationControllerDelegate, UIImagePic
       NetworkManagement.uploadProfileImage(image: image) { imageResCode, imageResData in
         if imageResCode == ResponseCode.ok.rawValue {
           let thumbnails = self.putUserImageUrl(json: imageResData)
-          print("thumb:", thumbnails)
           let imageUrl = thumbnails[0]
           NetworkManagement.putProfileImageUrl(imageUrl) { code, data in
             if code == ResponseCode.ok.rawValue {

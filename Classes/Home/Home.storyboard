@@ -24,35 +24,24 @@
                                     <constraint firstAttribute="height" constant="109" id="kMx-Xr-BWP"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMY-Bx-9nw" customClass="LocationTopView" customModule="bsuser" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="105" width="414" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Uae-8o-Q43"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RQe-1q-sJT">
-                                <rect key="frame" x="0.0" y="145" width="414" height="717"/>
+                                <rect key="frame" x="0.0" y="109" width="414" height="753"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="P8G-Zg-6lI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="RQe-1q-sJT" firstAttribute="top" secondItem="GMY-Bx-9nw" secondAttribute="bottom" id="B1f-zN-rAB"/>
+                            <constraint firstItem="RQe-1q-sJT" firstAttribute="top" secondItem="abt-iI-Eaz" secondAttribute="bottom" id="HFZ-oE-Cx2"/>
                             <constraint firstItem="P8G-Zg-6lI" firstAttribute="trailing" secondItem="abt-iI-Eaz" secondAttribute="trailing" id="Omo-Dn-oll"/>
                             <constraint firstItem="RQe-1q-sJT" firstAttribute="leading" secondItem="P8G-Zg-6lI" secondAttribute="leading" id="ScO-jd-oVm"/>
-                            <constraint firstItem="GMY-Bx-9nw" firstAttribute="leading" secondItem="P8G-Zg-6lI" secondAttribute="leading" id="eYq-UN-D5K"/>
                             <constraint firstItem="P8G-Zg-6lI" firstAttribute="bottom" secondItem="RQe-1q-sJT" secondAttribute="bottom" id="f7T-ii-ZZg"/>
-                            <constraint firstItem="GMY-Bx-9nw" firstAttribute="top" secondItem="abt-iI-Eaz" secondAttribute="bottom" constant="-4" id="gHE-0H-1yE"/>
                             <constraint firstItem="abt-iI-Eaz" firstAttribute="leading" secondItem="P8G-Zg-6lI" secondAttribute="leading" id="ogS-ub-35V"/>
-                            <constraint firstItem="P8G-Zg-6lI" firstAttribute="trailing" secondItem="GMY-Bx-9nw" secondAttribute="trailing" id="v7F-UP-BUM"/>
                             <constraint firstItem="abt-iI-Eaz" firstAttribute="top" secondItem="8JN-ff-uIZ" secondAttribute="top" id="veF-BG-KTI"/>
                             <constraint firstItem="P8G-Zg-6lI" firstAttribute="trailing" secondItem="RQe-1q-sJT" secondAttribute="trailing" id="xHe-vS-y6y"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="locationTopView" destination="GMY-Bx-9nw" id="zwI-aS-bcR"/>
                         <outlet property="searchGradientView" destination="abt-iI-Eaz" id="Hde-04-5lY"/>
                         <outlet property="tableView" destination="RQe-1q-sJT" id="SGd-ND-k1D"/>
                     </connections>

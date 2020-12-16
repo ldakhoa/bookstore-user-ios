@@ -39,7 +39,6 @@ final class OrderAddCardDetailsController: UIViewController, UITextFieldDelegate
 
   // MARK: Internal
 
-
   @IBOutlet var nextButton: UIButton!
   @IBOutlet var cardNumberTextField: CardTextField!
   @IBOutlet var expirationTextField: CardTextField!

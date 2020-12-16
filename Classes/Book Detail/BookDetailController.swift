@@ -131,7 +131,6 @@ final class BookDetailController: UIViewController {
         self.hud.dismiss()
       }
     }
-
   }
 
   private func fetchReviews() {

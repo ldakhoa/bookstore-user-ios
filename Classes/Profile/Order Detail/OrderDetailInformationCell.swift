@@ -15,7 +15,6 @@ final class OrderDetailInformationCell: UITableViewCell {
 
   var books = [Book]() {
     didSet {
-      print("Book count", books.count)
       self.tableView.reloadData()
     }
   }
@@ -30,11 +29,9 @@ final class OrderDetailInformationCell: UITableViewCell {
 
   override func layoutSubviews() {
     super.layoutSubviews()
-
     tableView.layoutSubviews()
     superTableView?.beginUpdates()
     superTableView?.endUpdates()
-
   }
 
 }

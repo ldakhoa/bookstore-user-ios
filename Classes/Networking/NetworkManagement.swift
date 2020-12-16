@@ -208,6 +208,13 @@ struct NetworkManagement {
     }
   }
 
+  public static func getAllReviews(response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.getAllReviews
+    callAPI(requester) { code, json in
+      response(code, json)
+    }
+  }
+
   public static func putProfileImageUrl(
     _ imageUrl: String,
     response: @escaping ResponseHandler
@@ -235,8 +242,6 @@ struct NetworkManagement {
       multipartFormData: { multipartFormData in
         let imageName = NSUUID().uuidString + ".jpg"
         let avatarData = image.jpegData(compressionQuality: 0.1)!
-        print("data: ", avatarData)
-        print("Filename: ", imageName)
         multipartFormData.append(
           avatarData,
           withName: "filetoupload",

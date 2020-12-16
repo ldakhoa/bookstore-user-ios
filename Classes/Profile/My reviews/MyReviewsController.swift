@@ -1,5 +1,5 @@
 //
-//  MyFavoriteController.swift
+//  MyReviewsController.swift
 //  bsuser
 //
 //  Created by Khoa Le on 16/12/2020.
@@ -8,22 +8,23 @@
 import JGProgressHUD
 import UIKit
 
-final class MyFavoriteController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+// MARK: - MyReviewsController
+
+final class MyReviewsController: UIViewController {
 
   // MARK: Internal
 
   @IBOutlet weak var tableView: UITableView!
-  var books = [Book]()
+  var reviews = [Review]()
   let hud = JGProgressHUD(style: .dark)
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    title = "My favorite"
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.backgroundColor = Styles.Colors.background.color
-    tableView.separatorStyle = .none
+
+    title = "My reviews"
 
     navigationItem.leftBarButtonItem = UIBarButtonItem(
       image: UIImage(named: "back"),
@@ -33,9 +34,11 @@ final class MyFavoriteController: UIViewController, UITableViewDataSource, UITab
     )
   }
 
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(false, animated: animated)
+    fetchAllReviews()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -43,31 +46,76 @@ final class MyFavoriteController: UIViewController, UITableViewDataSource, UITab
     navigationController?.setNavigationBarHidden(true, animated: animated)
   }
 
-  func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-    books.count
+  // MARK: Private
+
+  @objc
+  private func didTappedBackButton() {
+    navigationController?.popViewController(animated: true)
+  }
+  private func fetchAllReviews() {
+    hud.show(in: view)
+    NetworkManagement.getAllReviews { code, data in
+      if code == ResponseCode.ok.rawValue {
+        self.reviews = Review.parseListOfReview(data)
+        self.tableView.reloadData()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(title: "Cannot get reviews", with: data)
+        self.hud.dismiss()
+      }
+    }
+  }
+
+}
+
+// MARK: UITableViewDataSource
+
+extension MyReviewsController: UITableViewDataSource {
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    reviews.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(
-      withIdentifier: "FavoriteCell",
-      for: indexPath
-    ) as? FavoriteCell else { return UITableViewCell() }
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewCell", for: indexPath) as? MyReviewCell else { return UITableViewCell() }
     cell.selectionStyle = .none
-    cell.book = books[indexPath.row]
+    cell.review = reviews[indexPath.row]
     return cell
   }
+}
 
-  func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-    135 + 16 + 16
+// MARK: UITableViewDelegate
+
+extension MyReviewsController: UITableViewDelegate {
+
+  // MARK: Internal
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    UITableView.automaticDimension
+  }
+
+  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    300
   }
 
   func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
     let bookDetailController = BookDetailController()
     bookDetailController.modalPresentationStyle = .fullScreen
-    bookDetailController.book = books[indexPath.row]
-    let navVC = UINavigationController(rootViewController: bookDetailController)
-    navVC.modalPresentationStyle = .fullScreen
-    present(navVC, animated: true)
+    hud.show(in: view)
+    NetworkManagement.getBookBy(id: reviews[indexPath.row].bookId ?? "") { code, data in
+      if code == ResponseCode.ok.rawValue {
+        let book = Book.parseItem(item: data["book"])
+        bookDetailController.book = book
+        self.tableView.reloadData()
+        self.hud.dismiss()
+        let navVC = UINavigationController(rootViewController: bookDetailController)
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
+      } else {
+        self.presentErrorAlert(title: "Cannot get book", with: data)
+        self.hud.dismiss()
+      }
+    }
   }
 
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -77,7 +125,7 @@ final class MyFavoriteController: UIViewController, UITableViewDataSource, UITab
     imageView.contentMode = .scaleAspectFill
 
     let label = UILabel(
-      text: "You have no books in your shopping cart",
+      text: "You have no books in your order cart to review",
       font: Styles.Text.body.preferredFont,
       textColor: Styles.Colors.black.color,
       textAlignment: .center,
@@ -127,15 +175,10 @@ final class MyFavoriteController: UIViewController, UITableViewDataSource, UITab
   }
 
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    books.count > 0 ? 0 : 400
+    reviews.count > 0 ? 0 : 400
   }
 
   // MARK: Private
-
-  @objc
-  private func didTappedBackButton() {
-    navigationController?.popViewController(animated: true)
-  }
 
   @objc
   private func didTappedContinueShopping() {

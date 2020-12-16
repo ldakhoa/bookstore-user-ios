@@ -80,7 +80,7 @@ final class MyOrdersItemController: UITableViewController {
     imageView.contentMode = .scaleAspectFill
 
     let label = UILabel(
-      text: "You have no books in your shopping cart",
+      text: "You have no orders",
       font: Styles.Text.body.preferredFont,
       textColor: Styles.Colors.black.color,
       textAlignment: .center,

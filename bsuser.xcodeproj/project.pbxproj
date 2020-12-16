@@ -63,6 +63,8 @@
 		64AE6F4E25893B450009E240 /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE6F4D25893B450009E240 /* OrderStatus.swift */; };
 		64AE6F572589CF3C0009E240 /* MyFavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE6F562589CF3C0009E240 /* MyFavoriteController.swift */; };
 		64AE6F5C2589E1E80009E240 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE6F5B2589E1E80009E240 /* FavoriteCell.swift */; };
+		64AE6F6F258A54150009E240 /* MyReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE6F6E258A54150009E240 /* MyReviewsController.swift */; };
+		64AE6F77258A6B980009E240 /* MyReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AE6F76258A6B980009E240 /* MyReviewCell.swift */; };
 		64B0275725428E2F00C1CDB2 /* BookDetailRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B0275625428E2F00C1CDB2 /* BookDetailRecommendationCell.swift */; };
 		64B0276A254295F900C1CDB2 /* RecommendationOverallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B02769254295F900C1CDB2 /* RecommendationOverallCell.swift */; };
 		64B0276F2542980300C1CDB2 /* BookDetailRecommendationHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B0276E2542980300C1CDB2 /* BookDetailRecommendationHorizontalController.swift */; };
@@ -214,6 +216,8 @@
 		64AE6F4D25893B450009E240 /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
 		64AE6F562589CF3C0009E240 /* MyFavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteController.swift; sourceTree = "<group>"; };
 		64AE6F5B2589E1E80009E240 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		64AE6F6E258A54150009E240 /* MyReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewsController.swift; sourceTree = "<group>"; };
+		64AE6F76258A6B980009E240 /* MyReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewCell.swift; sourceTree = "<group>"; };
 		64B0275625428E2F00C1CDB2 /* BookDetailRecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailRecommendationCell.swift; sourceTree = "<group>"; };
 		64B02769254295F900C1CDB2 /* RecommendationOverallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationOverallCell.swift; sourceTree = "<group>"; };
 		64B0276E2542980300C1CDB2 /* BookDetailRecommendationHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailRecommendationHorizontalController.swift; sourceTree = "<group>"; };
@@ -461,6 +465,7 @@
 		647C77D92532C7940034159E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				64AE6F6D258A54060009E240 /* My reviews */,
 				64AE6F522589CE620009E240 /* My favorite */,
 				64EC828F2556A03E00EE8E51 /* Order Detail */,
 				64DBEDBB2555634C00ECD341 /* My Orders */,
@@ -509,6 +514,15 @@
 				64AE6F5B2589E1E80009E240 /* FavoriteCell.swift */,
 			);
 			path = "My favorite";
+			sourceTree = "<group>";
+		};
+		64AE6F6D258A54060009E240 /* My reviews */ = {
+			isa = PBXGroup;
+			children = (
+				64AE6F6E258A54150009E240 /* MyReviewsController.swift */,
+				64AE6F76258A6B980009E240 /* MyReviewCell.swift */,
+			);
+			path = "My reviews";
 			sourceTree = "<group>";
 		};
 		64B0277D25429A8900C1CDB2 /* Main */ = {
@@ -1112,6 +1126,7 @@
 				64B0275725428E2F00C1CDB2 /* BookDetailRecommendationCell.swift in Sources */,
 				64CE1B572531B08200A194E3 /* Extensions+UIView.swift in Sources */,
 				64A3C8E7253E04BF0019F28A /* SearchCell.swift in Sources */,
+				64AE6F6F258A54150009E240 /* MyReviewsController.swift in Sources */,
 				6476F69D2535706400879CC1 /* HTTPRequester.swift in Sources */,
 				64BA8BF5254C45A500AC56C6 /* OrderSubtotalCell.swift in Sources */,
 				64CE1B182531ACF900A194E3 /* AppDelegate.swift in Sources */,
@@ -1127,6 +1142,7 @@
 				64F686D7254FFF48002C3C47 /* EditAddressController.swift in Sources */,
 				64EC82822556552000EE8E51 /* MyOrdersItemCell.swift in Sources */,
 				64EC82222555A31400EE8E51 /* MyOrdersMainCell.swift in Sources */,
+				64AE6F77258A6B980009E240 /* MyReviewCell.swift in Sources */,
 				649B00A2253B5C4300BE315A /* AlertAction.swift in Sources */,
 				64C201442585FC040062894A /* Review.swift in Sources */,
 				64D501F12583D8E7006FA9CD /* LeftAlignedIconButton.swift in Sources */,

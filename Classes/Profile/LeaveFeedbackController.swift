@@ -62,18 +62,20 @@ final class LeaveFeedbackController: UIViewController, UITextViewDelegate {
   private func postAReview() {
     let hud = JGProgressHUD(style: .dark)
     hud.show(in: view)
+    print("ID: ", book?.id)
     guard let content = textView.text else { return }
-    if !isValidTextView(content) {
-      let alert = UIAlertController.configured(
-        title: "Failed to submit",
-        message: "Make sure your review text greater than 20 characters, and only contains numbers and characters!",
-        preferredStyle: .alert
-      )
-      alert.addAction(AlertAction.ok())
-      hud.dismiss()
-      return
-    }
-
+    print("Content: ", content)
+//    if !isValidTextView(content) {
+//      let alert = UIAlertController.configured(
+//        title: "Failed to submit",
+//        message: "Make sure your review text greater than 20 characters, and only contains numbers and characters!",
+//        preferredStyle: .alert
+//      )
+//      alert.addAction(AlertAction.ok())
+//      hud.dismiss()
+//      return
+//    }
+    print("id", book?.id)
     NetworkManagement.postReviewByBook(
       id: book?.id ?? "",
       with: content,
