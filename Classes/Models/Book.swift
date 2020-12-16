@@ -59,6 +59,7 @@ final class Book {
     book.imageUrl = item["imageUrl"].string ?? ""
     book.description = item["description"].string ?? ""
     book.quantity = item["quantity"].int ?? 1
+    book.isFavor = item["isFavor"].bool ?? false
 
     if item["publisher"] != JSON.null {
       book.publisher = Publisher.parseData(item: item["publisher"])
@@ -97,6 +98,7 @@ final class Book {
   var imageUrl: String = ""
   var categories = [Category]()
   var quantity: Int = 1
+  var isFavor: Bool = false
 
   var recommendBooks = [Book]()
 }

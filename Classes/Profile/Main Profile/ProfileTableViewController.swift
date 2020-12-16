@@ -250,8 +250,12 @@ final class ProfileTableViewController: UITableViewController {
 
     dispatchGroup.enter()
     NetworkManagement.getAllFavorBooks { code, data in
+      print("Data: ", data)
       if code == ResponseCode.ok.rawValue {
         let books = Book.parseData(json: data)
+        books.forEach {
+          print($0.isFavor)
+        }
         self.favoriteBooks = books
         dispatchGroup.leave()
       } else {

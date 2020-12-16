@@ -65,6 +65,11 @@ final class BookDetailController: UIViewController {
       action: #selector(didTappedFavoriteView)
     ))
 
+    topContainerView.favoriteSelectedView.addGestureRecognizer(UITapGestureRecognizer(
+      target: self,
+      action: #selector(didTappedFavoriteView)
+    ))
+
     topContainerView.dismissView.addGestureRecognizer(UITapGestureRecognizer(
       target: self,
       action: #selector(didTappedDismissImageView)
@@ -88,11 +93,15 @@ final class BookDetailController: UIViewController {
     fetchRecommendBooks()
     fetchRecommendBooksWithBookId()
     fetchReviews()
+    fetchBook()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+
     navigationController?.setNavigationBarHidden(true, animated: animated)
+
+    fetchBook()
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -106,6 +115,24 @@ final class BookDetailController: UIViewController {
   }
 
   // MARK: Private
+
+  private func fetchBook() {
+    hud.show(in: view)
+    NetworkManagement.getBookBy(id: book?.id ?? "") { code, data in
+      if code == ResponseCode.ok.rawValue {
+        let book = Book.parseItem(item: data["book"])
+        self.book = book
+        self.topContainerView.favoriteView.isHidden = book.isFavor ? true : false
+        self.topContainerView.favoriteSelectedView.isHidden = book.isFavor ? false : true
+        self.tableView.reloadData()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(title: "Cannot get book", with: data)
+        self.hud.dismiss()
+      }
+    }
+
+  }
 
   private func fetchReviews() {
     hud.show(in: view)
@@ -215,50 +242,44 @@ final class BookDetailController: UIViewController {
 
   @objc
   private func didTappedFavoriteView() {
-    // 1. if favor is select -> Post
-    NetworkManagement.postFavorBookWithBookId(book?.id ?? "") { code, data in
-      if code == ResponseCode.ok.rawValue {
-        self.hud.textLabel.text = "Added to favorite"
-        self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-        self.topContainerView.favoriteSelectedView.isHidden = false
-        self.topContainerView.favoriteView.isHidden = true
-        self.topContainerView.favoriteSelectedView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
-        self.hud.show(in: self.view)
-        self.hud.dismiss(afterDelay: 1.0)
-        UIView.animate(withDuration: 0.5) {
-          self.topContainerView.favoriteSelectedView.transform = .identity
+    if book?.isFavor ?? false == true {
+      NetworkManagement.deleteFavorBookWithBookId(book?.id ?? "") { code, data in
+        if code == ResponseCode.ok.rawValue {
+          self.topContainerView.favoriteSelectedView.isHidden = true
+          self.topContainerView.favoriteView.isHidden = false
+          self.topContainerView.favoriteView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+          self.hud.show(in: self.view)
+          self.hud.dismiss(afterDelay: 1.0)
+          UIView.animate(withDuration: 0.5) {
+            self.topContainerView.favoriteView.transform = .identity
+          }
+        } else {
+          self.presentErrorAlert(title: "Cannot add to favorite", with: data)
+          return
         }
-      } else {
-        self.presentErrorAlert(title: "Cannot add to favorite", with: data)
-        return
+      }
+    } else {
+      NetworkManagement.postFavorBookWithBookId(book?.id ?? "") { code, data in
+        if code == ResponseCode.ok.rawValue {
+          self.hud.textLabel.text = "Added to favorite"
+          self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+          self.topContainerView.favoriteSelectedView.isHidden = false
+          self.topContainerView.favoriteView.isHidden = true
+          self.topContainerView.favoriteSelectedView.transform = CGAffineTransform(
+            scaleX: 2.5,
+            y: 2.5
+          )
+          self.hud.show(in: self.view)
+          self.hud.dismiss(afterDelay: 1.0)
+          UIView.animate(withDuration: 0.5) {
+            self.topContainerView.favoriteSelectedView.transform = .identity
+          }
+        } else {
+          self.presentErrorAlert(title: "Cannot add to favorite", with: data)
+          return
+        }
       }
     }
-
-    // 2. if selected is select -> Delete
-    //		var isFavorited = false
-//
-    //		if !isFavorited {
-    //			isFavorited = true
-    //			hud.textLabel.text = "Added to favorite"
-    //			hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-    //			self.topContainerView.favoriteSelectedView.isHidden = false
-    //			self.topContainerView.favoriteView.isHidden = true
-    //			self.topContainerView.favoriteSelectedView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
-    //			hud.show(in: self.view)
-    //			hud.dismiss(afterDelay: 1.0)
-    //			UIView.animate(withDuration: 0.5) {
-    //				self.topContainerView.favoriteSelectedView.transform = .identity
-    //			}
-    //		}
-    //		if isFavorited {
-    //			isFavorited = false
-    //			self.topContainerView.favoriteSelectedView.isHidden = true
-    //			self.topContainerView.favoriteView.isHidden = false
-    //			self.topContainerView.favoriteView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
-    //			UIView.animate(withDuration: 0.5) {
-    //				self.topContainerView.favoriteView.transform = .identity
-    //			}
-    //		}
   }
 
   @objc

@@ -33,7 +33,6 @@ final class MyFavoriteController: UIViewController, UITableViewDataSource, UITab
     )
   }
 
-
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(false, animated: animated)

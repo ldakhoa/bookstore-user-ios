@@ -381,7 +381,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0000 0000 0000" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6YA-JE-9Gl" customClass="CardTextField" customModule="bsuser" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0000 0000 0000" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6YA-JE-9Gl" customClass="CardTextField" customModule="bsuser" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="21" width="366" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="ITW-Yd-Cdb"/>
@@ -443,7 +443,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="728" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2hw-R7-DhR" customClass="CardTextField" customModule="bsuser" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="700000" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2hw-R7-DhR" customClass="CardTextField" customModule="bsuser" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="21" width="112" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="9Jt-NJ-bI6"/>
@@ -457,18 +457,27 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This card is not supported" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ba8-77-Bhp">
+                                <rect key="frame" x="24" y="161.5" width="366" height="21"/>
+                                <fontDescription key="fontDescription" name="AirbnbCerealApp-Medium" family="Airbnb Cereal App" pointSize="18"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1aG-fO-9Oe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ba8-77-Bhp" firstAttribute="leading" secondItem="1aG-fO-9Oe" secondAttribute="leading" constant="24" id="6Mw-Z4-rDo"/>
                             <constraint firstItem="1aG-fO-9Oe" firstAttribute="trailing" secondItem="r3H-Pt-eCM" secondAttribute="trailing" constant="24" id="CDY-Nu-o7x"/>
                             <constraint firstItem="1aG-fO-9Oe" firstAttribute="bottom" secondItem="Fjw-6F-VOs" secondAttribute="bottom" constant="24" id="Dh5-fN-PPl"/>
                             <constraint firstItem="1aG-fO-9Oe" firstAttribute="trailing" secondItem="gJZ-cb-K7N" secondAttribute="trailing" constant="24" id="GZM-zB-sQd"/>
                             <constraint firstItem="1aG-fO-9Oe" firstAttribute="trailing" secondItem="Fjw-6F-VOs" secondAttribute="trailing" constant="24" id="HuH-lU-bZm"/>
                             <constraint firstItem="4YJ-Ll-9De" firstAttribute="top" secondItem="1aG-fO-9Oe" secondAttribute="top" constant="24" id="IFB-tM-5th"/>
+                            <constraint firstItem="ba8-77-Bhp" firstAttribute="top" secondItem="r3H-Pt-eCM" secondAttribute="bottom" constant="8" id="Jau-lc-DhG"/>
                             <constraint firstItem="r3H-Pt-eCM" firstAttribute="top" secondItem="4YJ-Ll-9De" secondAttribute="bottom" constant="24" id="WxZ-9S-tww"/>
                             <constraint firstItem="r3H-Pt-eCM" firstAttribute="leading" secondItem="1aG-fO-9Oe" secondAttribute="leading" constant="24" id="X1O-UV-wXS"/>
                             <constraint firstItem="gJZ-cb-K7N" firstAttribute="top" secondItem="r3H-Pt-eCM" secondAttribute="bottom" constant="48" id="aiJ-jd-F7q"/>
+                            <constraint firstItem="1aG-fO-9Oe" firstAttribute="trailing" secondItem="ba8-77-Bhp" secondAttribute="trailing" constant="24" id="jab-1F-AIC"/>
                             <constraint firstItem="gJZ-cb-K7N" firstAttribute="leading" secondItem="1aG-fO-9Oe" secondAttribute="leading" constant="24" id="mTX-wL-PsW"/>
                             <constraint firstItem="4YJ-Ll-9De" firstAttribute="leading" secondItem="1aG-fO-9Oe" secondAttribute="leading" constant="24" id="zCa-nE-SWd"/>
                         </constraints>
@@ -1064,6 +1073,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

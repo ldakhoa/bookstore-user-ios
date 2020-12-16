@@ -132,8 +132,8 @@ struct NetworkManagement {
     }
   }
 
-  public static func postPaymentOrder(response: @escaping ResponseHandler) {
-    let requester = HTTPRequester.postPaymentOrder
+  public static func postPaymentOrder(with params: [String: Any],response: @escaping ResponseHandler) {
+    let requester = HTTPRequester.postPaymentOrder(params: params)
     callAPI(requester) { code, json in
       response(code, json)
     }
