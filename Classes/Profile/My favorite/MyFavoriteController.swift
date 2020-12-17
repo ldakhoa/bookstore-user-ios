@@ -36,6 +36,7 @@ final class MyFavoriteController: UIViewController, UITableViewDataSource, UITab
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(false, animated: animated)
+    fetchFavoriteBooks()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -131,6 +132,21 @@ final class MyFavoriteController: UIViewController, UITableViewDataSource, UITab
   }
 
   // MARK: Private
+
+  private func fetchFavoriteBooks() {
+    hud.show(in: view)
+    NetworkManagement.getAllFavorBooks { code, data in
+      if code == ResponseCode.ok.rawValue {
+        let books = Book.parseData(json: data)
+        self.books = books
+        self.tableView.reloadData()
+        self.hud.dismiss()
+      } else {
+        self.presentErrorAlert(title: "Cannot get favorite books", with: data)
+        return
+      }
+    }
+  }
 
   @objc
   private func didTappedBackButton() {

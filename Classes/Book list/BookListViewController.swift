@@ -26,7 +26,6 @@ final class BookListViewController: UIViewController {
   @IBOutlet var collectionView: UICollectionView!
   let filterDatasource: [String] = [
     "Sorted by: Ascending",
-    "Category",
     "Price",
     "Rating",
   ]
@@ -86,7 +85,8 @@ final class BookListViewController: UIViewController {
 
   private func fetchBookByCategory() {
     let hud = JGProgressHUD(style: .dark)
-    NetworkManagement.getBookByCategory(categoryName ?? "") { code, data in
+    let name = categoryName?.replacingOccurrences(of: " ", with: "%20", options: .literal) ?? ""
+    NetworkManagement.getBookByCategory(name) { code, data in
       if code == ResponseCode.ok.rawValue {
         self.books = Book.parseData(json: data)
         self.tableView.reloadData()
@@ -171,8 +171,6 @@ extension BookListViewController: UICollectionViewDataSource {
       cell.textLabel.text = "Sorted by: \(isAscending ? "Ascending" : "Descending")"
       cell.iconImageView.image = UIImage(named: "swap")
     } else if indexPath.item == 1 {
-      cell.iconImageView.image = UIImage(named: "down-arrow")
-    } else if indexPath.item == 2 {
       cell.iconImageView.image = UIImage(named: "filter")
 //            if isChoosingPrice {
 //                cell.containerView.layer.borderColor = Styles.Colors.filterBorder.color.cgColor
@@ -182,7 +180,7 @@ extension BookListViewController: UICollectionViewDataSource {
 //                cell.containerView.layer.borderColor = Styles.Colors.border.color.cgColor
 //                cell.containerView.backgroundColor = Styles.Colors.White.normal
 //            }
-    } else if indexPath.item == 3 {
+    } else if indexPath.item == 2 {
       cell.iconImageView.image = UIImage(named: "filter")
 //            if isChoosingRatings {
       ////                changeStylesOfCollectionViewItem(cell)
@@ -271,7 +269,7 @@ extension BookListViewController: UICollectionViewDelegateFlowLayout {
       books = sortByPrice(isAscending: isAscending)
       tableView.reloadData()
       collectionView.reloadData()
-    } else if indexPath.item == 2 {
+    } else if indexPath.item == 1 {
       fetchBookWith(filterType: .price)
       isChoosingPrice = true
       isChoosingRatings = false
@@ -282,7 +280,7 @@ extension BookListViewController: UICollectionViewDelegateFlowLayout {
         cell.containerView.layer.borderColor = Styles.Colors.border.color.cgColor
         cell.containerView.backgroundColor = Styles.Colors.White.normal
       }
-    } else if indexPath.item == 3 {
+    } else if indexPath.item == 2 {
       fetchBookWith(filterType: .ratings)
       isChoosingPrice = false
       isChoosingRatings = true

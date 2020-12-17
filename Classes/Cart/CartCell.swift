@@ -30,7 +30,6 @@ final class CartCell: UITableViewCell {
   @IBOutlet var bookAmountLabel: UILabel!
   @IBOutlet var decreaseButton: UIButton!
   @IBOutlet var increaseButton: UIButton!
-  @IBOutlet weak var deleteButton: UIButton!
 
   let hud = JGProgressHUD(style: .dark)
   var quantity: Int?
@@ -81,11 +80,6 @@ final class CartCell: UITableViewCell {
       quantity? -= 1
     }
     updateQuantity(quantity ?? 1, isIncreased: false)
-  }
-
-  @objc
-  private func didTappedDeleteButton() {
-//    delegate?.didTappedCancelButton(book?.id ?? "")
   }
 
   private func updateQuantity(_ quantity: Int, isIncreased: Bool) {

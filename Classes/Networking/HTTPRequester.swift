@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-let coreURL = "http://localhost:3000/"
+let coreURL = "https://api-bookstore-hcmiu.herokuapp.com/"
 
 // MARK: - Requestable
 

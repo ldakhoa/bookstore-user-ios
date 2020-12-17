@@ -89,11 +89,15 @@ final class BookDetailController: UIViewController {
     isEnabledShadowForTopView(opacity: 0.25)
 
     setInteractiveRecognizer()
-    fetchCart()
     fetchRecommendBooks()
     fetchRecommendBooksWithBookId()
-    fetchReviews()
     fetchBook()
+
+    if AppSecurity.shared.isAuthorized == true {
+      fetchReviews()
+      fetchCart()
+      topContainerView.itemCountLabel.isHidden = false
+    }
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -305,6 +309,7 @@ final class BookDetailController: UIViewController {
       guard let loginVC = AppSetting.Storyboards.Registration.login as? LoginViewController else { return }
       loginVC.isInBookDetail = true
       present(loginVC, animated: true)
+      return
     }
 
     NetworkManagement.postCartByUser(bookId: book?.id ?? "") { code, data in

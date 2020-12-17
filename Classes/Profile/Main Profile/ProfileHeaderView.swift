@@ -55,7 +55,7 @@ class ProfileHeaderView: UIView {
   // MARK: Internal
 
   let nameLabel = UILabel(
-    text: "Khoa Le",
+    text: "",
     font: Styles.Text.h3.preferredFont,
     textColor: Styles.Colors.black.color
   )

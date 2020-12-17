@@ -59,6 +59,8 @@ final class Order {
     data.productName = json["productName"].string ?? ""
     data.booksCount = json["books_count"].int ?? 0
     data.booksQuantity = json["books_quantity"].int ?? 0
+    data.contactPhoneNumber = json["contact_phone_number"].string ?? ""
+    data.userName = json["user_name"].string ?? ""
 
     if let bookArr = json["books"].array {
       bookArr.forEach {
@@ -67,9 +69,9 @@ final class Order {
       }
     }
 
-    if json["user"] != JSON.null {
-      data.user = User.parseData(json: json["user"])
-    }
+//    if json["user"] != JSON.null {
+//      data.user = User.parseData(json: json["user"])
+//    }
     return data
   }
 
@@ -88,7 +90,8 @@ final class Order {
   var productName: String = ""
   var booksCount: Int = 0
   var booksQuantity: Int = 0
+  var contactPhoneNumber = ""
   var books = [Book]()
-  var user: User?
+  var userName = ""
 
 }

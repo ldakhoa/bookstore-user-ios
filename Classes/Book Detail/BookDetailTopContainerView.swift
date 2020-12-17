@@ -102,7 +102,8 @@ final class BookDetailTopContainerView: UIView {
   let bottomLayer = CALayer()
   let itemCountLabel: UILabel = {
     let label = UILabel()
-    label.text = "3"
+    label.text = ""
+    label.isHidden = true
     label.font = Styles.Text.cartItemCount.preferredFont
     label.backgroundColor = Styles.Colors.Gradient.color3Wo
     label.textAlignment = .center

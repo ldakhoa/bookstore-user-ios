@@ -97,17 +97,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7K-Hf-tNy">
-                                                    <rect key="frame" x="380" y="28" width="10" height="10"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="10" id="Pb2-Pr-AY1"/>
-                                                        <constraint firstAttribute="width" constant="10" id="fgB-nc-vHN"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" image="dismiss">
-                                                        <color key="titleColor" name="gray"/>
-                                                    </state>
-                                                </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book2" translatesAutoresizingMaskIntoConstraints="NO" id="Aox-Pn-BRz">
                                                     <rect key="frame" x="24" y="24" width="100" height="130"/>
                                                     <constraints>
@@ -205,11 +194,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="qbi-Pv-8pY" secondAttribute="bottom" constant="24" id="ASV-Gn-xcS"/>
                                                 <constraint firstItem="Aox-Pn-BRz" firstAttribute="top" secondItem="dNN-39-ZvX" secondAttribute="top" constant="24" id="H02-Lt-h2t"/>
                                                 <constraint firstAttribute="trailing" secondItem="qWj-y8-UkN" secondAttribute="trailing" constant="24" id="Nw4-64-9xu"/>
-                                                <constraint firstItem="H7K-Hf-tNy" firstAttribute="top" secondItem="Aox-Pn-BRz" secondAttribute="top" constant="4" id="Ok0-Pj-bhP"/>
                                                 <constraint firstItem="Aox-Pn-BRz" firstAttribute="leading" secondItem="dNN-39-ZvX" secondAttribute="leading" constant="24" id="RcP-FB-c7m"/>
                                                 <constraint firstItem="qWj-y8-UkN" firstAttribute="centerY" secondItem="2oK-yu-PvP" secondAttribute="centerY" id="WtC-OY-8nJ"/>
                                                 <constraint firstItem="qbi-Pv-8pY" firstAttribute="leading" secondItem="Aox-Pn-BRz" secondAttribute="trailing" constant="12" id="dsZ-iV-pXC"/>
-                                                <constraint firstAttribute="trailing" secondItem="H7K-Hf-tNy" secondAttribute="trailing" constant="24" id="saQ-Oc-2aS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -217,7 +204,6 @@
                                             <outlet property="bookAmountLabel" destination="j2C-En-Hyz" id="58k-9G-N6d"/>
                                             <outlet property="bookImageView" destination="Aox-Pn-BRz" id="4R3-VO-Lh1"/>
                                             <outlet property="decreaseButton" destination="FTc-Do-lAb" id="eJT-B3-phW"/>
-                                            <outlet property="deleteButton" destination="H7K-Hf-tNy" id="i7j-8Z-HkI"/>
                                             <outlet property="increaseButton" destination="NVm-ea-6q6" id="ZqW-wI-0u0"/>
                                             <outlet property="priceLabel" destination="tli-bM-70e" id="2PK-LO-Luv"/>
                                             <outlet property="titleLabel" destination="7nw-zW-QbC" id="nvj-fN-fWU"/>
@@ -398,7 +384,6 @@
     </scenes>
     <resources>
         <image name="book2" width="386" height="499"/>
-        <image name="dismiss" width="14" height="14"/>
         <namedColor name="Stepper Background">
             <color red="0.94901960784313721" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -14,9 +14,9 @@ final class ShippingAddressCell: UITableViewCell {
 
   var order: Order? {
     didSet {
-      usernameLabel.text = order?.user?.username
-      phoneLabel.text = "\(order?.user?.phone ?? 0)"
-      addressLabel.text = "\(order?.user?.address ?? "") Ward \(order?.user?.ward ?? "") District \(order?.user?.district ?? ""), \(order?.user?.city ?? ""), \(order?.user?.country ?? "")"
+      usernameLabel.text = order?.userName
+      phoneLabel.text = order?.contactPhoneNumber
+      addressLabel.text = order?.shippingAddress
     }
   }
 

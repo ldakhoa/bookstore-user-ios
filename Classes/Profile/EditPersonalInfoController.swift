@@ -79,7 +79,7 @@ extension EditPersonalInfoController: UITableViewDataSource {
     case 1:
       cell.titleLabel.text = "Name"
       cell.editTextField.placeholder = "Enter name"
-      cell.editTextField.text = "Khoa Le"
+      cell.editTextField.text = user.username
     case 2:
       cell.titleLabel.text = "Gender"
       cell.editTextField.placeholder = "Select Gender"
@@ -87,6 +87,7 @@ extension EditPersonalInfoController: UITableViewDataSource {
     case 3:
       cell.titleLabel.text = "Birth date"
       cell.editTextField.placeholder = "Select birth date"
+      cell.editTextField.text = user.birthDate
     case 4:
       cell.titleLabel.text = "Email"
       cell.editTextField.placeholder = "Edit email"
