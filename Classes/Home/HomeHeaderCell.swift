@@ -87,10 +87,10 @@ final class HomeHeaderCell: UICollectionViewCell {
   let imageView = UIImageView()
   let headerView = HeaderView()
 
-  var book: HomeHeaderBook? {
+  var banner: Banner? {
     didSet {
-      titleLabel.text = book?.title
-      imageView.image = book?.image
+      titleLabel.text = banner?.title
+      imageView.image = banner?.image
     }
   }
 
