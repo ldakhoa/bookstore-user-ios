@@ -220,6 +220,9 @@
                                                                 <state key="normal" title="Continue with Google" image="google">
                                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="didTappedNotSupportedButton:" destination="niK-G1-vlM" eventType="touchUpInside" id="bEm-d9-j13"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKs-bt-KZu" customClass="LeftAlignedIconButton" customModule="bsuser" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="56" width="327" height="40"/>
@@ -231,6 +234,9 @@
                                                                 <state key="normal" title="Continue with Facebook" image="fb">
                                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="didTappedNotSupportedButton:" destination="niK-G1-vlM" eventType="touchUpInside" id="s6q-fn-zcb"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MUF-hG-sYE" customClass="LeftAlignedIconButton" customModule="bsuser" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="112" width="327" height="40"/>
@@ -242,6 +248,9 @@
                                                                 <state key="normal" title="Continue with Apple" image="apple">
                                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="didTappedNotSupportedButton:" destination="niK-G1-vlM" eventType="touchUpInside" id="Aeh-mO-eVB"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -287,19 +296,19 @@
     </scenes>
     <designables>
         <designable name="3hz-hy-Ygk">
-            <size key="intrinsicContentSize" width="265" height="24"/>
+            <size key="intrinsicContentSize" width="203" height="24"/>
         </designable>
         <designable name="DKs-bt-KZu">
-            <size key="intrinsicContentSize" width="275" height="24"/>
+            <size key="intrinsicContentSize" width="223" height="24"/>
         </designable>
         <designable name="MUF-hG-sYE">
-            <size key="intrinsicContentSize" width="260" height="24"/>
+            <size key="intrinsicContentSize" width="193" height="24"/>
         </designable>
         <designable name="UTz-xg-rCd">
-            <size key="intrinsicContentSize" width="295" height="41.153671875000001"/>
+            <size key="intrinsicContentSize" width="39.5" height="20.5"/>
         </designable>
         <designable name="jy6-dy-nBe">
-            <size key="intrinsicContentSize" width="295" height="41.153671875000001"/>
+            <size key="intrinsicContentSize" width="71" height="19"/>
         </designable>
     </designables>
     <resources>

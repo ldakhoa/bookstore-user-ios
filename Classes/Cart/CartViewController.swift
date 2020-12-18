@@ -265,8 +265,13 @@ extension CartViewController: UITableViewDelegate {
       hud.show(in: view)
       NetworkManagement.deleteCartWithBook(id: bookId) { code, data in
         if code == ResponseCode.ok.rawValue {
-          self.cart?.books.remove(at: indexPath.row)
-          self.tableView.deleteRows(at: [indexPath], with: .automatic)
+          if self.cart?.books.count ?? 0 <= 1 {
+            self.cart?.books.removeAll()
+          } else {
+            self.cart?.books.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+          }
+          self.fetchCart()
           self.fetchCartInfo()
         } else {
           self.presentErrorAlert(title: "Cannot delete book", with: data)

@@ -56,6 +56,17 @@ final class LoginViewController: UIViewController {
     view.endEditing(true)
   }
 
+  @IBAction
+  func didTappedNotSupportedButton(_ sender: Any) {
+    let alert = UIAlertController.configured(
+      title: "Sorry!",
+      message: "Login with social account is in development.",
+      preferredStyle: .alert
+    )
+    alert.addAction(AlertAction.ok())
+    present(alert, animated: true)
+  }
+
   // MARK: Fileprivate
 
   fileprivate func setupLayout() {
