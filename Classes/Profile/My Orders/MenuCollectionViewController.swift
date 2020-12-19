@@ -103,15 +103,18 @@ final class MenuCollectionViewController: UICollectionViewController {
     didSelectItemAt indexPath: IndexPath
   ) {
     let x = view.frame.width / 3 * CGFloat(indexPath.item)
-    UIView.animate(
-      withDuration: 0.5,
-      delay: 0,
-      usingSpringWithDamping: 1,
-      initialSpringVelocity: 1,
-      options: .curveEaseOut
-    ) {
-      self.menuBarView.transform = CGAffineTransform(translationX: x, y: 0)
-    }
+//    UIView.animate(
+//      withDuration: 0.5,
+//      delay: 0,
+//      usingSpringWithDamping: 1,
+//      initialSpringVelocity: 1,
+//			options: .curveEaseOut, animations:
+//    ) {
+//      self.menuBarView.transform = CGAffineTransform(translationX: x, y: 0)
+//    }
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+			self.menuBarView.transform = CGAffineTransform(translationX: x, y: 0)
+		}, completion: nil)
     delegate?.didTappedMenuItem(at: indexPath)
   }
 
