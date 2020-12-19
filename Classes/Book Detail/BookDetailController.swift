@@ -245,6 +245,13 @@ final class BookDetailController: UIViewController {
 
   @objc
   private func didTappedFavoriteView() {
+		if AppSecurity.shared.isAuthorized == false {
+			guard let loginVC = AppSetting.Storyboards.Registration.login as? LoginViewController else { return }
+			loginVC.isInBookDetail = true
+			present(loginVC, animated: true)
+			return
+		}
+		
     if book?.isFavor ?? false == true {
       NetworkManagement.deleteFavorBookWithBookId(book?.id ?? "") { code, data in
         if code == ResponseCode.ok.rawValue {

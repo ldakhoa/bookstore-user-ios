@@ -11,6 +11,7 @@ import UIKit
 
 protocol OrderSuccessControllerDelegate: AnyObject {
   func didTappedContinueShoppingButton()
+	func didTappedMyOrdersButton()
 }
 
 // MARK: - OrderSuccessController
@@ -42,14 +43,19 @@ final class OrderSuccessController: UIViewController {
 
   @IBAction
   private func didTappedMyOrder(_ sender: Any) {
-    dismiss(animated: true) {
-      let myOrderViewController = MyOrdersController()
-      myOrderViewController.modalPresentationStyle = .fullScreen
-      let navController = UINavigationController(rootViewController: myOrderViewController)
-      navController.modalPresentationStyle = .fullScreen
-      navController.setNavigationBarHidden(true, animated: false)
-      self.present(navController, animated: true)
-    }
+
+		presentingViewController?.tabBarController?.selectedIndex = 0
+		presentingViewController?.dismiss(animated: true) {
+			self.delegate?.didTappedMyOrdersButton()
+		}
+//    dismiss(animated: true) {
+//      let myOrderViewController = MyOrdersController()
+//      myOrderViewController.modalPresentationStyle = .fullScreen
+//      let navController = UINavigationController(rootViewController: myOrderViewController)
+//      navController.modalPresentationStyle = .fullScreen
+//      navController.setNavigationBarHidden(true, animated: false)
+//      self.present(navController, animated: true)
+//    }
   }
 
 }

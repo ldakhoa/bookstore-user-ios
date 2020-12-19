@@ -57,7 +57,7 @@ final class HomeHeaderHorizontalController: HorizontalSnappingController {
 
   func setTimerAutoScroll() {
     let _ = Timer.scheduledTimer(
-      timeInterval: 2.0,
+      timeInterval: 3.0,
       target: self,
       selector: #selector(autoScroll),
       userInfo: nil,

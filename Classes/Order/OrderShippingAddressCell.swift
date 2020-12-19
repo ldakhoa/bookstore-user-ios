@@ -15,6 +15,7 @@ final class OrderShippingAddressCell: UITableViewCell {
   var cart: Cart? {
     didSet {
       if cart?.shippingAddress.count ?? 0 < 10 {
+				nameAndPhoneNumberLabel.text = ""
         addressLabel.text = "Please fill your shipping address and your phone number."
       } else {
         nameAndPhoneNumberLabel.text = "\(cart?.userName ?? "") | +\(cart?.contactPhoneNumber ?? "+84")"

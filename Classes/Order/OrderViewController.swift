@@ -243,10 +243,17 @@ extension OrderViewController: UITableViewDelegate {
 // MARK: OrderSuccessControllerDelegate
 
 extension OrderViewController: OrderSuccessControllerDelegate {
+	func didTappedMyOrdersButton() {
+		guard let referenceForTabBarController = presentingViewController as? MainTabBarController else { return }
+		dismiss(animated: true) {
+			referenceForTabBarController.selectedIndex = 3
+		}
+	}
+
   func didTappedContinueShoppingButton() {
     guard let referenceForTabBarController = presentingViewController as? MainTabBarController else { return }
     dismiss(animated: true) {
-      referenceForTabBarController.selectedIndex = 2
+      referenceForTabBarController.selectedIndex = 0
     }
   }
 }
