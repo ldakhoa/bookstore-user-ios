@@ -249,6 +249,8 @@ final class ProfileTableViewController: UITableViewController {
 
   private func fetchAllData() {
     let dispatchGroup = DispatchGroup()
+    hud.indicatorView = JGProgressHUDIndeterminateIndicatorView()
+    hud.textLabel.text = ""
     hud.show(in: view)
 
     dispatchGroup.enter()
