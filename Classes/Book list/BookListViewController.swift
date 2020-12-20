@@ -319,6 +319,7 @@ extension BookListViewController: SearchViewControllerDelegate {
   }
 
   func didTappedSearchCell(_ books: [Book], searchText: String) {
+    self.books.removeAll()
     searchGradientView.searchTextField.text = searchText
     self.books = books
     tableView.reloadData()

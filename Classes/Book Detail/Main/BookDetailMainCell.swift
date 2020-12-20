@@ -17,16 +17,20 @@ final class BookDetailMainCell: UITableViewCell {
 
   var book: Book? {
     didSet {
-      guard let book = book,
-            let imageUrl = URL(string: book.imageUrl) else { return }
-      bookTitleLabel.text = book.title
-      ratingsView.rating = book.ratings
-      ratingsView.text = "\(book.numberOfRatings)"
-      priceLabel.text = "$\(book.price)"
-      bookImageView.sd_setImage(with: imageUrl)
+
+      if let imageUrl = URL(string: book?.imageUrl ?? "") {
+        bookImageView.sd_setImage(
+          with: imageUrl,
+          placeholderImage: UIImage(named: "book-placeholder")
+        )
+      }
+      bookTitleLabel.text = book?.title
+      ratingsView.rating = book?.ratings ?? 0
+      ratingsView.text = "\(book?.numberOfRatings ?? 0)"
+      priceLabel.text = "$\(book?.price ?? 0)"
 
       var authorNames = [String]()
-      book.authors.forEach {
+      book?.authors.forEach {
         authorNames.append($0.name)
       }
       authorLabel.text = authorNames.joined(separator: ", ")

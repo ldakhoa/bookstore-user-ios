@@ -20,22 +20,19 @@ final class BookListCell: UITableViewCell {
 
   var book: Book? {
     didSet {
-      guard let book = book,
-            let bookImageUrl = URL(string: book.imageUrl)
-      else {
-        return
+      if let url = URL(string: book?.imageUrl ?? "") {
+        bookImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "book-placeholder"))
       }
 
-      bookTitleLabel.text = book.title
+      bookTitleLabel.text = book?.title
       var authorNames = [String]()
-      book.authors.forEach {
+      book?.authors.forEach {
         authorNames.append($0.name)
       }
       authorLabel.text = "by \(authorNames.joined(separator: ", "))"
-      priceLabel.text = "$\(book.price)"
-      bookImageView.sd_setImage(with: bookImageUrl)
-      ratingView.rating = book.ratings
-      ratingView.text = "\(book.numberOfRatings)"
+      priceLabel.text = "$\(book?.price ?? 0)"
+      ratingView.rating = book?.ratings ?? 0
+      ratingView.text = "\(book?.numberOfRatings ?? 0)"
     }
   }
 

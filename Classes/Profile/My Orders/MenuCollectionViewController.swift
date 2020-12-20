@@ -108,13 +108,13 @@ final class MenuCollectionViewController: UICollectionViewController {
 //      delay: 0,
 //      usingSpringWithDamping: 1,
 //      initialSpringVelocity: 1,
-//			options: .curveEaseOut, animations:
+    //			options: .curveEaseOut, animations:
 //    ) {
 //      self.menuBarView.transform = CGAffineTransform(translationX: x, y: 0)
 //    }
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-			self.menuBarView.transform = CGAffineTransform(translationX: x, y: 0)
-		}, completion: nil)
+    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+      self.menuBarView.transform = CGAffineTransform(translationX: x, y: 0)
+    }, completion: nil)
     delegate?.didTappedMenuItem(at: indexPath)
   }
 

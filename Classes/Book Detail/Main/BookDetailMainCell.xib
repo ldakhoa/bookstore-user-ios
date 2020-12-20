@@ -26,7 +26,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qia-cz-Fy1">
                         <rect key="frame" x="0.0" y="0.0" width="758" height="300"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book1" translatesAutoresizingMaskIntoConstraints="NO" id="tlc-t5-SD4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tlc-t5-SD4">
                                 <rect key="frame" x="269" y="20" width="220" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="iu4-Oy-cbn"/>
@@ -125,7 +125,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="book1" width="399" height="499"/>
+        <image name="book-placeholder" width="424" height="625"/>
         <namedColor name="black">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

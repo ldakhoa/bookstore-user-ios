@@ -26,7 +26,7 @@ class IBooksSearchTextField: UITextField {
       NSAttributedString.Key.font: Styles.Text.textfield.preferredFont,
     ])
 
-    let leftImageView = UIImageView(image: #imageLiteral(resourceName: "Search"))
+    let leftImageView = UIImageView(image: UIImage(named: "Search"))
     leftView = leftImageView
     leftViewMode = .always
 

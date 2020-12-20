@@ -20,7 +20,7 @@ class ProfileHeaderView: UIView {
 
     showProfileButton.setTitle("Show profile", for: .normal)
     showProfileButton.setTitleColor(Styles.Colors.darkGreen.color, for: .normal)
-		showProfileButton.isHidden = true
+    showProfileButton.isHidden = true
     let infoStackview = UIStackView(arrangedSubviews: [nameLabel, showProfileButton])
     infoStackview.axis = .vertical
     infoStackview.alignment = .leading
