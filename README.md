@@ -1,9 +1,6 @@
 # Bookstore User iOS
+
 Just a simple E-commercial iOS App built with Swift and UIKit
-
-International University - Vietnam National University 2020 
-
-Software Engineer Project
 
 ## Building and Using
 1. `git clone https://github.com/ldakhoa/bookstore-user-ios`
